@@ -3,6 +3,7 @@ import { ArrowLeft, ArrowRight, Check } from 'lucide-react'
 import { Badge, Button, Separator } from '~/components/ui'
 import { navigate } from '../hooks'
 import { inventory, inventoryCount } from '../inventory'
+import { previewBySlug } from '../previews'
 import { slugFor, usageBySlug, type UsageDoc } from '../usage'
 import { componentGroups, components, findComponent, type ComponentDoc } from '../registry'
 import { CodeTabs, Demo, PropsTable, Section } from '../showcase'
@@ -124,6 +125,10 @@ export function ComponentDetailPage({ slug }: { slug: string }) {
 
 function GenericComponentArticle({ usage }: { usage: UsageDoc }) {
   const category = inventory.find((item) => item.label === usage.group)
+  const preview = previewBySlug[usage.slug]
+  const previewNote =
+    usage.code.match(/from '([^']+)'/)?.[1]?.replace('~/', 'src/') ??
+    `src/components/ui/${usage.slug}`
 
   return (
     <>
@@ -140,6 +145,16 @@ function GenericComponentArticle({ usage }: { usage: UsageDoc }) {
           <Badge variant="soft">Usage included</Badge>
         </div>
       </header>
+
+      <Section title="Preview" lead="Interactive — try the keyboard and the theme toggle.">
+        <Demo title={usage.name} note={previewNote}>
+          <div className={styles.demoFieldFull}>
+            {preview ?? (
+              <p className={styles.cardText}>Preview unavailable for this component.</p>
+            )}
+          </div>
+        </Demo>
+      </Section>
 
       <Section title="Usage" lead="Copy the snippet, then adjust props and copy to your product.">
         <CodeTabs code={usage.code} name={usage.slug} />
