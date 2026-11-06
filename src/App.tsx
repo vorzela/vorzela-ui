@@ -153,9 +153,9 @@ export default function App() {
         groups={SIDEBAR_GROUPS}
         brand="Vorzela UI"
         brandMark="V"
-        subtitle="React + SCSS · v1.0.0"
+        subtitle="React + SCSS · v1.0.1"
         footer={<span>MIT · source-owned</span>}
-        version="1.0.0"
+        version="1.0.1"
         mobileOpen={navOpen}
         onMobileClose={() => setNavOpen(false)}
         currentPath={`#/${route.path || 'overview'}`}

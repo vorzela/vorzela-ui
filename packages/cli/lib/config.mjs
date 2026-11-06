@@ -3,7 +3,7 @@ import path from 'node:path'
 
 export const DEFAULT_CONFIG = {
   registry: 'https://ui.vorzela.dev',
-  version: '1.0.0',
+  version: '1.0.1',
   aliases: {
     base: '~',
     components: '~/components/ui',

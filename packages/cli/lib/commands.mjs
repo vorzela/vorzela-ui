@@ -269,12 +269,22 @@ export async function update(cwd, names = [], flags = {}) {
       if (localHash === registryHash) continue
 
       const unchanged = snapshot === null || localHash === hash(snapshot)
-      let action = 'keep'
-      if (unchanged) {
-        action = 'replace'
-      } else {
-        action = await promptModified(cwd, target, content, flags)
+
+      if (flags.dryRun) {
+        if (unchanged || flags.force || flags.replaceAll) {
+          log.step(`would update ${target}`)
+          updated.push(target)
+        } else if (flags.yes) {
+          log.step(`would keep ${target} (local changes)`)
+        } else {
+          log.step(`would prompt for ${target} (local changes)`)
+        }
+        continue
       }
+
+      const action = unchanged
+        ? 'replace'
+        : await promptModified(cwd, target, content, flags)
 
       if (action === 'skip') {
         skipped += 1
@@ -282,16 +292,12 @@ export async function update(cwd, names = [], flags = {}) {
       }
       if (action === 'keep') continue
 
-      if (flags.dryRun) {
-        log.step(`would update ${target}`)
-      } else {
-        writeLocal(cwd, target, content)
-        writeSnapshot(cwd, target, content)
-        manifest.files[target] = {
-          item: name,
-          hash: registryHash,
-          snapshot: snapshotPath(cwd, target),
-        }
+      writeLocal(cwd, target, content)
+      writeSnapshot(cwd, target, content)
+      manifest.files[target] = {
+        item: name,
+        hash: registryHash,
+        snapshot: snapshotPath(cwd, target),
       }
       updated.push(target)
     }
