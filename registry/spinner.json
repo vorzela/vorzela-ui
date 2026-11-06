@@ -1,0 +1,21 @@
+{
+  "name": "spinner",
+  "type": "ui",
+  "version": "0.2.0",
+  "dependencies": [],
+  "registryDependencies": [
+    "styles",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/spinner.tsx",
+      "content": "import type { CSSProperties } from 'react'\n\nimport { cx } from '~/lib/cx'\nimport styles from './spinner.module.scss'\n\nexport type SpinnerSize = 'sm' | 'md' | 'lg' | 'xl'\n\nconst SIZE: Record<SpinnerSize, string> = {\n  sm: styles.sm,\n  md: '',\n  lg: styles.lg,\n  xl: styles.xl,\n}\n\nexport interface SpinnerProps {\n  size?: SpinnerSize\n  /** Announced to assistive tech. Pass `null` when a visible label exists. */\n  label?: string | null\n  /** Use on filled primary surfaces. */\n  onPrimary?: boolean\n  /** Pixel override for one-off cases. */\n  pixels?: number\n  className?: string\n}\n\nexport function Spinner({\n  size = 'md',\n  label = 'Loading',\n  onPrimary = false,\n  pixels,\n  className,\n}: SpinnerProps) {\n  return (\n    <span\n      role={label ? 'status' : undefined}\n      aria-label={label ?? undefined}\n      aria-hidden={label ? undefined : true}\n      className={cx(\n        styles.root,\n        SIZE[size],\n        onPrimary && styles.onPrimary,\n        className,\n      )}\n      style={\n        pixels\n          ? ({ '--spinner-size': `${pixels}px` } as CSSProperties)\n          : undefined\n      }\n    />\n  )\n}\n"
+    },
+    {
+      "path": "components/ui/spinner.module.scss",
+      "content": "@use 'styles' as vz;\n\n.root {\n  --spinner-size: 1.125rem;\n  --spinner-width: 2px;\n\n  display: inline-block;\n  flex: none;\n  width: var(--spinner-size);\n  height: var(--spinner-size);\n  border: var(--spinner-width) solid vz.color('foreground', 0.14);\n  border-top-color: vz.color('primary');\n  border-radius: vz.radius('full');\n  animation: vz-spin 0.7s linear infinite;\n\n  @include vz.motion-reduce {\n    animation-duration: 2.4s;\n  }\n}\n\n.sm {\n  --spinner-size: 0.875rem;\n}\n\n.lg {\n  --spinner-size: 1.5rem;\n  --spinner-width: 2.5px;\n}\n\n.xl {\n  --spinner-size: 2rem;\n  --spinner-width: 3px;\n}\n\n.on-primary {\n  border-color: vz.color('primary-foreground', 0.3);\n  border-top-color: vz.color('primary-foreground');\n}\n\n@keyframes vz-spin {\n  to {\n    transform: rotate(360deg);\n  }\n}\n"
+    }
+  ],
+  "description": "spinner component"
+}

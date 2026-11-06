@@ -1,0 +1,232 @@
+@use 'styles' as vz;
+
+.viewport {
+  position: fixed;
+  z-index: vz.z('toast');
+  display: flex;
+  width: 23rem;
+  max-width: calc(100vw - #{vz.space(6)});
+  flex-direction: column;
+  gap: vz.space(2.5);
+  padding: 0;
+  pointer-events: none;
+}
+
+.top-left {
+  top: calc(#{vz.space(4)} + env(safe-area-inset-top, 0px));
+  left: vz.space(4);
+}
+
+.top-right {
+  top: calc(#{vz.space(4)} + env(safe-area-inset-top, 0px));
+  right: vz.space(4);
+}
+
+.top-center {
+  top: calc(#{vz.space(4)} + env(safe-area-inset-top, 0px));
+  left: 50%;
+  translate: -50% 0;
+}
+
+.bottom-left {
+  bottom: calc(#{vz.space(4)} + env(safe-area-inset-bottom, 0px));
+  left: vz.space(4);
+}
+
+.bottom-right {
+  right: vz.space(4);
+  bottom: calc(#{vz.space(4)} + env(safe-area-inset-bottom, 0px));
+}
+
+.bottom-center {
+  bottom: calc(#{vz.space(4)} + env(safe-area-inset-bottom, 0px));
+  left: 50%;
+  translate: -50% 0;
+}
+
+.toast {
+  --toast-accent: #{vz.color('muted-foreground')};
+  --toast-tint: #{vz.color('muted')};
+
+  display: flex;
+  align-items: flex-start;
+  gap: vz.space(2.5);
+  width: 100%;
+  padding: vz.space(3);
+  border: 1px solid vz.color('border', 0.72);
+  border-radius: vz.radius('lg');
+  background: vz.color('popover', 0.86);
+  color: vz.color('popover-foreground');
+  box-shadow:
+    vz.elevation(3),
+    0 1px 0 hsl(0deg 0% 100% / 60%) inset;
+  backdrop-filter: blur(20px) saturate(180%);
+  pointer-events: auto;
+  animation: vz-toast-in 260ms vz.ease('spring') both;
+
+  @include vz.motion-reduce {
+    animation: none;
+  }
+}
+
+:global(.dark) .toast {
+  box-shadow:
+    0 16px 40px hsl(0deg 0% 0% / 45%),
+    0 1px 0 hsl(210deg 40% 98% / 8%) inset;
+}
+
+.default {
+  --toast-accent: #{vz.color('foreground')};
+  --toast-tint: #{vz.color('muted')};
+}
+
+.success {
+  --toast-accent: #{vz.color('success')};
+  --toast-tint: #{vz.color('success', 0.12)};
+}
+
+.error {
+  --toast-accent: #{vz.color('destructive')};
+  --toast-tint: #{vz.color('destructive', 0.1)};
+}
+
+.warning {
+  --toast-accent: #{vz.color('warning')};
+  --toast-tint: #{vz.color('warning', 0.14)};
+}
+
+.info {
+  --toast-accent: #{vz.color('info')};
+  --toast-tint: #{vz.color('info', 0.12)};
+}
+
+.type-icon {
+  display: inline-flex;
+  width: 1.5rem;
+  height: 1.5rem;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+  border-radius: vz.radius('full');
+  background: var(--toast-tint);
+  color: var(--toast-accent);
+
+  svg {
+    @include vz.icon(3.5);
+  }
+}
+
+.copy {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.title {
+  margin: 0;
+  font-size: vz.font-size('sm');
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.description {
+  margin: 0;
+  color: vz.color('muted-foreground');
+  font-size: vz.font-size('xs');
+  line-height: 1.45;
+}
+
+.dismiss {
+  display: inline-flex;
+  width: 1.5rem;
+  height: 1.5rem;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  margin: -2px -2px 0 0;
+  border: 0;
+  border-radius: vz.radius('xs');
+  background: transparent;
+  color: vz.color('muted-foreground');
+  cursor: pointer;
+  transition:
+    background-color vz.duration('fast') vz.ease('out'),
+    color vz.duration('fast') vz.ease('out');
+
+  @include vz.hover {
+    background: vz.color('foreground', 0.06);
+    color: vz.color('foreground');
+  }
+
+  @include vz.focus-ring(2px, 1px, 0.6);
+
+  svg {
+    @include vz.icon(3);
+  }
+
+  @include vz.motion-reduce {
+    transition: none;
+  }
+}
+
+.action {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  align-self: center;
+  height: 1.75rem;
+  padding-inline: vz.space(2.5);
+  border: 1px solid vz.color('border');
+  border-radius: vz.radius('sm');
+  background: vz.color('accent');
+  color: vz.color('accent-foreground');
+  font-size: 0.6875rem;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background-color vz.duration('fast') vz.ease('out'),
+    border-color vz.duration('fast') vz.ease('out');
+
+  @include vz.hover {
+    background: vz.color('muted');
+    border-color: vz.color('foreground', 0.2);
+  }
+
+  @include vz.focus-ring(2px, 1px, 0.6);
+}
+
+@include vz.up('sm') {
+  .viewport {
+    width: 24rem;
+  }
+}
+
+@include vz.down('sm') {
+  .viewport {
+    right: vz.space(3);
+    left: vz.space(3);
+    width: auto;
+    max-width: none;
+  }
+
+  .top-center,
+  .bottom-center {
+    translate: 0 0;
+  }
+}
+
+@keyframes vz-toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

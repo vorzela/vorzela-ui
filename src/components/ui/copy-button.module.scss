@@ -1,0 +1,10 @@
+@use 'styles' as vz;
+
+.root {
+  position: relative;
+  display: inline-flex;
+}
+
+.success-icon {
+  color: vz.color('success');
+}

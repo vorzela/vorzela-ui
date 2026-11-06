@@ -1,0 +1,19 @@
+@use 'styles' as vz;
+
+.root {
+  @include vz.overscroll;
+  @include vz.scrollbar(10px);
+  @include vz.focus-ring(2px, 2px, 0.6);
+}
+
+.axis-y {
+  overflow: hidden auto;
+}
+
+.axis-x {
+  overflow: auto hidden;
+}
+
+.axis-both {
+  overflow: auto;
+}

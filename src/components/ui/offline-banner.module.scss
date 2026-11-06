@@ -1,0 +1,48 @@
+@use 'styles' as vz;
+
+.root {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: vz.space(2.5);
+  padding: vz.space(2.5) vz.space(4);
+  border: 1px solid vz.color('warning', 0.35);
+  border-radius: vz.radius('xl');
+  background: vz.color('warning', 0.12);
+  color: vz.color('foreground');
+  font-size: vz.font-size('sm');
+  font-weight: 500;
+  line-height: 1.4;
+  box-shadow: vz.elevation(1);
+  backdrop-filter: blur(12px);
+}
+
+.icon {
+  flex: none;
+  color: vz.color('warning');
+
+  @include vz.icon(4);
+}
+
+.message {
+  flex: 1;
+  min-width: 12rem;
+}
+
+.retry {
+  min-height: 1.5rem;
+  padding-inline: vz.space(2.5);
+  border: 1px solid vz.color('warning', 0.45);
+  border-radius: vz.radius('sm');
+  background: vz.color('card');
+  color: vz.color('foreground');
+  font-size: vz.font-size('xs');
+  font-weight: 600;
+  cursor: pointer;
+
+  @include vz.hover {
+    background: vz.color('muted');
+  }
+
+  @include vz.focus-ring(2px, 1px, 0.6);
+}

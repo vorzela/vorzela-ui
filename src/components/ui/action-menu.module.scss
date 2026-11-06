@@ -1,0 +1,182 @@
+@use 'styles' as vz;
+
+.wrap {
+  display: inline-flex;
+  width: fit-content;
+}
+
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: vz.space(7);
+  height: vz.space(7);
+  padding: 0;
+  border: 0;
+  border-radius: vz.radius('lg');
+  background: transparent;
+  color: vz.color('muted-foreground');
+  cursor: pointer;
+  transition:
+    background-color vz.duration('fast') vz.ease('out'),
+    color vz.duration('fast') vz.ease('out');
+
+  @include vz.hover {
+    background: vz.color('muted');
+    color: vz.color('foreground');
+  }
+
+  @include vz.focus-ring(2px, 2px, 0.6);
+
+  svg {
+    width: 15px;
+    height: 15px;
+    pointer-events: none;
+  }
+}
+
+.trigger-open {
+  background: vz.color('muted');
+  color: vz.color('foreground');
+}
+
+.panel {
+  @include vz.raised(2);
+
+  position: fixed;
+  z-index: vz.z('dropdown');
+  min-width: 172px;
+  padding: vz.space(1);
+  border-radius: vz.radius('xl');
+  font-size: 13px;
+}
+
+.panel[data-dir='bottom'] {
+  animation: vz-action-menu-in-down vz.duration('fast') vz.ease('out') both;
+
+  @include vz.motion-reduce {
+    animation: none;
+  }
+}
+
+.panel[data-dir='top'] {
+  animation: vz-action-menu-in-up vz.duration('fast') vz.ease('out') both;
+
+  @include vz.motion-reduce {
+    animation: none;
+  }
+}
+
+.section-label {
+  margin: 0;
+  padding: 6px 10px 2px;
+  color: vz.color('muted-foreground');
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  user-select: none;
+}
+
+.divider {
+  height: 1px;
+  margin: vz.space(1) 0;
+  background: vz.color('border');
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: vz.space(2);
+  width: 100%;
+  padding: 6px 10px;
+  border: 0;
+  border-radius: vz.radius('sm');
+  background: transparent;
+  color: vz.color('foreground');
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.4;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color vz.duration('fast') vz.ease('out');
+
+  @include vz.hover {
+    background: vz.color('accent');
+  }
+
+  @include vz.focus-ring(2px, -2px, 0.6);
+
+  &:focus-visible {
+    background: vz.color('accent');
+  }
+
+  @include vz.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+.item-danger {
+  color: vz.color('destructive');
+
+  @include vz.hover {
+    background: vz.color('destructive', 0.1);
+  }
+
+  &:focus-visible {
+    background: vz.color('destructive', 0.1);
+  }
+}
+
+.item-danger .item-icon {
+  color: vz.color('destructive');
+}
+
+.item-icon {
+  display: inline-flex;
+  width: 1rem;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.75;
+}
+
+.item-icon-empty {
+  opacity: 0;
+}
+
+.item-label {
+  flex: 1;
+}
+
+.item-trailing {
+  flex: none;
+  opacity: 0.5;
+  font-size: 11px;
+}
+
+@keyframes vz-action-menu-in-down {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(-4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes vz-action-menu-in-up {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

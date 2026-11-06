@@ -1,0 +1,21 @@
+{
+  "name": "typography",
+  "type": "ui",
+  "version": "0.2.0",
+  "dependencies": [],
+  "registryDependencies": [
+    "styles",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/typography.tsx",
+      "content": "import type { HTMLAttributes, ReactNode } from 'react'\n\nimport { cx } from '~/lib/cx'\nimport styles from './typography.module.scss'\n\n/** Inline code fragment. */\nexport function Code({ className, ...props }: HTMLAttributes<HTMLElement>) {\n  return <code className={cx(styles.code, className)} {...props} />\n}\n\n/** Highlighted search match or emphasis. */\nexport function Highlight({ className, ...props }: HTMLAttributes<HTMLElement>) {\n  return <mark className={cx(styles.highlight, className)} {...props} />\n}\n\nconst SIZES = {\n  sm: styles.sizeSm,\n  md: styles.sizeMd,\n  lg: styles.sizeLg,\n  xl: styles.sizeXl,\n} as const\n\nexport interface HeadingProps extends HTMLAttributes<HTMLHeadingElement> {\n  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'\n  size?: keyof typeof SIZES\n  children: ReactNode\n}\n\n/** Semantic heading with a decoupled visual size. */\nexport function Heading({\n  as: Tag = 'h2',\n  size = 'md',\n  className,\n  ...props\n}: HeadingProps) {\n  return (\n    <Tag className={cx(styles.heading, SIZES[size], className)} {...props} />\n  )\n}\n"
+    },
+    {
+      "path": "components/ui/typography.module.scss",
+      "content": "@use 'styles' as vz;\n\n.code {\n  padding: 0.1em 0.35em;\n  border: 1px solid vz.color('border');\n  border-radius: vz.radius('xs');\n  background: vz.color('muted');\n  color: vz.color('foreground');\n  font-family: SFMono-Regular, Menlo, Monaco, Consolas, monospace;\n  font-size: 0.875em;\n}\n\n.highlight {\n  padding: 0.05em 0.2em;\n  border-radius: 3px;\n  background: vz.color('warning', 0.28);\n  color: vz.color('foreground');\n}\n\n.heading {\n  margin: 0;\n  color: vz.color('foreground');\n  font-weight: 700;\n  letter-spacing: -0.025em;\n  line-height: 1.15;\n}\n\n.size-sm {\n  font-size: vz.font-size('lg');\n}\n\n.size-md {\n  font-size: vz.font-size('2xl');\n}\n\n.size-lg {\n  font-size: vz.font-size('3xl');\n}\n\n.size-xl {\n  font-size: vz.font-size('4xl');\n}\n"
+    }
+  ],
+  "description": "typography component"
+}

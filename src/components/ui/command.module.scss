@@ -1,0 +1,192 @@
+@use 'styles' as vz;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid vz.color('border');
+  border-radius: vz.radius('xl');
+  background: vz.color('popover');
+  color: vz.color('popover-foreground');
+}
+
+.input-wrap {
+  display: flex;
+  align-items: center;
+  gap: vz.space(2);
+  padding-inline: vz.space(3);
+  border-bottom: 1px solid vz.color('border');
+}
+
+.search-icon {
+  @include vz.icon(4);
+
+  color: vz.color('muted-foreground');
+  opacity: 0.6;
+}
+
+.input {
+  flex: 1;
+  width: 100%;
+  min-width: 0;
+  height: vz.space(11);
+  padding: vz.space(3) 0;
+  border: 0;
+  background: transparent;
+  color: vz.color('foreground');
+  font-size: vz.font-size('sm');
+  line-height: 1.25;
+  outline: none;
+
+  @include vz.placeholder {
+    color: vz.color('muted-foreground');
+  }
+
+  @include vz.focus-ring(2px, -2px, 0.6);
+
+  @include vz.disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+.list {
+  max-height: 18.75rem;
+  padding: vz.space(1) 0;
+  overflow: hidden auto;
+  overscroll-behavior: contain;
+
+  @include vz.scrollbar(8px);
+}
+
+.empty {
+  padding-block: vz.space(6);
+  color: vz.color('muted-foreground');
+  font-size: vz.font-size('sm');
+  text-align: center;
+}
+
+.group {
+  overflow: hidden;
+  padding: vz.space(1);
+  color: vz.color('foreground');
+}
+
+.group-heading {
+  padding: vz.space(1.5) vz.space(2);
+  color: vz.color('muted-foreground');
+  font-size: vz.font-size('xs');
+  font-weight: 500;
+}
+
+.item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: vz.space(2);
+  width: 100%;
+  padding: vz.space(1.5) vz.space(2);
+  border: 0;
+  border-radius: vz.radius('sm');
+  background: transparent;
+  color: inherit;
+  font-size: vz.font-size('sm');
+  line-height: 1.35;
+  text-align: left;
+  cursor: default;
+  user-select: none;
+  outline: none;
+  transition: background-color vz.duration('fast') vz.ease('out');
+
+  @include vz.hover {
+    background: vz.color('accent');
+    color: vz.color('accent-foreground');
+  }
+
+  @include vz.disabled {
+    opacity: 0.45;
+    pointer-events: none;
+  }
+}
+
+.item[data-active='true'] {
+  background: vz.color('accent');
+  color: vz.color('accent-foreground');
+}
+
+.item svg {
+  flex: none;
+  width: 1rem;
+  height: 1rem;
+}
+
+.separator {
+  height: 1px;
+  margin: vz.space(1) vz.space(2);
+  background: vz.color('border');
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: vz.z('modal');
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: vz.space(4);
+  padding-top: 20vh;
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  background: vz.color('foreground', 0.5);
+  backdrop-filter: blur(6px);
+  animation: vz-command-fade vz.duration('base') vz.ease('out') both;
+
+  @include vz.motion-reduce {
+    animation: none;
+  }
+}
+
+.dialog-wrap {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 32rem;
+}
+
+.dialog {
+  width: 100%;
+  border-radius: vz.radius('xl');
+  box-shadow: vz.elevation(3);
+  animation: vz-command-in vz.duration('base') vz.ease('out') both;
+
+  @include vz.motion-reduce {
+    animation: none;
+  }
+}
+
+@keyframes vz-command-fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes vz-command-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

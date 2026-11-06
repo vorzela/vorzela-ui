@@ -1,0 +1,98 @@
+@use 'styles' as vz;
+
+$mono-font-stack:
+  ui-monospace,
+  'SF Mono',
+  'SFMono-Regular',
+  'Menlo',
+  'Monaco',
+  'Consolas',
+  'Liberation Mono',
+  monospace;
+
+.root {
+  max-height: 20rem;
+  overflow: auto;
+  padding: vz.space(2);
+  border: 1px solid vz.color('border');
+  border-radius: vz.radius('xl');
+  background: vz.color('card');
+  font-family: $mono-font-stack;
+
+  @include vz.scrollbar;
+}
+
+.row {
+  display: flex;
+  gap: vz.space(1.5);
+  padding-block: vz.space(0.5);
+  font-size: vz.font-size('xs');
+  line-height: 1.5;
+}
+
+.details {
+  font-size: vz.font-size('xs');
+}
+
+.summary {
+  display: flex;
+  align-items: center;
+  gap: vz.space(1);
+  padding-block: vz.space(0.5);
+  border-radius: vz.radius('xs');
+  font-size: vz.font-size('xs');
+  line-height: 1.5;
+  list-style: none;
+  cursor: pointer;
+
+  @include vz.hover {
+    background: vz.color('accent', 0.5);
+  }
+
+  @include vz.focus-ring(2px, 2px, 0.6);
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+}
+
+.details[open] .chevron {
+  transform: rotate(90deg);
+}
+
+.chevron {
+  flex: none;
+  width: 0.75rem;
+  height: 0.75rem;
+  color: vz.color('muted-foreground');
+  transition: transform vz.duration('fast') vz.ease('out');
+}
+
+.key {
+  color: vz.color('foreground', 0.8);
+}
+
+.count {
+  color: vz.color('muted-foreground');
+}
+
+.null {
+  color: vz.color('muted-foreground');
+}
+
+.string {
+  color: vz.color('success');
+  overflow-wrap: anywhere;
+}
+
+.number {
+  color: vz.color('info');
+}
+
+.boolean {
+  color: vz.color('primary');
+}
+
+.other {
+  color: vz.color('muted-foreground');
+}

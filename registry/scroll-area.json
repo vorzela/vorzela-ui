@@ -1,0 +1,21 @@
+{
+  "name": "scroll-area",
+  "type": "ui",
+  "version": "0.2.0",
+  "dependencies": [],
+  "registryDependencies": [
+    "styles",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/scroll-area.tsx",
+      "content": "import * as React from 'react'\n\nimport { cx } from '~/lib/cx'\nimport styles from './scroll-area.module.scss'\n\nexport type ScrollAxis = 'x' | 'y' | 'both'\n\nexport interface ScrollAreaProps {\n  /**\n   * Maximum height before the area starts scrolling. Accepts any CSS length.\n   * Ignored when `height` is set.\n   */\n  maxHeight?: string\n  /** Fixed height. Takes precedence over `maxHeight`. */\n  height?: string\n  /** Maximum width before horizontal scroll kicks in. */\n  maxWidth?: string\n  /** Fixed width. Takes precedence over `maxWidth`. */\n  width?: string\n  /** Which axis/axes to scroll on. Defaults to `y`. */\n  axis?: ScrollAxis\n  /** Mask the leading and trailing edges so hidden content is discoverable. */\n  fade?: boolean\n  /** Accessible name for the scroll region. */\n  'aria-label'?: string\n  className?: string\n  style?: React.CSSProperties\n  children?: React.ReactNode\n}\n\nconst AXIS_CLASS: Record<ScrollAxis, string> = {\n  y: styles.axisY,\n  x: styles.axisX,\n  both: styles.axisBoth,\n}\n\nconst FADE_LEADING = 'rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 24px'\nconst FADE_TRAILING =\n  'rgba(0, 0, 0, 1) calc(100% - 24px), rgba(0, 0, 0, 0) 100%'\n\nfunction fadeMask(axis: ScrollAxis): string {\n  if (axis === 'x') {\n    return `linear-gradient(to right, ${FADE_LEADING}, ${FADE_TRAILING})`\n  }\n\n  if (axis === 'y') {\n    return `linear-gradient(to bottom, ${FADE_LEADING}, ${FADE_TRAILING})`\n  }\n\n  return [\n    `linear-gradient(to right, ${FADE_LEADING}, ${FADE_TRAILING})`,\n    `linear-gradient(to bottom, ${FADE_LEADING}, ${FADE_TRAILING})`,\n  ].join(', ')\n}\n\n/** Isolated overflow container with a themed scrollbar and optional edge fade. */\nexport function ScrollArea({\n  maxHeight,\n  height,\n  maxWidth,\n  width,\n  axis = 'y',\n  fade,\n  'aria-label': ariaLabel,\n  className,\n  style,\n  children,\n}: ScrollAreaProps) {\n  const regionId = React.useId()\n\n  const inlineStyle = React.useMemo(() => {\n    const next: React.CSSProperties = {}\n\n    if (height) next.height = height\n    else if (maxHeight) next.maxHeight = maxHeight\n\n    if (width) next.width = width\n    else if (maxWidth) next.maxWidth = maxWidth\n\n    if (fade) {\n      const mask = fadeMask(axis)\n      next.maskImage = mask\n      next.WebkitMaskImage = mask\n    }\n\n    return { ...next, ...style }\n  }, [height, maxHeight, width, maxWidth, fade, axis, style])\n\n  return (\n    <div\n      id={regionId}\n      role=\"region\"\n      aria-label={ariaLabel}\n      tabIndex={0}\n      className={cx(styles.root, AXIS_CLASS[axis], className)}\n      style={inlineStyle}\n    >\n      {children}\n    </div>\n  )\n}\n"
+    },
+    {
+      "path": "components/ui/scroll-area.module.scss",
+      "content": "@use 'styles' as vz;\n\n.root {\n  @include vz.overscroll;\n  @include vz.scrollbar(10px);\n  @include vz.focus-ring(2px, 2px, 0.6);\n}\n\n.axis-y {\n  overflow: hidden auto;\n}\n\n.axis-x {\n  overflow: auto hidden;\n}\n\n.axis-both {\n  overflow: auto;\n}\n"
+    }
+  ],
+  "description": "scroll-area component"
+}

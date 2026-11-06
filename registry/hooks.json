@@ -1,0 +1,50 @@
+{
+  "name": "hooks",
+  "type": "hook",
+  "version": "0.2.0",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "hooks/use-container-size.ts",
+      "content": "import { useEffect, useRef, useState } from 'react'\n\nexport type ContainerSize = {\n  width: number\n  height: number\n}\n\n/**\n * Observe a container’s size. Prefer this over window resize for components.\n * The observer is disconnected on unmount.\n */\nexport function useContainerSize<T extends HTMLElement = HTMLDivElement>() {\n  const ref = useRef<T | null>(null)\n  const [size, setSize] = useState<ContainerSize>({ width: 0, height: 0 })\n\n  useEffect(() => {\n    const node = ref.current\n    if (!node) return\n\n    const measure = () => {\n      const rect = node.getBoundingClientRect()\n      setSize((prev) =>\n        prev.width === rect.width && prev.height === rect.height\n          ? prev\n          : { width: rect.width, height: rect.height },\n      )\n    }\n\n    // Measure once immediately. ResizeObserver is not guaranteed to deliver an\n    // initial entry in every embedded browser, and charts need a width to draw.\n    measure()\n\n    const observer =\n      typeof ResizeObserver === 'undefined'\n        ? null\n        : new ResizeObserver((entries) => {\n            const entry = entries[0]\n            if (!entry) return\n            const box = entry.contentRect\n            setSize((prev) =>\n              prev.width === box.width && prev.height === box.height\n                ? prev\n                : { width: box.width, height: box.height },\n            )\n          })\n\n    observer?.observe(node)\n    window.addEventListener('resize', measure)\n\n    return () => {\n      observer?.disconnect()\n      window.removeEventListener('resize', measure)\n    }\n  }, [])\n\n  return { ref, ...size }\n}\n\n/** Container-query helper: true when the observed width is at least `px`. */\nexport function useContainerQuery(px: number) {\n  const { ref, width } = useContainerSize()\n  return { ref, width, matches: width >= px }\n}\n"
+    },
+    {
+      "path": "hooks/use-controllable-state.ts",
+      "content": "import { useCallback, useEffect, useRef, useState } from 'react'\n\n/**\n * Supports both controlled and uncontrolled usage.\n * Controlled: pass `value` + `onValueChange`.\n * Uncontrolled: pass `defaultValue`.\n */\nexport function useControllableState<T>({\n  value,\n  defaultValue,\n  onChange,\n}: {\n  value?: T\n  defaultValue: T\n  onChange?: (value: T) => void\n}) {\n  const [internal, setInternal] = useState<T>(defaultValue)\n  const isControlled = value !== undefined\n  const current = isControlled ? value : internal\n  const onChangeRef = useRef(onChange)\n  useEffect(() => {\n    onChangeRef.current = onChange\n  }, [onChange])\n\n  const setValue = useCallback(\n    (next: T | ((prev: T) => T)) => {\n      const resolved =\n        typeof next === 'function'\n          ? (next as (prev: T) => T)(current)\n          : next\n      if (!isControlled) setInternal(resolved)\n      onChangeRef.current?.(resolved)\n    },\n    [current, isControlled],\n  )\n\n  return [current, setValue] as const\n}\n"
+    },
+    {
+      "path": "hooks/use-copy-to-clipboard.ts",
+      "content": "import { useCallback, useEffect, useRef, useState } from 'react'\n\nexport type CopyState = 'idle' | 'copied' | 'error'\n\n/**\n * Clipboard copy with a self-clearing status and no leaked timers.\n * Requires a user gesture; never copy secrets automatically.\n */\nexport function useCopyToClipboard(resetAfterMs = 1800) {\n  const [state, setState] = useState<CopyState>('idle')\n  const timer = useRef<ReturnType<typeof setTimeout> | null>(null)\n\n  const clearTimer = useCallback(() => {\n    if (timer.current) {\n      clearTimeout(timer.current)\n      timer.current = null\n    }\n  }, [])\n\n  useEffect(() => clearTimer, [clearTimer])\n\n  const copy = useCallback(\n    async (value: string) => {\n      clearTimer()\n      try {\n        if (!navigator.clipboard?.writeText) throw new Error('unsupported')\n        await navigator.clipboard.writeText(value)\n        setState('copied')\n      } catch {\n        setState('error')\n      }\n      timer.current = setTimeout(() => {\n        setState('idle')\n        timer.current = null\n      }, resetAfterMs)\n    },\n    [clearTimer, resetAfterMs],\n  )\n\n  return { state, copy, reset: () => setState('idle') }\n}\n"
+    },
+    {
+      "path": "hooks/use-hotkeys.ts",
+      "content": "import { useEffect, useRef } from 'react'\n\nexport type Hotkey = {\n  key: string\n  meta?: boolean\n  ctrl?: boolean\n  alt?: boolean\n  shift?: boolean\n}\n\nfunction isEditable(target: EventTarget | null): boolean {\n  if (!(target instanceof HTMLElement)) return false\n  return (\n    target.isContentEditable ||\n    ['INPUT', 'TEXTAREA', 'SELECT'].includes(target.tagName)\n  )\n}\n\n/**\n * Global hotkeys. Ignores editable targets unless `allowInInputs`.\n * Listener is removed on unmount.\n */\nexport function useHotkeys(\n  hotkeys: Array<Hotkey & { handler: (event: KeyboardEvent) => void }>,\n  options: { allowInInputs?: boolean; enabled?: boolean } = {},\n) {\n  const ref = useRef(hotkeys)\n  useEffect(() => {\n    ref.current = hotkeys\n  }, [hotkeys])\n\n  useEffect(() => {\n    if (options.enabled === false) return\n    const onKeyDown = (event: KeyboardEvent) => {\n      if (!options.allowInInputs && isEditable(event.target)) return\n      for (const hotkey of ref.current) {\n        if (event.key.toLowerCase() !== hotkey.key.toLowerCase()) continue\n        if (!!hotkey.meta !== event.metaKey) continue\n        if (!!hotkey.ctrl !== event.ctrlKey) continue\n        if (!!hotkey.alt !== event.altKey) continue\n        if (!!hotkey.shift !== event.shiftKey) continue\n        event.preventDefault()\n        hotkey.handler(event)\n        break\n      }\n    }\n    window.addEventListener('keydown', onKeyDown)\n    return () => window.removeEventListener('keydown', onKeyDown)\n  }, [options.allowInInputs, options.enabled])\n}\n"
+    },
+    {
+      "path": "hooks/use-isomorphic-layout-effect.ts",
+      "content": "import { useEffect, useLayoutEffect } from 'react'\n\n/** useLayoutEffect on the client, useEffect on the server. */\nexport const useIsomorphicLayoutEffect =\n  typeof window !== 'undefined' ? useLayoutEffect : useEffect\n"
+    },
+    {
+      "path": "hooks/use-latest.ts",
+      "content": "import { useEffect, useRef } from 'react'\n\n/** Keep the latest value in a ref without touching it during render. */\nexport function useLatest<T>(value: T) {\n  const ref = useRef(value)\n  useEffect(() => {\n    ref.current = value\n  }, [value])\n  return ref\n}\n"
+    },
+    {
+      "path": "hooks/use-media-query.ts",
+      "content": "import { useCallback, useSyncExternalStore } from 'react'\n\n/**\n * SSR-safe media query hook.\n *\n * The server snapshot is false, so the first render matches the mobile/expanded\n * layout. On the client the subscription is removed on unmount.\n */\nexport function useMediaQuery(query: string): boolean {\n  const subscribe = useCallback(\n    (onStoreChange: () => void) => {\n      const media = window.matchMedia(query)\n      media.addEventListener('change', onStoreChange)\n      return () => media.removeEventListener('change', onStoreChange)\n    },\n    [query],\n  )\n\n  const getSnapshot = useCallback(() => window.matchMedia(query).matches, [query])\n  const getServerSnapshot = useCallback(() => false, [])\n\n  return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot)\n}\n"
+    },
+    {
+      "path": "hooks/use-mounted.ts",
+      "content": "import { useSyncExternalStore } from 'react'\n\nconst subscribe = () => () => {}\n\n/**\n * `false` during SSR/hydration, `true` on the client.\n * Replaces the `useEffect(() => setMounted(true), [])` pattern.\n */\nexport function useMounted() {\n  return useSyncExternalStore(\n    subscribe,\n    () => true,\n    () => false,\n  )\n}\n"
+    },
+    {
+      "path": "hooks/use-online-status.ts",
+      "content": "import { useSyncExternalStore } from 'react'\n\nfunction subscribe(onChange: () => void) {\n  if (typeof window === 'undefined') return () => {}\n  window.addEventListener('online', onChange)\n  window.addEventListener('offline', onChange)\n  return () => {\n    window.removeEventListener('online', onChange)\n    window.removeEventListener('offline', onChange)\n  }\n}\n\nfunction getSnapshot() {\n  if (typeof navigator === 'undefined') return true\n  return navigator.onLine\n}\n\n/** True when the browser reports a network connection. */\nexport function useOnlineStatus(): boolean {\n  return useSyncExternalStore(subscribe, getSnapshot, () => true)\n}\n"
+    },
+    {
+      "path": "hooks/use-reduced-motion.ts",
+      "content": "import { useSyncExternalStore } from 'react'\n\nconst QUERY = '(prefers-reduced-motion: reduce)'\n\nfunction subscribe(onChange: () => void) {\n  if (typeof window === 'undefined') return () => {}\n  const mql = window.matchMedia(QUERY)\n  mql.addEventListener('change', onChange)\n  return () => mql.removeEventListener('change', onChange)\n}\n\nfunction getSnapshot() {\n  if (typeof window === 'undefined') return false\n  return window.matchMedia(QUERY).matches\n}\n\n/** True when the user asks for reduced motion. SSR-safe. */\nexport function useReducedMotion(): boolean {\n  return useSyncExternalStore(subscribe, getSnapshot, () => false)\n}\n"
+    }
+  ],
+  "description": ""
+}

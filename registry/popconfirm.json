@@ -1,0 +1,22 @@
+{
+  "name": "popconfirm",
+  "type": "ui",
+  "version": "0.2.0",
+  "dependencies": [],
+  "registryDependencies": [
+    "button",
+    "popover",
+    "styles"
+  ],
+  "files": [
+    {
+      "path": "components/ui/popconfirm.tsx",
+      "content": "import type { ReactElement, ReactNode } from 'react'\n\nimport { Button } from './button'\nimport {\n  Popover,\n  PopoverClose,\n  PopoverContent,\n  PopoverTrigger,\n} from './popover'\nimport styles from './popconfirm.module.scss'\n\nexport interface PopconfirmProps {\n  title: string\n  description?: ReactNode\n  confirmLabel?: string\n  cancelLabel?: string\n  destructive?: boolean\n  onConfirm: () => void\n  children: ReactElement\n}\n\n/** Small confirmation popover for destructive or irreversible actions. */\nexport function Popconfirm({\n  title,\n  description,\n  confirmLabel = 'Confirm',\n  cancelLabel = 'Cancel',\n  destructive = false,\n  onConfirm,\n  children,\n}: PopconfirmProps) {\n  return (\n    <Popover>\n      <PopoverTrigger asChild>{children}</PopoverTrigger>\n      <PopoverContent side=\"top\" ariaLabel={title}>\n        <div className={styles.content}>\n          <p className={styles.title}>{title}</p>\n          {description ? <p className={styles.description}>{description}</p> : null}\n          <div className={styles.actions}>\n            <PopoverClose>\n              <Button size=\"sm\" variant=\"ghost\">\n                {cancelLabel}\n              </Button>\n            </PopoverClose>\n            <PopoverClose>\n              <Button\n                size=\"sm\"\n                variant={destructive ? 'destructive' : 'primary'}\n                onClick={onConfirm}\n              >\n                {confirmLabel}\n              </Button>\n            </PopoverClose>\n          </div>\n        </div>\n      </PopoverContent>\n    </Popover>\n  )\n}\n"
+    },
+    {
+      "path": "components/ui/popconfirm.module.scss",
+      "content": "@use 'styles' as vz;\n\n.content {\n  display: flex;\n  width: min(20rem, calc(100vw - 2rem));\n  flex-direction: column;\n  gap: vz.space(2);\n  padding: vz.space(4);\n}\n\n.title {\n  margin: 0;\n  font-size: vz.font-size('sm');\n  font-weight: 600;\n}\n\n.description {\n  margin: 0;\n  color: vz.color('muted-foreground');\n  font-size: vz.font-size('xs');\n  line-height: 1.5;\n}\n\n.actions {\n  display: flex;\n  justify-content: flex-end;\n  gap: vz.space(2);\n  padding-top: vz.space(1);\n}\n"
+    }
+  ],
+  "description": "popconfirm component"
+}

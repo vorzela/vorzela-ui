@@ -1,0 +1,55 @@
+@use 'styles' as vz;
+
+.root {
+  display: flex;
+  align-items: center;
+  gap: vz.space(1);
+}
+
+.strip {
+  display: inline-flex;
+  align-items: center;
+  gap: vz.space(0.5);
+  width: fit-content;
+  border-radius: vz.radius('md');
+  user-select: none;
+
+  @include vz.focus-ring(2px, 2px, 0.6);
+}
+
+.interactive {
+  cursor: pointer;
+}
+
+.star-wrap {
+  position: relative;
+  display: inline-flex;
+  width: vz.space(5);
+  height: vz.space(5);
+}
+
+.star-outline {
+  width: 100%;
+  height: 100%;
+  color: vz.color('muted-foreground', 0.4);
+}
+
+.star-fill {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0;
+  overflow: hidden;
+}
+
+.star-filled {
+  width: vz.space(5);
+  height: vz.space(5);
+  fill: vz.color('warning');
+  color: vz.color('warning');
+}
+
+.value {
+  color: vz.color('muted-foreground');
+  font-size: vz.font-size('xs');
+  font-variant-numeric: tabular-nums;
+}

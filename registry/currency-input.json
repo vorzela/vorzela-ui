@@ -1,0 +1,21 @@
+{
+  "name": "currency-input",
+  "type": "ui",
+  "version": "0.2.0",
+  "dependencies": [],
+  "registryDependencies": [
+    "input",
+    "styles"
+  ],
+  "files": [
+    {
+      "path": "components/ui/currency-input.tsx",
+      "content": "import * as React from 'react'\n\nimport { Input } from './input'\nimport styles from './currency-input.module.scss'\n\nexport interface CurrencyInputProps {\n  label?: string\n  hint?: string\n  error?: string\n  success?: string\n  required?: boolean\n  disabled?: boolean\n  value?: number\n  defaultValue?: number\n  onChange?: (value: number) => void\n  currency?: string\n  locale?: string\n  min?: number\n  max?: number\n  className?: string\n  id?: string\n}\n\nfunction parseAmount(raw: string): number {\n  const cleaned = raw.replace(/[^\\d.-]/g, '')\n  const value = Number(cleaned)\n  return Number.isFinite(value) ? value : 0\n}\n\n/**\n * Currency field with locale-aware formatting on blur and a plain decimal\n * editor while focused. The symbol is an input adornment, not part of the value.\n */\nexport function CurrencyInput({\n  label,\n  hint,\n  error,\n  success,\n  required,\n  disabled,\n  value: valueProp,\n  defaultValue = 0,\n  onChange,\n  currency = 'USD',\n  locale,\n  min,\n  max,\n  className,\n  id,\n}: CurrencyInputProps) {\n  const [uncontrolled, setUncontrolled] = React.useState(defaultValue)\n  const numeric = valueProp ?? uncontrolled\n  const [draft, setDraft] = React.useState(String(numeric))\n  const [focused, setFocused] = React.useState(false)\n\n  const formatter = React.useMemo(() => {\n    try {\n      return new Intl.NumberFormat(locale, {\n        style: 'currency',\n        currency,\n        maximumFractionDigits: 2,\n      })\n    } catch {\n      return new Intl.NumberFormat(locale, { style: 'currency', currency: 'USD' })\n    }\n  }, [currency, locale])\n\n  const symbol = React.useMemo(() => {\n    const part = formatter.formatToParts(0).find((item) => item.type === 'currency')\n    return part?.value ?? currency\n  }, [formatter, currency])\n\n  React.useEffect(() => {\n    if (!focused) setDraft(String(numeric))\n  }, [focused, numeric])\n\n  const commit = (next: number) => {\n    const clamped = Math.min(\n      max ?? Number.POSITIVE_INFINITY,\n      Math.max(min ?? Number.NEGATIVE_INFINITY, next),\n    )\n    if (valueProp === undefined) setUncontrolled(clamped)\n    onChange?.(clamped)\n    return clamped\n  }\n\n  return (\n    <Input\n      id={id}\n      label={label}\n      hint={hint}\n      error={error}\n      success={success}\n      required={required}\n      disabled={disabled}\n      className={className}\n      leading={<span className={styles.symbol}>{symbol}</span>}\n      inputMode=\"decimal\"\n      autoComplete=\"off\"\n      value={focused ? draft : formatter.format(numeric)}\n      onFocus={(event) => {\n        setFocused(true)\n        setDraft(String(numeric))\n        event.currentTarget.select()\n      }}\n      onBlur={() => {\n        setFocused(false)\n        const next = commit(parseAmount(draft))\n        setDraft(String(next))\n      }}\n      onChange={(event) => {\n        const raw = event.currentTarget.value\n        setDraft(raw)\n        commit(parseAmount(raw))\n      }}\n    />\n  )\n}\n"
+    },
+    {
+      "path": "components/ui/currency-input.module.scss",
+      "content": "@use 'styles' as vz;\n\n.symbol {\n  color: vz.color('foreground');\n  font-size: vz.font-size('sm');\n  font-weight: 600;\n}\n"
+    }
+  ],
+  "description": "currency-input component"
+}

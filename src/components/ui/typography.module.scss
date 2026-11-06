@@ -1,0 +1,42 @@
+@use 'styles' as vz;
+
+.code {
+  padding: 0.1em 0.35em;
+  border: 1px solid vz.color('border');
+  border-radius: vz.radius('xs');
+  background: vz.color('muted');
+  color: vz.color('foreground');
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.875em;
+}
+
+.highlight {
+  padding: 0.05em 0.2em;
+  border-radius: 3px;
+  background: vz.color('warning', 0.28);
+  color: vz.color('foreground');
+}
+
+.heading {
+  margin: 0;
+  color: vz.color('foreground');
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+}
+
+.size-sm {
+  font-size: vz.font-size('lg');
+}
+
+.size-md {
+  font-size: vz.font-size('2xl');
+}
+
+.size-lg {
+  font-size: vz.font-size('3xl');
+}
+
+.size-xl {
+  font-size: vz.font-size('4xl');
+}

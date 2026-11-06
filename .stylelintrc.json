@@ -1,0 +1,37 @@
+{
+  "extends": ["stylelint-config-standard-scss"],
+  "plugins": ["stylelint-no-unsupported-browser-features"],
+  "rules": {
+    "max-nesting-depth": [
+      2,
+      {
+        "ignoreAtRules": ["media", "supports", "container", "include", "if", "else"]
+      }
+    ],
+    "scss/no-global-function-names": true,
+    "scss/at-extend-no-missing-placeholder": true,
+    "scss/dollar-variable-empty-line-before": null,
+    "selector-pseudo-class-no-unknown": [
+      true,
+      {
+        "ignorePseudoClasses": ["global", "local"]
+      }
+    ],
+    "media-feature-range-notation": null,
+    "container-name-pattern": null,
+    "plugin/no-unsupported-browser-features": [
+      true,
+      {
+        "severity": "warning",
+        "ignorePartialSupport": true,
+        "ignore": [
+          "css-nesting",
+          "css-cascade-layers",
+          "css-when-else",
+          "css-autofill",
+          "text-size-adjust"
+        ]
+      }
+    ]
+  }
+}

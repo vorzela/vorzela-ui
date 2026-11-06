@@ -1,0 +1,14 @@
+{
+  "name": "lib-refs",
+  "type": "lib",
+  "version": "0.2.0",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "lib/refs.ts",
+      "content": "import type { MutableRefObject, Ref } from 'react'\n\n/**\n * Compose several refs into one callback ref.\n *\n * Avoids mutating another component's ref object during render, which keeps\n * the React compiler/ESLint ref rules happy while preserving forwarded refs.\n */\nexport function mergeRefs<T>(...refs: Array<Ref<T> | null | undefined>) {\n  return (node: T | null) => {\n    for (const ref of refs) {\n      if (!ref) continue\n      if (typeof ref === 'function') ref(node)\n      else (ref as MutableRefObject<T | null>).current = node\n    }\n  }\n}\n"
+    }
+  ],
+  "description": ""
+}

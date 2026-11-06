@@ -1,0 +1,117 @@
+@use 'styles' as vz;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: vz.space(1.5);
+  min-width: 0;
+}
+
+.label {
+  color: vz.color('foreground');
+  font-size: vz.font-size('sm');
+  font-weight: 500;
+}
+
+.shell {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: vz.space(1.5);
+  min-height: vz.space(9);
+  padding: vz.space(1.5);
+  border: 1px solid vz.color('input');
+  border-radius: vz.radius('lg');
+  background: vz.color('card');
+  box-shadow: vz.elevation(1);
+  transition:
+    border-color vz.duration('base') vz.ease('out'),
+    box-shadow vz.duration('base') vz.ease('out');
+
+  &:focus-within {
+    border-color: vz.color('ring');
+    box-shadow: 0 0 0 3px vz.color('ring', 0.18);
+  }
+
+  @include vz.motion-reduce {
+    transition: none;
+  }
+}
+
+.disabled {
+  background: vz.color('muted');
+  opacity: 0.6;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: vz.space(1);
+  padding: 0.125rem vz.space(2);
+  border: 1px solid vz.color('border', 0.7);
+  border-radius: vz.radius('sm');
+  background: vz.color('secondary');
+  color: vz.color('secondary-foreground');
+  font-size: vz.font-size('xs');
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  border-radius: vz.radius('xs');
+  background: transparent;
+  color: vz.color('muted-foreground');
+  cursor: pointer;
+  transition: color vz.duration('fast') vz.ease('out');
+
+  svg {
+    @include vz.icon(3);
+  }
+
+  @include vz.hover {
+    color: vz.color('foreground');
+  }
+
+  @include vz.focus-ring(2px, 1px, 0.6);
+
+  @include vz.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  @include vz.motion-reduce {
+    transition: none;
+  }
+}
+
+.control {
+  flex: 1;
+  min-width: 6rem;
+  height: vz.space(6);
+  padding: 0 vz.space(1);
+  border: 0;
+  background: transparent;
+  color: vz.color('foreground');
+  font-size: vz.font-size('sm');
+  outline: none;
+
+  @include vz.placeholder {
+    color: vz.color('muted-foreground');
+  }
+
+  @include vz.disabled {
+    cursor: not-allowed;
+  }
+}
+
+.count {
+  margin: 0;
+  color: vz.color('muted-foreground');
+  font-size: vz.font-size('xs');
+  font-variant-numeric: tabular-nums;
+}

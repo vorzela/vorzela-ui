@@ -1,0 +1,111 @@
+@use 'styles' as vz;
+
+.root {
+  --avatar-size: #{vz.space(10)};
+  --avatar-font-size: #{vz.font-size('sm')};
+
+  position: relative;
+  display: inline-flex;
+  flex: none;
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+  border: 1px solid vz.color('border');
+  border-radius: vz.radius('full');
+  background: vz.color('muted');
+  color: vz.color('muted-foreground');
+  font-size: var(--avatar-font-size);
+  font-weight: 600;
+  line-height: 1;
+  user-select: none;
+  vertical-align: middle;
+}
+
+.xs {
+  --avatar-size: #{vz.space(6)};
+  --avatar-font-size: 10px;
+}
+
+.sm {
+  --avatar-size: #{vz.space(8)};
+  --avatar-font-size: #{vz.font-size('xs')};
+}
+
+.lg {
+  --avatar-size: #{vz.space(14)};
+  --avatar-font-size: #{vz.font-size('base')};
+}
+
+.xl {
+  --avatar-size: #{vz.space(16)};
+  --avatar-font-size: #{vz.font-size('lg')};
+}
+
+.square {
+  border-radius: vz.radius('lg');
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  object-fit: cover;
+}
+
+.fallback {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  border-radius: inherit;
+  padding-top: 1px;
+}
+
+.status {
+  position: absolute;
+  right: -2px;
+  bottom: -2px;
+  width: 28%;
+  height: 28%;
+  min-width: 8px;
+  min-height: 8px;
+  border: 2px solid vz.color('card');
+  border-radius: vz.radius('full');
+  background: vz.color('muted-foreground');
+  animation: vz-presence-in 220ms vz.ease('spring') both;
+
+  @include vz.motion-reduce {
+    animation: none;
+  }
+}
+
+@keyframes vz-presence-in {
+  from {
+    opacity: 0.6;
+    transform: scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.online {
+  background: vz.color('success');
+}
+
+.busy {
+  background: vz.color('destructive');
+}
+
+.away {
+  background: vz.color('warning');
+}
+
+.offline {
+  background: vz.color('muted-foreground');
+}

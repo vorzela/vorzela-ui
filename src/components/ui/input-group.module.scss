@@ -1,0 +1,77 @@
+@use 'styles' as vz;
+
+.group {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid vz.color('input');
+  border-radius: vz.radius('md');
+  background: vz.color('card');
+  transition: box-shadow vz.duration('base') vz.ease('out');
+
+  &:focus-within {
+    box-shadow: 0 0 0 2px vz.color('ring', 0.6);
+  }
+}
+
+.vertical {
+  flex-direction: column;
+}
+
+.group > * + * {
+  border-inline-start: 1px solid vz.color('input');
+}
+
+.group.vertical > * + * {
+  border-inline-start: 0;
+  border-block-start: 1px solid vz.color('input');
+}
+
+.addon {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: vz.space(1.5);
+  padding-inline: vz.space(3);
+  background: vz.color('muted', 0.4);
+  color: vz.color('muted-foreground');
+  font-size: vz.font-size('sm');
+
+  svg {
+    @include vz.icon(4);
+  }
+}
+
+.addon[data-align='end'] {
+  justify-content: flex-end;
+}
+
+.text {
+  color: vz.color('muted-foreground');
+  font-size: vz.font-size('sm');
+  white-space: nowrap;
+}
+
+.input-wrap {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  min-width: 0;
+}
+
+.input-wrap > :first-child {
+  height: 100%;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+
+  &:focus-within {
+    border: 0;
+    box-shadow: none;
+  }
+}
+
+.control {
+  min-width: 0;
+}

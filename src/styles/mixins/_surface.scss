@@ -1,0 +1,30 @@
+@use '../tokens/color' as color;
+@use '../tokens/radius' as radius;
+@use '../tokens/shadow' as shadow;
+
+/// A layered card surface.
+///
+/// @param {Number} $level [1] - Elevation 1–3
+@mixin surface($level: 1) {
+  background: color.color('card');
+  color: color.color('card-foreground');
+  border: 1px solid color.color('border');
+  border-radius: radius.radius('xl');
+  box-shadow: shadow.elevation($level);
+}
+
+/// A surface above the page (popover, dropdown, sheet).
+@mixin raised($level: 2) {
+  @include surface($level);
+
+  background: color.color('popover');
+  color: color.color('popover-foreground');
+}
+
+/// A recessed area for code blocks, wells, and inline groups.
+@mixin inset {
+  background: color.color('muted');
+  color: color.color('foreground');
+  border: 1px solid color.color('border');
+  border-radius: radius.radius('md');
+}

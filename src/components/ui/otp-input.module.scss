@@ -1,0 +1,51 @@
+@use 'styles' as vz;
+
+.root {
+  --otp-size: #{vz.space(10)};
+  --otp-font: #{vz.font-size('base')};
+
+  display: flex;
+  align-items: center;
+  gap: vz.space(2);
+  flex-wrap: wrap;
+
+  @include vz.up('sm') {
+    --otp-size: #{vz.space(12)};
+    --otp-font: #{vz.font-size('lg')};
+  }
+}
+
+.control {
+  width: var(--otp-size);
+  height: var(--otp-size);
+  padding: 0;
+  border: 1px solid vz.color('input');
+  border-radius: vz.radius('lg');
+  background: vz.color('card');
+  color: vz.color('foreground');
+  font-size: var(--otp-font);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+  caret-color: vz.color('primary');
+  box-shadow: vz.elevation(1);
+  outline: none;
+  transition:
+    border-color vz.duration('fast') vz.ease('out'),
+    box-shadow vz.duration('fast') vz.ease('out');
+
+  &:focus,
+  &:focus-visible {
+    border-color: vz.color('ring');
+    box-shadow: 0 0 0 3px vz.color('ring', 0.18);
+  }
+
+  @include vz.disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  @include vz.motion-reduce {
+    transition: none;
+  }
+}

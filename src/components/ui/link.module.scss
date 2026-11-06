@@ -1,0 +1,54 @@
+@use 'styles' as vz;
+
+.root {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25em;
+  border-radius: 2px;
+  color: vz.color('primary');
+  font: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  cursor: pointer;
+
+  @include vz.hover {
+    text-decoration-thickness: 2px;
+  }
+
+  @include vz.focus-ring(2px, 2px, 0.6);
+}
+
+.standalone {
+  color: vz.color('foreground');
+  font-weight: 600;
+  text-decoration: none;
+
+  @include vz.hover {
+    color: vz.color('primary');
+  }
+}
+
+.quiet {
+  color: vz.color('muted-foreground');
+  text-decoration: none;
+
+  @include vz.hover {
+    color: vz.color('foreground');
+  }
+}
+
+.disabled {
+  color: vz.color('muted-foreground');
+  opacity: 0.5;
+  text-decoration: none;
+  pointer-events: none;
+}
+
+.icon {
+  flex: none;
+
+  svg {
+    @include vz.icon(3.5);
+  }
+}

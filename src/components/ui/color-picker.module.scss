@@ -1,0 +1,84 @@
+@use 'styles' as vz;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: vz.space(1);
+}
+
+.label {
+  color: vz.color('foreground');
+  font-size: vz.font-size('sm');
+  font-weight: 500;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: vz.space(2);
+  height: vz.space(10);
+  padding: 0 vz.space(2.5);
+  border: 1px solid vz.color('border');
+  border-radius: vz.radius('lg');
+  background: vz.color('card');
+
+  &:focus-within {
+    border-color: vz.color('primary');
+    box-shadow: 0 0 0 3px vz.color('primary', 0.18);
+  }
+}
+
+.swatch {
+  width: 2rem;
+  height: 2rem;
+  flex: none;
+  padding: 0;
+  border: 1px solid vz.color('border');
+  border-radius: vz.radius('sm');
+  background: transparent;
+  cursor: pointer;
+
+  &::-webkit-color-swatch-wrapper {
+    padding: 2px;
+  }
+
+  &::-webkit-color-swatch {
+    border: 0;
+    border-radius: 4px;
+  }
+
+  &::-moz-color-swatch {
+    border: 0;
+    border-radius: 4px;
+  }
+}
+
+.hex {
+  min-width: 0;
+  flex: 1;
+  border: 0;
+  background: transparent;
+  color: vz.color('foreground');
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: vz.font-size('sm');
+  text-transform: uppercase;
+  outline: none;
+}
+
+.presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: vz.space(1.5);
+  padding-top: vz.space(1);
+}
+
+.preset {
+  width: 1.25rem;
+  height: 1.25rem;
+  padding: 0;
+  border: 1px solid vz.color('border');
+  border-radius: vz.radius('xs');
+  cursor: pointer;
+
+  @include vz.focus-ring(2px, 1px, 0.6);
+}

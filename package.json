@@ -1,0 +1,54 @@
+{
+  "name": "@vorzela/react-scss",
+  "private": true,
+  "version": "0.2.0",
+  "type": "module",
+  "description": "Apple-inspired React UI kit with 141 components, SCSS Modules, TanStack tables/forms, d3 charts and no Tailwind.",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "lint": "oxlint && stylelint \"src/**/*.scss\"",
+    "lint:scss": "stylelint \"src/**/*.scss\"",
+    "sass:check": "sass --no-source-map --load-path=src src/styles/global.scss /dev/null",
+    "typecheck": "tsc -b",
+    "registry:build": "node scripts/build-registry.mjs",
+    "cli": "node packages/cli/bin/vorzela-ui.mjs"
+  },
+  "browserslist": [
+    "safari >= 16.4",
+    "chrome >= 111",
+    "edge >= 111",
+    "firefox >= 128",
+    "not dead"
+  ],
+  "dependencies": {
+    "@tanstack/react-form": "^1.33.5",
+    "@tanstack/react-table": "^9.3.1",
+    "d3": "^7.9.2",
+    "d3-sankey": "^0.12.3",
+    "dompurify": "^3.4.17",
+    "lucide-react": "^1.69.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "sugar-high": "^2.6.4"
+  },
+  "devDependencies": {
+    "@types/d3": "^7.4.3",
+    "@types/d3-sankey": "^0.12.5",
+    "@types/node": "^24.19.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "browserslist": "^4.29.5",
+    "lightningcss": "^1.33.0",
+    "oxlint": "^1.88.0",
+    "sass-embedded": "^1.107.1",
+    "stylelint": "^17.16.0",
+    "stylelint-config-standard-scss": "^17.0.0",
+    "stylelint-no-unsupported-browser-features": "^8.1.2",
+    "typescript": "~6.0.3",
+    "vite": "^8.3.4"
+  }
+}

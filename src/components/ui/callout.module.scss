@@ -1,0 +1,66 @@
+@use 'styles' as vz;
+
+.root {
+  --callout-bg: #{vz.color('info', 0.05)};
+  --callout-border: #{vz.color('info', 0.25)};
+  --callout-icon: #{vz.color('info')};
+
+  display: flex;
+  gap: vz.space(3);
+  padding: vz.space(4);
+  border: 1px solid var(--callout-border);
+  border-radius: vz.radius('lg');
+  background: var(--callout-bg);
+  color: vz.color('foreground');
+  font-size: vz.font-size('sm');
+}
+
+.info {
+  --callout-bg: #{vz.color('info', 0.05)};
+  --callout-border: #{vz.color('info', 0.25)};
+  --callout-icon: #{vz.color('info')};
+}
+
+.tip {
+  --callout-bg: #{vz.color('primary', 0.05)};
+  --callout-border: #{vz.color('primary', 0.25)};
+  --callout-icon: #{vz.color('primary')};
+}
+
+.success {
+  --callout-bg: #{vz.color('success', 0.05)};
+  --callout-border: #{vz.color('success', 0.25)};
+  --callout-icon: #{vz.color('success')};
+}
+
+.warning {
+  --callout-bg: #{vz.color('warning', 0.08)};
+  --callout-border: #{vz.color('warning', 0.3)};
+  --callout-icon: #{vz.color('warning')};
+}
+
+.icon {
+  margin-top: 2px;
+  color: var(--callout-icon);
+
+  @include vz.icon(4);
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: vz.space(1);
+  min-width: 0;
+}
+
+.title {
+  margin: 0;
+  color: vz.color('foreground');
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.content {
+  color: vz.color('muted-foreground');
+  line-height: 1.5;
+}

@@ -1,0 +1,125 @@
+@use 'styles' as vz;
+
+.root {
+  --tab-count: 4;
+
+  display: grid;
+  grid-template-columns: repeat(var(--tab-count), minmax(0, 1fr));
+  gap: 2px;
+  padding: 5px;
+  border: 1px solid vz.color('border', 0.7);
+  border-radius: vz.radius('2xl');
+  background: vz.color('card', 0.72);
+  box-shadow: vz.elevation(2);
+  backdrop-filter: blur(20px) saturate(180%);
+}
+
+.fixed {
+  position: fixed;
+  right: vz.space(3);
+  bottom: calc(#{vz.space(3)} + env(safe-area-inset-bottom, 0px));
+  left: vz.space(3);
+  z-index: vz.z('sticky');
+  max-width: 32rem;
+  margin-inline: auto;
+}
+
+.item {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  min-height: 3rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: vz.space(1) vz.space(1);
+  border: 0;
+  border-radius: vz.radius('lg');
+  background: transparent;
+  color: vz.color('muted-foreground');
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition:
+    background-color vz.duration('base') vz.ease('out'),
+    color vz.duration('base') vz.ease('out'),
+    transform vz.duration('fast') vz.ease('out');
+
+  @include vz.hover {
+    color: vz.color('foreground');
+  }
+
+  @include vz.active {
+    transform: scale(0.97);
+  }
+
+  @include vz.focus-ring(2px, -2px, 0.6);
+
+  @include vz.disabled {
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  @include vz.motion-reduce {
+    transition: none;
+
+    @include vz.active {
+      transform: none;
+    }
+  }
+}
+
+.active {
+  background: vz.color('primary', 0.12);
+  color: vz.color('primary');
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    @include vz.icon(5);
+  }
+}
+
+.label {
+  max-width: 100%;
+
+  @include vz.truncate;
+}
+
+.badge {
+  position: absolute;
+  top: 2px;
+  left: 50%;
+  display: inline-flex;
+  min-width: 1rem;
+  height: 1rem;
+  align-items: center;
+  justify-content: center;
+  padding-inline: 4px;
+  border: 2px solid vz.color('card');
+  border-radius: vz.radius('full');
+  background: vz.color('destructive');
+  color: vz.color('destructive-foreground');
+  font-size: 0.5625rem;
+  font-weight: 700;
+  line-height: 1;
+  transform: translateX(14px);
+}
+
+@include vz.up('sm') {
+  .item {
+    min-height: 3.25rem;
+    font-size: 0.6875rem;
+  }
+
+  .icon svg {
+    width: 1.375rem;
+    height: 1.375rem;
+  }
+}

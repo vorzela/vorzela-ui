@@ -1,0 +1,73 @@
+@use 'styles' as vz;
+
+.root {
+  overflow: hidden;
+  margin: 0;
+  border: 1px solid vz.color('border');
+  border-radius: vz.radius('xl');
+  background: vz.color('card');
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: vz.space(1);
+  container-type: inline-size;
+  min-width: 0;
+  padding: vz.space(4);
+}
+
+.item + .item {
+  border-top: 1px solid vz.color('border');
+}
+
+.term {
+  color: vz.color('muted-foreground');
+  font-size: vz.font-size('xs');
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.value {
+  min-width: 0;
+  margin: 0;
+  color: vz.color('foreground');
+  font-size: vz.font-size('sm');
+  overflow-wrap: break-word;
+}
+
+@container (min-width: 18rem) {
+  .item {
+    flex-direction: row;
+    gap: vz.space(4);
+  }
+
+  .term {
+    flex: none;
+    width: 8rem;
+  }
+
+  .value {
+    flex: 1;
+  }
+}
+
+@include vz.up('sm') {
+  .columns-2,
+  .columns-3 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .columns-2 .item + .item,
+  .columns-3 .item + .item {
+    border-top: 0;
+  }
+}
+
+@include vz.up('lg') {
+  .columns-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

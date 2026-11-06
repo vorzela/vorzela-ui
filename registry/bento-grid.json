@@ -1,0 +1,21 @@
+{
+  "name": "bento-grid",
+  "type": "ui",
+  "version": "0.2.0",
+  "dependencies": [],
+  "registryDependencies": [
+    "styles",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/bento-grid.tsx",
+      "content": "import type { ReactNode } from 'react'\n\nimport { cx } from '~/lib/cx'\nimport styles from './bento-grid.module.scss'\n\nexport interface BentoGridProps {\n  children: ReactNode\n  className?: string\n}\n\n/**\n * Bento mosaic.\n *\n * Column count follows the grid's own width (container queries), not the\n * viewport: one column in a narrow card, two once there is room, and the four\n * column mosaic — with the `colSpan`/`rowSpan` tile sizes — only when the grid\n * is wide enough for them. Rows hug their content until the four column\n * layout, so short tiles do not sit in oversized empty boxes.\n */\nexport function BentoGrid({ children, className }: BentoGridProps) {\n  return (\n    <div className={styles.container}>\n      <div className={cx(styles.grid, className)}>{children}</div>\n    </div>\n  )\n}\n\nconst COL_SPAN = {\n  1: '',\n  2: styles.colSpan2,\n  3: styles.colSpan3,\n  4: styles.colSpan4,\n} as const\n\nconst ROW_SPAN = {\n  1: '',\n  2: styles.rowSpan2,\n  3: styles.rowSpan3,\n} as const\n\nexport interface BentoItemProps {\n  children: ReactNode\n  className?: string\n  colSpan?: 1 | 2 | 3 | 4\n  rowSpan?: 1 | 2 | 3\n}\n\nexport function BentoItem({\n  children,\n  className,\n  colSpan = 1,\n  rowSpan = 1,\n}: BentoItemProps) {\n  return (\n    <div\n      className={cx(\n        styles.item,\n        COL_SPAN[colSpan],\n        ROW_SPAN[rowSpan],\n        className,\n      )}\n    >\n      {children}\n    </div>\n  )\n}\n"
+    },
+    {
+      "path": "components/ui/bento-grid.module.scss",
+      "content": "@use 'styles' as vz;\n\n.container {\n  container-type: inline-size;\n}\n\n.grid {\n  display: grid;\n  grid-template-columns: minmax(0, 1fr);\n  grid-auto-rows: auto;\n  gap: vz.space(3);\n}\n\n.item {\n  min-width: 0;\n  overflow: hidden;\n  padding: vz.space(4);\n  border: 1px solid vz.color('border');\n  border-radius: vz.radius('xl');\n  background: vz.color('card');\n  color: vz.color('card-foreground');\n  box-shadow: vz.elevation(1);\n  transition: box-shadow vz.duration('base') vz.ease('out');\n\n  @include vz.hover {\n    box-shadow: vz.elevation(2);\n  }\n}\n\n@container (min-width: 24rem) {\n  .grid {\n    grid-template-columns: repeat(2, minmax(0, 1fr));\n  }\n}\n\n@container (min-width: 48rem) {\n  .grid {\n    grid-template-columns: repeat(4, minmax(0, 1fr));\n    grid-auto-rows: minmax(9rem, auto);\n  }\n\n  .col-span-2 {\n    grid-column: span 2 / span 2;\n  }\n\n  .col-span-3 {\n    grid-column: span 3 / span 3;\n  }\n\n  .col-span-4 {\n    grid-column: span 4 / span 4;\n  }\n\n  .row-span-2 {\n    grid-row: span 2 / span 2;\n  }\n\n  .row-span-3 {\n    grid-row: span 3 / span 3;\n  }\n}\n"
+    }
+  ],
+  "description": "bento-grid component"
+}

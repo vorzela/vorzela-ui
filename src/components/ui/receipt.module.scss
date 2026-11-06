@@ -1,0 +1,123 @@
+@use 'styles' as vz;
+
+.root {
+  display: flex;
+  width: 100%;
+  max-width: 26rem;
+  flex-direction: column;
+  gap: vz.space(3);
+  padding: vz.space(5);
+  border: 1px solid vz.color('border');
+  border-radius: vz.radius('2xl');
+  background: vz.color('card');
+  color: vz.color('card-foreground');
+  box-shadow: vz.elevation(1);
+  font-variant-numeric: tabular-nums;
+}
+
+.head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: vz.space(3);
+}
+
+.title {
+  margin: 0;
+  font-size: vz.font-size('lg');
+  font-weight: 650;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  margin: 2px 0 0;
+  color: vz.color('muted-foreground');
+  font-size: vz.font-size('xs');
+}
+
+.meta {
+  color: vz.color('muted-foreground');
+  font-size: vz.font-size('xs');
+  text-align: right;
+}
+
+.rule {
+  height: 1px;
+  border: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    vz.color('border'),
+    0 4px,
+    transparent 4px 8px
+  );
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+  gap: vz.space(2);
+  margin: 0;
+}
+
+.item {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: vz.space(3);
+}
+
+.item-label {
+  margin: 0;
+  font-size: vz.font-size('sm');
+}
+
+.item-meta {
+  display: block;
+  color: vz.color('muted-foreground');
+  font-size: vz.font-size('xs');
+}
+
+.amount {
+  margin: 0;
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: vz.font-size('sm');
+}
+
+.totals {
+  display: flex;
+  flex-direction: column;
+  gap: vz.space(1.5);
+  margin: 0;
+}
+
+.total-row {
+  display: flex;
+  justify-content: space-between;
+  gap: vz.space(3);
+  color: vz.color('muted-foreground');
+  font-size: vz.font-size('sm');
+}
+
+.grand-total {
+  padding-top: vz.space(2);
+  border-top: 1px solid vz.color('border');
+  color: vz.color('foreground');
+  font-size: vz.font-size('base');
+  font-weight: 700;
+}
+
+.footer {
+  margin: 0;
+  color: vz.color('muted-foreground');
+  font-size: vz.font-size('xs');
+  line-height: 1.5;
+  text-align: center;
+}
+
+@media print {
+  .root {
+    max-width: none;
+    border: 0;
+    box-shadow: none;
+  }
+}

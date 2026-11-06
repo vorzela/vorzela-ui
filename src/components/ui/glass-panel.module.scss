@@ -1,0 +1,51 @@
+@use 'styles' as vz;
+
+.root {
+  --glass-blur: 20px;
+  --glass-bg: #{vz.color('card', 0.62)};
+  --glass-border: #{vz.color('border', 0.6)};
+
+  position: relative;
+  border: 1px solid var(--glass-border);
+  border-radius: vz.radius('2xl');
+  background: var(--glass-bg);
+  color: vz.color('card-foreground');
+  box-shadow: vz.elevation(2);
+  backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+}
+
+.light {
+  --glass-bg: hsl(0deg 0% 100% / 58%);
+  --glass-border: hsl(0deg 0% 100% / 52%);
+
+  color: hsl(222deg 47% 11%);
+}
+
+.dark {
+  --glass-bg: hsl(222deg 39% 8% / 58%);
+  --glass-border: hsl(210deg 40% 98% / 14%);
+
+  color: hsl(210deg 40% 98%);
+}
+
+.blur-sm {
+  --glass-blur: 12px;
+}
+
+.blur-lg {
+  --glass-blur: 32px;
+}
+
+@supports not (backdrop-filter: blur(1px)) {
+  .root {
+    --glass-bg: #{vz.color('card', 0.96)};
+  }
+
+  .light {
+    --glass-bg: hsl(0deg 0% 100% / 96%);
+  }
+
+  .dark {
+    --glass-bg: hsl(222deg 39% 8% / 96%);
+  }
+}

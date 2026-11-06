@@ -1,0 +1,146 @@
+@use 'styles' as vz;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: vz.space(3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.vertical {
+  flex-direction: column;
+}
+
+.horizontal {
+  flex-direction: column;
+
+  @include vz.up('sm') {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+.item {
+  position: relative;
+  display: flex;
+  flex: 1;
+  align-items: flex-start;
+  gap: vz.space(2.5);
+  min-width: 0;
+}
+
+.horizontal .item {
+  @include vz.up('sm') {
+    flex-direction: column;
+    gap: vz.space(2);
+  }
+}
+
+.button,
+.panel {
+  display: flex;
+  align-items: flex-start;
+  gap: vz.space(2.5);
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+}
+
+.horizontal .button,
+.horizontal .panel {
+  @include vz.up('sm') {
+    flex-direction: column;
+    gap: vz.space(2);
+  }
+}
+
+.button {
+  border-radius: vz.radius('lg');
+  cursor: pointer;
+
+  @include vz.focus-ring(2px, 2px, 0.6);
+
+  @include vz.disabled {
+    cursor: default;
+  }
+}
+
+.indicator {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: vz.space(7);
+  height: vz.space(7);
+  border: 1px solid vz.color('border');
+  border-radius: vz.radius('full');
+  font-size: vz.font-size('xs');
+  font-weight: 600;
+  line-height: 1;
+  transition:
+    background-color vz.duration('base') vz.ease('out'),
+    border-color vz.duration('base') vz.ease('out'),
+    color vz.duration('base') vz.ease('out'),
+    box-shadow vz.duration('base') vz.ease('out');
+}
+
+.complete {
+  border-color: vz.color('primary');
+  background: vz.color('primary');
+  color: vz.color('primary-foreground');
+}
+
+.current {
+  border-color: vz.color('primary');
+  background: vz.color('background');
+  color: vz.color('primary');
+  box-shadow: 0 0 0 3px vz.color('ring', 0.2);
+}
+
+.upcoming {
+  border-color: vz.color('border');
+  background: vz.color('muted');
+  color: vz.color('muted-foreground');
+}
+
+.check {
+  @include vz.icon(3.5);
+}
+
+.text {
+  min-width: 0;
+  text-align: left;
+}
+
+.label {
+  display: block;
+  color: vz.color('foreground');
+  font-size: vz.font-size('sm');
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.item[data-state='upcoming'] .label {
+  color: vz.color('muted-foreground');
+}
+
+.optional {
+  margin-left: vz.space(1);
+  color: vz.color('muted-foreground');
+  font-size: vz.font-size('xs');
+  font-weight: 400;
+}
+
+.description {
+  display: block;
+  margin-top: vz.space(0.5);
+  color: vz.color('muted-foreground');
+  font-size: vz.font-size('xs');
+  line-height: 1.4;
+}

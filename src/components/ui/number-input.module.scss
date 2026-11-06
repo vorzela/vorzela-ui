@@ -1,0 +1,121 @@
+@use 'styles' as vz;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: vz.space(1.5);
+  min-width: 0;
+}
+
+.label {
+  color: vz.color('foreground');
+  font-size: vz.font-size('sm');
+  font-weight: 500;
+}
+
+.shell {
+  display: flex;
+  align-items: stretch;
+  height: vz.space(9);
+  overflow: hidden;
+  border: 1px solid vz.color('input');
+  border-radius: vz.radius('lg');
+  background: vz.color('card');
+  box-shadow: vz.elevation(1);
+  transition:
+    border-color vz.duration('base') vz.ease('out'),
+    box-shadow vz.duration('base') vz.ease('out');
+
+  &:focus-within {
+    border-color: vz.color('ring');
+    box-shadow: 0 0 0 3px vz.color('ring', 0.18);
+  }
+
+  @include vz.motion-reduce {
+    transition: none;
+  }
+}
+
+.disabled {
+  background: vz.color('muted');
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.step {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: vz.space(9);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: vz.color('muted-foreground');
+  cursor: pointer;
+  transition:
+    background-color vz.duration('fast') vz.ease('out'),
+    color vz.duration('fast') vz.ease('out');
+
+  svg {
+    @include vz.icon(3.5);
+  }
+
+  @include vz.hover {
+    background: vz.color('accent');
+    color: vz.color('accent-foreground');
+  }
+
+  @include vz.focus-ring(2px, -2px, 0.6);
+
+  @include vz.disabled {
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  @include vz.motion-reduce {
+    transition: none;
+  }
+}
+
+.decrement {
+  border-right: 1px solid vz.color('border');
+}
+
+.increment {
+  border-left: 1px solid vz.color('border');
+}
+
+.field {
+  position: relative;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  min-width: 0;
+}
+
+.control {
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  padding: 0 vz.space(2);
+  border: 0;
+  background: transparent;
+  color: vz.color('foreground');
+  font-size: vz.font-size('sm');
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+  outline: none;
+
+  @include vz.disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+.suffix {
+  flex: none;
+  padding-right: vz.space(2);
+  color: vz.color('muted-foreground');
+  font-size: vz.font-size('xs');
+}

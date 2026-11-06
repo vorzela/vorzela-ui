@@ -1,0 +1,43 @@
+@use 'styles' as vz;
+
+.root {
+  position: relative;
+  overflow: hidden;
+}
+
+.pause-on-hover {
+  @include vz.hover {
+    --marquee-play: paused;
+  }
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  gap: vz.space(4);
+  animation: vz-marquee var(--marquee-duration, 30s) linear infinite;
+  animation-play-state: var(--marquee-play, running);
+  will-change: transform;
+}
+
+.reverse {
+  animation-direction: reverse;
+}
+
+.group {
+  display: flex;
+  flex: none;
+  gap: vz.space(4);
+}
+
+@include vz.motion-reduce {
+  .track {
+    animation: none;
+  }
+}
+
+@keyframes vz-marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}

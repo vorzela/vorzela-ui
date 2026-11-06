@@ -1,0 +1,26 @@
+@use 'styles' as vz;
+
+.root {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: vz.space(1);
+  padding: vz.space(1);
+  border: 1px solid vz.color('border');
+  border-radius: vz.radius('lg');
+  background: vz.color('card');
+  box-shadow: vz.elevation(1);
+
+  .separator {
+    align-self: center;
+    height: vz.space(5);
+    min-height: vz.space(5);
+    margin-inline: vz.space(1);
+  }
+}
+
+.group {
+  display: flex;
+  align-items: center;
+  gap: vz.space(1);
+}

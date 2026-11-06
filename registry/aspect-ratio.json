@@ -1,0 +1,21 @@
+{
+  "name": "aspect-ratio",
+  "type": "ui",
+  "version": "0.2.0",
+  "dependencies": [],
+  "registryDependencies": [
+    "styles",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/aspect-ratio.tsx",
+      "content": "import * as React from 'react'\n\nimport { cx } from '~/lib/cx'\nimport styles from './aspect-ratio.module.scss'\n\nexport interface AspectRatioProps\n  extends React.HTMLAttributes<HTMLDivElement> {\n  ratio?: number\n}\n\nconst AspectRatio = React.forwardRef<HTMLDivElement, AspectRatioProps>(\n  ({ className, ratio = 16 / 9, style, children, ...props }, ref) => (\n    <div\n      ref={ref}\n      style={{\n        position: 'relative',\n        width: '100%',\n        paddingBottom: `${(1 / ratio) * 100}%`,\n        ...style,\n      }}\n      className={cx(styles.root, className)}\n      {...props}\n    >\n      <div className={styles.content}>{children}</div>\n    </div>\n  ),\n)\nAspectRatio.displayName = 'AspectRatio'\n\nexport { AspectRatio }\n"
+    },
+    {
+      "path": "components/ui/aspect-ratio.module.scss",
+      "content": "@use 'styles' as vz;\n\n.root {\n  display: block;\n}\n\n.content {\n  position: absolute;\n  inset: 0;\n}\n"
+    }
+  ],
+  "description": "aspect-ratio component"
+}

@@ -1,0 +1,47 @@
+@use 'styles' as vz;
+
+.wrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+.content {
+  @include vz.raised(2);
+
+  position: fixed;
+  z-index: vz.z('popover');
+  width: 18rem;
+  border-radius: vz.radius('xl');
+  outline: none;
+  animation: vz-popover-in vz.duration('fast') vz.ease('out') both;
+
+  @include vz.focus-ring(2px, 2px, 0.6);
+
+  @include vz.motion-reduce {
+    animation: none;
+  }
+}
+
+.arrow {
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  width: 10px;
+  height: 5px;
+  fill: vz.color('popover');
+  stroke: vz.color('border');
+  pointer-events: none;
+  transform: translateX(-50%);
+}
+
+@keyframes vz-popover-in {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

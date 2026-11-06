@@ -1,0 +1,21 @@
+{
+  "name": "label",
+  "type": "ui",
+  "version": "0.2.0",
+  "dependencies": [],
+  "registryDependencies": [
+    "styles",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/label.tsx",
+      "content": "import type { LabelHTMLAttributes, ReactNode } from 'react'\nimport { useId } from 'react'\n\nimport { cx } from '~/lib/cx'\nimport styles from './label.module.scss'\n\nexport interface LabelProps extends LabelHTMLAttributes<HTMLLabelElement> {\n  required?: boolean\n  hint?: string\n  /** Optional id for the hint paragraph (for `aria-describedby`). */\n  hintId?: string\n  children?: ReactNode\n}\n\n/** Form label with a required marker and optional hint. */\nexport function Label({\n  required,\n  hint,\n  hintId: hintIdProp,\n  className,\n  children,\n  ...rest\n}: LabelProps) {\n  const generatedHintId = useId()\n  const hintId = hintIdProp ?? (hint ? generatedHintId : undefined)\n\n  return (\n    <div className={styles.wrapper}>\n      <label {...rest} className={cx(styles.label, className)}>\n        {children}\n        {required ? (\n          <span className={styles.required} aria-hidden>\n            *\n          </span>\n        ) : null}\n        {required ? <span className={styles.srOnly}> (required)</span> : null}\n      </label>\n      {hint ? (\n        <p id={hintId} className={styles.hint}>\n          {hint}\n        </p>\n      ) : null}\n    </div>\n  )\n}\n"
+    },
+    {
+      "path": "components/ui/label.module.scss",
+      "content": "@use 'styles' as vz;\n\n.wrapper {\n  display: flex;\n  flex-direction: column;\n  gap: vz.space(0.5);\n}\n\n.label {\n  position: relative;\n  color: vz.color('foreground');\n  font-size: vz.font-size('sm');\n  font-weight: 500;\n  line-height: 1;\n}\n\n.required {\n  margin-left: vz.space(1);\n  color: vz.color('destructive');\n}\n\n.hint {\n  margin: 0;\n  color: vz.color('muted-foreground');\n  font-size: vz.font-size('xs');\n}\n\n.sr-only {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  padding: 0;\n  margin: -1px;\n  overflow: hidden;\n  clip-path: inset(50%);\n  white-space: nowrap;\n  border-width: 0;\n}\n"
+    }
+  ],
+  "description": "label component"
+}

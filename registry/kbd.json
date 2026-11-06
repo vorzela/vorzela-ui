@@ -1,0 +1,21 @@
+{
+  "name": "kbd",
+  "type": "ui",
+  "version": "0.2.0",
+  "dependencies": [],
+  "registryDependencies": [
+    "styles",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/kbd.tsx",
+      "content": "import type { HTMLAttributes } from 'react'\n\nimport { cx } from '~/lib/cx'\nimport styles from './kbd.module.scss'\n\nexport interface KbdProps extends HTMLAttributes<HTMLElement> {\n  size?: 'sm' | 'md'\n}\n\n/** A single key cap. Wrap several in a `role=\"group\"` for shortcuts. */\nexport function Kbd({ size = 'md', className, ...props }: KbdProps) {\n  return (\n    <kbd\n      className={cx(styles.root, size === 'sm' && styles.sm, className)}\n      {...props}\n    />\n  )\n}\n"
+    },
+    {
+      "path": "components/ui/kbd.module.scss",
+      "content": "@use 'styles' as vz;\n\n.root {\n  display: inline-flex;\n  height: 1.375rem;\n  min-width: 1.375rem;\n  align-items: center;\n  justify-content: center;\n  padding-inline: vz.space(1.5);\n  border: 1px solid vz.color('border');\n  border-bottom-width: 2px;\n  border-radius: vz.radius('xs');\n  background: vz.color('muted');\n  color: vz.color('muted-foreground');\n  font-family: inherit;\n  font-size: 0.6875rem;\n  font-weight: 500;\n  line-height: 1;\n  white-space: nowrap;\n  user-select: none;\n}\n\n.sm {\n  height: 1.125rem;\n  min-width: 1.125rem;\n  padding-inline: vz.space(1);\n  font-size: 0.625rem;\n}\n"
+    }
+  ],
+  "description": "kbd component"
+}

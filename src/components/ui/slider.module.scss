@@ -1,0 +1,140 @@
+@use 'styles' as vz;
+
+.root {
+  --slider-thumb: 1.125rem;
+  --slider-track: 0.375rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: vz.space(2);
+  width: 100%;
+  min-width: 0;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: vz.space(3);
+  font-size: vz.font-size('xs');
+}
+
+.label {
+  color: vz.color('muted-foreground');
+}
+
+.value {
+  color: vz.color('foreground');
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+}
+
+.rail {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: var(--slider-thumb);
+}
+
+.rail::before {
+  position: absolute;
+  inset-inline: 0;
+  top: 50%;
+  height: var(--slider-track);
+  border-radius: vz.radius('full');
+  background: vz.color('muted');
+  content: '';
+  transform: translateY(-50%);
+}
+
+.fill {
+  position: absolute;
+  inset-inline-start: 0;
+  top: 50%;
+  height: var(--slider-track);
+  border-radius: vz.radius('full');
+  background: vz.color('primary');
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+
+.control {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+  appearance: none;
+
+  @include vz.focus-ring(2px, 2px, 0.6);
+
+  @include vz.disabled {
+    cursor: not-allowed;
+  }
+}
+
+/* The webkit track must be invisible so the custom rail shows through. */
+.control::-webkit-slider-runnable-track {
+  height: var(--slider-thumb);
+  background: transparent;
+}
+
+.control::-webkit-slider-thumb {
+  width: var(--slider-thumb);
+  height: var(--slider-thumb);
+  margin-top: 0;
+  border: 0;
+  border-radius: vz.radius('full');
+  background: #fff;
+  box-shadow:
+    0 0 0 1px vz.color('border'),
+    0 1px 3px vz.color('foreground', 0.2);
+  cursor: inherit;
+  appearance: none;
+  transition: transform vz.duration('fast') vz.ease('out');
+
+  @include vz.motion-reduce {
+    transition: none;
+  }
+}
+
+.control::-moz-range-track {
+  height: var(--slider-track);
+  background: transparent;
+}
+
+.control::-moz-range-thumb {
+  width: var(--slider-thumb);
+  height: var(--slider-thumb);
+  border: 0;
+  border-radius: vz.radius('full');
+  background: #fff;
+  box-shadow:
+    0 0 0 1px vz.color('border'),
+    0 1px 3px vz.color('foreground', 0.2);
+  cursor: inherit;
+  transition: transform vz.duration('fast') vz.ease('out');
+
+  @include vz.motion-reduce {
+    transition: none;
+  }
+}
+
+.control:active::-webkit-slider-thumb {
+  transform: scale(0.94);
+}
+
+.control:active::-moz-range-thumb {
+  transform: scale(0.94);
+}
+
+.disabled .fill {
+  background: vz.color('muted-foreground', 0.4);
+}
+
+.disabled .control {
+  opacity: 0.5;
+}

@@ -1,0 +1,22 @@
+{
+  "name": "number-ticker",
+  "type": "ui",
+  "version": "0.2.0",
+  "dependencies": [],
+  "registryDependencies": [
+    "hooks",
+    "styles",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/number-ticker.tsx",
+      "content": "import * as React from 'react'\n\nimport { useReducedMotion } from '~/hooks/use-reduced-motion'\nimport { cx } from '~/lib/cx'\nimport styles from './number-ticker.module.scss'\n\nfunction easeOutCubic(t: number) {\n  return 1 - (1 - t) ** 3\n}\n\nexport interface NumberTickerProps {\n  value: number\n  from?: number\n  duration?: number\n  format?: (value: number) => string\n  className?: string\n  suffix?: string\n}\n\nexport function NumberTicker({\n  value,\n  from = 0,\n  duration = 700,\n  format = (n) => Math.round(n).toLocaleString(),\n  className,\n  suffix,\n}: NumberTickerProps) {\n  const reduced = useReducedMotion()\n  const [display, setDisplay] = React.useState(from)\n  const previous = React.useRef(from)\n  const shown = reduced ? value : display\n\n  React.useEffect(() => {\n    if (reduced) {\n      previous.current = value\n      return\n    }\n    const start = performance.now()\n    const initial = previous.current\n    let frame = 0\n\n    const tick = (now: number) => {\n      const progress = Math.min(1, (now - start) / duration)\n      const next = initial + (value - initial) * easeOutCubic(progress)\n      setDisplay(next)\n      if (progress < 1) {\n        frame = requestAnimationFrame(tick)\n      } else {\n        previous.current = value\n      }\n    }\n\n    frame = requestAnimationFrame(tick)\n    const fallback = window.setTimeout(() => {\n      setDisplay(value)\n      previous.current = value\n    }, duration + 120)\n\n    return () => {\n      cancelAnimationFrame(frame)\n      window.clearTimeout(fallback)\n    }\n  }, [duration, reduced, value])\n\n  return (\n    <span className={cx(styles.root, className)}>\n      <span aria-hidden>\n        {format(shown)}\n        {suffix}\n      </span>\n      <span className={styles.srOnly}>\n        {format(value)}\n        {suffix}\n      </span>\n    </span>\n  )\n}\n"
+    },
+    {
+      "path": "components/ui/number-ticker.module.scss",
+      "content": "@use 'styles' as vz;\n\n.root {\n  position: relative;\n  font-variant-numeric: tabular-nums;\n}\n\n.sr-only {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  padding: 0;\n  margin: -1px;\n  overflow: hidden;\n  clip-path: inset(50%);\n  white-space: nowrap;\n  border-width: 0;\n}\n"
+    }
+  ],
+  "description": "number-ticker component"
+}

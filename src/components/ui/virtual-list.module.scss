@@ -1,0 +1,23 @@
+@use 'styles' as vz;
+
+.root {
+  position: relative;
+  overflow-y: auto;
+  border: 1px solid vz.color('border');
+  border-radius: vz.radius('xl');
+  background: vz.color('card');
+  overscroll-behavior: contain;
+
+  @include vz.scrollbar(10px);
+  @include vz.focus-ring(2px, 2px, 0.6);
+}
+
+.inner {
+  position: relative;
+}
+
+.item {
+  position: absolute;
+  right: 0;
+  left: 0;
+}

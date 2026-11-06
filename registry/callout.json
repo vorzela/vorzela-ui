@@ -1,0 +1,23 @@
+{
+  "name": "callout",
+  "type": "ui",
+  "version": "0.2.0",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "styles",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/callout.tsx",
+      "content": "import * as React from 'react'\nimport { CircleCheck, Info, Lightbulb, TriangleAlert } from 'lucide-react'\n\nimport { cx } from '~/lib/cx'\nimport styles from './callout.module.scss'\n\nexport type CalloutTone = 'info' | 'tip' | 'success' | 'warning'\n\nconst TONE = {\n  info: { tone: styles.info, icon: Info },\n  tip: { tone: styles.tip, icon: Lightbulb },\n  success: { tone: styles.success, icon: CircleCheck },\n  warning: { tone: styles.warning, icon: TriangleAlert },\n} as const\n\nexport interface CalloutProps {\n  tone?: CalloutTone\n  title?: React.ReactNode\n  children: React.ReactNode\n  className?: string\n}\n\nexport function Callout({\n  tone = 'info',\n  title,\n  children,\n  className,\n}: CalloutProps) {\n  const config = TONE[tone]\n  const Icon = config.icon\n\n  return (\n    <div className={cx(styles.root, config.tone, className)}>\n      <Icon className={styles.icon} aria-hidden />\n      <div className={styles.body}>\n        {title ? <p className={styles.title}>{title}</p> : null}\n        <div className={styles.content}>{children}</div>\n      </div>\n    </div>\n  )\n}\n"
+    },
+    {
+      "path": "components/ui/callout.module.scss",
+      "content": "@use 'styles' as vz;\n\n.root {\n  --callout-bg: #{vz.color('info', 0.05)};\n  --callout-border: #{vz.color('info', 0.25)};\n  --callout-icon: #{vz.color('info')};\n\n  display: flex;\n  gap: vz.space(3);\n  padding: vz.space(4);\n  border: 1px solid var(--callout-border);\n  border-radius: vz.radius('lg');\n  background: var(--callout-bg);\n  color: vz.color('foreground');\n  font-size: vz.font-size('sm');\n}\n\n.info {\n  --callout-bg: #{vz.color('info', 0.05)};\n  --callout-border: #{vz.color('info', 0.25)};\n  --callout-icon: #{vz.color('info')};\n}\n\n.tip {\n  --callout-bg: #{vz.color('primary', 0.05)};\n  --callout-border: #{vz.color('primary', 0.25)};\n  --callout-icon: #{vz.color('primary')};\n}\n\n.success {\n  --callout-bg: #{vz.color('success', 0.05)};\n  --callout-border: #{vz.color('success', 0.25)};\n  --callout-icon: #{vz.color('success')};\n}\n\n.warning {\n  --callout-bg: #{vz.color('warning', 0.08)};\n  --callout-border: #{vz.color('warning', 0.3)};\n  --callout-icon: #{vz.color('warning')};\n}\n\n.icon {\n  margin-top: 2px;\n  color: var(--callout-icon);\n\n  @include vz.icon(4);\n}\n\n.body {\n  display: flex;\n  flex-direction: column;\n  gap: vz.space(1);\n  min-width: 0;\n}\n\n.title {\n  margin: 0;\n  color: vz.color('foreground');\n  font-weight: 500;\n  line-height: 1.4;\n}\n\n.content {\n  color: vz.color('muted-foreground');\n  line-height: 1.5;\n}\n"
+    }
+  ],
+  "description": "callout component"
+}

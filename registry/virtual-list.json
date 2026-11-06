@@ -1,0 +1,21 @@
+{
+  "name": "virtual-list",
+  "type": "ui",
+  "version": "0.2.0",
+  "dependencies": [],
+  "registryDependencies": [
+    "styles",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/virtual-list.tsx",
+      "content": "import * as React from 'react'\n\nimport { cx } from '~/lib/cx'\nimport styles from './virtual-list.module.scss'\n\nexport interface VirtualListProps<T> {\n  items: T[]\n  itemHeight: number\n  height?: number\n  overscan?: number\n  renderItem: (item: T, index: number) => React.ReactNode\n  getKey: (item: T, index: number) => React.Key\n  label?: string\n  className?: string\n}\n\n/** Windowed list for large record sets with fixed row heights. */\nexport function VirtualList<T>({\n  items,\n  itemHeight,\n  height = 320,\n  overscan = 4,\n  renderItem,\n  getKey,\n  label = 'List',\n  className,\n}: VirtualListProps<T>) {\n  const [scrollTop, setScrollTop] = React.useState(0)\n\n  const total = items.length * itemHeight\n  const visible = Math.ceil(height / itemHeight)\n  const start = Math.max(0, Math.floor(scrollTop / itemHeight) - overscan)\n  const end = Math.min(items.length, start + visible + overscan * 2)\n\n  return (\n    <div\n      role=\"list\"\n      aria-label={label}\n      tabIndex={0}\n      onScroll={(event) => setScrollTop(event.currentTarget.scrollTop)}\n      style={{ height }}\n      className={cx(styles.root, className)}\n    >\n      <div className={styles.inner} style={{ height: total }}>\n        {items.slice(start, end).map((item, offset) => {\n          const index = start + offset\n\n          return (\n            <div\n              key={getKey(item, index)}\n              role=\"listitem\"\n              className={styles.item}\n              style={{ top: index * itemHeight, height: itemHeight }}\n            >\n              {renderItem(item, index)}\n            </div>\n          )\n        })}\n      </div>\n    </div>\n  )\n}\n"
+    },
+    {
+      "path": "components/ui/virtual-list.module.scss",
+      "content": "@use 'styles' as vz;\n\n.root {\n  position: relative;\n  overflow-y: auto;\n  border: 1px solid vz.color('border');\n  border-radius: vz.radius('xl');\n  background: vz.color('card');\n  overscroll-behavior: contain;\n\n  @include vz.scrollbar(10px);\n  @include vz.focus-ring(2px, 2px, 0.6);\n}\n\n.inner {\n  position: relative;\n}\n\n.item {\n  position: absolute;\n  right: 0;\n  left: 0;\n}\n"
+    }
+  ],
+  "description": "virtual-list component"
+}

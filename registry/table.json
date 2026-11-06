@@ -1,0 +1,21 @@
+{
+  "name": "table",
+  "type": "ui",
+  "version": "0.2.0",
+  "dependencies": [],
+  "registryDependencies": [
+    "styles",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/table.tsx",
+      "content": "import * as React from 'react'\n\nimport { cx } from '~/lib/cx'\nimport styles from './table.module.scss'\n\nconst Table = React.forwardRef<\n  HTMLTableElement,\n  React.HTMLAttributes<HTMLTableElement>\n>(({ className, ...props }, ref) => (\n  <div\n    className={styles.wrapper}\n    tabIndex={0}\n    role=\"region\"\n    aria-label=\"Table\"\n  >\n    <table ref={ref} className={cx(styles.root, className)} {...props} />\n  </div>\n))\nTable.displayName = 'Table'\n\nconst TableHeader = React.forwardRef<\n  HTMLTableSectionElement,\n  React.HTMLAttributes<HTMLTableSectionElement>\n>(({ className, ...props }, ref) => (\n  <thead ref={ref} className={cx(styles.header, className)} {...props} />\n))\nTableHeader.displayName = 'TableHeader'\n\nconst TableBody = React.forwardRef<\n  HTMLTableSectionElement,\n  React.HTMLAttributes<HTMLTableSectionElement>\n>(({ className, ...props }, ref) => (\n  <tbody ref={ref} className={cx(styles.body, className)} {...props} />\n))\nTableBody.displayName = 'TableBody'\n\nconst TableFooter = React.forwardRef<\n  HTMLTableSectionElement,\n  React.HTMLAttributes<HTMLTableSectionElement>\n>(({ className, ...props }, ref) => (\n  <tfoot ref={ref} className={cx(styles.footer, className)} {...props} />\n))\nTableFooter.displayName = 'TableFooter'\n\nconst TableRow = React.forwardRef<\n  HTMLTableRowElement,\n  React.HTMLAttributes<HTMLTableRowElement>\n>(({ className, ...props }, ref) => (\n  <tr ref={ref} className={cx(styles.row, className)} {...props} />\n))\nTableRow.displayName = 'TableRow'\n\nconst TableHead = React.forwardRef<\n  HTMLTableCellElement,\n  React.ThHTMLAttributes<HTMLTableCellElement>\n>(({ className, scope = 'col', ...props }, ref) => (\n  <th\n    ref={ref}\n    scope={scope}\n    className={cx(styles.head, className)}\n    {...props}\n  />\n))\nTableHead.displayName = 'TableHead'\n\nconst TableCell = React.forwardRef<\n  HTMLTableCellElement,\n  React.TdHTMLAttributes<HTMLTableCellElement>\n>(({ className, ...props }, ref) => (\n  <td ref={ref} className={cx(styles.cell, className)} {...props} />\n))\nTableCell.displayName = 'TableCell'\n\nconst TableCaption = React.forwardRef<\n  HTMLTableCaptionElement,\n  React.HTMLAttributes<HTMLTableCaptionElement>\n>(({ className, ...props }, ref) => (\n  <caption ref={ref} className={cx(styles.caption, className)} {...props} />\n))\nTableCaption.displayName = 'TableCaption'\n\nexport {\n  Table,\n  TableHeader,\n  TableBody,\n  TableFooter,\n  TableHead,\n  TableRow,\n  TableCell,\n  TableCaption,\n}\n"
+    },
+    {
+      "path": "components/ui/table.module.scss",
+      "content": "@use 'styles' as vz;\n\n.wrapper {\n  position: relative;\n  width: 100%;\n  overflow: auto;\n  border-radius: vz.radius('md');\n\n  @include vz.focus-ring;\n}\n\n.root {\n  width: 100%;\n  border-collapse: collapse;\n  caption-side: bottom;\n  font-size: vz.font-size('sm');\n}\n\n.row {\n  border-bottom: 1px solid vz.color('border');\n  transition: background-color vz.duration('fast') vz.ease('out');\n\n  @include vz.hover {\n    background: vz.color('muted', 0.5);\n  }\n}\n\n.row[data-state='selected'] {\n  background: vz.color('muted');\n}\n\n.footer .row {\n  border-bottom: 0;\n}\n\n.body .row:last-child {\n  border-bottom: 0;\n}\n\n.footer {\n  border-top: 1px solid vz.color('border');\n  background: vz.color('muted', 0.5);\n  font-weight: 500;\n}\n\n.head {\n  height: vz.space(12);\n  padding-inline: vz.space(4);\n  color: vz.color('muted-foreground');\n  font-weight: 500;\n  text-align: left;\n  vertical-align: middle;\n\n  &:has([role='checkbox']) {\n    padding-inline-end: 0;\n  }\n}\n\n.cell {\n  padding: vz.space(4);\n  vertical-align: middle;\n\n  &:has([role='checkbox']) {\n    padding-inline-end: 0;\n  }\n}\n\n.caption {\n  margin-top: vz.space(4);\n  color: vz.color('muted-foreground');\n  font-size: vz.font-size('sm');\n}\n"
+    }
+  ],
+  "description": "table component"
+}

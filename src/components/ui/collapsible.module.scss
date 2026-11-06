@@ -1,0 +1,74 @@
+@use 'styles' as vz;
+
+.root {
+  width: 100%;
+}
+
+.trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: vz.space(2);
+  width: 100%;
+  padding: vz.space(2) vz.space(3);
+  border: 0;
+  border-radius: vz.radius('lg');
+  background: transparent;
+  color: vz.color('foreground');
+  font-size: vz.font-size('sm');
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color vz.duration('base') vz.ease('out');
+
+  @include vz.hover {
+    background: vz.color('accent');
+  }
+
+  @include vz.focus-ring(2px, 2px, 0.6);
+}
+
+.trigger-label {
+  min-width: 0;
+}
+
+.chevron {
+  @include vz.icon(4);
+
+  color: vz.color('muted-foreground');
+  transition: transform vz.duration('base') vz.ease('out');
+}
+
+.trigger[aria-expanded='true'] .chevron {
+  transform: rotate(180deg);
+}
+
+.content {
+  display: grid;
+  grid-template-rows: 0fr;
+  overflow: hidden;
+  opacity: 0;
+  transition:
+    grid-template-rows vz.duration('base') vz.ease('out'),
+    opacity vz.duration('base') vz.ease('out');
+
+  @include vz.motion-reduce {
+    transition: none;
+  }
+}
+
+.content-inner {
+  min-height: 0;
+}
+
+.content-body {
+  padding: vz.space(1) vz.space(3) vz.space(2);
+  color: vz.color('muted-foreground');
+  font-size: vz.font-size('sm');
+  line-height: 1.5;
+}
+
+.content[data-state='open'] {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}

@@ -1,0 +1,21 @@
+{
+  "name": "description-list",
+  "type": "ui",
+  "version": "0.2.0",
+  "dependencies": [],
+  "registryDependencies": [
+    "styles",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/description-list.tsx",
+      "content": "import type { ReactNode } from 'react'\n\nimport { cx } from '~/lib/cx'\nimport styles from './description-list.module.scss'\n\nexport interface DescriptionListProps {\n  children: ReactNode\n  className?: string\n  columns?: 1 | 2 | 3\n}\n\n/**\n * Definition list.\n *\n * Columns follow the viewport, but each pair also measures its own cell: the\n * term and value sit side by side only when the column has room, and stack\n * otherwise. Tracks use `minmax(0, 1fr)` so a long value wraps instead of\n * pushing the list out of its card.\n */\nexport function DescriptionList({\n  children,\n  className,\n  columns = 1,\n}: DescriptionListProps) {\n  return (\n    <dl\n      className={cx(\n        styles.root,\n        columns === 2 && styles.columns2,\n        columns === 3 && styles.columns3,\n        className,\n      )}\n    >\n      {children}\n    </dl>\n  )\n}\n\nexport interface DescriptionItemProps {\n  term: ReactNode\n  children: ReactNode\n  className?: string\n}\n\nexport function DescriptionItem({\n  term,\n  children,\n  className,\n}: DescriptionItemProps) {\n  return (\n    <div className={cx(styles.item, className)}>\n      <dt className={styles.term}>{term}</dt>\n      <dd className={styles.value}>{children}</dd>\n    </div>\n  )\n}\n"
+    },
+    {
+      "path": "components/ui/description-list.module.scss",
+      "content": "@use 'styles' as vz;\n\n.root {\n  overflow: hidden;\n  margin: 0;\n  border: 1px solid vz.color('border');\n  border-radius: vz.radius('xl');\n  background: vz.color('card');\n}\n\n.item {\n  display: flex;\n  flex-direction: column;\n  gap: vz.space(1);\n  container-type: inline-size;\n  min-width: 0;\n  padding: vz.space(4);\n}\n\n.item + .item {\n  border-top: 1px solid vz.color('border');\n}\n\n.term {\n  color: vz.color('muted-foreground');\n  font-size: vz.font-size('xs');\n  font-weight: 500;\n  letter-spacing: 0.02em;\n  text-transform: uppercase;\n}\n\n.value {\n  min-width: 0;\n  margin: 0;\n  color: vz.color('foreground');\n  font-size: vz.font-size('sm');\n  overflow-wrap: break-word;\n}\n\n@container (min-width: 18rem) {\n  .item {\n    flex-direction: row;\n    gap: vz.space(4);\n  }\n\n  .term {\n    flex: none;\n    width: 8rem;\n  }\n\n  .value {\n    flex: 1;\n  }\n}\n\n@include vz.up('sm') {\n  .columns-2,\n  .columns-3 {\n    display: grid;\n    grid-template-columns: repeat(2, minmax(0, 1fr));\n  }\n\n  .columns-2 .item + .item,\n  .columns-3 .item + .item {\n    border-top: 0;\n  }\n}\n\n@include vz.up('lg') {\n  .columns-3 {\n    grid-template-columns: repeat(3, minmax(0, 1fr));\n  }\n}\n"
+    }
+  ],
+  "description": "description-list component"
+}

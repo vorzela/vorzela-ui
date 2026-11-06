@@ -1,0 +1,19 @@
+{
+  "name": "time-picker",
+  "type": "ui",
+  "version": "0.2.0",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "input",
+    "styles"
+  ],
+  "files": [
+    {
+      "path": "components/ui/time-picker.tsx",
+      "content": "import { Clock } from 'lucide-react'\nimport * as React from 'react'\n\nimport { Input } from './input'\n\nexport interface TimePickerProps {\n  label?: string\n  value?: string\n  defaultValue?: string\n  onChange?: (value: string) => void\n  hint?: string\n  min?: string\n  max?: string\n  step?: number\n  disabled?: boolean\n  required?: boolean\n  className?: string\n  id?: string\n}\n\n/** Native time field with a clock adornment and ISO 24-hour value. */\nexport function TimePicker({\n  label,\n  value,\n  defaultValue,\n  onChange,\n  hint,\n  min,\n  max,\n  step = 900,\n  disabled,\n  required,\n  className,\n  id,\n}: TimePickerProps) {\n  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {\n    onChange?.(event.currentTarget.value)\n  }\n\n  return (\n    <Input\n      id={id}\n      type=\"time\"\n      label={label}\n      hint={hint}\n      value={value}\n      defaultValue={defaultValue}\n      min={min}\n      max={max}\n      step={step}\n      disabled={disabled}\n      required={required}\n      className={className}\n      leading={<Clock aria-hidden />}\n      onChange={handleChange}\n    />\n  )\n}\n"
+    }
+  ],
+  "description": "time-picker component"
+}

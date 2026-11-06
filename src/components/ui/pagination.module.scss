@@ -1,0 +1,44 @@
+@use 'styles' as vz;
+
+.root {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-inline: auto;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: vz.space(1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  display: inline-flex;
+}
+
+.link {
+  min-width: vz.space(9);
+}
+
+.previous,
+.next {
+  --btn-px: #{vz.space(2.5)};
+}
+
+.ellipsis {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: vz.space(9);
+  height: vz.space(9);
+  color: vz.color('muted-foreground');
+
+  svg {
+    @include vz.icon(4);
+  }
+}

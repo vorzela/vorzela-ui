@@ -1,0 +1,14 @@
+{
+  "name": "lib-overlay",
+  "type": "lib",
+  "version": "0.2.0",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "lib/overlay.ts",
+      "content": "/**\n * Shared overlay helpers — body scroll lock (ref-counted) + focus trap.\n * Prevents nested Modal/Drawer from unlocking scroll too early and keeps\n * keyboard focus inside the open surface.\n */\n\nlet scrollLockCount = 0\nlet previousOverflow = ''\n\nexport function lockBodyScroll() {\n  if (typeof document === 'undefined') return () => {}\n  if (scrollLockCount === 0) {\n    previousOverflow = document.body.style.overflow\n    document.body.style.overflow = 'hidden'\n  }\n  scrollLockCount += 1\n  return () => {\n    scrollLockCount = Math.max(0, scrollLockCount - 1)\n    if (scrollLockCount === 0) {\n      document.body.style.overflow = previousOverflow\n    }\n  }\n}\n\nconst FOCUSABLE =\n  'a[href],button:not([disabled]),textarea:not([disabled]),input:not([disabled]),select:not([disabled]),[tabindex]:not([tabindex=\"-1\"])'\n\nexport function getFocusable(root: HTMLElement): HTMLElement[] {\n  return Array.from(root.querySelectorAll<HTMLElement>(FOCUSABLE)).filter(\n    (el) => !el.hasAttribute('disabled') && el.getAttribute('aria-hidden') !== 'true',\n  )\n}\n\n/** Trap Tab inside `root`; returns cleanup. */\nexport function trapFocus(root: HTMLElement, onEscape?: () => void) {\n  const previouslyFocused =\n    typeof document !== 'undefined'\n      ? (document.activeElement as HTMLElement | null)\n      : null\n\n  const focusFirst = () => {\n    const items = getFocusable(root)\n    ;(items[0] ?? root).focus({ preventScroll: true })\n  }\n\n  // Defer so portal content is mounted\n  const raf = requestAnimationFrame(focusFirst)\n\n  const onKeyDown = (e: KeyboardEvent) => {\n    if (e.key === 'Escape') {\n      e.stopPropagation()\n      onEscape?.()\n      return\n    }\n    if (e.key !== 'Tab') return\n    const items = getFocusable(root)\n    if (items.length === 0) {\n      e.preventDefault()\n      root.focus({ preventScroll: true })\n      return\n    }\n    const first = items[0]!\n    const last = items[items.length - 1]!\n    const active = document.activeElement as HTMLElement | null\n    if (e.shiftKey && (active === first || !root.contains(active))) {\n      e.preventDefault()\n      last.focus()\n    } else if (!e.shiftKey && (active === last || !root.contains(active))) {\n      e.preventDefault()\n      first.focus()\n    }\n  }\n\n  document.addEventListener('keydown', onKeyDown, true)\n\n  return () => {\n    cancelAnimationFrame(raf)\n    document.removeEventListener('keydown', onKeyDown, true)\n    previouslyFocused?.focus?.({ preventScroll: true })\n  }\n}\n"
+    }
+  ],
+  "description": ""
+}

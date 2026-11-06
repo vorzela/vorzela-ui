@@ -1,0 +1,24 @@
+{
+  "name": "link",
+  "type": "ui",
+  "version": "0.2.0",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "lib-security",
+    "styles",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/link.tsx",
+      "content": "import { ExternalLink } from 'lucide-react'\nimport type { AnchorHTMLAttributes } from 'react'\n\nimport { cx } from '~/lib/cx'\nimport { safeHref } from '~/lib/security'\nimport styles from './link.module.scss'\n\nexport type LinkVariant = 'default' | 'standalone' | 'quiet'\n\nexport interface LinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {\n  variant?: LinkVariant\n  disabled?: boolean\n  external?: boolean\n}\n\n/** Text link with safe href handling and an optional external marker. */\nexport function Link({\n  variant = 'default',\n  disabled = false,\n  external = false,\n  className,\n  children,\n  href,\n  ...props\n}: LinkProps) {\n  const safe = disabled ? undefined : safeHref(href)\n\n  return (\n    <a\n      {...props}\n      href={safe}\n      aria-disabled={disabled || undefined}\n      rel={external ? 'noopener noreferrer' : props.rel}\n      target={external ? '_blank' : props.target}\n      className={cx(\n        styles.root,\n        variant === 'standalone' && styles.standalone,\n        variant === 'quiet' && styles.quiet,\n        disabled && styles.disabled,\n        className,\n      )}\n    >\n      {children}\n      {external ? (\n        <span className={styles.icon}>\n          <ExternalLink aria-hidden />\n        </span>\n      ) : null}\n    </a>\n  )\n}\n"
+    },
+    {
+      "path": "components/ui/link.module.scss",
+      "content": "@use 'styles' as vz;\n\n.root {\n  display: inline-flex;\n  align-items: center;\n  gap: 0.25em;\n  border-radius: 2px;\n  color: vz.color('primary');\n  font: inherit;\n  text-decoration: underline;\n  text-decoration-thickness: 1px;\n  text-underline-offset: 3px;\n  cursor: pointer;\n\n  @include vz.hover {\n    text-decoration-thickness: 2px;\n  }\n\n  @include vz.focus-ring(2px, 2px, 0.6);\n}\n\n.standalone {\n  color: vz.color('foreground');\n  font-weight: 600;\n  text-decoration: none;\n\n  @include vz.hover {\n    color: vz.color('primary');\n  }\n}\n\n.quiet {\n  color: vz.color('muted-foreground');\n  text-decoration: none;\n\n  @include vz.hover {\n    color: vz.color('foreground');\n  }\n}\n\n.disabled {\n  color: vz.color('muted-foreground');\n  opacity: 0.5;\n  text-decoration: none;\n  pointer-events: none;\n}\n\n.icon {\n  flex: none;\n\n  svg {\n    @include vz.icon(3.5);\n  }\n}\n"
+    }
+  ],
+  "description": "link component"
+}

@@ -1,0 +1,62 @@
+@use 'styles' as vz;
+
+.image {
+  display: block;
+}
+
+.fit-contain {
+  object-fit: contain;
+}
+
+.fit-cover {
+  object-fit: cover;
+}
+
+.fit-fill {
+  object-fit: fill;
+}
+
+.fit-none {
+  object-fit: none;
+}
+
+.fit-scale-down {
+  object-fit: scale-down;
+}
+
+.skeleton {
+  background: vz.color('muted');
+  animation: vz-image-pulse 1.6s vz.ease('in-out') infinite;
+}
+
+.fallback {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fallback-placeholder {
+  background: vz.color('muted');
+  color: vz.color('muted-foreground');
+
+  svg {
+    @include vz.icon(5);
+  }
+}
+
+@keyframes vz-image-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.55;
+  }
+}
+
+@include vz.motion-reduce {
+  .skeleton {
+    animation: none;
+  }
+}

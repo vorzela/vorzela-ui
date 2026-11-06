@@ -1,0 +1,7 @@
+@use 'styles' as vz;
+
+.symbol {
+  color: vz.color('foreground');
+  font-size: vz.font-size('sm');
+  font-weight: 600;
+}

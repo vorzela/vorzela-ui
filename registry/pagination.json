@@ -1,0 +1,25 @@
+{
+  "name": "pagination",
+  "type": "ui",
+  "version": "0.2.0",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "button",
+    "primitives",
+    "styles",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/pagination.tsx",
+      "content": "import { ChevronLeft, ChevronRight, MoreHorizontal } from 'lucide-react'\nimport * as React from 'react'\n\nimport { VisuallyHidden } from '~/components/primitives/visually-hidden'\nimport { cx } from '~/lib/cx'\nimport { Button, type ButtonSize, type ButtonVariant } from './button'\nimport styles from './pagination.module.scss'\n\nexport interface PaginationProps extends React.ComponentProps<'nav'> {\n  className?: string\n}\n\nexport function Pagination({ className, ...props }: PaginationProps) {\n  return (\n    <nav\n      role=\"navigation\"\n      aria-label=\"Pagination\"\n      className={cx(styles.root, className)}\n      {...props}\n    />\n  )\n}\n\nPagination.displayName = 'Pagination'\n\nexport const PaginationContent = React.forwardRef<\n  HTMLUListElement,\n  React.ComponentProps<'ul'>\n>(function PaginationContent({ className, ...props }, ref) {\n  return (\n    <ul ref={ref} className={cx(styles.content, className)} {...props} />\n  )\n})\n\nPaginationContent.displayName = 'PaginationContent'\n\nexport const PaginationItem = React.forwardRef<\n  HTMLLIElement,\n  React.ComponentProps<'li'>\n>(function PaginationItem({ className, ...props }, ref) {\n  return <li ref={ref} className={cx(styles.item, className)} {...props} />\n})\n\nPaginationItem.displayName = 'PaginationItem'\n\nexport type PaginationLinkSize = ButtonSize | 'default'\n\nexport interface PaginationLinkProps\n  extends React.ComponentProps<'button'> {\n  isActive?: boolean\n  variant?: ButtonVariant\n  size?: PaginationLinkSize\n}\n\nexport const PaginationLink = React.forwardRef<\n  HTMLButtonElement,\n  PaginationLinkProps\n>(function PaginationLink(\n  { className, isActive, variant, size = 'icon', ...props },\n  ref,\n) {\n  return (\n    <Button\n      ref={ref}\n      type=\"button\"\n      variant={variant ?? (isActive ? 'outline' : 'ghost')}\n      size={size === 'default' ? 'md' : size}\n      aria-current={isActive ? 'page' : undefined}\n      className={cx(styles.link, className)}\n      {...props}\n    />\n  )\n})\n\nPaginationLink.displayName = 'PaginationLink'\n\nexport const PaginationPrevious = React.forwardRef<\n  HTMLButtonElement,\n  PaginationLinkProps\n>(function PaginationPrevious({ className, ...props }, ref) {\n  return (\n    <PaginationLink\n      ref={ref}\n      aria-label=\"Go to previous page\"\n      size=\"md\"\n      className={cx(styles.previous, className)}\n      {...props}\n    >\n      <ChevronLeft aria-hidden />\n      <span>Previous</span>\n    </PaginationLink>\n  )\n})\n\nPaginationPrevious.displayName = 'PaginationPrevious'\n\nexport const PaginationNext = React.forwardRef<\n  HTMLButtonElement,\n  PaginationLinkProps\n>(function PaginationNext({ className, ...props }, ref) {\n  return (\n    <PaginationLink\n      ref={ref}\n      aria-label=\"Go to next page\"\n      size=\"md\"\n      className={cx(styles.next, className)}\n      {...props}\n    >\n      <span>Next</span>\n      <ChevronRight aria-hidden />\n    </PaginationLink>\n  )\n})\n\nPaginationNext.displayName = 'PaginationNext'\n\nexport interface PaginationEllipsisProps\n  extends React.ComponentProps<'span'> {\n  label?: string\n}\n\nexport function PaginationEllipsis({\n  className,\n  label = 'More pages',\n  ...props\n}: PaginationEllipsisProps) {\n  return (\n    <span className={cx(styles.ellipsis, className)} {...props}>\n      <MoreHorizontal aria-hidden />\n      <VisuallyHidden>{label}</VisuallyHidden>\n    </span>\n  )\n}\n\nPaginationEllipsis.displayName = 'PaginationEllipsis'\n"
+    },
+    {
+      "path": "components/ui/pagination.module.scss",
+      "content": "@use 'styles' as vz;\n\n.root {\n  display: flex;\n  justify-content: center;\n  width: 100%;\n  margin-inline: auto;\n}\n\n.content {\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  gap: vz.space(1);\n  margin: 0;\n  padding: 0;\n  list-style: none;\n}\n\n.item {\n  display: inline-flex;\n}\n\n.link {\n  min-width: vz.space(9);\n}\n\n.previous,\n.next {\n  --btn-px: #{vz.space(2.5)};\n}\n\n.ellipsis {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  width: vz.space(9);\n  height: vz.space(9);\n  color: vz.color('muted-foreground');\n\n  svg {\n    @include vz.icon(4);\n  }\n}\n"
+    }
+  ],
+  "description": "pagination component"
+}

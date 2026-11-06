@@ -1,0 +1,22 @@
+{
+  "name": "menubar",
+  "type": "ui",
+  "version": "0.2.0",
+  "dependencies": [],
+  "registryDependencies": [
+    "dropdown",
+    "styles",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/menubar.tsx",
+      "content": "import { cx } from '~/lib/cx'\nimport { Dropdown, type DropdownItem } from './dropdown'\nimport styles from './menubar.module.scss'\n\nexport interface MenubarMenu {\n  label: string\n  items: DropdownItem[]\n}\n\nexport interface MenubarProps {\n  menus: MenubarMenu[]\n  align?: 'left' | 'right'\n  className?: string\n  label?: string\n}\n\n/** Horizontal application menu. Each menu reuses the viewport-aware Dropdown. */\nexport function Menubar({\n  menus,\n  align = 'left',\n  className,\n  label = 'Application menu',\n}: MenubarProps) {\n  return (\n    <div role=\"group\" aria-label={label} className={cx(styles.root, className)}>\n      {menus.map((menu) => (\n        <Dropdown\n          key={menu.label}\n          align={align}\n          items={menu.items}\n          trigger={\n            <button type=\"button\" className={styles.trigger}>\n              {menu.label}\n            </button>\n          }\n        />\n      ))}\n    </div>\n  )\n}\n"
+    },
+    {
+      "path": "components/ui/menubar.module.scss",
+      "content": "@use 'styles' as vz;\n\n.root {\n  display: flex;\n  align-items: center;\n  gap: 2px;\n  padding: 3px;\n  border: 1px solid vz.color('border');\n  border-radius: vz.radius('lg');\n  background: vz.color('card');\n}\n\n.trigger {\n  height: 1.875rem;\n  padding-inline: vz.space(2.5);\n  border: 0;\n  border-radius: vz.radius('sm');\n  background: transparent;\n  color: vz.color('muted-foreground');\n  font-size: vz.font-size('sm');\n  font-weight: 500;\n  cursor: pointer;\n\n  @include vz.hover {\n    background: vz.color('accent');\n    color: vz.color('accent-foreground');\n  }\n\n  @include vz.focus-ring(2px, 1px, 0.6);\n}\n"
+    }
+  ],
+  "description": "menubar component"
+}

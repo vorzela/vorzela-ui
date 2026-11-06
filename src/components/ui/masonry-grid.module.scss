@@ -1,0 +1,91 @@
+@use 'styles' as vz;
+
+.grid {
+  position: relative;
+  width: 100%;
+}
+
+.item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  will-change: transform;
+}
+
+.scroll {
+  width: 100%;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+
+  @include vz.scrollbar(10px);
+
+  @include vz.motion-reduce {
+    scroll-behavior: auto;
+  }
+}
+
+.tile {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  text-align: left;
+  transition: transform vz.duration('base') vz.ease('out');
+
+  @include vz.motion-reduce {
+    transition: none;
+  }
+}
+
+.tile-interactive {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+
+  @include vz.hover {
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: scale(0.99);
+  }
+
+  @include vz.focus-ring(2px, 2px, 0.6);
+}
+
+.media {
+  overflow: hidden;
+  border-radius: vz.radius('lg');
+  background: vz.color('muted');
+}
+
+.price {
+  margin: vz.space(2) 0 0;
+  color: vz.color('success');
+  font-size: vz.font-size('sm');
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.tile-title {
+  margin: vz.space(1) 0 0;
+  color: vz.color('foreground');
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.35;
+
+  @include vz.line-clamp(2);
+}
+
+.meta {
+  margin: vz.space(1) 0 0;
+  color: vz.color('muted-foreground');
+  font-size: 11px;
+  line-height: 1.35;
+
+  @include vz.line-clamp(2);
+}

@@ -1,0 +1,22 @@
+{
+  "name": "toolbar",
+  "type": "ui",
+  "version": "0.2.0",
+  "dependencies": [],
+  "registryDependencies": [
+    "separator",
+    "styles",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/toolbar.tsx",
+      "content": "/**\n * components/ui/toolbar.tsx\n *\n * Horizontal toolbar with roving arrow-key navigation.\n */\nimport * as React from 'react'\n\nimport { cx } from '~/lib/cx'\nimport { Separator } from './separator'\nimport styles from './toolbar.module.scss'\n\nexport interface ToolbarProps extends React.HTMLAttributes<HTMLDivElement> {\n  children: React.ReactNode\n  label?: string\n}\n\nexport function Toolbar({\n  children,\n  label = 'Toolbar',\n  className,\n  onKeyDown,\n  ...props\n}: ToolbarProps) {\n  const ref = React.useRef<HTMLDivElement>(null)\n\n  return (\n    <div\n      {...props}\n      ref={ref}\n      role=\"toolbar\"\n      aria-label={label}\n      className={cx(styles.root, className)}\n      onKeyDown={(event) => {\n        onKeyDown?.(event)\n        if (event.defaultPrevented) return\n        if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) {\n          return\n        }\n\n        const node = ref.current\n        if (!node) return\n\n        const items = Array.from(\n          node.querySelectorAll<HTMLElement>(\n            'button:not([disabled]), [href], [tabindex=\"0\"]',\n          ),\n        )\n        if (!items.length) return\n\n        event.preventDefault()\n\n        const current = items.indexOf(document.activeElement as HTMLElement)\n        let next = current\n\n        if (event.key === 'ArrowRight') next = (current + 1) % items.length\n        if (event.key === 'ArrowLeft') {\n          next = (current - 1 + items.length) % items.length\n        }\n        if (event.key === 'Home') next = 0\n        if (event.key === 'End') next = items.length - 1\n\n        items[next]?.focus()\n      }}\n    >\n      {children}\n    </div>\n  )\n}\n\nexport interface ToolbarGroupProps\n  extends React.HTMLAttributes<HTMLDivElement> {\n  children: React.ReactNode\n}\n\nexport function ToolbarGroup({\n  children,\n  className,\n  ...props\n}: ToolbarGroupProps) {\n  return (\n    <div {...props} className={cx(styles.group, className)}>\n      {children}\n    </div>\n  )\n}\n\nexport function ToolbarSeparator() {\n  return (\n    <Separator\n      orientation=\"vertical\"\n      className={styles.separator}\n    />\n  )\n}\n"
+    },
+    {
+      "path": "components/ui/toolbar.module.scss",
+      "content": "@use 'styles' as vz;\n\n.root {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  gap: vz.space(1);\n  padding: vz.space(1);\n  border: 1px solid vz.color('border');\n  border-radius: vz.radius('lg');\n  background: vz.color('card');\n  box-shadow: vz.elevation(1);\n\n  .separator {\n    align-self: center;\n    height: vz.space(5);\n    min-height: vz.space(5);\n    margin-inline: vz.space(1);\n  }\n}\n\n.group {\n  display: flex;\n  align-items: center;\n  gap: vz.space(1);\n}\n"
+    }
+  ],
+  "description": "toolbar component"
+}

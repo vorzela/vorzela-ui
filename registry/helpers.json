@@ -1,0 +1,22 @@
+{
+  "name": "helpers",
+  "type": "util",
+  "version": "0.2.0",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/utils/for.tsx",
+      "content": "import {\n  Children,\n  Fragment,\n  isValidElement,\n  type ReactNode,\n} from 'react'\n\n/**\n * <For each={items} fallback={<Empty />}>\n *   {(item, index) => <Row key={item.id} item={item} />}\n * </For>\n *\n * Renders children for each element of `each`.\n * Falls back to `fallback` (or null) when the array is empty or nullish.\n * Always assigns a React key (from the child, or the index).\n */\ninterface ForProps<T> {\n  each: T[] | null | undefined\n  fallback?: ReactNode\n  children: (item: T, index: number) => ReactNode\n}\n\nexport function For<T>({ each, fallback = null, children }: ForProps<T>) {\n  if (!Array.isArray(each) || each.length === 0) return <>{fallback}</>\n\n  return (\n    <>\n      {each.map((item, i) => {\n        const node = children(item, i)\n        if (isValidElement(node)) {\n          return node.key != null ? node : <Fragment key={i}>{node}</Fragment>\n        }\n        // Arrays / text / multiple nodes from the render prop\n        return <Fragment key={i}>{Children.toArray(node)}</Fragment>\n      })}\n    </>\n  )\n}\n"
+    },
+    {
+      "path": "components/utils/show.tsx",
+      "content": "import type React from 'react'\n\n/**\n * <Show when={condition} fallback={<Fallback />}>\n *   {children}\n * </Show>\n *\n * Renders children when `when` is truthy; renders `fallback` (or null) otherwise.\n * When children is a function it receives the truthy value as its first argument —\n * handy for narrowing nullable values without an extra variable.\n */\ninterface ShowProps<T> {\n  when: T | null | undefined | false\n  fallback?: React.ReactNode\n  children: React.ReactNode | ((value: NonNullable<T>) => React.ReactNode)\n}\n\nexport function Show<T>({ when, fallback = null, children }: ShowProps<T>) {\n  if (!when) return <>{fallback}</>\n  return <>{typeof children === 'function' ? children(when as NonNullable<T>) : children}</>\n}\n"
+    },
+    {
+      "path": "components/utils/switch.tsx",
+      "content": "import React from 'react'\n\n/**\n * Declarative switch/case component.\n *\n * <Switch value={status}>\n *   <Match when=\"active\">  <ActiveBadge />  </Match>\n *   <Match when=\"pending\"> <PendingBadge /> </Match>\n *   <Match when=\"banned\">  <BannedBadge />  </Match>\n *   <Default>              <UnknownBadge /> </Default>\n * </Switch>\n *\n * - Renders the first <Match> whose `when` strictly equals `value`.\n * - Falls back to the first <Default> child if no match is found.\n * - Both Match and Default are thin wrappers; all logic lives in Switch.\n */\n\n// ── Public components ─────────────────────────────────────────────────────────\n\ninterface MatchProps<T> {\n  when: T\n  children: React.ReactNode\n}\n\n/**\n * Represents one case inside a <Switch>. Must be a direct child of <Switch>.\n */\nexport function Match<T>(_props: MatchProps<T>): React.ReactElement {\n  // Rendered by Switch, never directly.\n  return <></>\n}\n\ninterface DefaultProps {\n  children: React.ReactNode\n}\n\n/**\n * Fallback rendered by <Switch> when no <Match> case applies.\n */\nexport function Default(_props: DefaultProps): React.ReactElement {\n  return <></>\n}\n\n// ── Switch ────────────────────────────────────────────────────────────────────\n\ninterface SwitchProps<T> {\n  value: T\n  children: React.ReactNode\n}\n\nexport function Switch<T>({ value, children }: SwitchProps<T>) {\n  const kids = React.Children.toArray(children) as React.ReactElement[]\n\n  for (const child of kids) {\n    if (!React.isValidElement(child)) continue\n\n    if (child.type === Match) {\n      const props = child.props as MatchProps<T>\n      if (props.when === value) return <>{props.children}</>\n    }\n  }\n\n  // No match — find the first <Default>\n  for (const child of kids) {\n    if (!React.isValidElement(child)) continue\n    if (child.type === Default) {\n      return <>{(child.props as DefaultProps).children}</>\n    }\n  }\n\n  return null\n}\n"
+    }
+  ],
+  "description": ""
+}

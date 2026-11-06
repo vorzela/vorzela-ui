@@ -1,0 +1,147 @@
+import { CircleAlert, CircleCheck } from 'lucide-react'
+import * as React from 'react'
+import { useId } from 'react'
+
+import { cx } from '~/lib/cx'
+import { Label } from './label'
+import styles from './input.module.scss'
+
+export type InputSize = 'sm' | 'md' | 'lg'
+
+const SIZE: Record<InputSize, string> = {
+  sm: styles.sm,
+  md: '',
+  lg: styles.lg,
+}
+
+export interface InputProps
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
+  label?: string
+  hint?: string
+  error?: string
+  success?: string
+  size?: InputSize
+  /** Rendered before the control — text or an icon. */
+  leading?: React.ReactNode
+  /** Rendered after the control — text or an icon. */
+  trailing?: React.ReactNode
+  /** Legacy aliases used by the Tailwind kit. */
+  leadingNode?: React.ReactNode
+  trailingNode?: React.ReactNode
+  /** Visual treatment. `outlined` uses a tighter border and page background. */
+  appearance?: 'default' | 'outlined' | 'filled'
+  /** Class for the outer field wrapper. */
+  wrapClassName?: string
+}
+
+export const Input = React.forwardRef<HTMLInputElement, InputProps>(
+  function Input(
+    {
+      label,
+      hint,
+      error,
+      success,
+      size = 'md',
+      leading,
+      trailing,
+      leadingNode,
+      trailingNode,
+      appearance = 'default',
+      wrapClassName,
+      id: idProp,
+      className,
+      required,
+      disabled,
+      ...props
+    },
+    ref,
+  ) {
+    const generatedId = useId()
+    const id = idProp ?? generatedId
+    const lead = leadingNode ?? leading
+    const trail = trailingNode ?? trailing
+
+    const hasError = Boolean(error)
+    const hasSuccess = Boolean(success) && !hasError
+    const describedBy =
+      [
+        hint ? `${id}-hint` : null,
+        hasError ? `${id}-error` : null,
+        hasSuccess ? `${id}-success` : null,
+      ]
+        .filter(Boolean)
+        .join(' ') || undefined
+
+    return (
+      <div className={cx(styles.field, wrapClassName)}>
+        {label ? (
+          <Label
+            htmlFor={id}
+            required={required}
+            hint={hint}
+            hintId={`${id}-hint`}
+          >
+            {label}
+          </Label>
+        ) : null}
+
+        <div
+          className={cx(
+            styles.shell,
+            SIZE[size],
+            appearance === 'outlined' && styles.outlined,
+            appearance === 'filled' && styles.filled,
+            hasError ? styles.invalid : hasSuccess ? styles.valid : undefined,
+            disabled && styles.disabled,
+          )}
+        >
+          {lead ? <span className={styles.affix}>{lead}</span> : null}
+
+          <input
+            {...props}
+            ref={ref}
+            id={id}
+            required={required}
+            disabled={disabled}
+            aria-invalid={hasError || undefined}
+            aria-describedby={describedBy}
+            className={cx(styles.control, className)}
+          />
+
+          {hasError ? (
+            <span className={cx(styles.status, styles.statusError)}>
+              <CircleAlert aria-hidden />
+            </span>
+          ) : hasSuccess ? (
+            <span className={cx(styles.status, styles.statusSuccess)}>
+              <CircleCheck aria-hidden />
+            </span>
+          ) : null}
+
+          {trail ? <span className={styles.affix}>{trail}</span> : null}
+        </div>
+
+        {hasError ? (
+          <p id={`${id}-error`} role="alert" className={cx(styles.message, styles.errorText)}>
+            {error}
+          </p>
+        ) : hasSuccess ? (
+          <p id={`${id}-success`} className={cx(styles.message, styles.successText)}>
+            {success}
+          </p>
+        ) : null}
+      </div>
+    )
+  },
+)
+
+/** Bare control for composed groups, toolbars and custom shells. */
+export const BareInput = React.forwardRef<
+  HTMLInputElement,
+  React.InputHTMLAttributes<HTMLInputElement>
+>(function BareInput({ className, ...props }, ref) {
+  return <input ref={ref} className={cx(styles.bare, className)} {...props} />
+})
+
+/** Alias matching the legacy Tailwind kit. */
+export { Input as InputField }

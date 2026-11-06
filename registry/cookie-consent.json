@@ -1,0 +1,26 @@
+{
+  "name": "cookie-consent",
+  "type": "ui",
+  "version": "0.2.0",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "button",
+    "lib-security",
+    "primitives",
+    "styles",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/cookie-consent.tsx",
+      "content": "import * as React from 'react'\nimport { Cookie } from 'lucide-react'\n\nimport { Portal } from '~/components/primitives/portal'\nimport { cx } from '~/lib/cx'\nimport { safeHref } from '~/lib/security'\nimport { Button } from './button'\nimport styles from './cookie-consent.module.scss'\n\nexport function CookieConsent({\n  storageKey = 'vz.cookie-consent',\n  title = 'We use cookies',\n  description = 'Essential cookies keep the app working. Analytics cookies are optional.',\n  policyHref = '/privacy',\n  policyLabel = 'Privacy policy',\n  onAccept,\n  onReject,\n  className,\n}: {\n  storageKey?: string\n  title?: string\n  description?: string\n  policyHref?: string\n  policyLabel?: string\n  onAccept?: () => void\n  onReject?: () => void\n  className?: string\n}) {\n  const [visible, setVisible] = React.useState(() => {\n    if (typeof window === 'undefined') return false\n    try {\n      return !window.localStorage.getItem(storageKey)\n    } catch {\n      return true\n    }\n  })\n\n  const decide = (value: 'accepted' | 'rejected') => {\n    try {\n      window.localStorage.setItem(storageKey, value)\n    } catch {\n      // Storage may be blocked; still dismiss for this session.\n    }\n    setVisible(false)\n    if (value === 'accepted') onAccept?.()\n    else onReject?.()\n  }\n\n  if (!visible) return null\n  const href = safeHref(policyHref)\n\n  return (\n    <Portal>\n      <div role=\"region\" aria-label=\"Cookie consent\" className={cx(styles.root, className)}>\n        <div className={styles.layout}>\n          <Cookie className={styles.icon} aria-hidden />\n          <div className={styles.body}>\n            <p className={styles.title}>{title}</p>\n            <p className={styles.description}>\n              {description}{' '}\n              {href ? (\n                <a href={href} className={styles.link}>\n                  {policyLabel}\n                </a>\n              ) : null}\n            </p>\n            <div className={styles.actions}>\n              <Button size=\"sm\" onClick={() => decide('accepted')}>\n                Accept all\n              </Button>\n              <Button size=\"sm\" variant=\"outline\" onClick={() => decide('rejected')}>\n                Essential only\n              </Button>\n            </div>\n          </div>\n        </div>\n      </div>\n    </Portal>\n  )\n}\n"
+    },
+    {
+      "path": "components/ui/cookie-consent.module.scss",
+      "content": "@use 'styles' as vz;\n\n.root {\n  position: fixed;\n  right: vz.space(3);\n  bottom: calc(#{vz.space(3)} + env(safe-area-inset-bottom, 0px));\n  left: vz.space(3);\n  z-index: vz.z('toast');\n  max-width: 42rem;\n  margin-inline: auto;\n  padding: vz.space(4);\n  border: 1px solid vz.color('border', 0.72);\n  border-radius: vz.radius('2xl');\n  background: vz.color('popover', 0.88);\n  color: vz.color('popover-foreground');\n  box-shadow: vz.elevation(3);\n  backdrop-filter: blur(20px) saturate(180%);\n  animation: vz-consent-in 320ms vz.ease('spring') both;\n\n  @include vz.motion-reduce {\n    animation: none;\n  }\n}\n\n.layout {\n  display: flex;\n  align-items: flex-start;\n  gap: vz.space(3);\n}\n\n.icon {\n  flex: none;\n  width: vz.space(9);\n  height: vz.space(9);\n  padding: vz.space(2);\n  border-radius: vz.radius('full');\n  background: vz.color('warning', 0.14);\n  color: vz.color('warning');\n  margin-top: 1px;\n}\n\n.body {\n  flex: 1;\n  min-width: 0;\n}\n\n.title {\n  margin: 0;\n  font-size: vz.font-size('sm');\n  font-weight: 650;\n  line-height: 1.35;\n}\n\n.description {\n  margin: vz.space(1) 0 0;\n  color: vz.color('muted-foreground');\n  font-size: vz.font-size('xs');\n  line-height: 1.55;\n}\n\n.link {\n  color: vz.color('foreground');\n  text-underline-offset: 2px;\n  text-decoration: underline;\n\n  @include vz.hover {\n    color: vz.color('primary');\n  }\n\n  @include vz.focus-ring(2px, 2px, 0.6);\n}\n\n.actions {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: flex-end;\n  gap: vz.space(2);\n  padding-top: vz.space(3);\n}\n\n@include vz.up('sm') {\n  .root {\n    right: vz.space(4);\n    bottom: calc(#{vz.space(4)} + env(safe-area-inset-bottom, 0px));\n    left: vz.space(4);\n    padding: vz.space(4) vz.space(5);\n  }\n\n  .actions {\n    justify-content: flex-start;\n  }\n}\n\n@keyframes vz-consent-in {\n  from {\n    opacity: 0;\n    transform: translateY(12px) scale(0.98);\n  }\n\n  to {\n    opacity: 1;\n    transform: none;\n  }\n}\n"
+    }
+  ],
+  "description": "cookie-consent component"
+}

@@ -1,0 +1,67 @@
+@use 'styles' as vz;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: vz.space(1);
+}
+
+.label {
+  color: vz.color('muted-foreground');
+  font-size: vz.font-size('xs');
+  font-weight: 600;
+}
+
+.trigger {
+  display: flex;
+  min-height: vz.space(9);
+  align-items: center;
+  justify-content: space-between;
+  gap: vz.space(2);
+  padding: vz.space(1.5) vz.space(2.5);
+  border: 1px dashed vz.color('border');
+  border-radius: vz.radius('md');
+  background: transparent;
+  color: vz.color('foreground');
+  font: inherit;
+  text-align: left;
+  cursor: text;
+
+  @include vz.hover {
+    background: vz.color('accent');
+  }
+
+  @include vz.focus-ring(2px, 2px, 0.6);
+}
+
+.value {
+  min-width: 0;
+
+  @include vz.truncate;
+}
+
+.placeholder {
+  color: vz.color('muted-foreground');
+}
+
+.pencil {
+  flex: none;
+  color: vz.color('muted-foreground');
+
+  svg {
+    @include vz.icon(3.5);
+  }
+}
+
+.input {
+  width: 100%;
+  min-height: vz.space(9);
+  padding: vz.space(1.5) vz.space(2.5);
+  border: 1px solid vz.color('primary');
+  border-radius: vz.radius('md');
+  background: vz.color('card');
+  color: vz.color('foreground');
+  font: inherit;
+  outline: none;
+  box-shadow: 0 0 0 3px vz.color('primary', 0.18);
+}

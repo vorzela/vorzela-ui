@@ -1,0 +1,76 @@
+@use 'styles' as vz;
+
+.root {
+  --dot-size: 0.5rem;
+
+  position: relative;
+  display: inline-flex;
+  flex: none;
+  width: var(--dot-size);
+  height: var(--dot-size);
+  vertical-align: middle;
+}
+
+.sm {
+  --dot-size: 0.375rem;
+}
+
+.lg {
+  --dot-size: 0.625rem;
+}
+
+.dot {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: vz.radius('full');
+  background: var(--dot-color);
+}
+
+.ping {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--dot-color);
+  opacity: 0.6;
+  animation: vz-status-ping 1.6s vz.ease('out') infinite;
+
+  @include vz.motion-reduce {
+    animation: none;
+    opacity: 0;
+  }
+}
+
+.neutral {
+  --dot-color: #{vz.color('muted-foreground')};
+}
+
+.info {
+  --dot-color: #{vz.color('info')};
+}
+
+.success {
+  --dot-color: #{vz.color('success')};
+}
+
+.warning {
+  --dot-color: #{vz.color('warning')};
+}
+
+.danger {
+  --dot-color: #{vz.color('destructive')};
+}
+
+@keyframes vz-status-ping {
+  0% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+
+  80%,
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}

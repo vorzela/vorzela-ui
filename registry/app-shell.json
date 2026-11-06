@@ -1,0 +1,23 @@
+{
+  "name": "app-shell",
+  "type": "ui",
+  "version": "0.2.0",
+  "dependencies": [],
+  "registryDependencies": [
+    "primitives",
+    "sidebar",
+    "styles",
+    "topbar"
+  ],
+  "files": [
+    {
+      "path": "components/ui/app-shell.tsx",
+      "content": "import { useState, type ReactNode } from 'react'\n\nimport { SkipLink } from '~/components/primitives/skip-link'\nimport { Sidebar, type SidebarNavGroup } from './sidebar'\nimport { Topbar } from './topbar'\nimport styles from './app-shell.module.scss'\n\nexport interface AppShellProps {\n  children: ReactNode\n  title?: string\n  groups: SidebarNavGroup[]\n  brand?: ReactNode\n  brandMark?: ReactNode\n  subtitle?: string\n  footer?: ReactNode\n  actions?: ReactNode\n  version?: string\n  hasPermission?: (permission: string) => boolean\n  drawerSide?: 'left' | 'right'\n  currentPath?: string\n}\n\n/** Responsive app frame: collapsible sidebar, mobile drawer and page header. */\nexport function AppShell({\n  children,\n  title,\n  groups,\n  brand,\n  brandMark,\n  subtitle,\n  footer,\n  actions,\n  version,\n  hasPermission,\n  drawerSide = 'left',\n  currentPath,\n}: AppShellProps) {\n  const [mobileOpen, setMobileOpen] = useState(false)\n\n  return (\n    <div className={styles.root}>\n      <SkipLink href=\"#main\" />\n      <Sidebar\n        groups={groups}\n        brand={brand}\n        brandMark={brandMark}\n        subtitle={subtitle}\n        footer={footer}\n        version={version}\n        hasPermission={hasPermission}\n        mobileOpen={mobileOpen}\n        onMobileClose={() => setMobileOpen(false)}\n        drawerSide={drawerSide}\n        currentPath={currentPath}\n      />\n      <div className={styles.body}>\n        <Topbar\n          title={title}\n          actions={actions}\n          onMenuClick={() => setMobileOpen(true)}\n        />\n        <main id=\"main\" tabIndex={-1} className={styles.main}>\n          {children}\n        </main>\n      </div>\n    </div>\n  )\n}\n"
+    },
+    {
+      "path": "components/ui/app-shell.module.scss",
+      "content": "@use 'styles' as vz;\n\n.root {\n  display: flex;\n  height: 100svh;\n  overflow: hidden;\n  background: vz.color('background');\n}\n\n.body {\n  display: flex;\n  min-width: 0;\n  flex: 1;\n  flex-direction: column;\n  overflow: hidden;\n}\n\n.main {\n  flex: 1;\n  padding: vz.space(3);\n  overflow: hidden auto;\n  outline: none;\n\n  @include vz.scrollbar(10px);\n}\n\n@include vz.up('sm') {\n  .main {\n    padding: vz.space(5);\n  }\n}\n\n@include vz.up('lg') {\n  .main {\n    padding: vz.space(6);\n  }\n}\n"
+    }
+  ],
+  "description": "app-shell component"
+}

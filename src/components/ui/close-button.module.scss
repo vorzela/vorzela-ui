@@ -1,0 +1,47 @@
+@use 'styles' as vz;
+
+.root {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: vz.radius('sm');
+  background: transparent;
+  color: vz.color('muted-foreground');
+  cursor: pointer;
+  transition:
+    background-color vz.duration('fast') vz.ease('out'),
+    color vz.duration('fast') vz.ease('out');
+
+  @include vz.hover {
+    background: vz.color('accent');
+    color: vz.color('foreground');
+  }
+
+  @include vz.focus-ring(2px, 2px, 0.6);
+
+  @include vz.disabled {
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  svg {
+    @include vz.icon(4);
+  }
+}
+
+.sm {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.md {
+  width: 2rem;
+  height: 2rem;
+}
+
+.lg {
+  width: 2.5rem;
+  height: 2.5rem;
+}

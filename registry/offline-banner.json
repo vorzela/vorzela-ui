@@ -1,0 +1,24 @@
+{
+  "name": "offline-banner",
+  "type": "ui",
+  "version": "0.2.0",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "hooks",
+    "styles",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/offline-banner.tsx",
+      "content": "import { WifiOff } from 'lucide-react'\n\nimport { useOnlineStatus } from '~/hooks/use-online-status'\nimport { cx } from '~/lib/cx'\nimport styles from './offline-banner.module.scss'\n\nexport function OfflineBanner({\n  message = 'You are offline. Changes will sync when the connection returns.',\n  className,\n  force = false,\n  onRetry,\n}: {\n  message?: string\n  className?: string\n  /** Show the banner even when the browser reports a connection (demos). */\n  force?: boolean\n  onRetry?: () => void\n}) {\n  const online = useOnlineStatus()\n  if (online && !force) return null\n\n  return (\n    <div\n      role=\"status\"\n      aria-live=\"polite\"\n      className={cx(styles.root, className)}\n    >\n      <WifiOff className={styles.icon} aria-hidden />\n      <span className={styles.message}>{message}</span>\n      {onRetry ? (\n        <button type=\"button\" className={styles.retry} onClick={onRetry}>\n          Retry\n        </button>\n      ) : null}\n    </div>\n  )\n}\n"
+    },
+    {
+      "path": "components/ui/offline-banner.module.scss",
+      "content": "@use 'styles' as vz;\n\n.root {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  gap: vz.space(2.5);\n  padding: vz.space(2.5) vz.space(4);\n  border: 1px solid vz.color('warning', 0.35);\n  border-radius: vz.radius('xl');\n  background: vz.color('warning', 0.12);\n  color: vz.color('foreground');\n  font-size: vz.font-size('sm');\n  font-weight: 500;\n  line-height: 1.4;\n  box-shadow: vz.elevation(1);\n  backdrop-filter: blur(12px);\n}\n\n.icon {\n  flex: none;\n  color: vz.color('warning');\n\n  @include vz.icon(4);\n}\n\n.message {\n  flex: 1;\n  min-width: 12rem;\n}\n\n.retry {\n  min-height: 1.5rem;\n  padding-inline: vz.space(2.5);\n  border: 1px solid vz.color('warning', 0.45);\n  border-radius: vz.radius('sm');\n  background: vz.color('card');\n  color: vz.color('foreground');\n  font-size: vz.font-size('xs');\n  font-weight: 600;\n  cursor: pointer;\n\n  @include vz.hover {\n    background: vz.color('muted');\n  }\n\n  @include vz.focus-ring(2px, 1px, 0.6);\n}\n"
+    }
+  ],
+  "description": "offline-banner component"
+}

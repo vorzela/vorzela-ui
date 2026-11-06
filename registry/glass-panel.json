@@ -1,0 +1,21 @@
+{
+  "name": "glass-panel",
+  "type": "ui",
+  "version": "0.2.0",
+  "dependencies": [],
+  "registryDependencies": [
+    "styles",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/glass-panel.tsx",
+      "content": "import type { HTMLAttributes } from 'react'\n\nimport { cx } from '~/lib/cx'\nimport styles from './glass-panel.module.scss'\n\nexport type GlassBlur = 'sm' | 'md' | 'lg'\nexport type GlassTone = 'auto' | 'light' | 'dark'\n\nexport interface GlassPanelProps extends HTMLAttributes<HTMLDivElement> {\n  /** Backdrop blur strength. */\n  blur?: GlassBlur\n  /** Force a light/dark glass tint instead of following the theme. */\n  tone?: GlassTone\n}\n\n/**\n * Translucent surface with a backdrop blur. Falls back to an opaque card when\n * `backdrop-filter` is unavailable.\n */\nexport function GlassPanel({\n  blur = 'md',\n  tone = 'auto',\n  className,\n  ...props\n}: GlassPanelProps) {\n  return (\n    <div\n      className={cx(\n        styles.root,\n        blur === 'sm' && styles.blurSm,\n        blur === 'lg' && styles.blurLg,\n        tone === 'light' && styles.light,\n        tone === 'dark' && styles.dark,\n        className,\n      )}\n      {...props}\n    />\n  )\n}\n"
+    },
+    {
+      "path": "components/ui/glass-panel.module.scss",
+      "content": "@use 'styles' as vz;\n\n.root {\n  --glass-blur: 20px;\n  --glass-bg: #{vz.color('card', 0.62)};\n  --glass-border: #{vz.color('border', 0.6)};\n\n  position: relative;\n  border: 1px solid var(--glass-border);\n  border-radius: vz.radius('2xl');\n  background: var(--glass-bg);\n  color: vz.color('card-foreground');\n  box-shadow: vz.elevation(2);\n  backdrop-filter: blur(var(--glass-blur)) saturate(180%);\n}\n\n.light {\n  --glass-bg: hsl(0deg 0% 100% / 58%);\n  --glass-border: hsl(0deg 0% 100% / 52%);\n\n  color: hsl(222deg 47% 11%);\n}\n\n.dark {\n  --glass-bg: hsl(222deg 39% 8% / 58%);\n  --glass-border: hsl(210deg 40% 98% / 14%);\n\n  color: hsl(210deg 40% 98%);\n}\n\n.blur-sm {\n  --glass-blur: 12px;\n}\n\n.blur-lg {\n  --glass-blur: 32px;\n}\n\n@supports not (backdrop-filter: blur(1px)) {\n  .root {\n    --glass-bg: #{vz.color('card', 0.96)};\n  }\n\n  .light {\n    --glass-bg: hsl(0deg 0% 100% / 96%);\n  }\n\n  .dark {\n    --glass-bg: hsl(222deg 39% 8% / 96%);\n  }\n}\n"
+    }
+  ],
+  "description": "glass-panel component"
+}

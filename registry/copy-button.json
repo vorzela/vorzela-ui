@@ -1,0 +1,26 @@
+{
+  "name": "copy-button",
+  "type": "ui",
+  "version": "0.2.0",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "button",
+    "hooks",
+    "primitives",
+    "styles",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/copy-button.tsx",
+      "content": "import { Check, Copy } from 'lucide-react'\n\nimport { VisuallyHidden } from '~/components/primitives/visually-hidden'\nimport { useCopyToClipboard } from '~/hooks/use-copy-to-clipboard'\nimport { cx } from '~/lib/cx'\nimport { Button, type ButtonSize, type ButtonVariant } from './button'\nimport styles from './copy-button.module.scss'\n\nexport interface CopyButtonProps {\n  value: string\n  label?: string\n  copiedLabel?: string\n  variant?: ButtonVariant\n  size?: ButtonSize\n  className?: string\n}\n\n/** Copies a value on a user gesture and announces the result. */\nexport function CopyButton({\n  value,\n  label = 'Copy',\n  copiedLabel = 'Copied',\n  variant = 'outline',\n  size = 'sm',\n  className,\n}: CopyButtonProps) {\n  const { state, copy } = useCopyToClipboard()\n  const copied = state === 'copied'\n\n  return (\n    <span className={cx(styles.root, className)}>\n      <Button\n        type=\"button\"\n        variant={variant}\n        size={size}\n        onClick={() => void copy(value)}\n      >\n        {copied ? (\n          <Check className={styles.successIcon} aria-hidden />\n        ) : (\n          <Copy aria-hidden />\n        )}\n        {copied ? copiedLabel : label}\n      </Button>\n      <VisuallyHidden role=\"status\" aria-live=\"polite\">\n        {copied\n          ? 'Copied to clipboard'\n          : state === 'error'\n            ? 'Copy failed'\n            : ''}\n      </VisuallyHidden>\n    </span>\n  )\n}\n"
+    },
+    {
+      "path": "components/ui/copy-button.module.scss",
+      "content": "@use 'styles' as vz;\n\n.root {\n  position: relative;\n  display: inline-flex;\n}\n\n.success-icon {\n  color: vz.color('success');\n}\n"
+    }
+  ],
+  "description": "copy-button component"
+}

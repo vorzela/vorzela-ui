@@ -1,0 +1,90 @@
+@use 'styles' as vz;
+
+.root {
+  --progress-height: #{vz.space(2)};
+  --progress-bg: #{vz.color('primary')};
+
+  display: flex;
+  flex-direction: column;
+  gap: vz.space(2);
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: vz.space(3);
+  font-size: vz.font-size('sm');
+}
+
+.label {
+  color: vz.color('foreground');
+  font-weight: 500;
+}
+
+.value {
+  color: vz.color('muted-foreground');
+  font-variant-numeric: tabular-nums;
+}
+
+.track {
+  position: relative;
+  width: 100%;
+  height: var(--progress-height);
+  overflow: hidden;
+  border-radius: vz.radius('full');
+  background: vz.color('muted');
+}
+
+.sm {
+  --progress-height: #{vz.space(1)};
+}
+
+.lg {
+  --progress-height: #{vz.space(3)};
+}
+
+.indicator {
+  height: 100%;
+  border-radius: inherit;
+  background: var(--progress-bg);
+  transition: width vz.duration('slow') vz.ease('out');
+
+  @include vz.motion-reduce {
+    transition: none;
+  }
+}
+
+.success {
+  --progress-bg: #{vz.color('success')};
+}
+
+.warning {
+  --progress-bg: #{vz.color('warning')};
+}
+
+.destructive {
+  --progress-bg: #{vz.color('destructive')};
+}
+
+.indeterminate {
+  width: 35%;
+  animation: vz-progress 1.4s vz.ease('in-out') infinite;
+
+  @include vz.motion-reduce {
+    animation: none;
+    width: 100%;
+    opacity: 0.4;
+  }
+}
+
+@keyframes vz-progress {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(320%);
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "breadcrumb",
+  "type": "ui",
+  "version": "0.2.0",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "styles",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/breadcrumb.tsx",
+      "content": "import { ChevronRight } from 'lucide-react'\nimport { Fragment, type ReactNode } from 'react'\n\nimport { cx } from '~/lib/cx'\nimport styles from './breadcrumb.module.scss'\n\nexport type BreadcrumbItem = {\n  label: string\n  href?: string\n  current?: boolean\n}\n\nexport interface BreadcrumbProps {\n  items: BreadcrumbItem[]\n  className?: string\n  separator?: ReactNode\n}\n\n/** Compact path navigation. The final item is marked as the current page. */\nexport function Breadcrumb({ items, className, separator }: BreadcrumbProps) {\n  return (\n    <nav\n      aria-label=\"Breadcrumb\"\n      className={cx(styles.root, className)}\n    >\n      <ol className={styles.list}>\n        {items.map((item, index) => (\n          <Fragment key={`${item.label}-${index}`}>\n            {index > 0 ? (\n              <li aria-hidden className={styles.separator}>\n                {separator ?? <ChevronRight aria-hidden />}\n              </li>\n            ) : null}\n            <li className={styles.item}>\n              {item.href && !item.current ? (\n                <a href={item.href} className={styles.link}>\n                  {item.label}\n                </a>\n              ) : (\n                <span\n                  aria-current={item.current ? 'page' : undefined}\n                  className={cx(styles.label, item.current && styles.current)}\n                >\n                  {item.label}\n                </span>\n              )}\n            </li>\n          </Fragment>\n        ))}\n      </ol>\n    </nav>\n  )\n}\n"
+    },
+    {
+      "path": "components/ui/breadcrumb.module.scss",
+      "content": "@use 'styles' as vz;\n\n.root {\n  width: 100%;\n  overflow-x: auto;\n\n  @include vz.scrollbar(6px);\n}\n\n.list {\n  display: flex;\n  align-items: center;\n  gap: vz.space(1.5);\n  min-width: max-content;\n  margin: 0;\n  padding: 0;\n  color: vz.color('muted-foreground');\n  font-size: vz.font-size('sm');\n  list-style: none;\n}\n\n.item {\n  display: inline-flex;\n  align-items: center;\n}\n\n.separator {\n  display: inline-flex;\n  align-items: center;\n  color: vz.color('muted-foreground', 0.7);\n\n  svg {\n    @include vz.icon(3.5);\n  }\n}\n\n.label {\n  color: inherit;\n}\n\n.current {\n  color: vz.color('foreground');\n  font-weight: 500;\n}\n\n.link {\n  border-radius: vz.radius('xs');\n  color: inherit;\n  text-decoration: none;\n  transition: color vz.duration('fast') vz.ease('out');\n\n  @include vz.hover {\n    color: vz.color('foreground');\n  }\n\n  @include vz.focus-ring(2px, 2px, 0.6);\n}\n"
+    }
+  ],
+  "description": "breadcrumb component"
+}

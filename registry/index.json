@@ -1,0 +1,1914 @@
+{
+  "version": "0.2.0",
+  "generatedAt": "2026-11-06T08:28:53.934Z",
+  "items": [
+    {
+      "name": "accordion",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "styles",
+        "utils"
+      ],
+      "description": "accordion component",
+      "files": [
+        "components/ui/accordion.tsx",
+        "components/ui/accordion.module.scss"
+      ]
+    },
+    {
+      "name": "action-menu",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [
+        "primitives",
+        "styles",
+        "utils"
+      ],
+      "description": "action-menu component",
+      "files": [
+        "components/ui/action-menu.tsx",
+        "components/ui/action-menu.module.scss"
+      ]
+    },
+    {
+      "name": "alert",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "styles",
+        "utils"
+      ],
+      "description": "alert component",
+      "files": [
+        "components/ui/alert.tsx",
+        "components/ui/alert.module.scss"
+      ]
+    },
+    {
+      "name": "alert-dialog",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [
+        "button",
+        "hooks",
+        "lib-overlay",
+        "primitives",
+        "styles",
+        "utils"
+      ],
+      "description": "alert-dialog component",
+      "files": [
+        "components/ui/alert-dialog.tsx",
+        "components/ui/alert-dialog.module.scss"
+      ]
+    },
+    {
+      "name": "app-shell",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [
+        "primitives",
+        "sidebar",
+        "styles",
+        "topbar"
+      ],
+      "description": "app-shell component",
+      "files": [
+        "components/ui/app-shell.tsx",
+        "components/ui/app-shell.module.scss"
+      ]
+    },
+    {
+      "name": "aspect-ratio",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [
+        "styles",
+        "utils"
+      ],
+      "description": "aspect-ratio component",
+      "files": [
+        "components/ui/aspect-ratio.tsx",
+        "components/ui/aspect-ratio.module.scss"
+      ]
+    },
+    {
+      "name": "autocomplete",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "hooks",
+        "label",
+        "styles",
+        "utils"
+      ],
+      "description": "autocomplete component",
+      "files": [
+        "components/ui/autocomplete.tsx",
+        "components/ui/autocomplete.module.scss"
+      ]
+    },
+    {
+      "name": "avatar",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [
+        "styles",
+        "utils"
+      ],
+      "description": "avatar component",
+      "files": [
+        "components/ui/avatar.tsx",
+        "components/ui/avatar.module.scss"
+      ]
+    },
+    {
+      "name": "badge",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [
+        "styles",
+        "utils"
+      ],
+      "description": "badge component",
+      "files": [
+        "components/ui/badge.tsx",
+        "components/ui/badge.module.scss"
+      ]
+    },
+    {
+      "name": "banner",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "styles",
+        "utils"
+      ],
+      "description": "banner component",
+      "files": [
+        "components/ui/banner.tsx",
+        "components/ui/banner.module.scss"
+      ]
+    },
+    {
+      "name": "bento-grid",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [
+        "styles",
+        "utils"
+      ],
+      "description": "bento-grid component",
+      "files": [
+        "components/ui/bento-grid.tsx",
+        "components/ui/bento-grid.module.scss"
+      ]
+    },
+    {
+      "name": "breadcrumb",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "styles",
+        "utils"
+      ],
+      "description": "breadcrumb component",
+      "files": [
+        "components/ui/breadcrumb.tsx",
+        "components/ui/breadcrumb.module.scss"
+      ]
+    },
+    {
+      "name": "button",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [
+        "styles",
+        "utils"
+      ],
+      "description": "button component",
+      "files": [
+        "components/ui/button.tsx",
+        "components/ui/button.module.scss"
+      ]
+    },
+    {
+      "name": "calendar",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "styles",
+        "utils"
+      ],
+      "description": "calendar component",
+      "files": [
+        "components/ui/calendar.tsx",
+        "components/ui/calendar.module.scss"
+      ]
+    },
+    {
+      "name": "callout",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "styles",
+        "utils"
+      ],
+      "description": "callout component",
+      "files": [
+        "components/ui/callout.tsx",
+        "components/ui/callout.module.scss"
+      ]
+    },
+    {
+      "name": "card",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [
+        "styles",
+        "utils"
+      ],
+      "description": "card component",
+      "files": [
+        "components/ui/card.tsx",
+        "components/ui/card.module.scss"
+      ]
+    },
+    {
+      "name": "carousel",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button",
+        "hooks",
+        "styles",
+        "utils"
+      ],
+      "description": "carousel component",
+      "files": [
+        "components/ui/carousel.tsx",
+        "components/ui/carousel.module.scss"
+      ]
+    },
+    {
+      "name": "checkbox",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "styles",
+        "utils"
+      ],
+      "description": "checkbox component",
+      "files": [
+        "components/ui/checkbox.tsx",
+        "components/ui/checkbox.module.scss"
+      ]
+    },
+    {
+      "name": "close-button",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "styles",
+        "utils"
+      ],
+      "description": "close-button component",
+      "files": [
+        "components/ui/close-button.tsx",
+        "components/ui/close-button.module.scss"
+      ]
+    },
+    {
+      "name": "collapsible",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "hooks",
+        "styles",
+        "utils"
+      ],
+      "description": "collapsible component",
+      "files": [
+        "components/ui/collapsible.tsx",
+        "components/ui/collapsible.module.scss"
+      ]
+    },
+    {
+      "name": "color-picker",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [
+        "styles",
+        "utils"
+      ],
+      "description": "color-picker component",
+      "files": [
+        "components/ui/color-picker.tsx",
+        "components/ui/color-picker.module.scss"
+      ]
+    },
+    {
+      "name": "combobox",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "hooks",
+        "label",
+        "styles",
+        "utils"
+      ],
+      "description": "combobox component",
+      "files": [
+        "components/ui/combobox.tsx",
+        "components/ui/combobox.module.scss"
+      ]
+    },
+    {
+      "name": "command",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "lib-overlay",
+        "primitives",
+        "styles",
+        "utils"
+      ],
+      "description": "command component",
+      "files": [
+        "components/ui/command.tsx",
+        "components/ui/command.module.scss"
+      ]
+    },
+    {
+      "name": "context-menu",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [
+        "primitives",
+        "styles",
+        "utils"
+      ],
+      "description": "context-menu component",
+      "files": [
+        "components/ui/context-menu.tsx",
+        "components/ui/context-menu.module.scss"
+      ]
+    },
+    {
+      "name": "cookie-consent",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button",
+        "lib-security",
+        "primitives",
+        "styles",
+        "utils"
+      ],
+      "description": "cookie-consent component",
+      "files": [
+        "components/ui/cookie-consent.tsx",
+        "components/ui/cookie-consent.module.scss"
+      ]
+    },
+    {
+      "name": "copy-button",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button",
+        "hooks",
+        "primitives",
+        "styles",
+        "utils"
+      ],
+      "description": "copy-button component",
+      "files": [
+        "components/ui/copy-button.tsx",
+        "components/ui/copy-button.module.scss"
+      ]
+    },
+    {
+      "name": "currency-input",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [
+        "input",
+        "styles"
+      ],
+      "description": "currency-input component",
+      "files": [
+        "components/ui/currency-input.tsx",
+        "components/ui/currency-input.module.scss"
+      ]
+    },
+    {
+      "name": "data-table",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [
+        "@tanstack/react-table",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "checkbox",
+        "helpers",
+        "lib-table",
+        "styles",
+        "utils"
+      ],
+      "description": "data-table component",
+      "files": [
+        "components/ui/data-table.tsx",
+        "components/ui/data-table.module.scss"
+      ]
+    },
+    {
+      "name": "date-picker",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "calendar",
+        "hooks",
+        "label",
+        "styles",
+        "utils"
+      ],
+      "description": "date-picker component",
+      "files": [
+        "components/ui/date-picker.tsx",
+        "components/ui/date-picker.module.scss"
+      ]
+    },
+    {
+      "name": "description-list",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [
+        "styles",
+        "utils"
+      ],
+      "description": "description-list component",
+      "files": [
+        "components/ui/description-list.tsx",
+        "components/ui/description-list.module.scss"
+      ]
+    },
+    {
+      "name": "diff-viewer",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [
+        "styles",
+        "utils"
+      ],
+      "description": "diff-viewer component",
+      "files": [
+        "components/ui/diff-viewer.tsx",
+        "components/ui/diff-viewer.module.scss"
+      ]
+    },
+    {
+      "name": "drawer",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "hooks",
+        "lib-overlay",
+        "primitives",
+        "styles",
+        "utils"
+      ],
+      "description": "drawer component",
+      "files": [
+        "components/ui/drawer.tsx",
+        "components/ui/drawer.module.scss"
+      ]
+    },
+    {
+      "name": "dropdown",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [
+        "primitives",
+        "styles",
+        "utils"
+      ],
+      "description": "dropdown component",
+      "files": [
+        "components/ui/dropdown.tsx",
+        "components/ui/dropdown.module.scss"
+      ]
+    },
+    {
+      "name": "editable",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "styles",
+        "utils"
+      ],
+      "description": "editable component",
+      "files": [
+        "components/ui/editable.tsx",
+        "components/ui/editable.module.scss"
+      ]
+    },
+    {
+      "name": "empty",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [
+        "button",
+        "styles",
+        "utils"
+      ],
+      "description": "empty component",
+      "files": [
+        "components/ui/empty.tsx",
+        "components/ui/empty.module.scss"
+      ]
+    },
+    {
+      "name": "error-state",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button",
+        "styles",
+        "utils"
+      ],
+      "description": "error-state component",
+      "files": [
+        "components/ui/error-state.tsx",
+        "components/ui/error-state.module.scss"
+      ]
+    },
+    {
+      "name": "file-upload",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button",
+        "lib-security",
+        "styles",
+        "utils"
+      ],
+      "description": "file-upload component",
+      "files": [
+        "components/ui/file-upload.tsx",
+        "components/ui/file-upload.module.scss"
+      ]
+    },
+    {
+      "name": "floating-label-input",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "styles",
+        "utils"
+      ],
+      "description": "floating-label-input component",
+      "files": [
+        "components/ui/floating-label-input.tsx",
+        "components/ui/floating-label-input.module.scss"
+      ]
+    },
+    {
+      "name": "glass-panel",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [
+        "styles",
+        "utils"
+      ],
+      "description": "glass-panel component",
+      "files": [
+        "components/ui/glass-panel.tsx",
+        "components/ui/glass-panel.module.scss"
+      ]
+    },
+    {
+      "name": "header",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "styles",
+        "utils"
+      ],
+      "description": "header component",
+      "files": [
+        "components/ui/header.tsx",
+        "components/ui/header.module.scss"
+      ]
+    },
+    {
+      "name": "helpers",
+      "type": "util",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [],
+      "description": "",
+      "files": [
+        "components/utils/for.tsx",
+        "components/utils/show.tsx",
+        "components/utils/switch.tsx"
+      ]
+    },
+    {
+      "name": "hooks",
+      "type": "hook",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [],
+      "description": "",
+      "files": [
+        "hooks/use-container-size.ts",
+        "hooks/use-controllable-state.ts",
+        "hooks/use-copy-to-clipboard.ts",
+        "hooks/use-hotkeys.ts",
+        "hooks/use-isomorphic-layout-effect.ts",
+        "hooks/use-latest.ts",
+        "hooks/use-media-query.ts",
+        "hooks/use-mounted.ts",
+        "hooks/use-online-status.ts",
+        "hooks/use-reduced-motion.ts"
+      ]
+    },
+    {
+      "name": "hover-card",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [
+        "lib-refs",
+        "primitives",
+        "styles",
+        "utils"
+      ],
+      "description": "hover-card component",
+      "files": [
+        "components/ui/hover-card.tsx",
+        "components/ui/hover-card.module.scss"
+      ]
+    },
+    {
+      "name": "input",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "label",
+        "styles",
+        "utils"
+      ],
+      "description": "input component",
+      "files": [
+        "components/ui/input.tsx",
+        "components/ui/input.module.scss"
+      ]
+    },
+    {
+      "name": "input-group",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [
+        "input",
+        "styles",
+        "utils"
+      ],
+      "description": "input-group component",
+      "files": [
+        "components/ui/input-group.tsx",
+        "components/ui/input-group.module.scss"
+      ]
+    },
+    {
+      "name": "invoice",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [
+        "styles",
+        "utils"
+      ],
+      "description": "invoice component",
+      "files": [
+        "components/ui/invoice.tsx",
+        "components/ui/invoice.module.scss"
+      ]
+    },
+    {
+      "name": "json-viewer",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "styles",
+        "utils"
+      ],
+      "description": "json-viewer component",
+      "files": [
+        "components/ui/json-viewer.tsx",
+        "components/ui/json-viewer.module.scss"
+      ]
+    },
+    {
+      "name": "kbd",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [
+        "styles",
+        "utils"
+      ],
+      "description": "kbd component",
+      "files": [
+        "components/ui/kbd.tsx",
+        "components/ui/kbd.module.scss"
+      ]
+    },
+    {
+      "name": "label",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [
+        "styles",
+        "utils"
+      ],
+      "description": "label component",
+      "files": [
+        "components/ui/label.tsx",
+        "components/ui/label.module.scss"
+      ]
+    },
+    {
+      "name": "layout",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [
+        "styles",
+        "utils"
+      ],
+      "description": "layout component",
+      "files": [
+        "components/ui/layout.tsx",
+        "components/ui/layout.module.scss"
+      ]
+    },
+    {
+      "name": "lib-overlay",
+      "type": "lib",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [],
+      "description": "",
+      "files": [
+        "lib/overlay.ts"
+      ]
+    },
+    {
+      "name": "lib-phone-countries",
+      "type": "lib",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [],
+      "description": "",
+      "files": [
+        "lib/phone-countries.ts"
+      ]
+    },
+    {
+      "name": "lib-refs",
+      "type": "lib",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [],
+      "description": "",
+      "files": [
+        "lib/refs.ts"
+      ]
+    },
+    {
+      "name": "lib-security",
+      "type": "lib",
+      "version": "0.2.0",
+      "dependencies": [
+        "dompurify"
+      ],
+      "registryDependencies": [],
+      "description": "",
+      "files": [
+        "lib/security.ts"
+      ]
+    },
+    {
+      "name": "lib-table",
+      "type": "lib",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [],
+      "description": "",
+      "files": [
+        "lib/table.ts"
+      ]
+    },
+    {
+      "name": "link",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "lib-security",
+        "styles",
+        "utils"
+      ],
+      "description": "link component",
+      "files": [
+        "components/ui/link.tsx",
+        "components/ui/link.module.scss"
+      ]
+    },
+    {
+      "name": "list",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [
+        "styles",
+        "utils"
+      ],
+      "description": "list component",
+      "files": [
+        "components/ui/list.tsx",
+        "components/ui/list.module.scss"
+      ]
+    },
+    {
+      "name": "marquee",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [
+        "styles",
+        "utils"
+      ],
+      "description": "marquee component",
+      "files": [
+        "components/ui/marquee.tsx",
+        "components/ui/marquee.module.scss"
+      ]
+    },
+    {
+      "name": "masonry-grid",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [
+        "styles",
+        "utils"
+      ],
+      "description": "masonry-grid component",
+      "files": [
+        "components/ui/masonry-grid.tsx",
+        "components/ui/masonry-grid.module.scss"
+      ]
+    },
+    {
+      "name": "menubar",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [
+        "dropdown",
+        "styles",
+        "utils"
+      ],
+      "description": "menubar component",
+      "files": [
+        "components/ui/menubar.tsx",
+        "components/ui/menubar.module.scss"
+      ]
+    },
+    {
+      "name": "modal",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "hooks",
+        "lib-overlay",
+        "primitives",
+        "styles",
+        "utils"
+      ],
+      "description": "modal component",
+      "files": [
+        "components/ui/modal.tsx",
+        "components/ui/modal.module.scss"
+      ]
+    },
+    {
+      "name": "navigation-menu",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "styles",
+        "utils"
+      ],
+      "description": "navigation-menu component",
+      "files": [
+        "components/ui/navigation-menu.tsx",
+        "components/ui/navigation-menu.module.scss"
+      ]
+    },
+    {
+      "name": "network-loader",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [
+        "hooks",
+        "primitives",
+        "spinner",
+        "styles",
+        "utils"
+      ],
+      "description": "network-loader component",
+      "files": [
+        "components/ui/network-loader.tsx",
+        "components/ui/network-loader.module.scss"
+      ]
+    },
+    {
+      "name": "notification-center",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button",
+        "empty",
+        "styles",
+        "utils"
+      ],
+      "description": "notification-center component",
+      "files": [
+        "components/ui/notification-center.tsx",
+        "components/ui/notification-center.module.scss"
+      ]
+    },
+    {
+      "name": "number-input",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "hooks",
+        "styles",
+        "utils"
+      ],
+      "description": "number-input component",
+      "files": [
+        "components/ui/number-input.tsx",
+        "components/ui/number-input.module.scss"
+      ]
+    },
+    {
+      "name": "number-ticker",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [
+        "hooks",
+        "styles",
+        "utils"
+      ],
+      "description": "number-ticker component",
+      "files": [
+        "components/ui/number-ticker.tsx",
+        "components/ui/number-ticker.module.scss"
+      ]
+    },
+    {
+      "name": "offline-banner",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "hooks",
+        "styles",
+        "utils"
+      ],
+      "description": "offline-banner component",
+      "files": [
+        "components/ui/offline-banner.tsx",
+        "components/ui/offline-banner.module.scss"
+      ]
+    },
+    {
+      "name": "optimized-image",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "helpers",
+        "styles",
+        "utils"
+      ],
+      "description": "optimized-image component",
+      "files": [
+        "components/ui/optimized-image.tsx",
+        "components/ui/optimized-image.module.scss"
+      ]
+    },
+    {
+      "name": "otp-input",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [
+        "hooks",
+        "styles",
+        "utils"
+      ],
+      "description": "otp-input component",
+      "files": [
+        "components/ui/otp-input.tsx",
+        "components/ui/otp-input.module.scss"
+      ]
+    },
+    {
+      "name": "pagination",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button",
+        "primitives",
+        "styles",
+        "utils"
+      ],
+      "description": "pagination component",
+      "files": [
+        "components/ui/pagination.tsx",
+        "components/ui/pagination.module.scss"
+      ]
+    },
+    {
+      "name": "password-input",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "label",
+        "styles",
+        "utils"
+      ],
+      "description": "password-input component",
+      "files": [
+        "components/ui/password-input.tsx",
+        "components/ui/password-input.module.scss"
+      ]
+    },
+    {
+      "name": "phone-input",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "label",
+        "lib-phone-countries",
+        "styles",
+        "utils"
+      ],
+      "description": "phone-input component",
+      "files": [
+        "components/ui/phone-input.tsx",
+        "components/ui/phone-input.module.scss"
+      ]
+    },
+    {
+      "name": "popconfirm",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [
+        "button",
+        "popover",
+        "styles"
+      ],
+      "description": "popconfirm component",
+      "files": [
+        "components/ui/popconfirm.tsx",
+        "components/ui/popconfirm.module.scss"
+      ]
+    },
+    {
+      "name": "popover",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [
+        "lib-overlay",
+        "lib-refs",
+        "primitives",
+        "styles",
+        "utils"
+      ],
+      "description": "popover component",
+      "files": [
+        "components/ui/popover.tsx",
+        "components/ui/popover.module.scss"
+      ]
+    },
+    {
+      "name": "primitives",
+      "type": "primitive",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [],
+      "description": "",
+      "files": [
+        "components/primitives/dismissable-layer.tsx",
+        "components/primitives/error-boundary.tsx",
+        "components/primitives/fade-in.tsx",
+        "components/primitives/focus-trap.tsx",
+        "components/primitives/portal.tsx",
+        "components/primitives/primitives.module.scss",
+        "components/primitives/skip-link.tsx",
+        "components/primitives/visually-hidden.tsx"
+      ]
+    },
+    {
+      "name": "progress",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [
+        "styles",
+        "utils"
+      ],
+      "description": "progress component",
+      "files": [
+        "components/ui/progress.tsx",
+        "components/ui/progress.module.scss"
+      ]
+    },
+    {
+      "name": "radio-group",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [
+        "styles",
+        "utils"
+      ],
+      "description": "radio-group component",
+      "files": [
+        "components/ui/radio-group.tsx",
+        "components/ui/radio-group.module.scss"
+      ]
+    },
+    {
+      "name": "range-slider",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [
+        "styles",
+        "utils"
+      ],
+      "description": "range-slider component",
+      "files": [
+        "components/ui/range-slider.tsx",
+        "components/ui/range-slider.module.scss"
+      ]
+    },
+    {
+      "name": "rating",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "styles",
+        "utils"
+      ],
+      "description": "rating component",
+      "files": [
+        "components/ui/rating.tsx",
+        "components/ui/rating.module.scss"
+      ]
+    },
+    {
+      "name": "receipt",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [
+        "styles",
+        "utils"
+      ],
+      "description": "receipt component",
+      "files": [
+        "components/ui/receipt.tsx",
+        "components/ui/receipt.module.scss"
+      ]
+    },
+    {
+      "name": "resizable",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "styles",
+        "utils"
+      ],
+      "description": "resizable component",
+      "files": [
+        "components/ui/resizable.tsx",
+        "components/ui/resizable.module.scss"
+      ]
+    },
+    {
+      "name": "result",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "styles",
+        "utils"
+      ],
+      "description": "result component",
+      "files": [
+        "components/ui/result.tsx",
+        "components/ui/result.module.scss"
+      ]
+    },
+    {
+      "name": "scroll-area",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [
+        "styles",
+        "utils"
+      ],
+      "description": "scroll-area component",
+      "files": [
+        "components/ui/scroll-area.tsx",
+        "components/ui/scroll-area.module.scss"
+      ]
+    },
+    {
+      "name": "search-input",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "label",
+        "styles",
+        "utils"
+      ],
+      "description": "search-input component",
+      "files": [
+        "components/ui/search-input.tsx",
+        "components/ui/search-input.module.scss"
+      ]
+    },
+    {
+      "name": "segmented-control",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [
+        "hooks",
+        "styles",
+        "utils"
+      ],
+      "description": "segmented-control component",
+      "files": [
+        "components/ui/segmented-control.tsx",
+        "components/ui/segmented-control.module.scss"
+      ]
+    },
+    {
+      "name": "select",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "hooks",
+        "label",
+        "styles",
+        "utils"
+      ],
+      "description": "select component",
+      "files": [
+        "components/ui/select.tsx",
+        "components/ui/select.module.scss"
+      ]
+    },
+    {
+      "name": "separator",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [
+        "styles",
+        "utils"
+      ],
+      "description": "separator component",
+      "files": [
+        "components/ui/separator.tsx",
+        "components/ui/separator.module.scss"
+      ]
+    },
+    {
+      "name": "sheet",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "hooks",
+        "lib-overlay",
+        "primitives",
+        "styles",
+        "utils"
+      ],
+      "description": "sheet component",
+      "files": [
+        "components/ui/sheet.tsx",
+        "components/ui/sheet.module.scss"
+      ]
+    },
+    {
+      "name": "sidebar",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "hooks",
+        "lib-overlay",
+        "styles",
+        "utils"
+      ],
+      "description": "sidebar component",
+      "files": [
+        "components/ui/sidebar.tsx",
+        "components/ui/sidebar.module.scss"
+      ]
+    },
+    {
+      "name": "simple-data-table",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [
+        "@tanstack/react-table",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "helpers",
+        "lib-table",
+        "styles",
+        "utils"
+      ],
+      "description": "simple-data-table component",
+      "files": [
+        "components/ui/simple-data-table.tsx",
+        "components/ui/simple-data-table.module.scss"
+      ]
+    },
+    {
+      "name": "skeleton",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [
+        "styles",
+        "utils"
+      ],
+      "description": "skeleton component",
+      "files": [
+        "components/ui/skeleton.tsx",
+        "components/ui/skeleton.module.scss"
+      ]
+    },
+    {
+      "name": "slider",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [
+        "styles",
+        "utils"
+      ],
+      "description": "slider component",
+      "files": [
+        "components/ui/slider.tsx",
+        "components/ui/slider.module.scss"
+      ]
+    },
+    {
+      "name": "sonner",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "primitives",
+        "styles",
+        "utils"
+      ],
+      "description": "sonner component",
+      "files": [
+        "components/ui/sonner.tsx",
+        "components/ui/sonner.module.scss"
+      ]
+    },
+    {
+      "name": "spinner",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [
+        "styles",
+        "utils"
+      ],
+      "description": "spinner component",
+      "files": [
+        "components/ui/spinner.tsx",
+        "components/ui/spinner.module.scss"
+      ]
+    },
+    {
+      "name": "stat",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "styles",
+        "utils"
+      ],
+      "description": "stat component",
+      "files": [
+        "components/ui/stat.tsx",
+        "components/ui/stat.module.scss"
+      ]
+    },
+    {
+      "name": "status-dot",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [
+        "styles",
+        "utils"
+      ],
+      "description": "status-dot component",
+      "files": [
+        "components/ui/status-dot.tsx",
+        "components/ui/status-dot.module.scss"
+      ]
+    },
+    {
+      "name": "stepper",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "styles",
+        "utils"
+      ],
+      "description": "stepper component",
+      "files": [
+        "components/ui/stepper.tsx",
+        "components/ui/stepper.module.scss"
+      ]
+    },
+    {
+      "name": "styles",
+      "type": "style",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [],
+      "description": "",
+      "files": [
+        "styles/_index.scss",
+        "styles/base/_base.scss",
+        "styles/base/_globals.scss",
+        "styles/base/_reset.scss",
+        "styles/global.scss",
+        "styles/mixins/_focus-ring.scss",
+        "styles/mixins/_group.scss",
+        "styles/mixins/_icon.scss",
+        "styles/mixins/_interaction.scss",
+        "styles/mixins/_scrollbar.scss",
+        "styles/mixins/_supports.scss",
+        "styles/mixins/_surface.scss",
+        "styles/mixins/_truncate.scss",
+        "styles/tokens/_breakpoints.scss",
+        "styles/tokens/_color.scss",
+        "styles/tokens/_motion.scss",
+        "styles/tokens/_radius.scss",
+        "styles/tokens/_shadow.scss",
+        "styles/tokens/_space.scss",
+        "styles/tokens/_type.scss",
+        "styles/tokens/_z.scss"
+      ]
+    },
+    {
+      "name": "switch",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [
+        "styles",
+        "utils"
+      ],
+      "description": "switch component",
+      "files": [
+        "components/ui/switch.tsx",
+        "components/ui/switch.module.scss"
+      ]
+    },
+    {
+      "name": "tab-bar",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [
+        "hooks",
+        "styles",
+        "utils"
+      ],
+      "description": "tab-bar component",
+      "files": [
+        "components/ui/tab-bar.tsx",
+        "components/ui/tab-bar.module.scss"
+      ]
+    },
+    {
+      "name": "table",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [
+        "styles",
+        "utils"
+      ],
+      "description": "table component",
+      "files": [
+        "components/ui/table.tsx",
+        "components/ui/table.module.scss"
+      ]
+    },
+    {
+      "name": "tabs",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [
+        "styles",
+        "utils"
+      ],
+      "description": "tabs component",
+      "files": [
+        "components/ui/tabs.tsx",
+        "components/ui/tabs.module.scss"
+      ]
+    },
+    {
+      "name": "tag-input",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "hooks",
+        "styles",
+        "utils"
+      ],
+      "description": "tag-input component",
+      "files": [
+        "components/ui/tag-input.tsx",
+        "components/ui/tag-input.module.scss"
+      ]
+    },
+    {
+      "name": "textarea",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "label",
+        "styles",
+        "utils"
+      ],
+      "description": "textarea component",
+      "files": [
+        "components/ui/textarea.tsx",
+        "components/ui/textarea.module.scss"
+      ]
+    },
+    {
+      "name": "time-picker",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "input",
+        "styles"
+      ],
+      "description": "time-picker component",
+      "files": [
+        "components/ui/time-picker.tsx"
+      ]
+    },
+    {
+      "name": "timeline",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [
+        "styles",
+        "utils"
+      ],
+      "description": "timeline component",
+      "files": [
+        "components/ui/timeline.tsx",
+        "components/ui/timeline.module.scss"
+      ]
+    },
+    {
+      "name": "toggle",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [
+        "styles",
+        "utils"
+      ],
+      "description": "toggle component",
+      "files": [
+        "components/ui/toggle.tsx",
+        "components/ui/toggle.module.scss"
+      ]
+    },
+    {
+      "name": "toggle-group",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [
+        "styles",
+        "toggle",
+        "utils"
+      ],
+      "description": "toggle-group component",
+      "files": [
+        "components/ui/toggle-group.tsx",
+        "components/ui/toggle-group.module.scss"
+      ]
+    },
+    {
+      "name": "toolbar",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [
+        "separator",
+        "styles",
+        "utils"
+      ],
+      "description": "toolbar component",
+      "files": [
+        "components/ui/toolbar.tsx",
+        "components/ui/toolbar.module.scss"
+      ]
+    },
+    {
+      "name": "tooltip",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [
+        "primitives",
+        "styles",
+        "utils"
+      ],
+      "description": "tooltip component",
+      "files": [
+        "components/ui/tooltip.tsx",
+        "components/ui/tooltip.module.scss"
+      ]
+    },
+    {
+      "name": "topbar",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [
+        "header",
+        "styles"
+      ],
+      "description": "topbar component",
+      "files": [
+        "components/ui/topbar.tsx"
+      ]
+    },
+    {
+      "name": "tree-view",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "styles",
+        "utils"
+      ],
+      "description": "tree-view component",
+      "files": [
+        "components/ui/tree-view.tsx",
+        "components/ui/tree-view.module.scss"
+      ]
+    },
+    {
+      "name": "typography",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [
+        "styles",
+        "utils"
+      ],
+      "description": "typography component",
+      "files": [
+        "components/ui/typography.tsx",
+        "components/ui/typography.module.scss"
+      ]
+    },
+    {
+      "name": "utils",
+      "type": "lib",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [],
+      "description": "",
+      "files": [
+        "lib/cx.ts"
+      ]
+    },
+    {
+      "name": "virtual-list",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "registryDependencies": [
+        "styles",
+        "utils"
+      ],
+      "description": "virtual-list component",
+      "files": [
+        "components/ui/virtual-list.tsx",
+        "components/ui/virtual-list.module.scss"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "input-group",
+  "type": "ui",
+  "version": "0.2.0",
+  "dependencies": [],
+  "registryDependencies": [
+    "input",
+    "styles",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/input-group.tsx",
+      "content": "import type { ComponentProps, HTMLAttributes, Ref } from 'react'\nimport * as React from 'react'\n\nimport { cx } from '~/lib/cx'\n\nimport styles from './input-group.module.scss'\nimport { BareInput } from './input'\n\nexport interface InputGroupProps extends HTMLAttributes<HTMLDivElement> {\n  /** Stack segments vertically instead of a single connected row. */\n  orientation?: 'horizontal' | 'vertical'\n}\n\n/**\n * Connected control group — share one border / focus ring across addons and\n * inputs.\n *\n * @example\n * <InputGroup>\n *   <InputGroupAddon>https://</InputGroupAddon>\n *   <Input placeholder=\"vorzela.com\" />\n *   <InputGroupAddon align=\"end\">.app</InputGroupAddon>\n * </InputGroup>\n */\nexport function InputGroup({\n  className,\n  orientation = 'horizontal',\n  ...props\n}: InputGroupProps) {\n  return (\n    <div\n      role=\"group\"\n      data-orientation={orientation}\n      className={cx(\n        styles.group,\n        orientation === 'vertical' && styles.vertical,\n        className,\n      )}\n      {...props}\n    />\n  )\n}\n\nexport interface InputGroupAddonProps extends HTMLAttributes<HTMLDivElement> {\n  align?: 'start' | 'end'\n}\n\nexport function InputGroupAddon({\n  className,\n  align = 'start',\n  ...props\n}: InputGroupAddonProps) {\n  return (\n    <div\n      data-slot=\"addon\"\n      data-align={align}\n      className={cx(styles.addon, className)}\n      {...props}\n    />\n  )\n}\n\nexport function InputGroupText({\n  className,\n  ...props\n}: HTMLAttributes<HTMLSpanElement>) {\n  return <span className={cx(styles.text, className)} {...props} />\n}\n\nexport const InputGroupInput = React.forwardRef<\n  HTMLInputElement,\n  ComponentProps<typeof BareInput>\n>(function InputGroupInput({ className, ...props }, ref: Ref<HTMLInputElement>) {\n  return (\n    <span className={styles.inputWrap}>\n      <BareInput ref={ref} className={cx(styles.control, className)} {...props} />\n    </span>\n  )\n})\n"
+    },
+    {
+      "path": "components/ui/input-group.module.scss",
+      "content": "@use 'styles' as vz;\n\n.group {\n  display: flex;\n  width: 100%;\n  overflow: hidden;\n  border: 1px solid vz.color('input');\n  border-radius: vz.radius('md');\n  background: vz.color('card');\n  transition: box-shadow vz.duration('base') vz.ease('out');\n\n  &:focus-within {\n    box-shadow: 0 0 0 2px vz.color('ring', 0.6);\n  }\n}\n\n.vertical {\n  flex-direction: column;\n}\n\n.group > * + * {\n  border-inline-start: 1px solid vz.color('input');\n}\n\n.group.vertical > * + * {\n  border-inline-start: 0;\n  border-block-start: 1px solid vz.color('input');\n}\n\n.addon {\n  display: flex;\n  flex: none;\n  align-items: center;\n  gap: vz.space(1.5);\n  padding-inline: vz.space(3);\n  background: vz.color('muted', 0.4);\n  color: vz.color('muted-foreground');\n  font-size: vz.font-size('sm');\n\n  svg {\n    @include vz.icon(4);\n  }\n}\n\n.addon[data-align='end'] {\n  justify-content: flex-end;\n}\n\n.text {\n  color: vz.color('muted-foreground');\n  font-size: vz.font-size('sm');\n  white-space: nowrap;\n}\n\n.input-wrap {\n  display: flex;\n  flex: 1;\n  align-items: center;\n  min-width: 0;\n}\n\n.input-wrap > :first-child {\n  height: 100%;\n  border: 0;\n  border-radius: 0;\n  background: transparent;\n  box-shadow: none;\n\n  &:focus-within {\n    border: 0;\n    box-shadow: none;\n  }\n}\n\n.control {\n  min-width: 0;\n}\n"
+    }
+  ],
+  "description": "input-group component"
+}

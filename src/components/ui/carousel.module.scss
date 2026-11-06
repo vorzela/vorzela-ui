@@ -1,0 +1,176 @@
+@use 'styles' as vz;
+
+.root {
+  position: relative;
+  width: 100%;
+}
+
+.track {
+  display: flex;
+  overflow-x: auto;
+  border-radius: vz.radius('xl');
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.slide {
+  flex: none;
+  width: 100%;
+  scroll-snap-align: center;
+}
+
+.root .control {
+  --btn-height: #{vz.space(8)};
+  --btn-px: 0;
+  --btn-radius: #{vz.radius('full')};
+  --btn-bg: #{vz.color('background', 0.9)};
+  --btn-border: #{vz.color('border')};
+  --btn-shadow: #{vz.elevation(1)};
+
+  position: absolute;
+  opacity: 0.55;
+  backdrop-filter: blur(8px);
+  transition: opacity vz.duration('base') vz.ease('out');
+
+  @include vz.motion-reduce {
+    transition: none;
+  }
+}
+
+@include vz.hover {
+  .root:hover .control,
+  .root:focus-within .control {
+    opacity: 1;
+  }
+}
+
+@media (hover: none) {
+  .root .control {
+    opacity: 1;
+  }
+}
+
+.root .control:disabled {
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+.root .control:hover {
+  --btn-bg: #{vz.color('accent')};
+  --btn-fg: #{vz.color('accent-foreground')};
+}
+
+.previous {
+  top: calc(50% - #{vz.space(4)});
+  left: vz.space(2);
+}
+
+.next {
+  top: calc(50% - #{vz.space(4)});
+  right: vz.space(2);
+}
+
+.pause {
+  top: vz.space(2);
+  right: vz.space(2);
+}
+
+.dots {
+  display: flex;
+  width: fit-content;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  margin: vz.space(3) auto 0;
+  padding: 4px;
+  border: 1px solid vz.color('border', 0.7);
+  border-radius: vz.radius('full');
+  background: vz.color('card', 0.7);
+  backdrop-filter: blur(12px);
+}
+
+.dot {
+  position: relative;
+  width: vz.space(5);
+  height: vz.space(5);
+  padding: 0;
+  border: 0;
+  border-radius: vz.radius('full');
+  background: transparent;
+  cursor: pointer;
+
+  @include vz.focus-ring(2px, 2px, 0.6);
+}
+
+.dot::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: vz.space(1.5);
+  height: vz.space(1.5);
+  border-radius: vz.radius('full');
+  background: vz.color('muted-foreground', 0.35);
+  transform: translate(-50%, -50%);
+  transition:
+    width vz.duration('base') vz.ease('out'),
+    background-color vz.duration('base') vz.ease('out');
+
+  @include vz.motion-reduce {
+    transition: none;
+  }
+}
+
+@include vz.hover {
+  .dot:hover::before {
+    background: vz.color('muted-foreground', 0.6);
+  }
+}
+
+.dot[aria-current='true']::before {
+  width: vz.space(3.5);
+  background: vz.color('primary');
+}
+
+.progress {
+  display: flex;
+  min-width: 12rem;
+  align-items: center;
+  gap: vz.space(2.5);
+  padding: 2px vz.space(1);
+}
+
+.progress-track {
+  position: relative;
+  display: block;
+  width: 8rem;
+  height: 3px;
+  overflow: hidden;
+  border-radius: vz.radius('full');
+  background: vz.color('muted-foreground', 0.2);
+}
+
+.progress-fill {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: vz.color('primary');
+  transition: width vz.duration('slow') vz.ease('out');
+
+  @include vz.motion-reduce {
+    transition: none;
+  }
+}
+
+.progress-count {
+  color: vz.color('muted-foreground');
+  font-size: 0.625rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}

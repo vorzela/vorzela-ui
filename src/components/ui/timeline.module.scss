@@ -1,0 +1,293 @@
+@use 'styles' as vz;
+
+.root {
+  position: relative;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.root-vertical {
+  flex-direction: column;
+}
+
+.root-horizontal {
+  flex-direction: row;
+  align-items: flex-start;
+  width: 100%;
+  min-width: 0;
+  padding-bottom: vz.space(1);
+  overflow-x: auto;
+
+  @include vz.scrollbar;
+}
+
+.path {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.item {
+  position: relative;
+}
+
+.item-rail {
+  display: grid;
+  column-gap: vz.space(3);
+}
+
+.rail-start {
+  grid-template-columns: minmax(1.25rem, auto) minmax(0, 1fr);
+}
+
+.rail-end {
+  grid-template-columns: minmax(0, 1fr) minmax(1.25rem, auto);
+}
+
+.rail-column {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.rail-column-end {
+  order: 2;
+}
+
+.node-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 1.25rem;
+}
+
+.rail-content {
+  min-width: 0;
+  padding-bottom: vz.space(8);
+}
+
+.item:last-child .rail-content {
+  padding-bottom: 0;
+}
+
+.node {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.dot {
+  width: 0.75rem;
+  height: 0.75rem;
+  border: 2px solid var(--node-border);
+  border-radius: vz.radius('full');
+  background: var(--node-bg);
+}
+
+.marker {
+  display: block;
+  color: var(--marker-color);
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.tone-neutral {
+  --node-bg: #{vz.color('background')};
+  --node-border: #{vz.color('border')};
+  --marker-color: #{vz.color('muted-foreground')};
+}
+
+.tone-active {
+  --node-bg: #{vz.color('ring')};
+  --node-border: #{vz.color('ring')};
+  --marker-color: #{vz.color('ring')};
+}
+
+.tone-success {
+  --node-bg: #{vz.color('success')};
+  --node-border: #{vz.color('success')};
+  --marker-color: #{vz.color('success')};
+}
+
+.tone-danger {
+  --node-bg: #{vz.color('destructive')};
+  --node-border: #{vz.color('destructive')};
+  --marker-color: #{vz.color('destructive')};
+}
+
+.tone-muted {
+  --node-bg: #{vz.color('background')};
+  --node-border: #{vz.color('border')};
+  --marker-color: #{vz.color('muted-foreground')};
+}
+
+.muted {
+  opacity: 0.5;
+}
+
+.segment {
+  display: block;
+}
+
+.segment-vertical {
+  position: absolute;
+  top: vz.space(3);
+  bottom: 0;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.segment-horizontal {
+  position: relative;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  height: 1px;
+  margin-inline-start: vz.space(1.5);
+}
+
+.line {
+  display: block;
+  background: vz.color('border');
+}
+
+.line-vertical {
+  width: 1px;
+  height: 100%;
+}
+
+.line-horizontal {
+  width: 100%;
+  height: 1px;
+}
+
+.item:last-child .segment-vertical,
+.item:last-child .segment-horizontal {
+  display: none;
+}
+
+.item-no-rail {
+  min-width: 0;
+  padding-bottom: vz.space(8);
+}
+
+.item-no-rail:last-child {
+  padding-bottom: 0;
+}
+
+.free-node {
+  position: absolute;
+  top: 0;
+  inset-inline-start: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.item-horizontal {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 9rem;
+}
+
+.horizontal-head {
+  display: flex;
+  align-items: center;
+}
+
+.horizontal-content {
+  min-width: 0;
+  padding-top: vz.space(2);
+  padding-inline-end: vz.space(4);
+}
+
+.item-horizontal:last-child .horizontal-content {
+  padding-inline-end: 0;
+}
+
+.title {
+  margin: 0;
+  color: vz.color('foreground');
+  font-size: vz.font-size('sm');
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.description {
+  margin: vz.space(1) 0 0;
+  color: vz.color('muted-foreground');
+  font-size: vz.font-size('sm');
+  line-height: 1.5;
+}
+
+.time {
+  display: block;
+  margin-bottom: vz.space(1);
+  color: vz.color('muted-foreground');
+  font-size: vz.font-size('xs');
+}
+
+.pulse-vertical {
+  background-image: linear-gradient(
+    to bottom,
+    transparent,
+    #{vz.color('ring', 0.9)},
+    transparent
+  );
+  background-repeat: no-repeat;
+  background-size: 100% 40%;
+  animation: vz-timeline-pulse-y 1.8s linear infinite;
+}
+
+.pulse-horizontal {
+  background-image: linear-gradient(
+    to right,
+    transparent,
+    #{vz.color('ring', 0.9)},
+    transparent
+  );
+  background-repeat: no-repeat;
+  background-size: 40% 100%;
+  animation: vz-timeline-pulse-x 1.8s linear infinite;
+}
+
+@include vz.motion-reduce {
+  .pulse-vertical,
+  .pulse-horizontal {
+    background-image: none;
+    animation: none;
+  }
+}
+
+@keyframes vz-timeline-pulse-y {
+  0% {
+    background-position: 50% -60%;
+  }
+
+  100% {
+    background-position: 50% 160%;
+  }
+}
+
+@keyframes vz-timeline-pulse-x {
+  0% {
+    background-position: -60%;
+  }
+
+  100% {
+    background-position: 160%;
+  }
+}

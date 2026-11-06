@@ -1,0 +1,88 @@
+@use 'styles' as vz;
+
+.root {
+  --toggle-height: #{vz.space(9)};
+  --toggle-padding: #{vz.space(2)};
+  --toggle-min-width: #{vz.space(9)};
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: vz.space(2);
+  min-width: var(--toggle-min-width);
+  height: var(--toggle-height);
+  padding-inline: var(--toggle-padding);
+  border: 1px solid transparent;
+  border-radius: vz.radius('md');
+  background: transparent;
+  color: vz.color('foreground');
+  font-size: vz.font-size('sm');
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background-color vz.duration('fast') vz.ease('out'),
+    border-color vz.duration('fast') vz.ease('out'),
+    color vz.duration('fast') vz.ease('out');
+
+  svg {
+    @include vz.icon(4);
+
+    pointer-events: none;
+  }
+
+  @include vz.hover {
+    background: vz.color('muted');
+    color: vz.color('muted-foreground');
+  }
+
+  @include vz.focus-ring(2px, 2px, 0.6);
+
+  @include vz.active {
+    background: vz.color('muted');
+  }
+
+  @include vz.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  @include vz.motion-reduce {
+    transition: none;
+  }
+}
+
+.root.sm {
+  --toggle-height: #{vz.space(8)};
+  --toggle-padding: #{vz.space(1.5)};
+  --toggle-min-width: #{vz.space(8)};
+
+  font-size: vz.font-size('xs');
+}
+
+.root.lg {
+  --toggle-height: #{vz.space(10)};
+  --toggle-padding: #{vz.space(2.5)};
+  --toggle-min-width: #{vz.space(10)};
+}
+
+.root.outline {
+  border-color: vz.color('input');
+  background: transparent;
+
+  @include vz.hover {
+    background: vz.color('accent');
+    color: vz.color('accent-foreground');
+  }
+}
+
+.root[data-state='on'] {
+  background: vz.color('accent');
+  color: vz.color('accent-foreground');
+}
+
+.root.outline[data-state='on'] {
+  border-color: vz.color('accent');
+  background: vz.color('accent');
+  color: vz.color('accent-foreground');
+}

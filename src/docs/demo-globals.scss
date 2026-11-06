@@ -1,0 +1,78 @@
+// Plain, docs-only helpers. Kept outside CSS Modules because demos reference
+// them as literal strings. They are not part of the component library.
+@use 'styles' as vz;
+
+.vz-demo-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: vz.space(3);
+}
+
+.vz-demo-muted {
+  margin: 0;
+  color: vz.color('muted-foreground');
+  font-size: vz.font-size('sm');
+  line-height: 1.55;
+}
+
+.vz-demo-cards {
+  display: grid;
+  width: 100%;
+  gap: vz.space(4);
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+}
+
+.vz-skeleton-card {
+  display: flex;
+  width: 100%;
+  max-width: 26rem;
+  flex-direction: column;
+  gap: vz.space(3);
+  padding: vz.space(5);
+  border: 1px solid vz.color('border');
+  border-radius: vz.radius('xl');
+  background: vz.color('card');
+}
+
+.vz-skeleton-row {
+  display: flex;
+  align-items: center;
+  gap: vz.space(3);
+  padding-bottom: vz.space(2);
+}
+
+.vz-skeleton-lines {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: vz.space(2);
+}
+
+.vz-avatar-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: vz.space(2);
+  color: vz.color('muted-foreground');
+  font-size: vz.font-size('xs');
+}
+
+.vz-separator-demo {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: vz.space(6);
+}
+
+.vz-separator-demo p {
+  margin-block: vz.space(2);
+}
+
+.vz-status-item {
+  display: inline-flex;
+  align-items: center;
+  gap: vz.space(2);
+  color: vz.color('muted-foreground');
+  font-size: vz.font-size('sm');
+}

@@ -1,0 +1,21 @@
+{
+  "name": "separator",
+  "type": "ui",
+  "version": "0.2.0",
+  "dependencies": [],
+  "registryDependencies": [
+    "styles",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/separator.tsx",
+      "content": "import type { HTMLAttributes } from 'react'\n\nimport { cx } from '~/lib/cx'\nimport styles from './separator.module.scss'\n\nexport interface SeparatorProps extends HTMLAttributes<HTMLDivElement> {\n  orientation?: 'horizontal' | 'vertical'\n  /** Optional centred caption for horizontal rules. */\n  label?: string\n}\n\nexport function Separator({\n  orientation = 'horizontal',\n  label,\n  className,\n  ...props\n}: SeparatorProps) {\n  if (label && orientation === 'horizontal') {\n    return (\n      <div\n        role=\"separator\"\n        aria-orientation=\"horizontal\"\n        className={cx(styles.root, styles.withLabel, className)}\n        {...props}\n      >\n        <span className={styles.line} />\n        <span className={styles.label}>{label}</span>\n        <span className={styles.line} />\n      </div>\n    )\n  }\n\n  return (\n    <div\n      role=\"separator\"\n      aria-orientation={orientation}\n      className={cx(\n        styles.root,\n        orientation === 'vertical' ? styles.vertical : styles.horizontal,\n        className,\n      )}\n      {...props}\n    />\n  )\n}\n"
+    },
+    {
+      "path": "components/ui/separator.module.scss",
+      "content": "@use 'styles' as vz;\n\n.root {\n  flex: none;\n  border: 0;\n  background: vz.color('border');\n}\n\n.horizontal {\n  width: 100%;\n  height: 1px;\n}\n\n.vertical {\n  width: 1px;\n  align-self: stretch;\n  min-height: vz.space(4);\n}\n\n.with-label {\n  display: flex;\n  align-items: center;\n  gap: vz.space(3);\n  width: 100%;\n  height: auto;\n  background: none;\n}\n\n.line {\n  flex: 1;\n  height: 1px;\n  background: vz.color('border');\n}\n\n.label {\n  flex: none;\n  color: vz.color('muted-foreground');\n  font-size: vz.font-size('xs');\n  font-weight: 500;\n  letter-spacing: 0.02em;\n  text-transform: uppercase;\n}\n"
+    }
+  ],
+  "description": "separator component"
+}

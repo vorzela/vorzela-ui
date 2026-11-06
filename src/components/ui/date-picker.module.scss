@@ -1,0 +1,179 @@
+@use 'styles' as vz;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: vz.space(1);
+  min-width: 0;
+}
+
+.field {
+  display: flex;
+  align-items: center;
+  min-height: vz.space(10);
+  border: 1px solid vz.color('border');
+  border-radius: vz.radius('lg');
+  background: vz.color('card');
+  color: vz.color('foreground');
+  transition:
+    border-color vz.duration('base') vz.ease('out'),
+    box-shadow vz.duration('base') vz.ease('out');
+
+  &:focus-within {
+    border-color: vz.color('ring');
+    box-shadow: 0 0 0 2px vz.color('ring', 0.2);
+  }
+}
+
+.open {
+  border-color: vz.color('ring');
+  box-shadow: 0 0 0 2px vz.color('ring', 0.2);
+}
+
+.invalid {
+  border-color: vz.color('destructive');
+
+  &:focus-within {
+    border-color: vz.color('destructive');
+    box-shadow: 0 0 0 2px vz.color('destructive', 0.2);
+  }
+}
+
+.valid {
+  border-color: vz.color('success');
+
+  &:focus-within {
+    border-color: vz.color('success');
+    box-shadow: 0 0 0 2px vz.color('success', 0.2);
+  }
+}
+
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.icon-button {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  padding-inline: vz.space(3) vz.space(2);
+  padding-block: vz.space(2);
+  border: 0;
+  border-radius: vz.radius('sm');
+  background: transparent;
+  color: vz.color('muted-foreground');
+  cursor: pointer;
+  transition: color vz.duration('fast') vz.ease('out');
+
+  @include vz.hover {
+    color: vz.color('foreground');
+  }
+
+  @include vz.focus-ring(2px, 2px, 0.5);
+
+  @include vz.disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  padding-block: vz.space(2.5);
+  padding-inline: 0;
+  border: 0;
+  background: transparent;
+  color: vz.color('foreground');
+  font-family: inherit;
+  font-size: vz.font-size('sm');
+  caret-color: vz.color('primary');
+  outline: none;
+
+  @include vz.placeholder {
+    color: vz.color('muted-foreground');
+  }
+}
+
+.clear {
+  display: inline-flex;
+  min-width: 1.5rem;
+  min-height: 1.5rem;
+  flex: none;
+  align-items: center;
+  padding-inline: vz.space(2);
+  padding-block: vz.space(1);
+  border: 0;
+  border-radius: vz.radius('sm');
+  background: transparent;
+  color: vz.color('muted-foreground');
+  cursor: pointer;
+  transition: color vz.duration('fast') vz.ease('out');
+
+  @include vz.hover {
+    color: vz.color('foreground');
+  }
+
+  @include vz.focus-ring(2px, 2px, 0.5);
+}
+
+.status {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  padding-inline-end: vz.space(3);
+
+  svg {
+    @include vz.icon(4);
+  }
+}
+
+.status-error {
+  color: vz.color('destructive');
+}
+
+.status-success {
+  color: vz.color('success');
+}
+
+.message {
+  margin: 0;
+  font-size: vz.font-size('xs');
+}
+
+.error-text {
+  color: vz.color('destructive');
+}
+
+.success-text {
+  color: vz.color('success');
+}
+
+.panel {
+  position: fixed;
+  z-index: vz.z('popover');
+  padding: vz.space(4);
+  border: 1px solid vz.color('border');
+  border-radius: vz.radius('2xl');
+  background: vz.color('card');
+  color: vz.color('card-foreground');
+  box-shadow: vz.elevation(3);
+  animation: vz-date-panel-in 150ms vz.ease('out') both;
+
+  @include vz.motion-reduce {
+    animation: none;
+  }
+}
+
+@keyframes vz-date-panel-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

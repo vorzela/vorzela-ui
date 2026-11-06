@@ -1,0 +1,112 @@
+@use 'styles' as vz;
+
+.root {
+  padding: vz.space(5);
+  border: 1px solid vz.color('border');
+  border-radius: vz.radius('xl');
+  background: vz.color('card');
+  color: vz.color('card-foreground');
+  box-shadow: vz.elevation(1);
+}
+
+.head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: vz.space(3);
+}
+
+.label {
+  margin: 0;
+  color: vz.color('muted-foreground');
+  font-size: vz.font-size('xs');
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.icon {
+  display: inline-flex;
+  flex: none;
+  color: vz.color('muted-foreground');
+
+  svg {
+    @include vz.icon(4);
+  }
+}
+
+.value {
+  margin: vz.space(2) 0 0;
+  font-size: vz.font-size('2xl');
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: vz.space(1) vz.space(2);
+  margin-top: vz.space(2);
+  font-size: vz.font-size('xs');
+}
+
+.delta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.125rem;
+  font-weight: 500;
+}
+
+.delta-icon {
+  @include vz.icon(3.5);
+}
+
+.tone-neutral {
+  color: vz.color('muted-foreground');
+}
+
+.tone-positive {
+  color: vz.color('success');
+}
+
+.tone-negative {
+  color: vz.color('destructive');
+}
+
+.hint {
+  color: vz.color('muted-foreground');
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.group {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: vz.space(3);
+}
+
+@include vz.up('sm') {
+  .group {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@include vz.up('xl') {
+  .group {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}

@@ -1,0 +1,90 @@
+@use 'styles' as vz;
+
+.group {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.group[data-panel-group-direction='vertical'] {
+  flex-direction: column;
+}
+
+.panel {
+  flex-shrink: 1;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.handle {
+  position: relative;
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 1px;
+  background: vz.color('border');
+  cursor: col-resize;
+
+  /* Pointer dragging needs to own the gesture even where Safari only partially
+     supports touch-action. */
+  /* stylelint-disable-next-line plugin/no-unsupported-browser-features */
+  touch-action: none;
+  outline: none;
+
+  @include vz.focus-ring(2px, 2px, 0.6);
+}
+
+.handle::after {
+  content: '';
+  position: absolute;
+  inset-block: 0;
+  left: 50%;
+  width: 9px;
+  cursor: col-resize;
+  transform: translateX(-50%);
+}
+
+.handle[data-panel-group-direction='vertical'] {
+  width: 100%;
+  height: 1px;
+  cursor: row-resize;
+}
+
+.handle[data-panel-group-direction='vertical']::after {
+  inset-block: auto;
+  inset-inline: 0;
+  top: 50%;
+  width: auto;
+  height: 9px;
+  cursor: row-resize;
+  transform: translateY(-50%);
+}
+
+.handle[data-resizing] {
+  background: vz.color('primary');
+}
+
+.handle-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: vz.space(3);
+  height: vz.space(4);
+  border: 1px solid vz.color('border');
+  border-radius: vz.radius('sm');
+  background: vz.color('border');
+  color: vz.color('muted-foreground');
+}
+
+.handle-icon {
+  @include vz.icon(2.5);
+}
+
+.handle[data-panel-group-direction='vertical'] .handle-icon {
+  transform: rotate(90deg);
+}
