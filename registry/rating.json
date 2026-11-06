@@ -20,5 +20,6 @@
       "content": "@use 'styles' as vz;\n\n.root {\n  display: flex;\n  align-items: center;\n  gap: vz.space(1);\n}\n\n.strip {\n  display: inline-flex;\n  align-items: center;\n  gap: vz.space(0.5);\n  width: fit-content;\n  border-radius: vz.radius('md');\n  user-select: none;\n\n  @include vz.focus-ring(2px, 2px, 0.6);\n}\n\n.interactive {\n  cursor: pointer;\n}\n\n.star-wrap {\n  position: relative;\n  display: inline-flex;\n  width: vz.space(5);\n  height: vz.space(5);\n}\n\n.star-outline {\n  width: 100%;\n  height: 100%;\n  color: vz.color('muted-foreground', 0.4);\n}\n\n.star-fill {\n  position: absolute;\n  inset-block: 0;\n  inset-inline-start: 0;\n  overflow: hidden;\n}\n\n.star-filled {\n  width: vz.space(5);\n  height: vz.space(5);\n  fill: vz.color('warning');\n  color: vz.color('warning');\n}\n\n.value {\n  color: vz.color('muted-foreground');\n  font-size: vz.font-size('xs');\n  font-variant-numeric: tabular-nums;\n}\n"
     }
   ],
-  "description": "rating component"
+  "description": "rating component",
+  "alias": false
 }

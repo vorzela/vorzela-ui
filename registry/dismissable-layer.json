@@ -1,0 +1,13 @@
+{
+  "name": "dismissable-layer",
+  "type": "ui",
+  "version": "0.2.0",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [
+    "primitives"
+  ],
+  "files": [],
+  "description": "dismissable-layer component",
+  "alias": true
+}

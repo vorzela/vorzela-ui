@@ -18,5 +18,6 @@
       "content": "@use 'styles' as vz;\n\n.container {\n  container-type: inline-size;\n}\n\n.grid {\n  display: grid;\n  grid-template-columns: minmax(0, 1fr);\n  grid-auto-rows: auto;\n  gap: vz.space(3);\n}\n\n.item {\n  min-width: 0;\n  overflow: hidden;\n  padding: vz.space(4);\n  border: 1px solid vz.color('border');\n  border-radius: vz.radius('xl');\n  background: vz.color('card');\n  color: vz.color('card-foreground');\n  box-shadow: vz.elevation(1);\n  transition: box-shadow vz.duration('base') vz.ease('out');\n\n  @include vz.hover {\n    box-shadow: vz.elevation(2);\n  }\n}\n\n@container (min-width: 24rem) {\n  .grid {\n    grid-template-columns: repeat(2, minmax(0, 1fr));\n  }\n}\n\n@container (min-width: 48rem) {\n  .grid {\n    grid-template-columns: repeat(4, minmax(0, 1fr));\n    grid-auto-rows: minmax(9rem, auto);\n  }\n\n  .col-span-2 {\n    grid-column: span 2 / span 2;\n  }\n\n  .col-span-3 {\n    grid-column: span 3 / span 3;\n  }\n\n  .col-span-4 {\n    grid-column: span 4 / span 4;\n  }\n\n  .row-span-2 {\n    grid-row: span 2 / span 2;\n  }\n\n  .row-span-3 {\n    grid-row: span 3 / span 3;\n  }\n}\n"
     }
   ],
-  "description": "bento-grid component"
+  "description": "bento-grid component",
+  "alias": false
 }

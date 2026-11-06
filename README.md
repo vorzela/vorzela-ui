@@ -136,22 +136,23 @@ npm run registry:build
 ```
 
 The generator reads `src/` and writes `registry/index.json` plus one JSON file
-per item (currently 136 items: 107 UI components, 18 chart entries and the
-shared chart module). Charts install their own `d3`/`d3-sankey` packages and
-`@types/*`; the form wrappers install `@tanstack/react-form`. Serve that folder
-as static files from `https://ui.vorzela.dev`; the CLI only fetches
-`index.json` and `<name>.json`.
+per item (currently 154 items). They expose 141 public component names —
+including 18 chart entries and thin aliases such as `stack` → `layout` — plus
+the shared style, hook, util and primitive layers. Charts install their own
+`d3`/`d3-sankey` packages and `@types/*`; the form wrappers install
+`@tanstack/react-form`. Serve that folder as static files from
+`https://ui.vorzela.dev`; the CLI only fetches `index.json` and `<name>.json`.
 
 ## What is in the box
 
 | Layer | Count | Includes |
 | --- | --- | --- |
 | Core | 16 | Button, Badge, Label, Input, Textarea, Card, Alert, Spinner, Skeleton, Avatar, Kbd, Separator, Progress, StatusDot, Tabs, Switch |
-| Forms | 28 | Checkbox, RadioGroup, Slider, NumberInput, OtpInput, TagInput, SegmentedControl, Toggle, ToggleGroup, Select, Combobox, Autocomplete, PasswordStrengthInput, PhoneInput, FileUpload, FilePicker, CurrencyInput, SearchInput, Rating, InputGroup, FloatingLabelInput, Calendar, DatePicker, Form, FormDatePicker, RangeSlider, TimePicker, ColorPicker, Editable |
+| Forms | 29 | Checkbox, RadioGroup, Slider, NumberInput, OtpInput, TagInput, SegmentedControl, Toggle, ToggleGroup, Select, Combobox, Autocomplete, PasswordStrengthInput, PhoneInput, FileUpload, FilePicker, CurrencyInput, SearchInput, Rating, InputGroup, FloatingLabelInput, Calendar, DatePicker, Form, FormDatePicker, RangeSlider, TimePicker, ColorPicker, Editable |
 | Tables | 4 | SimpleDataTable, DataTable, Table, Pagination |
 | Data display | 23 | Stat, StatGroup, DescriptionList, Timeline, TreeView, JsonViewer, DiffViewer, Empty, ErrorState, Banner, Callout, NumberTicker, Marquee, BentoGrid, AspectRatio, Receipt, Invoice, List, Link, Code, Highlight, Heading, Result |
 | Overlays | 13 | Modal, Drawer, Sheet, AlertDialog, Dropdown, ActionMenu, ContextMenu, Popover, HoverCard, Tooltip, Toolbar, Popconfirm, CloseButton |
-| Navigation | 14 | Accordion, Collapsible, Breadcrumb, Pagination, Command, NavigationMenu, Stepper, ScrollArea, Resizable, Carousel, VirtualList, CopyButton, TabBar, Menubar |
+| Navigation | 13 | Accordion, Collapsible, Breadcrumb, Command, NavigationMenu, Stepper, ScrollArea, Resizable, Carousel, VirtualList, CopyButton, TabBar, Menubar |
 | Layout | 11 | AppShell, Header, Topbar, Sidebar, Stack, Inline, Flex, Grid, Split, Container, PageSection |
 | Charts | 18 | Line, Area, Bar, Donut, Scatter, Heatmap, Sparkline, Gauge, Radar, Treemap, Sankey, Funnel, Candlestick, Waterfall, Histogram, RadialBar, Bullet, ChartFrame |
 | Media & system | 14 | OptimizedImage, MasonryGrid, GlassPanel, NotificationCenter, Toaster, NetworkLoader, CookieConsent, OfflineBanner, ErrorBoundary, Portal, FocusTrap, DismissableLayer, VisuallyHidden, SkipLink |

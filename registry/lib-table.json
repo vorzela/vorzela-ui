@@ -11,5 +11,6 @@
       "content": "/**\n * Shared TanStack Table v9 features for Guardcore data tables.\n */\nimport {\n  columnFilteringFeature,\n  columnSizingFeature,\n  columnVisibilityFeature,\n  createFilteredRowModel,\n  createPaginatedRowModel,\n  createSortedRowModel,\n  filterFn_includesString,\n  globalFilteringFeature,\n  rowPaginationFeature,\n  rowSelectionFeature,\n  rowSortingFeature,\n  sortFn_alphanumeric,\n  tableFeatures,\n  type ColumnDef,\n  type RowData,\n} from '@tanstack/react-table'\n\nexport const appTableFeatures = tableFeatures({\n  columnFilteringFeature,\n  globalFilteringFeature,\n  rowSortingFeature,\n  rowPaginationFeature,\n  rowSelectionFeature,\n  columnVisibilityFeature,\n  columnSizingFeature,\n  filteredRowModel: createFilteredRowModel(),\n  sortedRowModel: createSortedRowModel(),\n  paginatedRowModel: createPaginatedRowModel(),\n  filterFns: { includesString: filterFn_includesString },\n  sortFns: { alphanumeric: sortFn_alphanumeric },\n})\n\nexport type AppTableFeatures = typeof appTableFeatures\n\n/** Column def typed to app table features — use in page column arrays. */\nexport type AppColumnDef<TData extends RowData, TValue = unknown> = ColumnDef<\n  AppTableFeatures,\n  TData,\n  TValue\n>\n"
     }
   ],
-  "description": ""
+  "description": "",
+  "alias": false
 }

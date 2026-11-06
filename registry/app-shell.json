@@ -20,5 +20,6 @@
       "content": "@use 'styles' as vz;\n\n.root {\n  display: flex;\n  height: 100svh;\n  overflow: hidden;\n  background: vz.color('background');\n}\n\n.body {\n  display: flex;\n  min-width: 0;\n  flex: 1;\n  flex-direction: column;\n  overflow: hidden;\n}\n\n.main {\n  flex: 1;\n  padding: vz.space(3);\n  overflow: hidden auto;\n  outline: none;\n\n  @include vz.scrollbar(10px);\n}\n\n@include vz.up('sm') {\n  .main {\n    padding: vz.space(5);\n  }\n}\n\n@include vz.up('lg') {\n  .main {\n    padding: vz.space(6);\n  }\n}\n"
     }
   ],
-  "description": "app-shell component"
+  "description": "app-shell component",
+  "alias": false
 }

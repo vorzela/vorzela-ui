@@ -19,5 +19,6 @@
       "content": "@use 'styles' as vz;\n\n.root {\n  position: relative;\n  font-variant-numeric: tabular-nums;\n}\n\n.sr-only {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  padding: 0;\n  margin: -1px;\n  overflow: hidden;\n  clip-path: inset(50%);\n  white-space: nowrap;\n  border-width: 0;\n}\n"
     }
   ],
-  "description": "number-ticker component"
+  "description": "number-ticker component",
+  "alias": false
 }

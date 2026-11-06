@@ -20,5 +20,6 @@
       "content": "@use 'styles' as vz;\n\n.root {\n  padding: vz.space(2);\n  border: 1px solid vz.color('border');\n  border-radius: vz.radius('xl');\n  background: vz.color('card');\n}\n\n.row {\n  display: flex;\n  align-items: center;\n  gap: vz.space(1.5);\n  padding-block: vz.space(1.5);\n  padding-inline-end: vz.space(2);\n  border-radius: vz.radius('md');\n  color: vz.color('foreground');\n  font-size: vz.font-size('sm');\n  cursor: pointer;\n  transition:\n    background-color vz.duration('fast') vz.ease('out'),\n    color vz.duration('fast') vz.ease('out');\n\n  @include vz.focus-ring(2px, 2px, 0.6);\n}\n\n.row:not(.selected) {\n  @include vz.hover {\n    background: vz.color('accent', 0.6);\n  }\n}\n\n.selected {\n  background: vz.color('accent');\n  color: vz.color('accent-foreground');\n}\n\n.chevron {\n  flex: none;\n  width: 0.875rem;\n  height: 0.875rem;\n  color: vz.color('muted-foreground');\n  transition: transform vz.duration('fast') vz.ease('out');\n}\n\n.chevron-open {\n  transform: rotate(90deg);\n}\n\n.chevron-spacer {\n  flex: none;\n  width: 0.875rem;\n  height: 0.875rem;\n}\n\n.icon {\n  display: inline-flex;\n  flex: none;\n  color: vz.color('muted-foreground');\n\n  svg {\n    @include vz.icon(4);\n  }\n}\n\n.label {\n  min-width: 0;\n\n  @include vz.truncate;\n}\n"
     }
   ],
-  "description": "tree-view component"
+  "description": "tree-view component",
+  "alias": false
 }

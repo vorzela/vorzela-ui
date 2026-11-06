@@ -19,5 +19,6 @@
       "content": "@use 'styles' as vz;\n\n.root {\n  display: flex;\n  align-items: center;\n  gap: 2px;\n  padding: 3px;\n  border: 1px solid vz.color('border');\n  border-radius: vz.radius('lg');\n  background: vz.color('card');\n}\n\n.trigger {\n  height: 1.875rem;\n  padding-inline: vz.space(2.5);\n  border: 0;\n  border-radius: vz.radius('sm');\n  background: transparent;\n  color: vz.color('muted-foreground');\n  font-size: vz.font-size('sm');\n  font-weight: 500;\n  cursor: pointer;\n\n  @include vz.hover {\n    background: vz.color('accent');\n    color: vz.color('accent-foreground');\n  }\n\n  @include vz.focus-ring(2px, 1px, 0.6);\n}\n"
     }
   ],
-  "description": "menubar component"
+  "description": "menubar component",
+  "alias": false
 }

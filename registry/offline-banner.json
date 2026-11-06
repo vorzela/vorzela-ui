@@ -21,5 +21,6 @@
       "content": "@use 'styles' as vz;\n\n.root {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  gap: vz.space(2.5);\n  padding: vz.space(2.5) vz.space(4);\n  border: 1px solid vz.color('warning', 0.35);\n  border-radius: vz.radius('xl');\n  background: vz.color('warning', 0.12);\n  color: vz.color('foreground');\n  font-size: vz.font-size('sm');\n  font-weight: 500;\n  line-height: 1.4;\n  box-shadow: vz.elevation(1);\n  backdrop-filter: blur(12px);\n}\n\n.icon {\n  flex: none;\n  color: vz.color('warning');\n\n  @include vz.icon(4);\n}\n\n.message {\n  flex: 1;\n  min-width: 12rem;\n}\n\n.retry {\n  min-height: 1.5rem;\n  padding-inline: vz.space(2.5);\n  border: 1px solid vz.color('warning', 0.45);\n  border-radius: vz.radius('sm');\n  background: vz.color('card');\n  color: vz.color('foreground');\n  font-size: vz.font-size('xs');\n  font-weight: 600;\n  cursor: pointer;\n\n  @include vz.hover {\n    background: vz.color('muted');\n  }\n\n  @include vz.focus-ring(2px, 1px, 0.6);\n}\n"
     }
   ],
-  "description": "offline-banner component"
+  "description": "offline-banner component",
+  "alias": false
 }

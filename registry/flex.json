@@ -1,0 +1,13 @@
+{
+  "name": "flex",
+  "type": "ui",
+  "version": "0.2.0",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [
+    "layout"
+  ],
+  "files": [],
+  "description": "flex component",
+  "alias": true
+}

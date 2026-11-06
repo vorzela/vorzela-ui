@@ -12,5 +12,6 @@
     "line-chart"
   ],
   "files": [],
-  "description": "AreaChart is exported from the line-chart module."
+  "description": "AreaChart is exported from the line-chart module.",
+  "alias": true
 }

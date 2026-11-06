@@ -47,5 +47,6 @@
       "content": "import { useSyncExternalStore } from 'react'\n\nconst QUERY = '(prefers-reduced-motion: reduce)'\n\nfunction subscribe(onChange: () => void) {\n  if (typeof window === 'undefined') return () => {}\n  const mql = window.matchMedia(QUERY)\n  mql.addEventListener('change', onChange)\n  return () => mql.removeEventListener('change', onChange)\n}\n\nfunction getSnapshot() {\n  if (typeof window === 'undefined') return false\n  return window.matchMedia(QUERY).matches\n}\n\n/** True when the user asks for reduced motion. SSR-safe. */\nexport function useReducedMotion(): boolean {\n  return useSyncExternalStore(subscribe, getSnapshot, () => false)\n}\n"
     }
   ],
-  "description": ""
+  "description": "",
+  "alias": false
 }

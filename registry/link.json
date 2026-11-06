@@ -21,5 +21,6 @@
       "content": "@use 'styles' as vz;\n\n.root {\n  display: inline-flex;\n  align-items: center;\n  gap: 0.25em;\n  border-radius: 2px;\n  color: vz.color('primary');\n  font: inherit;\n  text-decoration: underline;\n  text-decoration-thickness: 1px;\n  text-underline-offset: 3px;\n  cursor: pointer;\n\n  @include vz.hover {\n    text-decoration-thickness: 2px;\n  }\n\n  @include vz.focus-ring(2px, 2px, 0.6);\n}\n\n.standalone {\n  color: vz.color('foreground');\n  font-weight: 600;\n  text-decoration: none;\n\n  @include vz.hover {\n    color: vz.color('primary');\n  }\n}\n\n.quiet {\n  color: vz.color('muted-foreground');\n  text-decoration: none;\n\n  @include vz.hover {\n    color: vz.color('foreground');\n  }\n}\n\n.disabled {\n  color: vz.color('muted-foreground');\n  opacity: 0.5;\n  text-decoration: none;\n  pointer-events: none;\n}\n\n.icon {\n  flex: none;\n\n  svg {\n    @include vz.icon(3.5);\n  }\n}\n"
     }
   ],
-  "description": "link component"
+  "description": "link component",
+  "alias": false
 }

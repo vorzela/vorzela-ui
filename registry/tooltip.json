@@ -19,5 +19,6 @@
       "content": "@use 'styles' as vz;\n\n.trigger {\n  display: inline-flex;\n  width: fit-content;\n  align-self: flex-start;\n  align-items: center;\n}\n\n.content {\n  position: fixed;\n  z-index: vz.z('tooltip');\n  padding: vz.space(1.5) vz.space(2.5);\n  border-radius: vz.radius('md');\n  background: vz.color('foreground');\n  color: vz.color('background');\n  box-shadow: vz.elevation(2);\n  font-size: vz.font-size('xs');\n  line-height: 1.35;\n  overflow-wrap: anywhere;\n  pointer-events: none;\n  user-select: none;\n  transition: opacity 120ms vz.ease('out');\n}\n\n.arrow {\n  position: absolute;\n  width: 12px;\n  height: 12px;\n  background: vz.color('foreground');\n  pointer-events: none;\n}\n\n.arrow[data-placement='top'] {\n  bottom: -5px;\n  left: var(--vz-arrow-offset);\n  transform: translateX(-50%) rotate(45deg);\n}\n\n.arrow[data-placement='bottom'] {\n  top: -5px;\n  left: var(--vz-arrow-offset);\n  transform: translateX(-50%) rotate(45deg);\n}\n\n.arrow[data-placement='left'] {\n  top: var(--vz-arrow-offset);\n  right: -5px;\n  transform: translateY(-50%) rotate(45deg);\n}\n\n.arrow[data-placement='right'] {\n  top: var(--vz-arrow-offset);\n  left: -5px;\n  transform: translateY(-50%) rotate(45deg);\n}\n"
     }
   ],
-  "description": "tooltip component"
+  "description": "tooltip component",
+  "alias": false
 }

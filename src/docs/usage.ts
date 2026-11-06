@@ -25,6 +25,7 @@ export function slugFor(name: string): string {
 const MODULE_OVERRIDES: Record<string, string> = {
   Form: '~/components/reusable/form',
   FormDatePicker: '~/components/reusable/form-date-picker',
+  FilePicker: '~/components/ui/file-upload',
   Code: '~/components/ui/typography',
   Highlight: '~/components/ui/typography',
   Heading: '~/components/ui/typography',

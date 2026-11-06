@@ -1,0 +1,13 @@
+{
+  "name": "skip-link",
+  "type": "ui",
+  "version": "0.2.0",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [
+    "primitives"
+  ],
+  "files": [],
+  "description": "skip-link component",
+  "alias": true
+}

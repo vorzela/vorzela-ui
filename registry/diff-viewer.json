@@ -18,5 +18,6 @@
       "content": "@use 'styles' as vz;\n\n$mono-font-stack:\n  ui-monospace,\n  'SF Mono',\n  'SFMono-Regular',\n  'Menlo',\n  'Monaco',\n  'Consolas',\n  'Liberation Mono',\n  monospace;\n\n.root {\n  overflow: hidden;\n  border: 1px solid vz.color('border');\n  border-radius: vz.radius('xl');\n  background: vz.color('card');\n}\n\n.header {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  padding: vz.space(2) vz.space(3);\n  border-bottom: 1px solid vz.color('border');\n  color: vz.color('muted-foreground');\n  font-size: vz.font-size('xs');\n}\n\n.counts {\n  font-variant-numeric: tabular-nums;\n}\n\n.added {\n  color: vz.color('success');\n}\n\n.removed {\n  color: vz.color('destructive');\n}\n\n.body {\n  max-height: 20rem;\n  overflow: auto;\n  font-family: $mono-font-stack;\n  font-size: vz.font-size('xs');\n\n  @include vz.scrollbar;\n}\n\n.row {\n  display: grid;\n  grid-template-columns: 3rem 3rem minmax(0, 1fr);\n  gap: vz.space(2);\n  padding: vz.space(0.5) vz.space(2);\n}\n\n.row-add {\n  background: vz.color('success', 0.1);\n}\n\n.row-remove {\n  background: vz.color('destructive', 0.1);\n}\n\n.line-no {\n  color: vz.color('muted-foreground', 0.6);\n  text-align: right;\n  user-select: none;\n}\n\n.text {\n  overflow-wrap: anywhere;\n  white-space: pre-wrap;\n}\n\n.marker {\n  color: vz.color('muted-foreground', 0.6);\n  user-select: none;\n}\n"
     }
   ],
-  "description": "diff-viewer component"
+  "description": "diff-viewer component",
+  "alias": false
 }

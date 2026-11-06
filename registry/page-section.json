@@ -1,0 +1,13 @@
+{
+  "name": "page-section",
+  "type": "ui",
+  "version": "0.2.0",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [
+    "layout"
+  ],
+  "files": [],
+  "description": "page-section component",
+  "alias": true
+}

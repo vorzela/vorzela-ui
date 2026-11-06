@@ -19,5 +19,6 @@
       "content": "@use 'styles' as vz;\n\n.root {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  gap: vz.space(1);\n  padding: vz.space(1);\n  border: 1px solid vz.color('border');\n  border-radius: vz.radius('lg');\n  background: vz.color('card');\n  box-shadow: vz.elevation(1);\n\n  .separator {\n    align-self: center;\n    height: vz.space(5);\n    min-height: vz.space(5);\n    margin-inline: vz.space(1);\n  }\n}\n\n.group {\n  display: flex;\n  align-items: center;\n  gap: vz.space(1);\n}\n"
     }
   ],
-  "description": "toolbar component"
+  "description": "toolbar component",
+  "alias": false
 }

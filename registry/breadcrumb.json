@@ -20,5 +20,6 @@
       "content": "@use 'styles' as vz;\n\n.root {\n  width: 100%;\n  overflow-x: auto;\n\n  @include vz.scrollbar(6px);\n}\n\n.list {\n  display: flex;\n  align-items: center;\n  gap: vz.space(1.5);\n  min-width: max-content;\n  margin: 0;\n  padding: 0;\n  color: vz.color('muted-foreground');\n  font-size: vz.font-size('sm');\n  list-style: none;\n}\n\n.item {\n  display: inline-flex;\n  align-items: center;\n}\n\n.separator {\n  display: inline-flex;\n  align-items: center;\n  color: vz.color('muted-foreground', 0.7);\n\n  svg {\n    @include vz.icon(3.5);\n  }\n}\n\n.label {\n  color: inherit;\n}\n\n.current {\n  color: vz.color('foreground');\n  font-weight: 500;\n}\n\n.link {\n  border-radius: vz.radius('xs');\n  color: inherit;\n  text-decoration: none;\n  transition: color vz.duration('fast') vz.ease('out');\n\n  @include vz.hover {\n    color: vz.color('foreground');\n  }\n\n  @include vz.focus-ring(2px, 2px, 0.6);\n}\n"
     }
   ],
-  "description": "breadcrumb component"
+  "description": "breadcrumb component",
+  "alias": false
 }

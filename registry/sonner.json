@@ -25,5 +25,6 @@
       "content": "import { createContext, useContext } from 'react'\n\nexport type ToastType = 'default' | 'success' | 'error' | 'warning' | 'info'\n\nexport interface Toast {\n  id: string\n  title?: string\n  description?: string\n  type?: ToastType\n  duration?: number\n  action?: { label: string; onClick: () => void }\n}\n\nexport interface ToasterContextValue {\n  toast: (toast: Omit<Toast, 'id'>) => string\n  dismiss: (id: string) => void\n}\n\nexport const ToasterContext = createContext<ToasterContextValue | null>(null)\n\nexport function useToast() {\n  const ctx = useContext(ToasterContext)\n  if (!ctx) throw new Error('useToast must be used within <Toaster>')\n  return ctx\n}\n\n/**\n * Imperative fallback for callers outside a React tree. Prefer `useToast()`\n * so the toast is rendered by the nearest <Toaster>.\n */\nexport const toast = (_t: Omit<Toast, 'id'>) => {\n  console.warn('Use useToast() hook from Toaster context')\n  return ''\n}\n"
     }
   ],
-  "description": "sonner component"
+  "description": "sonner component",
+  "alias": false
 }

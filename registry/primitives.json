@@ -39,5 +39,6 @@
       "content": "import * as React from 'react'\n\nimport { cx } from '~/lib/cx'\nimport styles from './primitives.module.scss'\n\n/** Screen-reader-only content. */\nexport function VisuallyHidden({\n  className,\n  ...props\n}: React.ComponentProps<'span'>) {\n  return <span className={cx(styles.sr, className)} {...props} />\n}\n"
     }
   ],
-  "description": ""
+  "description": "",
+  "alias": false
 }

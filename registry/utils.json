@@ -11,5 +11,6 @@
       "content": "export type ClassValue =\n  | string\n  | number\n  | bigint\n  | false\n  | null\n  | undefined\n  | ClassValue[]\n\n/**\n * Join class names, dropping falsy values. CSS Modules never produce\n * conflicting utilities, so no merge layer is needed.\n */\nexport function cx(...inputs: ClassValue[]): string {\n  const out: string[] = []\n\n  for (const input of inputs) {\n    if (!input) continue\n\n    if (Array.isArray(input)) {\n      const nested = cx(...input)\n      if (nested) out.push(nested)\n    } else {\n      out.push(String(input))\n    }\n  }\n\n  return out.join(' ')\n}\n"
     }
   ],
-  "description": ""
+  "description": "",
+  "alias": false
 }

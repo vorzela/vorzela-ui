@@ -52,6 +52,7 @@ export const inventory: InventoryCategory[] = [
       'PasswordStrengthInput',
       'PhoneInput',
       'FileUpload',
+      'FilePicker',
       'CurrencyInput',
       'SearchInput',
       'Rating',
@@ -135,7 +136,6 @@ export const inventory: InventoryCategory[] = [
       'Accordion',
       'Collapsible',
       'Breadcrumb',
-      'Pagination',
       'Command',
       'NavigationMenu',
       'Stepper',
@@ -217,7 +217,6 @@ export const inventory: InventoryCategory[] = [
   },
 ]
 
-export const inventoryCount = inventory.reduce(
-  (total, category) => total + category.items.length,
-  0,
-)
+export const inventoryCount = new Set(
+  inventory.flatMap((category) => category.items),
+).size

@@ -14,5 +14,6 @@
       "content": "import type { ReactNode } from 'react'\n\nimport { Header } from '~/components/ui/header'\n\nexport interface TopbarProps {\n  title?: string\n  onMenuClick?: () => void\n  actions?: ReactNode\n  className?: string\n}\n\n/** Compatibility alias for `Header`; kept for the legacy app-shell API. */\nexport function Topbar({ title, onMenuClick, actions, className }: TopbarProps) {\n  return (\n    <Header\n      title={title}\n      onMenuClick={onMenuClick}\n      actions={actions}\n      className={className}\n      sticky={false}\n    />\n  )\n}\n"
     }
   ],
-  "description": "topbar component"
+  "description": "topbar component",
+  "alias": false
 }

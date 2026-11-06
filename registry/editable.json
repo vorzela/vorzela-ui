@@ -20,5 +20,6 @@
       "content": "@use 'styles' as vz;\n\n.root {\n  display: flex;\n  flex-direction: column;\n  gap: vz.space(1);\n}\n\n.label {\n  color: vz.color('muted-foreground');\n  font-size: vz.font-size('xs');\n  font-weight: 600;\n}\n\n.trigger {\n  display: flex;\n  min-height: vz.space(9);\n  align-items: center;\n  justify-content: space-between;\n  gap: vz.space(2);\n  padding: vz.space(1.5) vz.space(2.5);\n  border: 1px dashed vz.color('border');\n  border-radius: vz.radius('md');\n  background: transparent;\n  color: vz.color('foreground');\n  font: inherit;\n  text-align: left;\n  cursor: text;\n\n  @include vz.hover {\n    background: vz.color('accent');\n  }\n\n  @include vz.focus-ring(2px, 2px, 0.6);\n}\n\n.value {\n  min-width: 0;\n\n  @include vz.truncate;\n}\n\n.placeholder {\n  color: vz.color('muted-foreground');\n}\n\n.pencil {\n  flex: none;\n  color: vz.color('muted-foreground');\n\n  svg {\n    @include vz.icon(3.5);\n  }\n}\n\n.input {\n  width: 100%;\n  min-height: vz.space(9);\n  padding: vz.space(1.5) vz.space(2.5);\n  border: 1px solid vz.color('primary');\n  border-radius: vz.radius('md');\n  background: vz.color('card');\n  color: vz.color('foreground');\n  font: inherit;\n  outline: none;\n  box-shadow: 0 0 0 3px vz.color('primary', 0.18);\n}\n"
     }
   ],
-  "description": "editable component"
+  "description": "editable component",
+  "alias": false
 }

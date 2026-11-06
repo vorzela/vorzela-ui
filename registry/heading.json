@@ -1,0 +1,13 @@
+{
+  "name": "heading",
+  "type": "ui",
+  "version": "0.2.0",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [
+    "typography"
+  ],
+  "files": [],
+  "description": "heading component",
+  "alias": true
+}

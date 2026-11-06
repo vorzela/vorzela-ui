@@ -21,5 +21,6 @@
       "content": "@use 'styles' as vz;\n\n.wrapper {\n  position: relative;\n  display: inline-flex;\n}\n\n.content {\n  @include vz.raised(2);\n\n  position: fixed;\n  z-index: vz.z('popover');\n  width: 18rem;\n  border-radius: vz.radius('xl');\n  outline: none;\n  animation: vz-popover-in vz.duration('fast') vz.ease('out') both;\n\n  @include vz.focus-ring(2px, 2px, 0.6);\n\n  @include vz.motion-reduce {\n    animation: none;\n  }\n}\n\n.arrow {\n  position: absolute;\n  top: -5px;\n  left: 50%;\n  width: 10px;\n  height: 5px;\n  fill: vz.color('popover');\n  stroke: vz.color('border');\n  pointer-events: none;\n  transform: translateX(-50%);\n}\n\n@keyframes vz-popover-in {\n  from {\n    opacity: 0;\n    transform: scale(0.98);\n  }\n\n  to {\n    opacity: 1;\n    transform: none;\n  }\n}\n"
     }
   ],
-  "description": "popover component"
+  "description": "popover component",
+  "alias": false
 }

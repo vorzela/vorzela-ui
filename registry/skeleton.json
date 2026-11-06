@@ -18,5 +18,6 @@
       "content": "@use 'styles' as vz;\n\n.root {\n  --skeleton-radius: #{vz.radius('md')};\n\n  position: relative;\n  overflow: hidden;\n  border-radius: var(--skeleton-radius);\n  background: vz.color('muted');\n  animation: vz-skeleton-pulse 1.8s vz.ease('in-out') infinite;\n\n  @include vz.motion-reduce {\n    animation: none;\n  }\n}\n\n.root::after {\n  content: '';\n  position: absolute;\n  inset: 0;\n  background: linear-gradient(\n    90deg,\n    transparent,\n    hsl(var(--foreground) / 6%),\n    transparent\n  );\n  transform: translateX(-100%);\n  animation: vz-skeleton-sweep 1.8s vz.ease('in-out') infinite;\n\n  @include vz.motion-reduce {\n    animation: none;\n    display: none;\n  }\n}\n\n.text {\n  width: 100%;\n  height: 0.8em;\n\n  --skeleton-radius: #{vz.radius('xs')};\n}\n\n.circle {\n  border-radius: vz.radius('full');\n}\n\n.rect {\n  --skeleton-radius: #{vz.radius('lg')};\n}\n\n.block {\n  width: 100%;\n  height: 6rem;\n\n  --skeleton-radius: #{vz.radius('xl')};\n}\n\n@keyframes vz-skeleton-pulse {\n  0%,\n  100% {\n    opacity: 1;\n  }\n\n  50% {\n    opacity: 0.72;\n  }\n}\n\n@keyframes vz-skeleton-sweep {\n  to {\n    transform: translateX(100%);\n  }\n}\n"
     }
   ],
-  "description": "skeleton component"
+  "description": "skeleton component",
+  "alias": false
 }

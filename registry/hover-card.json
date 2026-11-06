@@ -20,5 +20,6 @@
       "content": "@use 'styles' as vz;\n\n.wrapper {\n  position: relative;\n  display: inline-flex;\n}\n\n.content {\n  @include vz.raised(2);\n\n  position: fixed;\n  z-index: vz.z('popover');\n  width: 16rem;\n  padding: vz.space(4);\n  border-radius: vz.radius('xl');\n  outline: none;\n  animation: vz-hover-card-in vz.duration('fast') vz.ease('out') both;\n\n  @include vz.motion-reduce {\n    animation: none;\n  }\n}\n\n@keyframes vz-hover-card-in {\n  from {\n    opacity: 0;\n    transform: translateY(2px) scale(0.99);\n  }\n\n  to {\n    opacity: 1;\n    transform: none;\n  }\n}\n"
     }
   ],
-  "description": "hover-card component"
+  "description": "hover-card component",
+  "alias": false
 }

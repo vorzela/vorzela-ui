@@ -19,5 +19,6 @@
       "content": "@use 'styles' as vz;\n\n.root {\n  --otp-size: #{vz.space(10)};\n  --otp-font: #{vz.font-size('base')};\n\n  display: flex;\n  align-items: center;\n  gap: vz.space(2);\n  flex-wrap: wrap;\n\n  @include vz.up('sm') {\n    --otp-size: #{vz.space(12)};\n    --otp-font: #{vz.font-size('lg')};\n  }\n}\n\n.control {\n  width: var(--otp-size);\n  height: var(--otp-size);\n  padding: 0;\n  border: 1px solid vz.color('input');\n  border-radius: vz.radius('lg');\n  background: vz.color('card');\n  color: vz.color('foreground');\n  font-size: var(--otp-font);\n  font-weight: 600;\n  font-variant-numeric: tabular-nums;\n  text-align: center;\n  caret-color: vz.color('primary');\n  box-shadow: vz.elevation(1);\n  outline: none;\n  transition:\n    border-color vz.duration('fast') vz.ease('out'),\n    box-shadow vz.duration('fast') vz.ease('out');\n\n  &:focus,\n  &:focus-visible {\n    border-color: vz.color('ring');\n    box-shadow: 0 0 0 3px vz.color('ring', 0.18);\n  }\n\n  @include vz.disabled {\n    cursor: not-allowed;\n    opacity: 0.5;\n  }\n\n  @include vz.motion-reduce {\n    transition: none;\n  }\n}\n"
     }
   ],
-  "description": "otp-input component"
+  "description": "otp-input component",
+  "alias": false
 }

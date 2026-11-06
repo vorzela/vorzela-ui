@@ -1,0 +1,13 @@
+{
+  "name": "visually-hidden",
+  "type": "ui",
+  "version": "0.2.0",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [
+    "primitives"
+  ],
+  "files": [],
+  "description": "visually-hidden component",
+  "alias": true
+}

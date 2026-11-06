@@ -1,6 +1,6 @@
 {
   "version": "0.2.0",
-  "generatedAt": "2026-11-06T09:55:48.833Z",
+  "generatedAt": "2026-11-06T10:02:52.545Z",
   "items": [
     {
       "name": "accordion",
@@ -15,6 +15,7 @@
         "utils"
       ],
       "description": "accordion component",
+      "alias": false,
       "files": [
         "components/ui/accordion.tsx",
         "components/ui/accordion.module.scss"
@@ -32,6 +33,7 @@
         "utils"
       ],
       "description": "action-menu component",
+      "alias": false,
       "files": [
         "components/ui/action-menu.tsx",
         "components/ui/action-menu.module.scss"
@@ -50,6 +52,7 @@
         "utils"
       ],
       "description": "alert component",
+      "alias": false,
       "files": [
         "components/ui/alert.tsx",
         "components/ui/alert.module.scss"
@@ -70,6 +73,7 @@
         "utils"
       ],
       "description": "alert-dialog component",
+      "alias": false,
       "files": [
         "components/ui/alert-dialog.tsx",
         "components/ui/alert-dialog.module.scss"
@@ -88,6 +92,7 @@
         "topbar"
       ],
       "description": "app-shell component",
+      "alias": false,
       "files": [
         "components/ui/app-shell.tsx",
         "components/ui/app-shell.module.scss"
@@ -107,6 +112,7 @@
         "line-chart"
       ],
       "description": "AreaChart is exported from the line-chart module.",
+      "alias": true,
       "files": []
     },
     {
@@ -120,6 +126,7 @@
         "utils"
       ],
       "description": "aspect-ratio component",
+      "alias": false,
       "files": [
         "components/ui/aspect-ratio.tsx",
         "components/ui/aspect-ratio.module.scss"
@@ -140,6 +147,7 @@
         "utils"
       ],
       "description": "autocomplete component",
+      "alias": false,
       "files": [
         "components/ui/autocomplete.tsx",
         "components/ui/autocomplete.module.scss"
@@ -156,6 +164,7 @@
         "utils"
       ],
       "description": "avatar component",
+      "alias": false,
       "files": [
         "components/ui/avatar.tsx",
         "components/ui/avatar.module.scss"
@@ -172,6 +181,7 @@
         "utils"
       ],
       "description": "badge component",
+      "alias": false,
       "files": [
         "components/ui/badge.tsx",
         "components/ui/badge.module.scss"
@@ -190,6 +200,7 @@
         "utils"
       ],
       "description": "banner component",
+      "alias": false,
       "files": [
         "components/ui/banner.tsx",
         "components/ui/banner.module.scss"
@@ -211,6 +222,7 @@
         "styles"
       ],
       "description": "bar-chart chart",
+      "alias": false,
       "files": [
         "charts/bar-chart.tsx"
       ]
@@ -226,6 +238,7 @@
         "utils"
       ],
       "description": "bento-grid component",
+      "alias": false,
       "files": [
         "components/ui/bento-grid.tsx",
         "components/ui/bento-grid.module.scss"
@@ -244,6 +257,7 @@
         "utils"
       ],
       "description": "breadcrumb component",
+      "alias": false,
       "files": [
         "components/ui/breadcrumb.tsx",
         "components/ui/breadcrumb.module.scss"
@@ -265,6 +279,7 @@
         "styles"
       ],
       "description": "bullet-chart chart",
+      "alias": false,
       "files": [
         "charts/bullet-chart.tsx"
       ]
@@ -280,6 +295,7 @@
         "utils"
       ],
       "description": "button component",
+      "alias": false,
       "files": [
         "components/ui/button.tsx",
         "components/ui/button.module.scss"
@@ -298,6 +314,7 @@
         "utils"
       ],
       "description": "calendar component",
+      "alias": false,
       "files": [
         "components/ui/calendar.tsx",
         "components/ui/calendar.module.scss",
@@ -317,6 +334,7 @@
         "utils"
       ],
       "description": "callout component",
+      "alias": false,
       "files": [
         "components/ui/callout.tsx",
         "components/ui/callout.module.scss"
@@ -338,6 +356,7 @@
         "styles"
       ],
       "description": "candlestick-chart chart",
+      "alias": false,
       "files": [
         "charts/candlestick-chart.tsx"
       ]
@@ -353,6 +372,7 @@
         "utils"
       ],
       "description": "card component",
+      "alias": false,
       "files": [
         "components/ui/card.tsx",
         "components/ui/card.module.scss"
@@ -373,6 +393,7 @@
         "utils"
       ],
       "description": "carousel component",
+      "alias": false,
       "files": [
         "components/ui/carousel.tsx",
         "components/ui/carousel.module.scss"
@@ -392,6 +413,7 @@
         "utils"
       ],
       "description": "chart-frame chart",
+      "alias": false,
       "files": [
         "charts/chart-frame.tsx"
       ]
@@ -408,6 +430,7 @@
         "utils"
       ],
       "description": "Shared chart types, palette, tooltip, motion and styles.",
+      "alias": false,
       "files": [
         "charts/chart-colors.ts",
         "charts/chart-types.ts",
@@ -430,6 +453,7 @@
         "utils"
       ],
       "description": "checkbox component",
+      "alias": false,
       "files": [
         "components/ui/checkbox.tsx",
         "components/ui/checkbox.module.scss"
@@ -448,10 +472,24 @@
         "utils"
       ],
       "description": "close-button component",
+      "alias": false,
       "files": [
         "components/ui/close-button.tsx",
         "components/ui/close-button.module.scss"
       ]
+    },
+    {
+      "name": "code",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [
+        "typography"
+      ],
+      "description": "code component",
+      "alias": true,
+      "files": []
     },
     {
       "name": "collapsible",
@@ -467,6 +505,7 @@
         "utils"
       ],
       "description": "collapsible component",
+      "alias": false,
       "files": [
         "components/ui/collapsible.tsx",
         "components/ui/collapsible.module.scss"
@@ -483,6 +522,7 @@
         "utils"
       ],
       "description": "color-picker component",
+      "alias": false,
       "files": [
         "components/ui/color-picker.tsx",
         "components/ui/color-picker.module.scss"
@@ -503,6 +543,7 @@
         "utils"
       ],
       "description": "combobox component",
+      "alias": false,
       "files": [
         "components/ui/combobox.tsx",
         "components/ui/combobox.module.scss"
@@ -523,10 +564,24 @@
         "utils"
       ],
       "description": "command component",
+      "alias": false,
       "files": [
         "components/ui/command.tsx",
         "components/ui/command.module.scss"
       ]
+    },
+    {
+      "name": "container",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [
+        "layout"
+      ],
+      "description": "container component",
+      "alias": true,
+      "files": []
     },
     {
       "name": "context-menu",
@@ -540,6 +595,7 @@
         "utils"
       ],
       "description": "context-menu component",
+      "alias": false,
       "files": [
         "components/ui/context-menu.tsx",
         "components/ui/context-menu.module.scss"
@@ -561,6 +617,7 @@
         "utils"
       ],
       "description": "cookie-consent component",
+      "alias": false,
       "files": [
         "components/ui/cookie-consent.tsx",
         "components/ui/cookie-consent.module.scss"
@@ -582,6 +639,7 @@
         "utils"
       ],
       "description": "copy-button component",
+      "alias": false,
       "files": [
         "components/ui/copy-button.tsx",
         "components/ui/copy-button.module.scss"
@@ -598,6 +656,7 @@
         "styles"
       ],
       "description": "currency-input component",
+      "alias": false,
       "files": [
         "components/ui/currency-input.tsx",
         "components/ui/currency-input.module.scss"
@@ -621,6 +680,7 @@
         "utils"
       ],
       "description": "data-table component",
+      "alias": false,
       "files": [
         "components/ui/data-table.tsx",
         "components/ui/data-table.module.scss"
@@ -642,6 +702,7 @@
         "utils"
       ],
       "description": "date-picker component",
+      "alias": false,
       "files": [
         "components/ui/date-picker.tsx",
         "components/ui/date-picker.module.scss",
@@ -659,6 +720,7 @@
         "utils"
       ],
       "description": "description-list component",
+      "alias": false,
       "files": [
         "components/ui/description-list.tsx",
         "components/ui/description-list.module.scss"
@@ -675,10 +737,24 @@
         "utils"
       ],
       "description": "diff-viewer component",
+      "alias": false,
       "files": [
         "components/ui/diff-viewer.tsx",
         "components/ui/diff-viewer.module.scss"
       ]
+    },
+    {
+      "name": "dismissable-layer",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [
+        "primitives"
+      ],
+      "description": "dismissable-layer component",
+      "alias": true,
+      "files": []
     },
     {
       "name": "donut-chart",
@@ -697,6 +773,7 @@
         "utils"
       ],
       "description": "donut-chart chart",
+      "alias": false,
       "files": [
         "charts/donut-chart.tsx"
       ]
@@ -717,6 +794,7 @@
         "utils"
       ],
       "description": "drawer component",
+      "alias": false,
       "files": [
         "components/ui/drawer.tsx",
         "components/ui/drawer.module.scss"
@@ -734,6 +812,7 @@
         "utils"
       ],
       "description": "dropdown component",
+      "alias": false,
       "files": [
         "components/ui/dropdown.tsx",
         "components/ui/dropdown.module.scss"
@@ -752,6 +831,7 @@
         "utils"
       ],
       "description": "editable component",
+      "alias": false,
       "files": [
         "components/ui/editable.tsx",
         "components/ui/editable.module.scss"
@@ -769,10 +849,24 @@
         "utils"
       ],
       "description": "empty component",
+      "alias": false,
       "files": [
         "components/ui/empty.tsx",
         "components/ui/empty.module.scss"
       ]
+    },
+    {
+      "name": "error-boundary",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [
+        "primitives"
+      ],
+      "description": "error-boundary component",
+      "alias": true,
+      "files": []
     },
     {
       "name": "error-state",
@@ -788,10 +882,24 @@
         "utils"
       ],
       "description": "error-state component",
+      "alias": false,
       "files": [
         "components/ui/error-state.tsx",
         "components/ui/error-state.module.scss"
       ]
+    },
+    {
+      "name": "file-picker",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [
+        "file-upload"
+      ],
+      "description": "file-picker component",
+      "alias": true,
+      "files": []
     },
     {
       "name": "file-upload",
@@ -808,10 +916,24 @@
         "utils"
       ],
       "description": "file-upload component",
+      "alias": false,
       "files": [
         "components/ui/file-upload.tsx",
         "components/ui/file-upload.module.scss"
       ]
+    },
+    {
+      "name": "flex",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [
+        "layout"
+      ],
+      "description": "flex component",
+      "alias": true,
+      "files": []
     },
     {
       "name": "floating-label-input",
@@ -826,10 +948,24 @@
         "utils"
       ],
       "description": "floating-label-input component",
+      "alias": false,
       "files": [
         "components/ui/floating-label-input.tsx",
         "components/ui/floating-label-input.module.scss"
       ]
+    },
+    {
+      "name": "focus-trap",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [
+        "primitives"
+      ],
+      "description": "focus-trap component",
+      "alias": true,
+      "files": []
     },
     {
       "name": "form",
@@ -848,6 +984,7 @@
         "textarea"
       ],
       "description": "form form wrapper",
+      "alias": false,
       "files": [
         "components/reusable/form.tsx"
       ]
@@ -865,6 +1002,7 @@
         "styles"
       ],
       "description": "form-date-picker form wrapper",
+      "alias": false,
       "files": [
         "components/reusable/form-date-picker.tsx"
       ]
@@ -885,6 +1023,7 @@
         "styles"
       ],
       "description": "funnel-chart chart",
+      "alias": false,
       "files": [
         "charts/funnel-chart.tsx"
       ]
@@ -906,6 +1045,7 @@
         "utils"
       ],
       "description": "gauge chart",
+      "alias": false,
       "files": [
         "charts/gauge.tsx"
       ]
@@ -921,10 +1061,24 @@
         "utils"
       ],
       "description": "glass-panel component",
+      "alias": false,
       "files": [
         "components/ui/glass-panel.tsx",
         "components/ui/glass-panel.module.scss"
       ]
+    },
+    {
+      "name": "grid",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [
+        "layout"
+      ],
+      "description": "grid component",
+      "alias": true,
+      "files": []
     },
     {
       "name": "header",
@@ -939,10 +1093,24 @@
         "utils"
       ],
       "description": "header component",
+      "alias": false,
       "files": [
         "components/ui/header.tsx",
         "components/ui/header.module.scss"
       ]
+    },
+    {
+      "name": "heading",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [
+        "typography"
+      ],
+      "description": "heading component",
+      "alias": true,
+      "files": []
     },
     {
       "name": "heatmap",
@@ -960,6 +1128,7 @@
         "styles"
       ],
       "description": "heatmap chart",
+      "alias": false,
       "files": [
         "charts/heatmap.tsx"
       ]
@@ -972,11 +1141,25 @@
       "devDependencies": [],
       "registryDependencies": [],
       "description": "",
+      "alias": false,
       "files": [
         "components/utils/for.tsx",
         "components/utils/show.tsx",
         "components/utils/switch.tsx"
       ]
+    },
+    {
+      "name": "highlight",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [
+        "typography"
+      ],
+      "description": "highlight component",
+      "alias": true,
+      "files": []
     },
     {
       "name": "histogram-chart",
@@ -995,6 +1178,7 @@
         "utils"
       ],
       "description": "histogram-chart chart",
+      "alias": false,
       "files": [
         "charts/histogram-chart.tsx"
       ]
@@ -1007,6 +1191,7 @@
       "devDependencies": [],
       "registryDependencies": [],
       "description": "",
+      "alias": false,
       "files": [
         "hooks/use-container-size.ts",
         "hooks/use-controllable-state.ts",
@@ -1033,10 +1218,24 @@
         "utils"
       ],
       "description": "hover-card component",
+      "alias": false,
       "files": [
         "components/ui/hover-card.tsx",
         "components/ui/hover-card.module.scss"
       ]
+    },
+    {
+      "name": "inline",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [
+        "layout"
+      ],
+      "description": "inline component",
+      "alias": true,
+      "files": []
     },
     {
       "name": "input",
@@ -1052,6 +1251,7 @@
         "utils"
       ],
       "description": "input component",
+      "alias": false,
       "files": [
         "components/ui/input.tsx",
         "components/ui/input.module.scss"
@@ -1069,6 +1269,7 @@
         "utils"
       ],
       "description": "input-group component",
+      "alias": false,
       "files": [
         "components/ui/input-group.tsx",
         "components/ui/input-group.module.scss"
@@ -1085,6 +1286,7 @@
         "utils"
       ],
       "description": "invoice component",
+      "alias": false,
       "files": [
         "components/ui/invoice.tsx",
         "components/ui/invoice.module.scss"
@@ -1103,6 +1305,7 @@
         "utils"
       ],
       "description": "json-viewer component",
+      "alias": false,
       "files": [
         "components/ui/json-viewer.tsx",
         "components/ui/json-viewer.module.scss"
@@ -1119,6 +1322,7 @@
         "utils"
       ],
       "description": "kbd component",
+      "alias": false,
       "files": [
         "components/ui/kbd.tsx",
         "components/ui/kbd.module.scss"
@@ -1135,6 +1339,7 @@
         "utils"
       ],
       "description": "label component",
+      "alias": false,
       "files": [
         "components/ui/label.tsx",
         "components/ui/label.module.scss"
@@ -1151,6 +1356,7 @@
         "utils"
       ],
       "description": "layout component",
+      "alias": false,
       "files": [
         "components/ui/layout.tsx",
         "components/ui/layout.module.scss"
@@ -1164,6 +1370,7 @@
       "devDependencies": [],
       "registryDependencies": [],
       "description": "",
+      "alias": false,
       "files": [
         "lib/overlay.ts"
       ]
@@ -1176,6 +1383,7 @@
       "devDependencies": [],
       "registryDependencies": [],
       "description": "",
+      "alias": false,
       "files": [
         "lib/phone-countries.ts"
       ]
@@ -1188,6 +1396,7 @@
       "devDependencies": [],
       "registryDependencies": [],
       "description": "",
+      "alias": false,
       "files": [
         "lib/refs.ts"
       ]
@@ -1202,6 +1411,7 @@
       "devDependencies": [],
       "registryDependencies": [],
       "description": "",
+      "alias": false,
       "files": [
         "lib/security.ts"
       ]
@@ -1214,6 +1424,7 @@
       "devDependencies": [],
       "registryDependencies": [],
       "description": "",
+      "alias": false,
       "files": [
         "lib/table.ts"
       ]
@@ -1234,6 +1445,7 @@
         "styles"
       ],
       "description": "line-chart chart",
+      "alias": false,
       "files": [
         "charts/line-chart.tsx"
       ]
@@ -1252,6 +1464,7 @@
         "utils"
       ],
       "description": "link component",
+      "alias": false,
       "files": [
         "components/ui/link.tsx",
         "components/ui/link.module.scss"
@@ -1268,6 +1481,7 @@
         "utils"
       ],
       "description": "list component",
+      "alias": false,
       "files": [
         "components/ui/list.tsx",
         "components/ui/list.module.scss"
@@ -1284,6 +1498,7 @@
         "utils"
       ],
       "description": "marquee component",
+      "alias": false,
       "files": [
         "components/ui/marquee.tsx",
         "components/ui/marquee.module.scss"
@@ -1300,6 +1515,7 @@
         "utils"
       ],
       "description": "masonry-grid component",
+      "alias": false,
       "files": [
         "components/ui/masonry-grid.tsx",
         "components/ui/masonry-grid.module.scss"
@@ -1317,6 +1533,7 @@
         "utils"
       ],
       "description": "menubar component",
+      "alias": false,
       "files": [
         "components/ui/menubar.tsx",
         "components/ui/menubar.module.scss"
@@ -1338,6 +1555,7 @@
         "utils"
       ],
       "description": "modal component",
+      "alias": false,
       "files": [
         "components/ui/modal.tsx",
         "components/ui/modal.module.scss"
@@ -1356,6 +1574,7 @@
         "utils"
       ],
       "description": "navigation-menu component",
+      "alias": false,
       "files": [
         "components/ui/navigation-menu.tsx",
         "components/ui/navigation-menu.module.scss"
@@ -1375,6 +1594,7 @@
         "utils"
       ],
       "description": "network-loader component",
+      "alias": false,
       "files": [
         "components/ui/network-loader.tsx",
         "components/ui/network-loader.module.scss",
@@ -1396,6 +1616,7 @@
         "utils"
       ],
       "description": "notification-center component",
+      "alias": false,
       "files": [
         "components/ui/notification-center.tsx",
         "components/ui/notification-center.module.scss"
@@ -1415,6 +1636,7 @@
         "utils"
       ],
       "description": "number-input component",
+      "alias": false,
       "files": [
         "components/ui/number-input.tsx",
         "components/ui/number-input.module.scss"
@@ -1432,6 +1654,7 @@
         "utils"
       ],
       "description": "number-ticker component",
+      "alias": false,
       "files": [
         "components/ui/number-ticker.tsx",
         "components/ui/number-ticker.module.scss"
@@ -1451,6 +1674,7 @@
         "utils"
       ],
       "description": "offline-banner component",
+      "alias": false,
       "files": [
         "components/ui/offline-banner.tsx",
         "components/ui/offline-banner.module.scss"
@@ -1470,6 +1694,7 @@
         "utils"
       ],
       "description": "optimized-image component",
+      "alias": false,
       "files": [
         "components/ui/optimized-image.tsx",
         "components/ui/optimized-image.module.scss",
@@ -1488,10 +1713,24 @@
         "utils"
       ],
       "description": "otp-input component",
+      "alias": false,
       "files": [
         "components/ui/otp-input.tsx",
         "components/ui/otp-input.module.scss"
       ]
+    },
+    {
+      "name": "page-section",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [
+        "layout"
+      ],
+      "description": "page-section component",
+      "alias": true,
+      "files": []
     },
     {
       "name": "pagination",
@@ -1508,6 +1747,7 @@
         "utils"
       ],
       "description": "pagination component",
+      "alias": false,
       "files": [
         "components/ui/pagination.tsx",
         "components/ui/pagination.module.scss"
@@ -1527,6 +1767,7 @@
         "utils"
       ],
       "description": "password-input component",
+      "alias": false,
       "files": [
         "components/ui/password-input.tsx",
         "components/ui/password-input.module.scss"
@@ -1547,6 +1788,7 @@
         "utils"
       ],
       "description": "phone-input component",
+      "alias": false,
       "files": [
         "components/ui/phone-input.tsx",
         "components/ui/phone-input.module.scss"
@@ -1564,6 +1806,7 @@
         "styles"
       ],
       "description": "popconfirm component",
+      "alias": false,
       "files": [
         "components/ui/popconfirm.tsx",
         "components/ui/popconfirm.module.scss"
@@ -1583,10 +1826,24 @@
         "utils"
       ],
       "description": "popover component",
+      "alias": false,
       "files": [
         "components/ui/popover.tsx",
         "components/ui/popover.module.scss"
       ]
+    },
+    {
+      "name": "portal",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [
+        "primitives"
+      ],
+      "description": "portal component",
+      "alias": true,
+      "files": []
     },
     {
       "name": "primitives",
@@ -1596,6 +1853,7 @@
       "devDependencies": [],
       "registryDependencies": [],
       "description": "",
+      "alias": false,
       "files": [
         "components/primitives/dismissable-layer.tsx",
         "components/primitives/error-boundary.tsx",
@@ -1618,6 +1876,7 @@
         "utils"
       ],
       "description": "progress component",
+      "alias": false,
       "files": [
         "components/ui/progress.tsx",
         "components/ui/progress.module.scss"
@@ -1639,6 +1898,7 @@
         "styles"
       ],
       "description": "radar-chart chart",
+      "alias": false,
       "files": [
         "charts/radar-chart.tsx"
       ]
@@ -1660,6 +1920,7 @@
         "utils"
       ],
       "description": "radial-bar-chart chart",
+      "alias": false,
       "files": [
         "charts/radial-bar-chart.tsx"
       ]
@@ -1675,6 +1936,7 @@
         "utils"
       ],
       "description": "radio-group component",
+      "alias": false,
       "files": [
         "components/ui/radio-group.tsx",
         "components/ui/radio-group.module.scss"
@@ -1691,6 +1953,7 @@
         "utils"
       ],
       "description": "range-slider component",
+      "alias": false,
       "files": [
         "components/ui/range-slider.tsx",
         "components/ui/range-slider.module.scss"
@@ -1709,6 +1972,7 @@
         "utils"
       ],
       "description": "rating component",
+      "alias": false,
       "files": [
         "components/ui/rating.tsx",
         "components/ui/rating.module.scss"
@@ -1725,6 +1989,7 @@
         "utils"
       ],
       "description": "receipt component",
+      "alias": false,
       "files": [
         "components/ui/receipt.tsx",
         "components/ui/receipt.module.scss"
@@ -1743,6 +2008,7 @@
         "utils"
       ],
       "description": "resizable component",
+      "alias": false,
       "files": [
         "components/ui/resizable.tsx",
         "components/ui/resizable.module.scss"
@@ -1761,6 +2027,7 @@
         "utils"
       ],
       "description": "result component",
+      "alias": false,
       "files": [
         "components/ui/result.tsx",
         "components/ui/result.module.scss"
@@ -1782,6 +2049,7 @@
         "styles"
       ],
       "description": "sankey-chart chart",
+      "alias": false,
       "files": [
         "charts/sankey-chart.tsx"
       ]
@@ -1803,6 +2071,7 @@
         "utils"
       ],
       "description": "scatter-chart chart",
+      "alias": false,
       "files": [
         "charts/scatter-chart.tsx"
       ]
@@ -1818,6 +2087,7 @@
         "utils"
       ],
       "description": "scroll-area component",
+      "alias": false,
       "files": [
         "components/ui/scroll-area.tsx",
         "components/ui/scroll-area.module.scss"
@@ -1837,6 +2107,7 @@
         "utils"
       ],
       "description": "search-input component",
+      "alias": false,
       "files": [
         "components/ui/search-input.tsx",
         "components/ui/search-input.module.scss"
@@ -1854,6 +2125,7 @@
         "utils"
       ],
       "description": "segmented-control component",
+      "alias": false,
       "files": [
         "components/ui/segmented-control.tsx",
         "components/ui/segmented-control.module.scss"
@@ -1874,6 +2146,7 @@
         "utils"
       ],
       "description": "select component",
+      "alias": false,
       "files": [
         "components/ui/select.tsx",
         "components/ui/select.module.scss"
@@ -1890,6 +2163,7 @@
         "utils"
       ],
       "description": "separator component",
+      "alias": false,
       "files": [
         "components/ui/separator.tsx",
         "components/ui/separator.module.scss"
@@ -1911,6 +2185,7 @@
         "utils"
       ],
       "description": "sheet component",
+      "alias": false,
       "files": [
         "components/ui/sheet.tsx",
         "components/ui/sheet.module.scss"
@@ -1931,6 +2206,7 @@
         "utils"
       ],
       "description": "sidebar component",
+      "alias": false,
       "files": [
         "components/ui/sidebar.tsx",
         "components/ui/sidebar.module.scss"
@@ -1952,6 +2228,7 @@
         "utils"
       ],
       "description": "simple-data-table component",
+      "alias": false,
       "files": [
         "components/ui/simple-data-table.tsx",
         "components/ui/simple-data-table.module.scss"
@@ -1968,10 +2245,24 @@
         "utils"
       ],
       "description": "skeleton component",
+      "alias": false,
       "files": [
         "components/ui/skeleton.tsx",
         "components/ui/skeleton.module.scss"
       ]
+    },
+    {
+      "name": "skip-link",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [
+        "primitives"
+      ],
+      "description": "skip-link component",
+      "alias": true,
+      "files": []
     },
     {
       "name": "slider",
@@ -1984,6 +2275,7 @@
         "utils"
       ],
       "description": "slider component",
+      "alias": false,
       "files": [
         "components/ui/slider.tsx",
         "components/ui/slider.module.scss"
@@ -2003,6 +2295,7 @@
         "utils"
       ],
       "description": "sonner component",
+      "alias": false,
       "files": [
         "components/ui/sonner.tsx",
         "components/ui/sonner.module.scss",
@@ -2026,6 +2319,7 @@
         "utils"
       ],
       "description": "sparkline chart",
+      "alias": false,
       "files": [
         "charts/sparkline.tsx"
       ]
@@ -2041,10 +2335,37 @@
         "utils"
       ],
       "description": "spinner component",
+      "alias": false,
       "files": [
         "components/ui/spinner.tsx",
         "components/ui/spinner.module.scss"
       ]
+    },
+    {
+      "name": "split",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [
+        "layout"
+      ],
+      "description": "split component",
+      "alias": true,
+      "files": []
+    },
+    {
+      "name": "stack",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [
+        "layout"
+      ],
+      "description": "stack component",
+      "alias": true,
+      "files": []
     },
     {
       "name": "stat",
@@ -2059,6 +2380,7 @@
         "utils"
       ],
       "description": "stat component",
+      "alias": false,
       "files": [
         "components/ui/stat.tsx",
         "components/ui/stat.module.scss"
@@ -2075,6 +2397,7 @@
         "utils"
       ],
       "description": "status-dot component",
+      "alias": false,
       "files": [
         "components/ui/status-dot.tsx",
         "components/ui/status-dot.module.scss"
@@ -2093,6 +2416,7 @@
         "utils"
       ],
       "description": "stepper component",
+      "alias": false,
       "files": [
         "components/ui/stepper.tsx",
         "components/ui/stepper.module.scss"
@@ -2106,6 +2430,7 @@
       "devDependencies": [],
       "registryDependencies": [],
       "description": "",
+      "alias": false,
       "files": [
         "styles/_index.scss",
         "styles/base/_base.scss",
@@ -2141,6 +2466,7 @@
         "utils"
       ],
       "description": "switch component",
+      "alias": false,
       "files": [
         "components/ui/switch.tsx",
         "components/ui/switch.module.scss"
@@ -2158,6 +2484,7 @@
         "utils"
       ],
       "description": "tab-bar component",
+      "alias": false,
       "files": [
         "components/ui/tab-bar.tsx",
         "components/ui/tab-bar.module.scss"
@@ -2174,6 +2501,7 @@
         "utils"
       ],
       "description": "table component",
+      "alias": false,
       "files": [
         "components/ui/table.tsx",
         "components/ui/table.module.scss"
@@ -2190,6 +2518,7 @@
         "utils"
       ],
       "description": "tabs component",
+      "alias": false,
       "files": [
         "components/ui/tabs.tsx",
         "components/ui/tabs.module.scss"
@@ -2209,6 +2538,7 @@
         "utils"
       ],
       "description": "tag-input component",
+      "alias": false,
       "files": [
         "components/ui/tag-input.tsx",
         "components/ui/tag-input.module.scss"
@@ -2228,6 +2558,7 @@
         "utils"
       ],
       "description": "textarea component",
+      "alias": false,
       "files": [
         "components/ui/textarea.tsx",
         "components/ui/textarea.module.scss"
@@ -2246,6 +2577,7 @@
         "styles"
       ],
       "description": "time-picker component",
+      "alias": false,
       "files": [
         "components/ui/time-picker.tsx"
       ]
@@ -2261,10 +2593,24 @@
         "utils"
       ],
       "description": "timeline component",
+      "alias": false,
       "files": [
         "components/ui/timeline.tsx",
         "components/ui/timeline.module.scss"
       ]
+    },
+    {
+      "name": "toaster",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [
+        "sonner"
+      ],
+      "description": "toaster component",
+      "alias": true,
+      "files": []
     },
     {
       "name": "toggle",
@@ -2277,6 +2623,7 @@
         "utils"
       ],
       "description": "toggle component",
+      "alias": false,
       "files": [
         "components/ui/toggle.tsx",
         "components/ui/toggle.module.scss"
@@ -2294,6 +2641,7 @@
         "utils"
       ],
       "description": "toggle-group component",
+      "alias": false,
       "files": [
         "components/ui/toggle-group.tsx",
         "components/ui/toggle-group.module.scss"
@@ -2311,6 +2659,7 @@
         "utils"
       ],
       "description": "toolbar component",
+      "alias": false,
       "files": [
         "components/ui/toolbar.tsx",
         "components/ui/toolbar.module.scss"
@@ -2328,6 +2677,7 @@
         "utils"
       ],
       "description": "tooltip component",
+      "alias": false,
       "files": [
         "components/ui/tooltip.tsx",
         "components/ui/tooltip.module.scss"
@@ -2344,6 +2694,7 @@
         "styles"
       ],
       "description": "topbar component",
+      "alias": false,
       "files": [
         "components/ui/topbar.tsx"
       ]
@@ -2361,6 +2712,7 @@
         "utils"
       ],
       "description": "tree-view component",
+      "alias": false,
       "files": [
         "components/ui/tree-view.tsx",
         "components/ui/tree-view.module.scss"
@@ -2382,6 +2734,7 @@
         "styles"
       ],
       "description": "treemap-chart chart",
+      "alias": false,
       "files": [
         "charts/treemap-chart.tsx"
       ]
@@ -2397,6 +2750,7 @@
         "utils"
       ],
       "description": "typography component",
+      "alias": false,
       "files": [
         "components/ui/typography.tsx",
         "components/ui/typography.module.scss"
@@ -2410,6 +2764,7 @@
       "devDependencies": [],
       "registryDependencies": [],
       "description": "",
+      "alias": false,
       "files": [
         "lib/cx.ts"
       ]
@@ -2425,10 +2780,24 @@
         "utils"
       ],
       "description": "virtual-list component",
+      "alias": false,
       "files": [
         "components/ui/virtual-list.tsx",
         "components/ui/virtual-list.module.scss"
       ]
+    },
+    {
+      "name": "visually-hidden",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [
+        "primitives"
+      ],
+      "description": "visually-hidden component",
+      "alias": true,
+      "files": []
     },
     {
       "name": "waterfall-chart",
@@ -2446,6 +2815,7 @@
         "styles"
       ],
       "description": "waterfall-chart chart",
+      "alias": false,
       "files": [
         "charts/waterfall-chart.tsx"
       ]

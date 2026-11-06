@@ -18,5 +18,6 @@
       "content": "@use 'styles' as vz;\n\n.root {\n  flex: none;\n  border: 0;\n  background: vz.color('border');\n}\n\n.horizontal {\n  width: 100%;\n  height: 1px;\n}\n\n.vertical {\n  width: 1px;\n  align-self: stretch;\n  min-height: vz.space(4);\n}\n\n.with-label {\n  display: flex;\n  align-items: center;\n  gap: vz.space(3);\n  width: 100%;\n  height: auto;\n  background: none;\n}\n\n.line {\n  flex: 1;\n  height: 1px;\n  background: vz.color('border');\n}\n\n.label {\n  flex: none;\n  color: vz.color('muted-foreground');\n  font-size: vz.font-size('xs');\n  font-weight: 500;\n  letter-spacing: 0.02em;\n  text-transform: uppercase;\n}\n"
     }
   ],
-  "description": "separator component"
+  "description": "separator component",
+  "alias": false
 }

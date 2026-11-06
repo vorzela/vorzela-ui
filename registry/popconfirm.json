@@ -19,5 +19,6 @@
       "content": "@use 'styles' as vz;\n\n.content {\n  display: flex;\n  width: min(20rem, calc(100vw - 2rem));\n  flex-direction: column;\n  gap: vz.space(2);\n  padding: vz.space(4);\n}\n\n.title {\n  margin: 0;\n  font-size: vz.font-size('sm');\n  font-weight: 600;\n}\n\n.description {\n  margin: 0;\n  color: vz.color('muted-foreground');\n  font-size: vz.font-size('xs');\n  line-height: 1.5;\n}\n\n.actions {\n  display: flex;\n  justify-content: flex-end;\n  gap: vz.space(2);\n  padding-top: vz.space(1);\n}\n"
     }
   ],
-  "description": "popconfirm component"
+  "description": "popconfirm component",
+  "alias": false
 }

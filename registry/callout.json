@@ -20,5 +20,6 @@
       "content": "@use 'styles' as vz;\n\n.root {\n  --callout-bg: #{vz.color('info', 0.05)};\n  --callout-border: #{vz.color('info', 0.25)};\n  --callout-icon: #{vz.color('info')};\n\n  display: flex;\n  gap: vz.space(3);\n  padding: vz.space(4);\n  border: 1px solid var(--callout-border);\n  border-radius: vz.radius('lg');\n  background: var(--callout-bg);\n  color: vz.color('foreground');\n  font-size: vz.font-size('sm');\n}\n\n.info {\n  --callout-bg: #{vz.color('info', 0.05)};\n  --callout-border: #{vz.color('info', 0.25)};\n  --callout-icon: #{vz.color('info')};\n}\n\n.tip {\n  --callout-bg: #{vz.color('primary', 0.05)};\n  --callout-border: #{vz.color('primary', 0.25)};\n  --callout-icon: #{vz.color('primary')};\n}\n\n.success {\n  --callout-bg: #{vz.color('success', 0.05)};\n  --callout-border: #{vz.color('success', 0.25)};\n  --callout-icon: #{vz.color('success')};\n}\n\n.warning {\n  --callout-bg: #{vz.color('warning', 0.08)};\n  --callout-border: #{vz.color('warning', 0.3)};\n  --callout-icon: #{vz.color('warning')};\n}\n\n.icon {\n  margin-top: 2px;\n  color: var(--callout-icon);\n\n  @include vz.icon(4);\n}\n\n.body {\n  display: flex;\n  flex-direction: column;\n  gap: vz.space(1);\n  min-width: 0;\n}\n\n.title {\n  margin: 0;\n  color: vz.color('foreground');\n  font-weight: 500;\n  line-height: 1.4;\n}\n\n.content {\n  color: vz.color('muted-foreground');\n  line-height: 1.5;\n}\n"
     }
   ],
-  "description": "callout component"
+  "description": "callout component",
+  "alias": false
 }

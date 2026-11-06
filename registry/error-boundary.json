@@ -1,0 +1,13 @@
+{
+  "name": "error-boundary",
+  "type": "ui",
+  "version": "0.2.0",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [
+    "primitives"
+  ],
+  "files": [],
+  "description": "error-boundary component",
+  "alias": true
+}

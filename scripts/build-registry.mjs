@@ -46,6 +46,7 @@ function addItem(name, type, files, extra = {}) {
       content: read(file.source),
     })),
     description: extra.description ?? '',
+    alias: extra.alias ?? false,
   })
 }
 
@@ -303,6 +304,7 @@ for (const file of chartComponents) {
 
 // AreaChart is exported from line-chart.tsx, so install the same module.
 addItem('area-chart', 'chart', [], {
+  alias: true,
   dependencies: ['d3'],
   devDependencies: ['@types/d3'],
   registryDependencies: ['line-chart'],
@@ -330,6 +332,39 @@ for (const [name, file] of [
   )
 }
 
+// Public component names that live in a shared module still get their own
+// installable entry, so `add stack` and `add heading` work without knowing the
+// module layout.
+const COMPONENT_ALIASES = [
+  ['stack', 'layout'],
+  ['inline', 'layout'],
+  ['flex', 'layout'],
+  ['grid', 'layout'],
+  ['split', 'layout'],
+  ['container', 'layout'],
+  ['page-section', 'layout'],
+  ['code', 'typography'],
+  ['highlight', 'typography'],
+  ['heading', 'typography'],
+  ['toaster', 'sonner'],
+  ['file-picker', 'file-upload'],
+  ['error-boundary', 'primitives'],
+  ['portal', 'primitives'],
+  ['focus-trap', 'primitives'],
+  ['dismissable-layer', 'primitives'],
+  ['visually-hidden', 'primitives'],
+  ['skip-link', 'primitives'],
+]
+
+for (const [name, target] of COMPONENT_ALIASES) {
+  if (items.has(name) || !items.has(target)) continue
+  addItem(name, 'ui', [], {
+    alias: true,
+    registryDependencies: [target],
+    description: `${name} component`,
+  })
+}
+
 const index = [...items.values()]
   .map((item) => ({
     name: item.name,
@@ -339,6 +374,7 @@ const index = [...items.values()]
     devDependencies: item.devDependencies,
     registryDependencies: item.registryDependencies,
     description: item.description,
+    alias: item.alias,
     files: item.files.map((file) => file.path),
   }))
   .sort((a, b) => a.name.localeCompare(b.name))
@@ -355,6 +391,20 @@ for (const item of items.values()) {
   )
 }
 
+const publicComponents = new Set(
+  [...read('src/docs/inventory.ts').matchAll(/items:\s*\[([\s\S]*?)\]/g)]
+    .flatMap((match) => [
+      ...match[1].matchAll(/'([^']+)'/g),
+    ].map((entry) => entry[1])),
+).size
+const aliasCount = index.filter((item) => item.alias).length
+const uiModules = index.filter(
+  (item) => item.type === 'ui' && !item.alias,
+).length
+const chartModules = index.filter(
+  (item) => item.type === 'chart' && !item.alias,
+).length
+
 console.log(
-  `Registry built: ${items.size} items · ${index.filter((i) => i.type === 'ui').length} UI components · ${index.filter((i) => i.type === 'chart').length} charts`,
+  `Registry built: ${items.size} items · ${publicComponents} public components · ${uiModules} UI modules · ${chartModules} charts · ${aliasCount} aliases`,
 )

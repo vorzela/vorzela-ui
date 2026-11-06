@@ -1,0 +1,13 @@
+{
+  "name": "file-picker",
+  "type": "ui",
+  "version": "0.2.0",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [
+    "file-upload"
+  ],
+  "files": [],
+  "description": "file-picker component",
+  "alias": true
+}

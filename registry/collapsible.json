@@ -21,5 +21,6 @@
       "content": "@use 'styles' as vz;\n\n.root {\n  width: 100%;\n}\n\n.trigger {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: vz.space(2);\n  width: 100%;\n  padding: vz.space(2) vz.space(3);\n  border: 0;\n  border-radius: vz.radius('lg');\n  background: transparent;\n  color: vz.color('foreground');\n  font-size: vz.font-size('sm');\n  font-weight: 500;\n  text-align: left;\n  cursor: pointer;\n  transition: background-color vz.duration('base') vz.ease('out');\n\n  @include vz.hover {\n    background: vz.color('accent');\n  }\n\n  @include vz.focus-ring(2px, 2px, 0.6);\n}\n\n.trigger-label {\n  min-width: 0;\n}\n\n.chevron {\n  @include vz.icon(4);\n\n  color: vz.color('muted-foreground');\n  transition: transform vz.duration('base') vz.ease('out');\n}\n\n.trigger[aria-expanded='true'] .chevron {\n  transform: rotate(180deg);\n}\n\n.content {\n  display: grid;\n  grid-template-rows: 0fr;\n  overflow: hidden;\n  opacity: 0;\n  transition:\n    grid-template-rows vz.duration('base') vz.ease('out'),\n    opacity vz.duration('base') vz.ease('out');\n\n  @include vz.motion-reduce {\n    transition: none;\n  }\n}\n\n.content-inner {\n  min-height: 0;\n}\n\n.content-body {\n  padding: vz.space(1) vz.space(3) vz.space(2);\n  color: vz.color('muted-foreground');\n  font-size: vz.font-size('sm');\n  line-height: 1.5;\n}\n\n.content[data-state='open'] {\n  grid-template-rows: 1fr;\n  opacity: 1;\n}\n"
     }
   ],
-  "description": "collapsible component"
+  "description": "collapsible component",
+  "alias": false
 }

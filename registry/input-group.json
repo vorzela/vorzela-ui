@@ -19,5 +19,6 @@
       "content": "@use 'styles' as vz;\n\n.group {\n  display: flex;\n  width: 100%;\n  overflow: hidden;\n  border: 1px solid vz.color('input');\n  border-radius: vz.radius('md');\n  background: vz.color('card');\n  transition: box-shadow vz.duration('base') vz.ease('out');\n\n  &:focus-within {\n    box-shadow: 0 0 0 2px vz.color('ring', 0.6);\n  }\n}\n\n.vertical {\n  flex-direction: column;\n}\n\n.group > * + * {\n  border-inline-start: 1px solid vz.color('input');\n}\n\n.group.vertical > * + * {\n  border-inline-start: 0;\n  border-block-start: 1px solid vz.color('input');\n}\n\n.addon {\n  display: flex;\n  flex: none;\n  align-items: center;\n  gap: vz.space(1.5);\n  padding-inline: vz.space(3);\n  background: vz.color('muted', 0.4);\n  color: vz.color('muted-foreground');\n  font-size: vz.font-size('sm');\n\n  svg {\n    @include vz.icon(4);\n  }\n}\n\n.addon[data-align='end'] {\n  justify-content: flex-end;\n}\n\n.text {\n  color: vz.color('muted-foreground');\n  font-size: vz.font-size('sm');\n  white-space: nowrap;\n}\n\n.input-wrap {\n  display: flex;\n  flex: 1;\n  align-items: center;\n  min-width: 0;\n}\n\n.input-wrap > :first-child {\n  height: 100%;\n  border: 0;\n  border-radius: 0;\n  background: transparent;\n  box-shadow: none;\n\n  &:focus-within {\n    border: 0;\n    box-shadow: none;\n  }\n}\n\n.control {\n  min-width: 0;\n}\n"
     }
   ],
-  "description": "input-group component"
+  "description": "input-group component",
+  "alias": false
 }

@@ -22,5 +22,6 @@
       "content": "@use 'styles' as vz;\n\n.root {\n  display: flex;\n  justify-content: center;\n  width: 100%;\n  margin-inline: auto;\n}\n\n.content {\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  gap: vz.space(1);\n  margin: 0;\n  padding: 0;\n  list-style: none;\n}\n\n.item {\n  display: inline-flex;\n}\n\n.link {\n  min-width: vz.space(9);\n}\n\n.previous,\n.next {\n  --btn-px: #{vz.space(2.5)};\n}\n\n.ellipsis {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  width: vz.space(9);\n  height: vz.space(9);\n  color: vz.color('muted-foreground');\n\n  svg {\n    @include vz.icon(4);\n  }\n}\n"
     }
   ],
-  "description": "pagination component"
+  "description": "pagination component",
+  "alias": false
 }

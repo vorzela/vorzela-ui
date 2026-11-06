@@ -91,5 +91,6 @@
       "content": "@use 'sass:map';\n@use 'sass:string';\n\n/// One ladder for every stacking context.\n$layers: (\n  'base': 0,\n  'dropdown': 1000,\n  'sticky': 1100,\n  'overlay': 1200,\n  'modal': 1300,\n  'popover': 1400,\n  'toast': 1500,\n  'tooltip': 1600,\n) !default;\n\n/// @param {String} $name ['base'] - Layer name from `$layers`\n@function z($name: 'base') {\n  @if not map.has-key($layers, $name) {\n    @error 'Unknown z layer `#{$name}`. Use one of: #{map.keys($layers)}.';\n  }\n\n  @return string.unquote('var(--z-#{$name})');\n}\n\n@mixin emit-z-tokens($selector: ':root') {\n  #{$selector} {\n    @each $name, $value in $layers {\n      --z-#{$name}: #{$value};\n    }\n  }\n}\n"
     }
   ],
-  "description": ""
+  "description": "",
+  "alias": false
 }
