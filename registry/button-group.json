@@ -1,0 +1,23 @@
+{
+  "name": "button-group",
+  "type": "ui",
+  "version": "0.2.0",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [
+    "styles",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/button-group.tsx",
+      "content": "import type { HTMLAttributes } from 'react'\n\nimport { cx } from '~/lib/cx'\n\nimport styles from './button-group.module.scss'\n\nexport interface ButtonGroupProps extends HTMLAttributes<HTMLDivElement> {\n  orientation?: 'horizontal' | 'vertical'\n  /** Join the buttons into one continuous control. */\n  attached?: boolean\n}\n\n/** Groups related buttons into one visual unit. */\nexport function ButtonGroup({\n  orientation = 'horizontal',\n  attached = true,\n  className,\n  children,\n  ...props\n}: ButtonGroupProps) {\n  return (\n    <div\n      role=\"group\"\n      className={cx(\n        styles.root,\n        orientation === 'vertical' ? styles.vertical : styles.horizontal,\n        attached && styles.attached,\n        className,\n      )}\n      {...props}\n    >\n      {children}\n    </div>\n  )\n}\n"
+    },
+    {
+      "path": "components/ui/button-group.module.scss",
+      "content": "@use 'styles' as vz;\n\n.root {\n  display: inline-flex;\n  align-items: stretch;\n}\n\n.horizontal {\n  flex-direction: row;\n}\n\n.vertical {\n  flex-direction: column;\n}\n\n.root.attached > * {\n  border-radius: 0;\n}\n\n.root.attached.horizontal > * + * {\n  margin-inline-start: -1px;\n}\n\n.root.attached.vertical > * + * {\n  margin-block-start: -1px;\n}\n\n.root.attached.horizontal > *:first-child {\n  border-start-start-radius: var(--btn-radius, #{vz.radius('lg')});\n  border-end-start-radius: var(--btn-radius, #{vz.radius('lg')});\n}\n\n.root.attached.horizontal > *:last-child {\n  border-start-end-radius: var(--btn-radius, #{vz.radius('lg')});\n  border-end-end-radius: var(--btn-radius, #{vz.radius('lg')});\n}\n\n.root.attached.vertical > *:first-child {\n  border-start-start-radius: var(--btn-radius, #{vz.radius('lg')});\n  border-start-end-radius: var(--btn-radius, #{vz.radius('lg')});\n}\n\n.root.attached.vertical > *:last-child {\n  border-end-start-radius: var(--btn-radius, #{vz.radius('lg')});\n  border-end-end-radius: var(--btn-radius, #{vz.radius('lg')});\n}\n"
+    }
+  ],
+  "description": "button-group component",
+  "alias": false
+}

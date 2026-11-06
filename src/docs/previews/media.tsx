@@ -16,6 +16,7 @@ import { NotificationCenter } from '~/components/ui/notification-center'
 import { OfflineBanner } from '~/components/ui/offline-banner'
 import { OptimizedImage } from '~/components/ui/optimized-image'
 import { Toaster, useToast } from '~/components/ui/sonner'
+import { Watermark } from '~/components/ui/watermark'
 import { DismissableLayer } from '~/components/primitives/dismissable-layer'
 import { ErrorBoundary } from '~/components/primitives/error-boundary'
 import { FocusTrap } from '~/components/primitives/focus-trap'
@@ -152,6 +153,16 @@ function DismissablePreview() {
 }
 
 export const mediaPreviews = {
+  'watermark': (
+    <Watermark content="Vorzela UI · Confidential" opacity={0.12}>
+      <Card flat padded>
+        <p className={styles.cardTitle}>Confidential preview</p>
+        <p className={styles.cardText}>
+          The watermark repeats behind the content without blocking interaction.
+        </p>
+      </Card>
+    </Watermark>
+  ),
   'optimized-image': (
     <div className={styles.mediaRow}>
       <OptimizedImage src="/favicon.svg" alt="Vorzela UI mark" width={96} height={96} priority />

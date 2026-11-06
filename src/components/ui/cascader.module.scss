@@ -1,0 +1,138 @@
+@use 'styles' as vz;
+
+.root {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: vz.space(1.5);
+  min-width: 0;
+}
+
+.label {
+  color: vz.color('foreground');
+  font-size: vz.font-size('xs');
+  font-weight: 500;
+}
+
+.trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: vz.space(2);
+  width: 100%;
+  min-height: vz.space(10);
+  padding: 0 vz.space(3);
+  border: 1px solid vz.color('border');
+  border-radius: var(--radius-lg);
+  background: vz.color('card');
+  color: vz.color('foreground');
+  font: inherit;
+  font-size: vz.font-size('sm');
+  text-align: start;
+  cursor: pointer;
+
+  @include vz.focus-ring(2px, 0, 0.7);
+
+  &:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+}
+
+.placeholder {
+  color: vz.color('muted-foreground');
+}
+
+.chevron {
+  flex: none;
+  width: vz.space(4);
+  height: vz.space(4);
+  color: vz.color('muted-foreground');
+  transition: transform vz.duration('fast') vz.ease('out');
+}
+
+.open {
+  transform: rotate(180deg);
+}
+
+.panel {
+  position: absolute;
+  z-index: var(--z-popover);
+  top: calc(100% + 4px);
+  left: 0;
+  display: flex;
+  overflow: hidden;
+  border: 1px solid vz.color('border');
+  border-radius: var(--radius-lg);
+  background: vz.color('popover');
+  color: vz.color('popover-foreground');
+  box-shadow: vz.elevation(3);
+  min-width: 100%;
+}
+
+.column {
+  min-width: 10rem;
+  max-height: 17rem;
+  overflow: auto;
+  padding: vz.space(1);
+  margin: 0;
+  border-inline-end: 1px solid vz.color('border');
+  list-style: none;
+
+  &:last-child {
+    border-inline-end: 0;
+  }
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: vz.space(2);
+  width: 100%;
+  padding: vz.space(2);
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: vz.font-size('xs');
+  text-align: start;
+  cursor: pointer;
+  white-space: nowrap;
+
+  @include vz.hover {
+    background: vz.color('accent');
+  }
+
+  &:disabled {
+    opacity: 0.45;
+    pointer-events: none;
+  }
+}
+
+.option-selected {
+  color: vz.color('primary');
+  font-weight: 600;
+}
+
+.option-active {
+  background: vz.color('accent');
+}
+
+.option-arrow {
+  color: vz.color('muted-foreground');
+}
+
+@media (max-width: 40rem) {
+  .panel {
+    flex-direction: column;
+  }
+
+  .column {
+    min-width: 100%;
+    max-height: 12rem;
+    border-inline-end: 0;
+    border-block-end: 1px solid vz.color('border');
+  }
+}

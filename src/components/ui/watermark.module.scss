@@ -1,0 +1,13 @@
+@use 'styles' as vz;
+
+.root {
+  position: relative;
+  min-width: 0;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  user-select: none;
+}

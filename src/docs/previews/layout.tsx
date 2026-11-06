@@ -1,9 +1,11 @@
-import { BarChart3, Folder, Home, Settings, Users } from 'lucide-react'
+import { BarChart3, Folder, Home, Plus, Settings, Users } from 'lucide-react'
 
 import { AppShell } from '~/components/ui/app-shell'
 import { Badge } from '~/components/ui/badge'
 import { Button } from '~/components/ui/button'
+import { ButtonGroup } from '~/components/ui/button-group'
 import { Card } from '~/components/ui/card'
+import { FloatButton } from '~/components/ui/float-button'
 import { Header } from '~/components/ui/header'
 import { Container, Flex, Grid, Inline, PageSection, Split, Stack } from '~/components/ui/layout'
 import { Sidebar, type SidebarNavGroup } from '~/components/ui/sidebar'
@@ -169,5 +171,23 @@ export const layoutPreviews = {
         <p className={styles.cardText}>Address, phone and renewal date.</p>
       </Card>
     </PageSection>
+  ),
+  'button-group': (
+    <ButtonGroup aria-label="View">
+      <Button variant="outline">Day</Button>
+      <Button variant="outline">Week</Button>
+      <Button variant="outline">Month</Button>
+    </ButtonGroup>
+  ),
+  'float-button': (
+    <div style={{ position: 'relative', height: '10rem' }}>
+      <FloatButton
+        contained
+        position="bottom-right"
+        icon={<Plus aria-hidden size={18} />}
+        label="New project"
+        description="Create a project from a template."
+      />
+    </div>
   ),
 }

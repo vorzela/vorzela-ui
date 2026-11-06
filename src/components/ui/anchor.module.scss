@@ -1,0 +1,61 @@
+@use 'styles' as vz;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: vz.space(2);
+  min-width: 0;
+}
+
+.label {
+  margin: 0;
+  color: vz.color('muted-foreground');
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  border-inline-start: 1px solid vz.color('border');
+}
+
+.link {
+  display: block;
+  padding: vz.space(1) vz.space(3);
+  margin-inline-start: -1px;
+  border-inline-start: 2px solid transparent;
+  color: vz.color('muted-foreground');
+  font-size: vz.font-size('xs');
+  line-height: 1.5;
+  text-decoration: none;
+  transition:
+    color vz.duration('fast') vz.ease('out'),
+    border-color vz.duration('fast') vz.ease('out');
+
+  @include vz.hover {
+    color: vz.color('foreground');
+  }
+
+  @include vz.focus-ring(2px, 0, 0.65);
+}
+
+.active {
+  border-inline-start-color: vz.color('primary');
+  color: vz.color('foreground');
+  font-weight: 500;
+}
+
+.level-3 {
+  padding-inline-start: vz.space(6);
+}
+
+.level-4 {
+  padding-inline-start: vz.space(9);
+}

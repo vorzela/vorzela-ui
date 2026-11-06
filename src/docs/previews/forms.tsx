@@ -4,15 +4,22 @@ import { useForm } from '@tanstack/react-form'
 
 import { Autocomplete } from '~/components/ui/autocomplete'
 import { Calendar } from '~/components/ui/calendar'
+import { Cascader } from '~/components/ui/cascader'
 import { Checkbox } from '~/components/ui/checkbox'
 import { ColorPicker } from '~/components/ui/color-picker'
 import { Combobox } from '~/components/ui/combobox'
 import { CurrencyInput } from '~/components/ui/currency-input'
 import { DatePicker } from '~/components/ui/date-picker'
 import { Editable } from '~/components/ui/editable'
+import { Field, FieldGroup } from '~/components/ui/field'
+import { FilePicker } from '~/components/ui/file-picker'
 import { FileUpload } from '~/components/ui/file-upload'
 import { FloatingLabelInput } from '~/components/ui/floating-label-input'
+import { ImageCropper } from '~/components/ui/image-cropper'
+import { Input } from '~/components/ui/input'
 import { InputGroup, InputGroupAddon, InputGroupInput } from '~/components/ui/input-group'
+import { Mentions } from '~/components/ui/mentions'
+import { NativeSelect } from '~/components/ui/native-select'
 import { NumberInput } from '~/components/ui/number-input'
 import { OtpInput } from '~/components/ui/otp-input'
 import { PasswordStrengthInput } from '~/components/ui/password-input'
@@ -28,6 +35,7 @@ import { TagInput } from '~/components/ui/tag-input'
 import { TimePicker } from '~/components/ui/time-picker'
 import { Toggle } from '~/components/ui/toggle'
 import { ToggleGroup, ToggleGroupItem } from '~/components/ui/toggle-group'
+import { Transfer } from '~/components/ui/transfer'
 import { Form, FormInput } from '~/components/reusable/form'
 import { FormDatePicker } from '~/components/reusable/form-date-picker'
 
@@ -172,6 +180,108 @@ function FormDatePickerPreview() {
   return <FormDatePicker form={form} name="date" label="Start date" />
 }
 
+function ImageCropperPreview() {
+  const [result, setResult] = useState<string | null>(null)
+  return (
+    <div className={styles.demoStack}>
+      <ImageCropper
+        src="/favicon.svg"
+        fileName="vorzela.svg"
+        aspectRatio={1}
+        cropShape="round"
+        outputFormat="image/png"
+        quality={1}
+        maxWidth={512}
+        maxHeight={512}
+        onCrop={(crop) => setResult(crop.dataUrl)}
+        onCancel={() => setResult(null)}
+      />
+      {result ? (
+        <div className="vz-demo-row">
+          <img
+            src={result}
+            alt="Cropped result"
+            style={{ width: 96, height: 96, borderRadius: '50%', objectFit: 'cover' }}
+          />
+          <span className={styles.cardText}>Cropped result</span>
+        </div>
+      ) : null}
+    </div>
+  )
+}
+
+function FilePickerPreview() {
+  return (
+    <div className={styles.demoStack}>
+      <FilePicker
+        variant="dropzone"
+        label="Documents"
+        accept={['image/*', '.pdf']}
+        maxBytes={5 * 1024 * 1024}
+        maxTotalBytes={12 * 1024 * 1024}
+        maxFiles={3}
+        hint="Drag files here, or choose them from your device."
+      />
+      <div className={styles.demoGrid}>
+        <FilePicker variant="button" label="Resume" accept={['.pdf']} maxFiles={1} />
+        <FilePicker variant="compact" label="Attachments" accept={['image/*']} />
+        <FilePicker variant="tile" label="Gallery" accept={['image/*']} maxFiles={6} />
+      </div>
+      <FilePicker variant="avatar" label="Photo" accept={['image/*']} maxFiles={1} />
+    </div>
+  )
+}
+
+function FieldPreview() {
+  return (
+    <FieldGroup>
+      <Field label="Workspace" htmlFor="preview-field-workspace" hint="Shown in the sidebar.">
+        <Input id="preview-field-workspace" placeholder="Vorzela" />
+      </Field>
+      <Field
+        label="Slug"
+        htmlFor="preview-field-slug"
+        error="That slug is already taken."
+        required
+      >
+        <Input id="preview-field-slug" defaultValue="vorzela" />
+      </Field>
+    </FieldGroup>
+  )
+}
+
+function MentionsPreview() {
+  return (
+    <Mentions
+      label="Comment"
+      defaultValue="Thanks @"
+      suggestions={[
+        { id: 'ada', label: 'Ada Lovelace', description: 'Design systems' },
+        { id: 'grace', label: 'Grace Hopper', description: 'Platform' },
+        { id: 'alan', label: 'Alan Turing', description: 'Research' },
+      ]}
+      hint="Type @ to mention a teammate."
+      maxLength={280}
+    />
+  )
+}
+
+function TransferPreview() {
+  return (
+    <Transfer
+      dataSource={[
+        { key: 'ada', label: 'Ada Lovelace', description: 'Owner' },
+        { key: 'grace', label: 'Grace Hopper', description: 'Admin' },
+        { key: 'alan', label: 'Alan Turing', description: 'Editor' },
+        { key: 'katherine', label: 'Katherine Johnson', description: 'Viewer' },
+      ]}
+      defaultTargetKeys={['ada', 'grace']}
+      titles={['Members', 'Selected']}
+      height={190}
+    />
+  )
+}
+
 export const formsPreviews = {
   'checkbox': (
     <div className={styles.demoStack}>
@@ -227,6 +337,42 @@ export const formsPreviews = {
       maxFiles={3}
     />
   ),
+  'file-picker': <FilePickerPreview />,
+  'image-cropper': <ImageCropperPreview />,
+  'field': <FieldPreview />,
+  'native-select': (
+    <NativeSelect
+      label="Region"
+      placeholder="Choose a region"
+      options={[
+        { value: 'eu-west-1', label: 'EU West (Ireland)' },
+        { value: 'us-east-1', label: 'US East (Virginia)' },
+        { value: 'ap-south-1', label: 'Asia Pacific (Mumbai)' },
+      ]}
+    />
+  ),
+  'mentions': <MentionsPreview />,
+  'cascader': (
+    <Cascader
+      label="Region"
+      options={[
+        {
+          value: 'eu',
+          label: 'Europe',
+          children: [
+            { value: 'ie', label: 'Ireland' },
+            { value: 'de', label: 'Germany' },
+          ],
+        },
+        {
+          value: 'us',
+          label: 'United States',
+          children: [{ value: 'va', label: 'Virginia' }],
+        },
+      ]}
+    />
+  ),
+  'transfer': <TransferPreview />,
   'currency-input': (
     <CurrencyInput label="Monthly budget" defaultValue={2400} currency="USD" />
   ),

@@ -136,7 +136,7 @@ npm run registry:build
 ```
 
 The generator reads `src/` and writes `registry/index.json` plus one JSON file
-per item (currently 154 items). They expose 141 public component names —
+per item (currently 164 items). They expose 151 public component names —
 including 18 chart entries and thin aliases such as `stack` → `layout` — plus
 the shared style, hook, util and primitive layers. Charts install their own
 `d3`/`d3-sankey` packages and `@types/*`; the form wrappers install
@@ -147,15 +147,22 @@ the shared style, hook, util and primitive layers. Charts install their own
 
 | Layer | Count | Includes |
 | --- | --- | --- |
-| Core | 16 | Button, Badge, Label, Input, Textarea, Card, Alert, Spinner, Skeleton, Avatar, Kbd, Separator, Progress, StatusDot, Tabs, Switch |
-| Forms | 29 | Checkbox, RadioGroup, Slider, NumberInput, OtpInput, TagInput, SegmentedControl, Toggle, ToggleGroup, Select, Combobox, Autocomplete, PasswordStrengthInput, PhoneInput, FileUpload, FilePicker, CurrencyInput, SearchInput, Rating, InputGroup, FloatingLabelInput, Calendar, DatePicker, Form, FormDatePicker, RangeSlider, TimePicker, ColorPicker, Editable |
+| Core | 17 | Button, ButtonGroup, Badge, Label, Input, Textarea, Card, Alert, Spinner, Skeleton, Avatar, Kbd, Separator, Progress, StatusDot, Tabs, Switch |
+| Forms | 35 | Checkbox, RadioGroup, Slider, NumberInput, OtpInput, TagInput, SegmentedControl, Toggle, ToggleGroup, Select, Combobox, Autocomplete, PasswordStrengthInput, PhoneInput, FileUpload, FilePicker, ImageCropper, Field, NativeSelect, Mentions, Cascader, Transfer, CurrencyInput, SearchInput, Rating, InputGroup, FloatingLabelInput, Calendar, DatePicker, Form, FormDatePicker, RangeSlider, TimePicker, ColorPicker, Editable |
 | Tables | 4 | SimpleDataTable, DataTable, Table, Pagination |
 | Data display | 23 | Stat, StatGroup, DescriptionList, Timeline, TreeView, JsonViewer, DiffViewer, Empty, ErrorState, Banner, Callout, NumberTicker, Marquee, BentoGrid, AspectRatio, Receipt, Invoice, List, Link, Code, Highlight, Heading, Result |
 | Overlays | 13 | Modal, Drawer, Sheet, AlertDialog, Dropdown, ActionMenu, ContextMenu, Popover, HoverCard, Tooltip, Toolbar, Popconfirm, CloseButton |
-| Navigation | 13 | Accordion, Collapsible, Breadcrumb, Command, NavigationMenu, Stepper, ScrollArea, Resizable, Carousel, VirtualList, CopyButton, TabBar, Menubar |
-| Layout | 11 | AppShell, Header, Topbar, Sidebar, Stack, Inline, Flex, Grid, Split, Container, PageSection |
+| Navigation | 14 | Accordion, Collapsible, Breadcrumb, Anchor, Command, NavigationMenu, Stepper, ScrollArea, Resizable, Carousel, VirtualList, CopyButton, TabBar, Menubar |
+| Layout | 12 | AppShell, Header, Topbar, Sidebar, Stack, Inline, Flex, Grid, Split, Container, PageSection, FloatButton |
 | Charts | 18 | Line, Area, Bar, Donut, Scatter, Heatmap, Sparkline, Gauge, Radar, Treemap, Sankey, Funnel, Candlestick, Waterfall, Histogram, RadialBar, Bullet, ChartFrame |
-| Media & system | 14 | OptimizedImage, MasonryGrid, GlassPanel, NotificationCenter, Toaster, NetworkLoader, CookieConsent, OfflineBanner, ErrorBoundary, Portal, FocusTrap, DismissableLayer, VisuallyHidden, SkipLink |
+| Media & system | 15 | OptimizedImage, MasonryGrid, GlassPanel, NotificationCenter, Toaster, Watermark, NetworkLoader, CookieConsent, OfflineBanner, ErrorBoundary, Portal, FocusTrap, DismissableLayer, VisuallyHidden, SkipLink |
+
+File handling covers five picker styles — `dropzone`, `button`, `compact`, `avatar`
+and `tile` — with per-file and total size limits, minimum size, MIME/extensions,
+file-count limits, image dimension guards, camera capture, directory selection
+and controlled file lists. `ImageCropper` renders at the source resolution by
+default; pass `targetSizeBytes` to compress only when the encoded image exceeds
+a budget.
 
 Most components own one `.tsx` file and one `.module.scss` module. A few ship
 small helper modules too — calendar dates, toast state, network progress and

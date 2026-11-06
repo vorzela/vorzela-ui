@@ -1,0 +1,137 @@
+@use 'styles' as vz;
+
+.root {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: stretch;
+  gap: vz.space(3);
+  min-width: 0;
+}
+
+.pane {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid vz.color('border');
+  border-radius: var(--radius-lg);
+  background: vz.color('card');
+}
+
+.pane-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: vz.space(2);
+  padding: vz.space(2.5) vz.space(3);
+  border-bottom: 1px solid vz.color('border');
+  background: vz.color('accent', 0.45);
+}
+
+.title {
+  margin: 0;
+  color: vz.color('foreground');
+  font-size: vz.font-size('xs');
+  font-weight: 600;
+}
+
+.count {
+  color: vz.color('muted-foreground');
+  font-size: 0.6875rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.search {
+  margin: vz.space(2);
+  padding: 0 vz.space(2);
+  height: vz.space(8);
+  border: 1px solid vz.color('border');
+  border-radius: var(--radius-md);
+  background: vz.color('card');
+  color: vz.color('foreground');
+  font: inherit;
+  font-size: vz.font-size('xs');
+
+  @include vz.focus-ring(2px, 0, 0.65);
+}
+
+.list {
+  flex: 1;
+  overflow: auto;
+  padding: vz.space(1);
+  margin: 0;
+  list-style: none;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: vz.space(2);
+  padding: vz.space(1.5) vz.space(2);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+
+  @include vz.hover {
+    background: vz.color('accent', 0.55);
+  }
+}
+
+.row-disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.checkbox {
+  flex: none;
+  width: 1rem;
+  height: 1rem;
+  accent-color: hsl(var(--primary));
+}
+
+.label {
+  min-width: 0;
+  overflow: hidden;
+  color: vz.color('foreground');
+  font-size: vz.font-size('xs');
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.description {
+  display: block;
+  overflow: hidden;
+  color: vz.color('muted-foreground');
+  font-size: 0.6875rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.text {
+  min-width: 0;
+  flex: 1;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: vz.space(2);
+}
+
+.empty {
+  padding: vz.space(6) vz.space(3);
+  color: vz.color('muted-foreground');
+  font-size: vz.font-size('xs');
+  text-align: center;
+}
+
+@media (max-width: 44rem) {
+  .root {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .actions {
+    flex-direction: row;
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "native-select",
+  "type": "ui",
+  "version": "0.2.0",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "devDependencies": [],
+  "registryDependencies": [
+    "label",
+    "styles",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/native-select.tsx",
+      "content": "import { ChevronDown } from 'lucide-react'\nimport type { SelectHTMLAttributes } from 'react'\nimport { useId } from 'react'\n\nimport { cx } from '~/lib/cx'\n\nimport { Label } from './label'\nimport styles from './native-select.module.scss'\n\nexport type NativeSelectSize = 'sm' | 'md' | 'lg'\n\nexport type NativeSelectOption = {\n  value: string\n  label: string\n  disabled?: boolean\n}\n\nexport interface NativeSelectProps\n  extends Omit<SelectHTMLAttributes<HTMLSelectElement>, 'size'> {\n  label?: string\n  hint?: string\n  error?: string\n  required?: boolean\n  size?: NativeSelectSize\n  options?: NativeSelectOption[]\n  placeholder?: string\n  wrapClassName?: string\n}\n\n/**\n * Native `<select>` with the kit field chrome. Prefer this for short, static\n * option lists — it keeps the platform picker, keyboard and mobile behaviour.\n */\nexport function NativeSelect({\n  label,\n  hint,\n  error,\n  required,\n  size = 'md',\n  options,\n  placeholder,\n  wrapClassName,\n  className,\n  id,\n  children,\n  ...props\n}: NativeSelectProps) {\n  const generatedId = useId()\n  const selectId = id ?? generatedId\n  const hintId = hint ? `${selectId}-hint` : undefined\n  const errorId = error ? `${selectId}-error` : undefined\n  const describedBy = [hintId, errorId].filter(Boolean).join(' ') || undefined\n\n  return (\n    <div\n      className={cx(\n        styles.root,\n        size === 'sm' && styles.sm,\n        size === 'lg' && styles.lg,\n        wrapClassName,\n      )}\n    >\n      {label ? (\n        <Label htmlFor={selectId} required={required} hint={undefined}>\n          {label}\n        </Label>\n      ) : null}\n      <div className={styles.field}>\n        <select\n          id={selectId}\n          required={required}\n          aria-invalid={error ? true : undefined}\n          aria-describedby={describedBy}\n          className={cx(styles.select, error && styles.error, className)}\n          {...props}\n        >\n          {placeholder ? (\n            <option value=\"\" disabled={required}>\n              {placeholder}\n            </option>\n          ) : null}\n          {options?.map((option) => (\n            <option key={option.value} value={option.value} disabled={option.disabled}>\n              {option.label}\n            </option>\n          ))}\n          {children}\n        </select>\n        <ChevronDown className={styles.chevron} aria-hidden />\n      </div>\n      {error ? (\n        <p id={errorId} className={cx(styles.message, styles.messageError)}>\n          {error}\n        </p>\n      ) : hint ? (\n        <p id={hintId} className={styles.message}>\n          {hint}\n        </p>\n      ) : null}\n    </div>\n  )\n}\n"
+    },
+    {
+      "path": "components/ui/native-select.module.scss",
+      "content": "@use 'styles' as vz;\n\n.root {\n  display: flex;\n  flex-direction: column;\n  gap: vz.space(1.5);\n  min-width: 0;\n}\n\n.field {\n  position: relative;\n  display: flex;\n  align-items: center;\n}\n\n.select {\n  width: 100%;\n  height: var(--control-height, #{vz.space(10)});\n  padding: 0 vz.space(9) 0 vz.space(3);\n  border: 1px solid vz.color('border');\n  border-radius: var(--radius-lg);\n  background: vz.color('card');\n  color: vz.color('foreground');\n  font: inherit;\n  font-size: vz.font-size('sm');\n  appearance: none;\n  cursor: pointer;\n  transition:\n    border-color vz.duration('fast') vz.ease('out'),\n    box-shadow vz.duration('fast') vz.ease('out');\n\n  @include vz.focus-ring(2px, 0, 0.7);\n\n  &:disabled {\n    opacity: 0.55;\n    cursor: not-allowed;\n  }\n}\n\n.error {\n  border-color: vz.color('destructive');\n}\n\n.chevron {\n  position: absolute;\n  right: vz.space(3);\n  width: vz.space(4);\n  height: vz.space(4);\n  color: vz.color('muted-foreground');\n  pointer-events: none;\n}\n\n.sm .select {\n  --control-height: #{vz.space(9)};\n\n  font-size: vz.font-size('xs');\n}\n\n.lg .select {\n  --control-height: #{vz.space(12)};\n}\n\n.message {\n  margin: 0;\n  color: vz.color('muted-foreground');\n  font-size: vz.font-size('xs');\n}\n\n.message-error {\n  color: vz.color('destructive');\n}\n"
+    }
+  ],
+  "description": "native-select component",
+  "alias": false
+}

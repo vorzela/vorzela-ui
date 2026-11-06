@@ -2,6 +2,7 @@ import { ArrowRight, Bell, FileText, Home, Search, Settings, Sparkles, Terminal,
 import { useState } from 'react'
 
 import { Accordion } from '~/components/ui/accordion'
+import { Anchor } from '~/components/ui/anchor'
 import { Badge } from '~/components/ui/badge'
 import { Breadcrumb } from '~/components/ui/breadcrumb'
 import { Button } from '~/components/ui/button'
@@ -96,6 +97,25 @@ const slides = [
 ]
 
 export const navigationPreviews = {
+  'anchor': (
+    <div className={styles.demoGrid}>
+      <Anchor
+        items={[
+          { id: 'preview-anchor-install', label: 'Installation' },
+          { id: 'preview-anchor-theme', label: 'Theming' },
+          { id: 'preview-anchor-tokens', label: 'Tokens', level: 3 },
+        ]}
+      />
+      <div className={styles.demoStack}>
+        <h3 id="preview-anchor-install" className={styles.cardTitle}>Installation</h3>
+        <p className={styles.cardText}>Copy the component and its module.</p>
+        <h3 id="preview-anchor-theme" className={styles.cardTitle}>Theming</h3>
+        <p className={styles.cardText}>Override semantic CSS variables.</p>
+        <h4 id="preview-anchor-tokens" className={styles.cardTitle}>Tokens</h4>
+        <p className={styles.cardText}>Colour, radius, spacing and motion.</p>
+      </div>
+    </div>
+  ),
   'accordion': <Accordion items={sections} type="single" defaultValue="install" />,
   'collapsible': (
     <Collapsible defaultOpen>

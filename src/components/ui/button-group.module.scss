@@ -1,0 +1,46 @@
+@use 'styles' as vz;
+
+.root {
+  display: inline-flex;
+  align-items: stretch;
+}
+
+.horizontal {
+  flex-direction: row;
+}
+
+.vertical {
+  flex-direction: column;
+}
+
+.root.attached > * {
+  border-radius: 0;
+}
+
+.root.attached.horizontal > * + * {
+  margin-inline-start: -1px;
+}
+
+.root.attached.vertical > * + * {
+  margin-block-start: -1px;
+}
+
+.root.attached.horizontal > *:first-child {
+  border-start-start-radius: var(--btn-radius, #{vz.radius('lg')});
+  border-end-start-radius: var(--btn-radius, #{vz.radius('lg')});
+}
+
+.root.attached.horizontal > *:last-child {
+  border-start-end-radius: var(--btn-radius, #{vz.radius('lg')});
+  border-end-end-radius: var(--btn-radius, #{vz.radius('lg')});
+}
+
+.root.attached.vertical > *:first-child {
+  border-start-start-radius: var(--btn-radius, #{vz.radius('lg')});
+  border-start-end-radius: var(--btn-radius, #{vz.radius('lg')});
+}
+
+.root.attached.vertical > *:last-child {
+  border-end-start-radius: var(--btn-radius, #{vz.radius('lg')});
+  border-end-end-radius: var(--btn-radius, #{vz.radius('lg')});
+}

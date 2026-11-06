@@ -1,0 +1,132 @@
+@use 'styles' as vz;
+
+.root {
+  position: fixed;
+  z-index: var(--z-toast);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: vz.space(2);
+}
+
+.contained {
+  position: absolute;
+  inset: auto var(--float-inset, #{vz.space(4)}) var(--float-inset, #{vz.space(4)}) auto;
+}
+
+.bottom-right {
+  right: var(--float-inset, #{vz.space(6)});
+  bottom: var(--float-inset, #{vz.space(6)});
+}
+
+.bottom-left {
+  left: var(--float-inset, #{vz.space(6)});
+  bottom: var(--float-inset, #{vz.space(6)});
+  align-items: flex-start;
+}
+
+.top-right {
+  right: var(--float-inset, #{vz.space(6)});
+  top: var(--float-inset, #{vz.space(6)});
+}
+
+.top-left {
+  left: var(--float-inset, #{vz.space(6)});
+  top: var(--float-inset, #{vz.space(6)});
+  align-items: flex-start;
+}
+
+.button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: vz.space(2);
+  width: var(--float-size, #{vz.space(12)});
+  height: var(--float-size, #{vz.space(12)});
+  padding: 0;
+  border: 1px solid vz.color('border');
+  border-radius: vz.radius('full');
+  background: vz.color('card');
+  color: vz.color('foreground');
+  box-shadow: vz.elevation(3);
+  cursor: pointer;
+  transition:
+    transform vz.duration('fast') vz.ease('out'),
+    box-shadow vz.duration('base') vz.ease('out'),
+    background-color vz.duration('base') vz.ease('out');
+
+  @include vz.hover {
+    background: vz.color('accent');
+    box-shadow: vz.elevation(3);
+  }
+
+  @include vz.active {
+    transform: scale(0.96);
+  }
+
+  @include vz.focus-ring(2px, 3px, 0.7);
+
+  &:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
+
+.square {
+  border-radius: var(--radius-lg);
+}
+
+.sm {
+  --float-size: #{vz.space(10)};
+}
+
+.lg {
+  --float-size: #{vz.space(14)};
+}
+
+.extended {
+  width: auto;
+  padding-inline: vz.space(4);
+}
+
+.label {
+  font-size: vz.font-size('xs');
+  font-weight: 600;
+}
+
+.description {
+  display: block;
+  margin: 0;
+  max-width: 14rem;
+  padding: vz.space(2) vz.space(3);
+  border: 1px solid vz.color('border');
+  border-radius: var(--radius-lg);
+  background: vz.color('popover');
+  color: vz.color('popover-foreground');
+  box-shadow: vz.elevation(2);
+  font-size: vz.font-size('xs');
+  line-height: 1.5;
+}
+
+.badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  min-width: 1.125rem;
+  height: 1.125rem;
+  padding: 0 vz.space(1);
+  border: 2px solid vz.color('card');
+  border-radius: vz.radius('full');
+  background: vz.color('destructive');
+  color: vz.color('destructive-foreground');
+  font-size: 0.625rem;
+  font-weight: 700;
+  line-height: 1;
+  display: grid;
+  place-items: center;
+}
+
+.hidden {
+  display: none;
+}

@@ -1,0 +1,23 @@
+{
+  "name": "watermark",
+  "type": "ui",
+  "version": "0.2.0",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [
+    "styles",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/watermark.tsx",
+      "content": "import type { CSSProperties, ReactNode } from 'react'\n\nimport { cx } from '~/lib/cx'\n\nimport styles from './watermark.module.scss'\n\nexport interface WatermarkProps {\n  /** Text repeated across the surface. */\n  content: string | string[]\n  children?: ReactNode\n  opacity?: number\n  fontSize?: number\n  /** Angle in degrees. */\n  rotate?: number\n  /** Tile size in pixels. */\n  gap?: number\n  color?: string\n  zIndex?: number\n  className?: string\n  overlayClassName?: string\n}\n\nfunction escapeXml(value: string): string {\n  return value\n    .replaceAll('&', '&amp;')\n    .replaceAll('<', '&lt;')\n    .replaceAll('>', '&gt;')\n    .replaceAll('\"', '&quot;')\n    .replaceAll(\"'\", '&apos;')\n}\n\n/** Repeats a text watermark behind or over arbitrary content. */\nexport function Watermark({\n  content,\n  children,\n  opacity = 0.08,\n  fontSize = 14,\n  rotate = -20,\n  gap = 180,\n  color = 'currentColor',\n  zIndex = 1,\n  className,\n  overlayClassName,\n}: WatermarkProps) {\n  const text = Array.isArray(content) ? content.join(' · ') : content\n  const svg = `<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"${gap}\" height=\"${gap}\" viewBox=\"0 0 ${gap} ${gap}\"><text x=\"50%\" y=\"50%\" fill=\"${color}\" font-family=\"-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif\" font-size=\"${fontSize}\" font-weight=\"600\" text-anchor=\"middle\" dominant-baseline=\"middle\" transform=\"rotate(${rotate} ${gap / 2} ${gap / 2})\">${escapeXml(text)}</text></svg>`\n  const backgroundImage = `url(\"data:image/svg+xml,${encodeURIComponent(svg)}\")`\n  const style: CSSProperties = {\n    backgroundImage,\n    backgroundRepeat: 'repeat',\n    backgroundSize: `${gap}px ${gap}px`,\n    opacity,\n    zIndex,\n  }\n\n  return (\n    <div className={cx(styles.root, className)}>\n      {children}\n      <div\n        aria-hidden\n        className={cx(styles.overlay, overlayClassName)}\n        style={style}\n      />\n    </div>\n  )\n}\n"
+    },
+    {
+      "path": "components/ui/watermark.module.scss",
+      "content": "@use 'styles' as vz;\n\n.root {\n  position: relative;\n  min-width: 0;\n}\n\n.overlay {\n  position: absolute;\n  inset: 0;\n  pointer-events: none;\n  user-select: none;\n}\n"
+    }
+  ],
+  "description": "watermark component",
+  "alias": false
+}

@@ -1,0 +1,138 @@
+@use 'styles' as vz;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: vz.space(1.5);
+  min-width: 0;
+}
+
+.label {
+  color: vz.color('foreground');
+  font-size: vz.font-size('xs');
+  font-weight: 500;
+}
+
+.wrap {
+  position: relative;
+}
+
+.textarea {
+  width: 100%;
+  min-height: 6rem;
+  padding: vz.space(3);
+  border: 1px solid vz.color('border');
+  border-radius: var(--radius-lg);
+  background: vz.color('card');
+  color: vz.color('foreground');
+  font: inherit;
+  font-size: vz.font-size('sm');
+  line-height: 1.55;
+  resize: vertical;
+
+  @include vz.focus-ring(2px, 0, 0.7);
+
+  &:disabled {
+    opacity: 0.55;
+  }
+}
+
+.panel {
+  position: absolute;
+  z-index: var(--z-popover);
+  right: 0;
+  bottom: calc(100% + 4px);
+  left: 0;
+  max-height: 13rem;
+  overflow: auto;
+  padding: vz.space(1);
+  margin: 0;
+  border: 1px solid vz.color('border');
+  border-radius: var(--radius-lg);
+  background: vz.color('popover');
+  color: vz.color('popover-foreground');
+  box-shadow: vz.elevation(3);
+  list-style: none;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: vz.space(2);
+  padding: vz.space(2);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: vz.font-size('xs');
+
+  @include vz.hover {
+    background: vz.color('accent');
+  }
+}
+
+.active {
+  background: vz.color('accent');
+}
+
+.avatar {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: var(--radius-full);
+  background: vz.color('muted');
+  color: vz.color('muted-foreground');
+  font-size: 0.625rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.body {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+}
+
+.name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.description {
+  overflow: hidden;
+  color: vz.color('muted-foreground');
+  font-size: 0.6875rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.empty {
+  padding: vz.space(3);
+  color: vz.color('muted-foreground');
+  font-size: vz.font-size('xs');
+  text-align: center;
+}
+
+.hint {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: vz.space(2);
+  margin: 0;
+  color: vz.color('muted-foreground');
+  font-size: vz.font-size('xs');
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  object-fit: cover;
+}
+
+.counter {
+  color: vz.color('muted-foreground');
+  font-size: 0.6875rem;
+  text-align: end;
+}

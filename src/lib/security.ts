@@ -105,13 +105,26 @@ export type FileValidationOptions = {
   /** MIME types or extensions, e.g. ["image/png", ".pdf"]. */
   accept?: string[]
   maxBytes?: number
+  /** Reject files smaller than this. Useful for avoiding empty placeholders. */
+  minBytes?: number
   /** Optional image dimension guard. */
   maxImageDimension?: number
+  /** Reject images smaller than this on either axis. */
+  minImageDimension?: number
 }
 
 export type FileValidationResult =
   | { ok: true }
-  | { ok: false; reason: 'type' | 'size' | 'dimensions' | 'empty' }
+  | {
+      ok: false
+      reason:
+        | 'type'
+        | 'size'
+        | 'min-size'
+        | 'dimensions'
+        | 'min-dimensions'
+        | 'empty'
+    }
 
 export async function validateFile(
   file: File,
@@ -120,6 +133,9 @@ export async function validateFile(
   if (!file || file.size === 0) return { ok: false, reason: 'empty' }
   if (options.maxBytes != null && file.size > options.maxBytes) {
     return { ok: false, reason: 'size' }
+  }
+  if (options.minBytes != null && file.size < options.minBytes) {
+    return { ok: false, reason: 'min-size' }
   }
   if (options.accept?.length) {
     const name = file.name.toLowerCase()
@@ -133,17 +149,24 @@ export async function validateFile(
     if (!accepted) return { ok: false, reason: 'type' }
   }
   if (
-    options.maxImageDimension != null &&
+    (options.maxImageDimension != null ||
+      options.minImageDimension != null) &&
     file.type.startsWith('image/') &&
     typeof createImageBitmap === 'function'
   ) {
     try {
       const bitmap = await createImageBitmap(file)
       const tooLarge =
-        bitmap.width > options.maxImageDimension ||
-        bitmap.height > options.maxImageDimension
+        options.maxImageDimension != null &&
+        (bitmap.width > options.maxImageDimension ||
+          bitmap.height > options.maxImageDimension)
+      const tooSmall =
+        options.minImageDimension != null &&
+        (bitmap.width < options.minImageDimension ||
+          bitmap.height < options.minImageDimension)
       bitmap.close()
       if (tooLarge) return { ok: false, reason: 'dimensions' }
+      if (tooSmall) return { ok: false, reason: 'min-dimensions' }
     } catch {
       return { ok: false, reason: 'type' }
     }

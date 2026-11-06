@@ -1,0 +1,161 @@
+@use 'styles' as vz;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid vz.color('border');
+  border-radius: vz.radius('2xl');
+  background: vz.color('card');
+  box-shadow: vz.elevation(1);
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: vz.space(3);
+  padding: vz.space(4) vz.space(4) 0;
+}
+
+.title {
+  margin: 0;
+  color: vz.color('foreground');
+  font-size: vz.font-size('sm');
+  font-weight: 600;
+}
+
+.description {
+  margin: vz.space(1) 0 0;
+  color: vz.color('muted-foreground');
+  font-size: vz.font-size('xs');
+  line-height: 1.5;
+}
+
+.stage-wrap {
+  padding: vz.space(4);
+}
+
+.stage {
+  position: relative;
+  height: 20rem;
+  overflow: hidden;
+  border-radius: vz.radius('xl');
+  background:
+    repeating-conic-gradient(hsl(var(--muted) / 70%) 0% 25%, transparent 0% 50%)
+    50% / 18px 18px;
+  cursor: grab;
+  user-select: none;
+
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+.stage-disabled {
+  cursor: default;
+  opacity: 0.6;
+}
+
+.image {
+  position: absolute;
+  max-width: none;
+  pointer-events: none;
+  user-select: none;
+}
+
+.crop {
+  position: absolute;
+  border: 1px solid hsl(var(--primary));
+  box-shadow: 0 0 0 9999px rgb(0 0 0 / 52%);
+  pointer-events: none;
+}
+
+.crop-round {
+  border-radius: 50%;
+}
+
+.crop::after {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgb(255 255 255 / 45%);
+  border-radius: inherit;
+  content: '';
+  opacity: 0.6;
+}
+
+.grid {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to right, transparent calc(33.333% - 0.5px), rgb(255 255 255 / 32%) 33.333%, transparent calc(33.333% + 0.5px)),
+    linear-gradient(to right, transparent calc(66.666% - 0.5px), rgb(255 255 255 / 32%) 66.666%, transparent calc(66.666% + 0.5px)),
+    linear-gradient(to bottom, transparent calc(33.333% - 0.5px), rgb(255 255 255 / 32%) 33.333%, transparent calc(33.333% + 0.5px)),
+    linear-gradient(to bottom, transparent calc(66.666% - 0.5px), rgb(255 255 255 / 32%) 66.666%, transparent calc(66.666% + 0.5px));
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: vz.space(2);
+  height: 100%;
+  color: vz.color('muted-foreground');
+  font-size: vz.font-size('sm');
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: vz.space(3);
+  padding: 0 vz.space(4) vz.space(4);
+}
+
+.zoom {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: vz.space(2);
+  min-width: 12rem;
+}
+
+.zoom-label {
+  color: vz.color('muted-foreground');
+  font-size: vz.font-size('xs');
+  font-variant-numeric: tabular-nums;
+}
+
+.range {
+  flex: 1;
+  min-width: 6rem;
+  accent-color: hsl(var(--primary));
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: vz.space(2);
+  padding: 0 vz.space(4) vz.space(4);
+}
+
+.status {
+  padding: 0 vz.space(4) vz.space(4);
+  color: vz.color('destructive');
+  font-size: vz.font-size('xs');
+}
+
+.hint {
+  padding: 0 vz.space(4) vz.space(4);
+  color: vz.color('muted-foreground');
+  font-size: 0.6875rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 40rem) {
+  .stage {
+    height: 16rem;
+  }
+}

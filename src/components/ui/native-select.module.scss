@@ -1,0 +1,71 @@
+@use 'styles' as vz;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: vz.space(1.5);
+  min-width: 0;
+}
+
+.field {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.select {
+  width: 100%;
+  height: var(--control-height, #{vz.space(10)});
+  padding: 0 vz.space(9) 0 vz.space(3);
+  border: 1px solid vz.color('border');
+  border-radius: var(--radius-lg);
+  background: vz.color('card');
+  color: vz.color('foreground');
+  font: inherit;
+  font-size: vz.font-size('sm');
+  appearance: none;
+  cursor: pointer;
+  transition:
+    border-color vz.duration('fast') vz.ease('out'),
+    box-shadow vz.duration('fast') vz.ease('out');
+
+  @include vz.focus-ring(2px, 0, 0.7);
+
+  &:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+}
+
+.error {
+  border-color: vz.color('destructive');
+}
+
+.chevron {
+  position: absolute;
+  right: vz.space(3);
+  width: vz.space(4);
+  height: vz.space(4);
+  color: vz.color('muted-foreground');
+  pointer-events: none;
+}
+
+.sm .select {
+  --control-height: #{vz.space(9)};
+
+  font-size: vz.font-size('xs');
+}
+
+.lg .select {
+  --control-height: #{vz.space(12)};
+}
+
+.message {
+  margin: 0;
+  color: vz.color('muted-foreground');
+  font-size: vz.font-size('xs');
+}
+
+.message-error {
+  color: vz.color('destructive');
+}

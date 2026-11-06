@@ -2,7 +2,6 @@ import { inventory } from './inventory'
 
 const SLUG_EXCEPTIONS: Record<string, string> = {
   PasswordStrengthInput: 'password-input',
-  FilePicker: 'file-upload',
   FileUpload: 'file-upload',
   StatGroup: 'stat',
   Dialog: 'modal',
@@ -25,7 +24,7 @@ export function slugFor(name: string): string {
 const MODULE_OVERRIDES: Record<string, string> = {
   Form: '~/components/reusable/form',
   FormDatePicker: '~/components/reusable/form-date-picker',
-  FilePicker: '~/components/ui/file-upload',
+  FilePicker: '~/components/ui/file-picker',
   Code: '~/components/ui/typography',
   Highlight: '~/components/ui/typography',
   Heading: '~/components/ui/typography',
@@ -232,6 +231,173 @@ const items = ['React', 'Vue', 'Svelte'].filter((item) =>
   hint="PNG, JPG or PDF up to 10 MB."
   accept={['image/png', 'image/jpeg', '.pdf']}
   maxFiles={3}
+/>`,
+  },
+  FilePicker: {
+    code: `import { FilePicker } from '~/components/ui/file-picker'
+
+<FilePicker
+  label="Evidence"
+  variant="dropzone"
+  accept={['image/png', 'image/jpeg', '.pdf']}
+  maxBytes={5 * 1024 * 1024}
+  maxTotalBytes={12 * 1024 * 1024}
+  maxFiles={3}
+/>
+
+<FilePicker variant="button" label="Resume" accept={['.pdf']} maxFiles={1} />
+<FilePicker variant="compact" label="Attachments" accept={['image/*']} />
+<FilePicker variant="avatar" label="Photo" accept={['image/*']} />
+<FilePicker variant="tile" label="Gallery" accept={['image/*']} maxFiles={6} />`,
+    notes: [
+      'Pick the style that matches the task: dropzone for documents, button for a single file, compact for settings, avatar for a profile photo, tile for images.',
+      '`maxBytes`, `minBytes`, `maxTotalBytes`, `maxFiles`, `minFiles`, `accept` and image dimension guards are all enforced before `onFiles` fires.',
+      'Use `onReject` to surface per-file reasons in your own toast or inline error region.',
+    ],
+  },
+  ImageCropper: {
+    code: `import { ImageCropper } from '~/components/ui/image-cropper'
+
+<ImageCropper
+  src={preview}
+  fileName="avatar.png"
+  aspectRatio={1}
+  cropShape="round"
+  outputFormat="original"
+  quality={1}
+  maxWidth={1024}
+  maxHeight={1024}
+  targetSizeBytes={300 * 1024}
+  onCrop={({ file, dataUrl }) => {
+    setCropped(file)
+    setPreview(dataUrl)
+  }}
+  onCancel={() => setEditing(false)}
+/>`,
+    notes: [
+      'The crop is rendered at the source resolution unless `maxWidth`/`maxHeight` are set.',
+      '`quality={1}` and PNG/WebP keeps the pixels; `targetSizeBytes` only compresses when the encoded result exceeds the budget.',
+      'Use `aspectRatio` for avatars (1), covers (16 / 9) or cards (4 / 3).',
+    ],
+  },
+  Field: {
+    code: `import { Field, FieldGroup } from '~/components/ui/field'
+import { Input } from '~/components/ui/input'
+
+<FieldGroup>
+  <Field label="Workspace" htmlFor="workspace" hint="Shown in the sidebar.">
+    <Input id="workspace" placeholder="Vorzela" />
+  </Field>
+  <Field
+    label="Slug"
+    htmlFor="slug"
+    error="That slug is already taken."
+    required
+  >
+    <Input id="slug" defaultValue="vorzela" />
+  </Field>
+</FieldGroup>`,
+  },
+  NativeSelect: {
+    code: `import { NativeSelect } from '~/components/ui/native-select'
+
+<NativeSelect
+  label="Region"
+  placeholder="Choose a region"
+  options={[
+    { value: 'eu-west-1', label: 'EU West (Ireland)' },
+    { value: 'us-east-1', label: 'US East (Virginia)' },
+    { value: 'ap-south-1', label: 'Asia Pacific (Mumbai)' },
+  ]}
+/>`,
+  },
+  ButtonGroup: {
+    code: `import { ButtonGroup } from '~/components/ui/button-group'
+import { Button } from '~/components/ui/button'
+
+<ButtonGroup aria-label="View">
+  <Button variant="outline">Day</Button>
+  <Button variant="outline">Week</Button>
+  <Button variant="outline">Month</Button>
+</ButtonGroup>`,
+  },
+  Anchor: {
+    code: `import { Anchor } from '~/components/ui/anchor'
+
+<Anchor
+  items={[
+    { id: 'install', label: 'Installation' },
+    { id: 'theming', label: 'Theming' },
+    { id: 'tokens', label: 'Tokens', level: 3 },
+    { id: 'components', label: 'Components' },
+  ]}
+/>`,
+    notes: [
+      'Give each target heading the same `id` you pass to the anchor item.',
+      'The active item follows scroll position; set `offset` to your sticky header height.',
+    ],
+  },
+  FloatButton: {
+    code: `import { FloatButton } from '~/components/ui/float-button'
+
+<FloatButton backToTop visibleAfter={400} />
+<FloatButton
+  position="bottom-right"
+  icon={<Plus aria-hidden />}
+  label="New project"
+  description="Create a project from a template."
+/>`,
+  },
+  Watermark: {
+    code: `import { Watermark } from '~/components/ui/watermark'
+
+<Watermark content="Vorzela UI · Confidential" opacity={0.12}>
+  <Card padded>Your content stays readable underneath.</Card>
+</Watermark>`,
+  },
+  Transfer: {
+    code: `import { Transfer } from '~/components/ui/transfer'
+
+<Transfer
+  dataSource={members}
+  defaultTargetKeys={['ada', 'grace']}
+  titles={['Members', 'Selected']}
+  onChange={(keys) => setSelectedMemberIds(keys)}
+/>`,
+  },
+  Mentions: {
+    code: `import { Mentions } from '~/components/ui/mentions'
+
+<Mentions
+  label="Comment"
+  suggestions={[
+    { id: 'ada', label: 'Ada Lovelace', description: 'Design systems' },
+    { id: 'grace', label: 'Grace Hopper', description: 'Platform' },
+  ]}
+  placeholder="Type @ to mention a teammate…"
+/>`,
+  },
+  Cascader: {
+    code: `import { Cascader } from '~/components/ui/cascader'
+
+<Cascader
+  label="Region"
+  options={[
+    {
+      value: 'eu',
+      label: 'Europe',
+      children: [
+        { value: 'ie', label: 'Ireland' },
+        { value: 'de', label: 'Germany' },
+      ],
+    },
+    {
+      value: 'us',
+      label: 'United States',
+      children: [{ value: 'va', label: 'Virginia' }],
+    },
+  ]}
+  onChange={(value, selected) => setRegion(value)}
 />`,
   },
   Rating: {

@@ -1,0 +1,24 @@
+{
+  "name": "field",
+  "type": "ui",
+  "version": "0.2.0",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [
+    "label",
+    "styles",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/field.tsx",
+      "content": "import type { HTMLAttributes, ReactNode } from 'react'\n\nimport { cx } from '~/lib/cx'\n\nimport { Label } from './label'\nimport styles from './field.module.scss'\n\nexport interface FieldProps extends Omit<HTMLAttributes<HTMLDivElement>, 'children'> {\n  label?: ReactNode\n  htmlFor?: string\n  hint?: ReactNode\n  error?: ReactNode\n  required?: boolean\n  optional?: boolean\n  orientation?: 'vertical' | 'horizontal'\n  children: ReactNode\n}\n\n/** Label + control + description/error in one accessible block. */\nexport function Field({\n  label,\n  htmlFor,\n  hint,\n  error,\n  required,\n  optional,\n  orientation = 'vertical',\n  className,\n  children,\n  ...props\n}: FieldProps) {\n  return (\n    <div\n      className={cx(styles.root, orientation === 'horizontal' && styles.horizontal, className)}\n      {...props}\n    >\n      {(label || optional) && (\n        <div className={styles.labelRow}>\n          {label ? (\n            <Label htmlFor={htmlFor} required={required}>\n              {label}\n            </Label>\n          ) : (\n            <span />\n          )}\n          {optional ? <span className={styles.optional}>Optional</span> : null}\n        </div>\n      )}\n      {children}\n      {error ? (\n        <p role=\"alert\" className={cx(styles.message, styles.error)}>\n          {error}\n        </p>\n      ) : hint ? (\n        <p className={styles.message}>{hint}</p>\n      ) : null}\n    </div>\n  )\n}\n\nexport interface FieldGroupProps extends HTMLAttributes<HTMLDivElement> {\n  children: ReactNode\n}\n\n/** Vertical stack for a set of fields. */\nexport function FieldGroup({ className, children, ...props }: FieldGroupProps) {\n  return (\n    <div className={cx(styles.group, className)} {...props}>\n      {children}\n    </div>\n  )\n}\n"
+    },
+    {
+      "path": "components/ui/field.module.scss",
+      "content": "@use 'styles' as vz;\n\n.root {\n  display: flex;\n  flex-direction: column;\n  gap: vz.space(1.5);\n  min-width: 0;\n}\n\n.label-row {\n  display: flex;\n  align-items: baseline;\n  justify-content: space-between;\n  gap: vz.space(2);\n}\n\n.optional {\n  color: vz.color('muted-foreground');\n  font-size: vz.font-size('xs');\n}\n\n.message {\n  margin: 0;\n  color: vz.color('muted-foreground');\n  font-size: vz.font-size('xs');\n  line-height: 1.5;\n}\n\n.error {\n  color: vz.color('destructive');\n}\n\n.group {\n  display: flex;\n  flex-direction: column;\n  gap: vz.space(4);\n}\n\n.horizontal {\n  display: grid;\n  grid-template-columns: minmax(7rem, 11rem) minmax(0, 1fr);\n  align-items: start;\n  gap: vz.space(3);\n}\n"
+    }
+  ],
+  "description": "field component",
+  "alias": false
+}
