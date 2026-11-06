@@ -1,0 +1,16 @@
+{
+  "name": "area-chart",
+  "type": "chart",
+  "version": "0.2.0",
+  "dependencies": [
+    "d3"
+  ],
+  "devDependencies": [
+    "@types/d3"
+  ],
+  "registryDependencies": [
+    "line-chart"
+  ],
+  "files": [],
+  "description": "AreaChart is exported from the line-chart module."
+}

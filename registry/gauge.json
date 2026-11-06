@@ -1,0 +1,24 @@
+{
+  "name": "gauge",
+  "type": "chart",
+  "version": "0.2.0",
+  "dependencies": [
+    "d3"
+  ],
+  "devDependencies": [
+    "@types/d3"
+  ],
+  "registryDependencies": [
+    "charts-shared",
+    "hooks",
+    "styles",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "charts/gauge.tsx",
+      "content": "import { arc } from 'd3'\n\nimport { useContainerSize } from '~/hooks/use-container-size'\nimport { cx } from '~/lib/cx'\nimport styles from './charts.module.scss'\nimport { useAnimatedProgress } from './use-animated-progress'\nimport { clamp, compactNumber } from './chart-utils'\nimport type { ChartSize } from './chart-types'\n\nexport function Gauge({\n  value,\n  max = 100,\n  height = 180,\n  label,\n  valueFormat = compactNumber,\n  color = 'hsl(var(--chart-1))',\n  animate = true,\n  className,\n}: {\n  value: number\n  max?: number\n  height?: number\n  label?: string\n  valueFormat?: (value: number) => string\n  color?: string\n  animate?: boolean\n  className?: string\n}) {\n  const { ref, width } = useContainerSize<HTMLDivElement>()\n  const progress = useAnimatedProgress({\n    enabled: animate,\n    duration: 700,\n    resetKey: `${value}:${max}`,\n  })\n  const size: ChartSize = { width, height }\n  const ratio = clamp(value / Math.max(1, max), 0, 1)\n  const animated = ratio * progress\n\n  const centerY = height - 14\n  const radius = Math.max(1, Math.min(size.width / 2 - 16, centerY - 10))\n  const inner = radius * 0.72\n  const start = -Math.PI / 2\n  const end = Math.PI / 2\n  const arcGen = arc<{ startAngle: number; endAngle: number }>()\n    .innerRadius(inner)\n    .outerRadius(radius)\n    .cornerRadius(4)\n\n  return (\n    <div\n      ref={ref}\n      className={cx(styles.fluid, className)}\n      style={{ height }}\n      role=\"img\"\n      aria-label={`${label ?? 'Gauge'}: ${valueFormat(value)} of ${valueFormat(max)}`}\n    >\n      {width > 0 ? (\n        <svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} aria-hidden>\n          <g transform={`translate(${width / 2},${centerY})`}>\n            <path\n              d={arcGen({ startAngle: start, endAngle: end }) ?? ''}\n              fill=\"hsl(var(--muted))\"\n            />\n            <path\n              d={\n                arcGen({\n                  startAngle: start,\n                  endAngle: start + (end - start) * animated,\n                }) ?? ''\n              }\n              fill={color}\n            />\n            <text\n              y={-radius * 0.34}\n              textAnchor=\"middle\"\n              dominantBaseline=\"middle\"\n              className={styles.centerValue}\n            >\n              {valueFormat(value)}\n            </text>\n            {label ? (\n              <text\n                y={-radius * 0.06}\n                textAnchor=\"middle\"\n                dominantBaseline=\"middle\"\n                className={styles.tick}\n              >\n                {label}\n              </text>\n            ) : null}\n          </g>\n        </svg>\n      ) : null}\n    </div>\n  )\n}\n"
+    }
+  ],
+  "description": "gauge chart"
+}

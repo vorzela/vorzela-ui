@@ -30,19 +30,14 @@ export function missingDependencies(cwd, dependencies) {
   return [...new Set(dependencies)].filter((dep) => !present.has(dep))
 }
 
-export function installDependencies(cwd, dependencies) {
+export function installDependencies(cwd, dependencies, { dev = false } = {}) {
   const missing = missingDependencies(cwd, dependencies)
   if (missing.length === 0) return []
 
   const manager = detectPackageManager(cwd)
-  const args =
-    manager === 'npm'
-      ? ['install', ...missing]
-      : manager === 'yarn'
-        ? ['add', ...missing]
-        : manager === 'pnpm'
-          ? ['add', ...missing]
-          : ['add', ...missing]
+  const verb = manager === 'npm' ? 'install' : 'add'
+  const devFlag = manager === 'bun' ? '-d' : '-D'
+  const args = dev ? [verb, devFlag, ...missing] : [verb, ...missing]
 
   const result = spawnSync(manager, args, { cwd, stdio: 'inherit' })
   if (result.status !== 0) {

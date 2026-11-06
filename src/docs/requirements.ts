@@ -9,6 +9,10 @@ export const PACKAGE_REQUIREMENTS = `{
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "sugar-high": "^2.6.4"
+  },
+  "devDependencies": {
+    "@types/d3": "^7.4.3",
+    "@types/d3-sankey": "^0.12.5"
   }
 }`
 

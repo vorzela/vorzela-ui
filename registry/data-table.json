@@ -6,10 +6,12 @@
     "@tanstack/react-table",
     "lucide-react"
   ],
+  "devDependencies": [],
   "registryDependencies": [
     "checkbox",
     "helpers",
     "lib-table",
+    "simple-data-table",
     "styles",
     "utils"
   ],

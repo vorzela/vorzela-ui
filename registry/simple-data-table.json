@@ -6,6 +6,7 @@
     "@tanstack/react-table",
     "lucide-react"
   ],
+  "devDependencies": [],
   "registryDependencies": [
     "helpers",
     "lib-table",

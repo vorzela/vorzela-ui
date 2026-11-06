@@ -49,6 +49,12 @@ export function targetFor(config, registryPath) {
   if (normalized.startsWith('components/utils/')) {
     return path.join(config.paths.base, 'components/utils', file)
   }
+  if (normalized.startsWith('components/reusable/')) {
+    return path.join(config.paths.base, 'components/reusable', file)
+  }
+  if (normalized.startsWith('charts/')) {
+    return path.join(config.paths.base, 'charts', file)
+  }
   if (normalized.startsWith('lib/')) {
     return path.join(config.paths.lib, file)
   }
@@ -67,6 +73,8 @@ export function rewriteImports(content, config) {
     ['~/components/ui/', `${config.aliases.components}/`],
     ['~/components/primitives/', `${config.aliases.base}/components/primitives/`],
     ['~/components/utils/', `${config.aliases.base}/components/utils/`],
+    ['~/components/reusable/', `${config.aliases.base}/components/reusable/`],
+    ['~/charts/', `${config.aliases.base}/charts/`],
     ['~/lib/', `${config.aliases.lib}/`],
     ['~/hooks/', `${config.aliases.hooks}/`],
     ['~/styles', config.aliases.styles],

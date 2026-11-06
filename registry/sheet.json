@@ -5,6 +5,7 @@
   "dependencies": [
     "lucide-react"
   ],
+  "devDependencies": [],
   "registryDependencies": [
     "hooks",
     "lib-overlay",

@@ -1,6 +1,6 @@
 {
   "version": "0.2.0",
-  "generatedAt": "2026-11-06T08:28:53.934Z",
+  "generatedAt": "2026-11-06T09:55:48.833Z",
   "items": [
     {
       "name": "accordion",
@@ -9,6 +9,7 @@
       "dependencies": [
         "lucide-react"
       ],
+      "devDependencies": [],
       "registryDependencies": [
         "styles",
         "utils"
@@ -24,6 +25,7 @@
       "type": "ui",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [
         "primitives",
         "styles",
@@ -42,6 +44,7 @@
       "dependencies": [
         "lucide-react"
       ],
+      "devDependencies": [],
       "registryDependencies": [
         "styles",
         "utils"
@@ -57,6 +60,7 @@
       "type": "ui",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [
         "button",
         "hooks",
@@ -76,6 +80,7 @@
       "type": "ui",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [
         "primitives",
         "sidebar",
@@ -89,10 +94,27 @@
       ]
     },
     {
+      "name": "area-chart",
+      "type": "chart",
+      "version": "0.2.0",
+      "dependencies": [
+        "d3"
+      ],
+      "devDependencies": [
+        "@types/d3"
+      ],
+      "registryDependencies": [
+        "line-chart"
+      ],
+      "description": "AreaChart is exported from the line-chart module.",
+      "files": []
+    },
+    {
       "name": "aspect-ratio",
       "type": "ui",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [
         "styles",
         "utils"
@@ -110,6 +132,7 @@
       "dependencies": [
         "lucide-react"
       ],
+      "devDependencies": [],
       "registryDependencies": [
         "hooks",
         "label",
@@ -127,6 +150,7 @@
       "type": "ui",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [
         "styles",
         "utils"
@@ -142,6 +166,7 @@
       "type": "ui",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [
         "styles",
         "utils"
@@ -159,6 +184,7 @@
       "dependencies": [
         "lucide-react"
       ],
+      "devDependencies": [],
       "registryDependencies": [
         "styles",
         "utils"
@@ -170,10 +196,31 @@
       ]
     },
     {
+      "name": "bar-chart",
+      "type": "chart",
+      "version": "0.2.0",
+      "dependencies": [
+        "d3"
+      ],
+      "devDependencies": [
+        "@types/d3"
+      ],
+      "registryDependencies": [
+        "chart-frame",
+        "charts-shared",
+        "styles"
+      ],
+      "description": "bar-chart chart",
+      "files": [
+        "charts/bar-chart.tsx"
+      ]
+    },
+    {
       "name": "bento-grid",
       "type": "ui",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [
         "styles",
         "utils"
@@ -191,6 +238,7 @@
       "dependencies": [
         "lucide-react"
       ],
+      "devDependencies": [],
       "registryDependencies": [
         "styles",
         "utils"
@@ -202,10 +250,31 @@
       ]
     },
     {
+      "name": "bullet-chart",
+      "type": "chart",
+      "version": "0.2.0",
+      "dependencies": [
+        "d3"
+      ],
+      "devDependencies": [
+        "@types/d3"
+      ],
+      "registryDependencies": [
+        "chart-frame",
+        "charts-shared",
+        "styles"
+      ],
+      "description": "bullet-chart chart",
+      "files": [
+        "charts/bullet-chart.tsx"
+      ]
+    },
+    {
       "name": "button",
       "type": "ui",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [
         "styles",
         "utils"
@@ -223,6 +292,7 @@
       "dependencies": [
         "lucide-react"
       ],
+      "devDependencies": [],
       "registryDependencies": [
         "styles",
         "utils"
@@ -230,7 +300,8 @@
       "description": "calendar component",
       "files": [
         "components/ui/calendar.tsx",
-        "components/ui/calendar.module.scss"
+        "components/ui/calendar.module.scss",
+        "components/ui/calendar-utils.ts"
       ]
     },
     {
@@ -240,6 +311,7 @@
       "dependencies": [
         "lucide-react"
       ],
+      "devDependencies": [],
       "registryDependencies": [
         "styles",
         "utils"
@@ -251,10 +323,31 @@
       ]
     },
     {
+      "name": "candlestick-chart",
+      "type": "chart",
+      "version": "0.2.0",
+      "dependencies": [
+        "d3"
+      ],
+      "devDependencies": [
+        "@types/d3"
+      ],
+      "registryDependencies": [
+        "chart-frame",
+        "charts-shared",
+        "styles"
+      ],
+      "description": "candlestick-chart chart",
+      "files": [
+        "charts/candlestick-chart.tsx"
+      ]
+    },
+    {
       "name": "card",
       "type": "ui",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [
         "styles",
         "utils"
@@ -272,6 +365,7 @@
       "dependencies": [
         "lucide-react"
       ],
+      "devDependencies": [],
       "registryDependencies": [
         "button",
         "hooks",
@@ -285,12 +379,52 @@
       ]
     },
     {
+      "name": "chart-frame",
+      "type": "chart",
+      "version": "0.2.0",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [
+        "charts-shared",
+        "hooks",
+        "skeleton",
+        "styles",
+        "utils"
+      ],
+      "description": "chart-frame chart",
+      "files": [
+        "charts/chart-frame.tsx"
+      ]
+    },
+    {
+      "name": "charts-shared",
+      "type": "shared",
+      "version": "0.2.0",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [
+        "hooks",
+        "styles",
+        "utils"
+      ],
+      "description": "Shared chart types, palette, tooltip, motion and styles.",
+      "files": [
+        "charts/chart-colors.ts",
+        "charts/chart-types.ts",
+        "charts/chart-utils.ts",
+        "charts/chart-tooltip.tsx",
+        "charts/use-animated-progress.ts",
+        "charts/charts.module.scss"
+      ]
+    },
+    {
       "name": "checkbox",
       "type": "ui",
       "version": "0.2.0",
       "dependencies": [
         "lucide-react"
       ],
+      "devDependencies": [],
       "registryDependencies": [
         "styles",
         "utils"
@@ -308,6 +442,7 @@
       "dependencies": [
         "lucide-react"
       ],
+      "devDependencies": [],
       "registryDependencies": [
         "styles",
         "utils"
@@ -325,6 +460,7 @@
       "dependencies": [
         "lucide-react"
       ],
+      "devDependencies": [],
       "registryDependencies": [
         "hooks",
         "styles",
@@ -341,6 +477,7 @@
       "type": "ui",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [
         "styles",
         "utils"
@@ -358,6 +495,7 @@
       "dependencies": [
         "lucide-react"
       ],
+      "devDependencies": [],
       "registryDependencies": [
         "hooks",
         "label",
@@ -377,6 +515,7 @@
       "dependencies": [
         "lucide-react"
       ],
+      "devDependencies": [],
       "registryDependencies": [
         "lib-overlay",
         "primitives",
@@ -394,6 +533,7 @@
       "type": "ui",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [
         "primitives",
         "styles",
@@ -412,6 +552,7 @@
       "dependencies": [
         "lucide-react"
       ],
+      "devDependencies": [],
       "registryDependencies": [
         "button",
         "lib-security",
@@ -432,6 +573,7 @@
       "dependencies": [
         "lucide-react"
       ],
+      "devDependencies": [],
       "registryDependencies": [
         "button",
         "hooks",
@@ -450,6 +592,7 @@
       "type": "ui",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [
         "input",
         "styles"
@@ -468,10 +611,12 @@
         "@tanstack/react-table",
         "lucide-react"
       ],
+      "devDependencies": [],
       "registryDependencies": [
         "checkbox",
         "helpers",
         "lib-table",
+        "simple-data-table",
         "styles",
         "utils"
       ],
@@ -488,6 +633,7 @@
       "dependencies": [
         "lucide-react"
       ],
+      "devDependencies": [],
       "registryDependencies": [
         "calendar",
         "hooks",
@@ -498,7 +644,8 @@
       "description": "date-picker component",
       "files": [
         "components/ui/date-picker.tsx",
-        "components/ui/date-picker.module.scss"
+        "components/ui/date-picker.module.scss",
+        "components/ui/calendar-utils.ts"
       ]
     },
     {
@@ -506,6 +653,7 @@
       "type": "ui",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [
         "styles",
         "utils"
@@ -521,6 +669,7 @@
       "type": "ui",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [
         "styles",
         "utils"
@@ -532,12 +681,34 @@
       ]
     },
     {
+      "name": "donut-chart",
+      "type": "chart",
+      "version": "0.2.0",
+      "dependencies": [
+        "d3"
+      ],
+      "devDependencies": [
+        "@types/d3"
+      ],
+      "registryDependencies": [
+        "chart-frame",
+        "charts-shared",
+        "styles",
+        "utils"
+      ],
+      "description": "donut-chart chart",
+      "files": [
+        "charts/donut-chart.tsx"
+      ]
+    },
+    {
       "name": "drawer",
       "type": "ui",
       "version": "0.2.0",
       "dependencies": [
         "lucide-react"
       ],
+      "devDependencies": [],
       "registryDependencies": [
         "hooks",
         "lib-overlay",
@@ -556,6 +727,7 @@
       "type": "ui",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [
         "primitives",
         "styles",
@@ -574,6 +746,7 @@
       "dependencies": [
         "lucide-react"
       ],
+      "devDependencies": [],
       "registryDependencies": [
         "styles",
         "utils"
@@ -589,6 +762,7 @@
       "type": "ui",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [
         "button",
         "styles",
@@ -607,6 +781,7 @@
       "dependencies": [
         "lucide-react"
       ],
+      "devDependencies": [],
       "registryDependencies": [
         "button",
         "styles",
@@ -625,6 +800,7 @@
       "dependencies": [
         "lucide-react"
       ],
+      "devDependencies": [],
       "registryDependencies": [
         "button",
         "lib-security",
@@ -644,6 +820,7 @@
       "dependencies": [
         "lucide-react"
       ],
+      "devDependencies": [],
       "registryDependencies": [
         "styles",
         "utils"
@@ -655,10 +832,90 @@
       ]
     },
     {
+      "name": "form",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [
+        "@tanstack/react-form"
+      ],
+      "devDependencies": [],
+      "registryDependencies": [
+        "checkbox",
+        "input",
+        "password-input",
+        "select",
+        "styles",
+        "textarea"
+      ],
+      "description": "form form wrapper",
+      "files": [
+        "components/reusable/form.tsx"
+      ]
+    },
+    {
+      "name": "form-date-picker",
+      "type": "ui",
+      "version": "0.2.0",
+      "dependencies": [
+        "@tanstack/react-form"
+      ],
+      "devDependencies": [],
+      "registryDependencies": [
+        "date-picker",
+        "styles"
+      ],
+      "description": "form-date-picker form wrapper",
+      "files": [
+        "components/reusable/form-date-picker.tsx"
+      ]
+    },
+    {
+      "name": "funnel-chart",
+      "type": "chart",
+      "version": "0.2.0",
+      "dependencies": [
+        "d3"
+      ],
+      "devDependencies": [
+        "@types/d3"
+      ],
+      "registryDependencies": [
+        "chart-frame",
+        "charts-shared",
+        "styles"
+      ],
+      "description": "funnel-chart chart",
+      "files": [
+        "charts/funnel-chart.tsx"
+      ]
+    },
+    {
+      "name": "gauge",
+      "type": "chart",
+      "version": "0.2.0",
+      "dependencies": [
+        "d3"
+      ],
+      "devDependencies": [
+        "@types/d3"
+      ],
+      "registryDependencies": [
+        "charts-shared",
+        "hooks",
+        "styles",
+        "utils"
+      ],
+      "description": "gauge chart",
+      "files": [
+        "charts/gauge.tsx"
+      ]
+    },
+    {
       "name": "glass-panel",
       "type": "ui",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [
         "styles",
         "utils"
@@ -676,6 +933,7 @@
       "dependencies": [
         "lucide-react"
       ],
+      "devDependencies": [],
       "registryDependencies": [
         "styles",
         "utils"
@@ -687,10 +945,31 @@
       ]
     },
     {
+      "name": "heatmap",
+      "type": "chart",
+      "version": "0.2.0",
+      "dependencies": [
+        "d3"
+      ],
+      "devDependencies": [
+        "@types/d3"
+      ],
+      "registryDependencies": [
+        "chart-frame",
+        "charts-shared",
+        "styles"
+      ],
+      "description": "heatmap chart",
+      "files": [
+        "charts/heatmap.tsx"
+      ]
+    },
+    {
       "name": "helpers",
       "type": "util",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [],
       "description": "",
       "files": [
@@ -700,10 +979,32 @@
       ]
     },
     {
+      "name": "histogram-chart",
+      "type": "chart",
+      "version": "0.2.0",
+      "dependencies": [
+        "d3"
+      ],
+      "devDependencies": [
+        "@types/d3"
+      ],
+      "registryDependencies": [
+        "chart-frame",
+        "charts-shared",
+        "styles",
+        "utils"
+      ],
+      "description": "histogram-chart chart",
+      "files": [
+        "charts/histogram-chart.tsx"
+      ]
+    },
+    {
       "name": "hooks",
       "type": "hook",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [],
       "description": "",
       "files": [
@@ -724,6 +1025,7 @@
       "type": "ui",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [
         "lib-refs",
         "primitives",
@@ -743,6 +1045,7 @@
       "dependencies": [
         "lucide-react"
       ],
+      "devDependencies": [],
       "registryDependencies": [
         "label",
         "styles",
@@ -759,6 +1062,7 @@
       "type": "ui",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [
         "input",
         "styles",
@@ -775,6 +1079,7 @@
       "type": "ui",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [
         "styles",
         "utils"
@@ -792,6 +1097,7 @@
       "dependencies": [
         "lucide-react"
       ],
+      "devDependencies": [],
       "registryDependencies": [
         "styles",
         "utils"
@@ -807,6 +1113,7 @@
       "type": "ui",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [
         "styles",
         "utils"
@@ -822,6 +1129,7 @@
       "type": "ui",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [
         "styles",
         "utils"
@@ -837,6 +1145,7 @@
       "type": "ui",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [
         "styles",
         "utils"
@@ -852,6 +1161,7 @@
       "type": "lib",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [],
       "description": "",
       "files": [
@@ -863,6 +1173,7 @@
       "type": "lib",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [],
       "description": "",
       "files": [
@@ -874,6 +1185,7 @@
       "type": "lib",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [],
       "description": "",
       "files": [
@@ -887,6 +1199,7 @@
       "dependencies": [
         "dompurify"
       ],
+      "devDependencies": [],
       "registryDependencies": [],
       "description": "",
       "files": [
@@ -898,10 +1211,31 @@
       "type": "lib",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [],
       "description": "",
       "files": [
         "lib/table.ts"
+      ]
+    },
+    {
+      "name": "line-chart",
+      "type": "chart",
+      "version": "0.2.0",
+      "dependencies": [
+        "d3"
+      ],
+      "devDependencies": [
+        "@types/d3"
+      ],
+      "registryDependencies": [
+        "chart-frame",
+        "charts-shared",
+        "styles"
+      ],
+      "description": "line-chart chart",
+      "files": [
+        "charts/line-chart.tsx"
       ]
     },
     {
@@ -911,6 +1245,7 @@
       "dependencies": [
         "lucide-react"
       ],
+      "devDependencies": [],
       "registryDependencies": [
         "lib-security",
         "styles",
@@ -927,6 +1262,7 @@
       "type": "ui",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [
         "styles",
         "utils"
@@ -942,6 +1278,7 @@
       "type": "ui",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [
         "styles",
         "utils"
@@ -957,6 +1294,7 @@
       "type": "ui",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [
         "styles",
         "utils"
@@ -972,6 +1310,7 @@
       "type": "ui",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [
         "dropdown",
         "styles",
@@ -990,6 +1329,7 @@
       "dependencies": [
         "lucide-react"
       ],
+      "devDependencies": [],
       "registryDependencies": [
         "hooks",
         "lib-overlay",
@@ -1010,6 +1350,7 @@
       "dependencies": [
         "lucide-react"
       ],
+      "devDependencies": [],
       "registryDependencies": [
         "styles",
         "utils"
@@ -1025,6 +1366,7 @@
       "type": "ui",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [
         "hooks",
         "primitives",
@@ -1035,7 +1377,8 @@
       "description": "network-loader component",
       "files": [
         "components/ui/network-loader.tsx",
-        "components/ui/network-loader.module.scss"
+        "components/ui/network-loader.module.scss",
+        "components/ui/network-loader-store.ts"
       ]
     },
     {
@@ -1045,6 +1388,7 @@
       "dependencies": [
         "lucide-react"
       ],
+      "devDependencies": [],
       "registryDependencies": [
         "button",
         "empty",
@@ -1064,6 +1408,7 @@
       "dependencies": [
         "lucide-react"
       ],
+      "devDependencies": [],
       "registryDependencies": [
         "hooks",
         "styles",
@@ -1080,6 +1425,7 @@
       "type": "ui",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [
         "hooks",
         "styles",
@@ -1098,6 +1444,7 @@
       "dependencies": [
         "lucide-react"
       ],
+      "devDependencies": [],
       "registryDependencies": [
         "hooks",
         "styles",
@@ -1116,6 +1463,7 @@
       "dependencies": [
         "lucide-react"
       ],
+      "devDependencies": [],
       "registryDependencies": [
         "helpers",
         "styles",
@@ -1124,7 +1472,8 @@
       "description": "optimized-image component",
       "files": [
         "components/ui/optimized-image.tsx",
-        "components/ui/optimized-image.module.scss"
+        "components/ui/optimized-image.module.scss",
+        "components/ui/optimized-image-cache.ts"
       ]
     },
     {
@@ -1132,6 +1481,7 @@
       "type": "ui",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [
         "hooks",
         "styles",
@@ -1150,6 +1500,7 @@
       "dependencies": [
         "lucide-react"
       ],
+      "devDependencies": [],
       "registryDependencies": [
         "button",
         "primitives",
@@ -1169,6 +1520,7 @@
       "dependencies": [
         "lucide-react"
       ],
+      "devDependencies": [],
       "registryDependencies": [
         "label",
         "styles",
@@ -1187,6 +1539,7 @@
       "dependencies": [
         "lucide-react"
       ],
+      "devDependencies": [],
       "registryDependencies": [
         "label",
         "lib-phone-countries",
@@ -1204,6 +1557,7 @@
       "type": "ui",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [
         "button",
         "popover",
@@ -1220,6 +1574,7 @@
       "type": "ui",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [
         "lib-overlay",
         "lib-refs",
@@ -1238,6 +1593,7 @@
       "type": "primitive",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [],
       "description": "",
       "files": [
@@ -1256,6 +1612,7 @@
       "type": "ui",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [
         "styles",
         "utils"
@@ -1267,10 +1624,52 @@
       ]
     },
     {
+      "name": "radar-chart",
+      "type": "chart",
+      "version": "0.2.0",
+      "dependencies": [
+        "d3"
+      ],
+      "devDependencies": [
+        "@types/d3"
+      ],
+      "registryDependencies": [
+        "chart-frame",
+        "charts-shared",
+        "styles"
+      ],
+      "description": "radar-chart chart",
+      "files": [
+        "charts/radar-chart.tsx"
+      ]
+    },
+    {
+      "name": "radial-bar-chart",
+      "type": "chart",
+      "version": "0.2.0",
+      "dependencies": [
+        "d3"
+      ],
+      "devDependencies": [
+        "@types/d3"
+      ],
+      "registryDependencies": [
+        "chart-frame",
+        "charts-shared",
+        "styles",
+        "utils"
+      ],
+      "description": "radial-bar-chart chart",
+      "files": [
+        "charts/radial-bar-chart.tsx"
+      ]
+    },
+    {
       "name": "radio-group",
       "type": "ui",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [
         "styles",
         "utils"
@@ -1286,6 +1685,7 @@
       "type": "ui",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [
         "styles",
         "utils"
@@ -1303,6 +1703,7 @@
       "dependencies": [
         "lucide-react"
       ],
+      "devDependencies": [],
       "registryDependencies": [
         "styles",
         "utils"
@@ -1318,6 +1719,7 @@
       "type": "ui",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [
         "styles",
         "utils"
@@ -1335,6 +1737,7 @@
       "dependencies": [
         "lucide-react"
       ],
+      "devDependencies": [],
       "registryDependencies": [
         "styles",
         "utils"
@@ -1352,6 +1755,7 @@
       "dependencies": [
         "lucide-react"
       ],
+      "devDependencies": [],
       "registryDependencies": [
         "styles",
         "utils"
@@ -1363,10 +1767,52 @@
       ]
     },
     {
+      "name": "sankey-chart",
+      "type": "chart",
+      "version": "0.2.0",
+      "dependencies": [
+        "d3-sankey"
+      ],
+      "devDependencies": [
+        "@types/d3-sankey"
+      ],
+      "registryDependencies": [
+        "chart-frame",
+        "charts-shared",
+        "styles"
+      ],
+      "description": "sankey-chart chart",
+      "files": [
+        "charts/sankey-chart.tsx"
+      ]
+    },
+    {
+      "name": "scatter-chart",
+      "type": "chart",
+      "version": "0.2.0",
+      "dependencies": [
+        "d3"
+      ],
+      "devDependencies": [
+        "@types/d3"
+      ],
+      "registryDependencies": [
+        "chart-frame",
+        "charts-shared",
+        "styles",
+        "utils"
+      ],
+      "description": "scatter-chart chart",
+      "files": [
+        "charts/scatter-chart.tsx"
+      ]
+    },
+    {
       "name": "scroll-area",
       "type": "ui",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [
         "styles",
         "utils"
@@ -1384,6 +1830,7 @@
       "dependencies": [
         "lucide-react"
       ],
+      "devDependencies": [],
       "registryDependencies": [
         "label",
         "styles",
@@ -1400,6 +1847,7 @@
       "type": "ui",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [
         "hooks",
         "styles",
@@ -1418,6 +1866,7 @@
       "dependencies": [
         "lucide-react"
       ],
+      "devDependencies": [],
       "registryDependencies": [
         "hooks",
         "label",
@@ -1435,6 +1884,7 @@
       "type": "ui",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [
         "styles",
         "utils"
@@ -1452,6 +1902,7 @@
       "dependencies": [
         "lucide-react"
       ],
+      "devDependencies": [],
       "registryDependencies": [
         "hooks",
         "lib-overlay",
@@ -1472,6 +1923,7 @@
       "dependencies": [
         "lucide-react"
       ],
+      "devDependencies": [],
       "registryDependencies": [
         "hooks",
         "lib-overlay",
@@ -1492,6 +1944,7 @@
         "@tanstack/react-table",
         "lucide-react"
       ],
+      "devDependencies": [],
       "registryDependencies": [
         "helpers",
         "lib-table",
@@ -1509,6 +1962,7 @@
       "type": "ui",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [
         "styles",
         "utils"
@@ -1524,6 +1978,7 @@
       "type": "ui",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [
         "styles",
         "utils"
@@ -1541,6 +1996,7 @@
       "dependencies": [
         "lucide-react"
       ],
+      "devDependencies": [],
       "registryDependencies": [
         "primitives",
         "styles",
@@ -1549,7 +2005,29 @@
       "description": "sonner component",
       "files": [
         "components/ui/sonner.tsx",
-        "components/ui/sonner.module.scss"
+        "components/ui/sonner.module.scss",
+        "components/ui/sonner-context.ts"
+      ]
+    },
+    {
+      "name": "sparkline",
+      "type": "chart",
+      "version": "0.2.0",
+      "dependencies": [
+        "d3"
+      ],
+      "devDependencies": [
+        "@types/d3"
+      ],
+      "registryDependencies": [
+        "charts-shared",
+        "hooks",
+        "styles",
+        "utils"
+      ],
+      "description": "sparkline chart",
+      "files": [
+        "charts/sparkline.tsx"
       ]
     },
     {
@@ -1557,6 +2035,7 @@
       "type": "ui",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [
         "styles",
         "utils"
@@ -1574,6 +2053,7 @@
       "dependencies": [
         "lucide-react"
       ],
+      "devDependencies": [],
       "registryDependencies": [
         "styles",
         "utils"
@@ -1589,6 +2069,7 @@
       "type": "ui",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [
         "styles",
         "utils"
@@ -1606,6 +2087,7 @@
       "dependencies": [
         "lucide-react"
       ],
+      "devDependencies": [],
       "registryDependencies": [
         "styles",
         "utils"
@@ -1621,6 +2103,7 @@
       "type": "style",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [],
       "description": "",
       "files": [
@@ -1652,6 +2135,7 @@
       "type": "ui",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [
         "styles",
         "utils"
@@ -1667,6 +2151,7 @@
       "type": "ui",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [
         "hooks",
         "styles",
@@ -1683,6 +2168,7 @@
       "type": "ui",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [
         "styles",
         "utils"
@@ -1698,6 +2184,7 @@
       "type": "ui",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [
         "styles",
         "utils"
@@ -1715,6 +2202,7 @@
       "dependencies": [
         "lucide-react"
       ],
+      "devDependencies": [],
       "registryDependencies": [
         "hooks",
         "styles",
@@ -1733,6 +2221,7 @@
       "dependencies": [
         "lucide-react"
       ],
+      "devDependencies": [],
       "registryDependencies": [
         "label",
         "styles",
@@ -1751,6 +2240,7 @@
       "dependencies": [
         "lucide-react"
       ],
+      "devDependencies": [],
       "registryDependencies": [
         "input",
         "styles"
@@ -1765,6 +2255,7 @@
       "type": "ui",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [
         "styles",
         "utils"
@@ -1780,6 +2271,7 @@
       "type": "ui",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [
         "styles",
         "utils"
@@ -1795,6 +2287,7 @@
       "type": "ui",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [
         "styles",
         "toggle",
@@ -1811,6 +2304,7 @@
       "type": "ui",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [
         "separator",
         "styles",
@@ -1827,6 +2321,7 @@
       "type": "ui",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [
         "primitives",
         "styles",
@@ -1843,6 +2338,7 @@
       "type": "ui",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [
         "header",
         "styles"
@@ -1859,6 +2355,7 @@
       "dependencies": [
         "lucide-react"
       ],
+      "devDependencies": [],
       "registryDependencies": [
         "styles",
         "utils"
@@ -1870,10 +2367,31 @@
       ]
     },
     {
+      "name": "treemap-chart",
+      "type": "chart",
+      "version": "0.2.0",
+      "dependencies": [
+        "d3"
+      ],
+      "devDependencies": [
+        "@types/d3"
+      ],
+      "registryDependencies": [
+        "chart-frame",
+        "charts-shared",
+        "styles"
+      ],
+      "description": "treemap-chart chart",
+      "files": [
+        "charts/treemap-chart.tsx"
+      ]
+    },
+    {
       "name": "typography",
       "type": "ui",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [
         "styles",
         "utils"
@@ -1889,6 +2407,7 @@
       "type": "lib",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [],
       "description": "",
       "files": [
@@ -1900,6 +2419,7 @@
       "type": "ui",
       "version": "0.2.0",
       "dependencies": [],
+      "devDependencies": [],
       "registryDependencies": [
         "styles",
         "utils"
@@ -1908,6 +2428,26 @@
       "files": [
         "components/ui/virtual-list.tsx",
         "components/ui/virtual-list.module.scss"
+      ]
+    },
+    {
+      "name": "waterfall-chart",
+      "type": "chart",
+      "version": "0.2.0",
+      "dependencies": [
+        "d3"
+      ],
+      "devDependencies": [
+        "@types/d3"
+      ],
+      "registryDependencies": [
+        "chart-frame",
+        "charts-shared",
+        "styles"
+      ],
+      "description": "waterfall-chart chart",
+      "files": [
+        "charts/waterfall-chart.tsx"
       ]
     }
   ]

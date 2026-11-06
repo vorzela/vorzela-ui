@@ -1,0 +1,20 @@
+{
+  "name": "form-date-picker",
+  "type": "ui",
+  "version": "0.2.0",
+  "dependencies": [
+    "@tanstack/react-form"
+  ],
+  "devDependencies": [],
+  "registryDependencies": [
+    "date-picker",
+    "styles"
+  ],
+  "files": [
+    {
+      "path": "components/reusable/form-date-picker.tsx",
+      "content": "/**\n * TanStack Form wrapper around DatePicker. Values are ISO `YYYY-MM-DD` strings.\n */\nimport { DatePicker } from '~/components/ui/date-picker'\n\n// eslint-disable-next-line @typescript-eslint/no-explicit-any\ntype AnyForm = any\n\nexport interface FormDatePickerProps {\n  form: AnyForm\n  name: string\n  label?: string\n  hint?: string\n  required?: boolean\n  disabled?: boolean\n  min?: string\n  max?: string\n  validators?: AnyForm\n  wrapClassName?: string\n}\n\nexport function FormDatePicker({\n  form,\n  name,\n  label,\n  hint,\n  required,\n  disabled,\n  min,\n  max,\n  validators,\n  wrapClassName,\n}: FormDatePickerProps) {\n  return (\n    <form.Field name={name} validators={validators}>\n      {(field: AnyForm) => {\n        const raw = field.state.meta.errors?.[0]\n        const attempted = (form?.state?.submissionAttempts ?? 0) > 0\n        const show = field.state.meta.isTouched || attempted\n        const error =\n          raw != null && raw !== '' && show\n            ? typeof raw === 'string'\n              ? raw\n              : String(raw)\n            : undefined\n\n        return (\n          <DatePicker\n            label={label}\n            hint={hint}\n            required={required}\n            disabled={disabled}\n            min={min}\n            max={max}\n            wrapClassName={wrapClassName}\n            value={field.state.value ?? ''}\n            onChange={(iso: string) => field.handleChange(iso)}\n            error={error}\n          />\n        )\n      }}\n    </form.Field>\n  )\n}\n"
+    }
+  ],
+  "description": "form-date-picker form wrapper"
+}

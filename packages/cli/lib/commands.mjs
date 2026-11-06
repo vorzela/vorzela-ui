@@ -104,6 +104,7 @@ async function addItemFiles(item, config, manifest, cwd, flags) {
     version: item.version,
     files: item.files.map((file) => targetFor(config, file.path)),
     dependencies: item.dependencies ?? [],
+    devDependencies: item.devDependencies ?? [],
     registryDependencies: item.registryDependencies ?? [],
   }
   return installed
@@ -139,19 +140,29 @@ export async function add(cwd, names, flags = {}) {
   const dependencies = [
     ...new Set(items.flatMap((item) => item.dependencies ?? [])),
   ]
+  const devDependencies = [
+    ...new Set(items.flatMap((item) => item.devDependencies ?? [])),
+  ]
 
   if (flags.dryRun) {
     for (const item of items) {
       log.step(`would install ${item.name}@${item.version}`)
     }
     if (dependencies.length) log.step(`would install deps: ${dependencies.join(', ')}`)
+    if (devDependencies.length) {
+      log.step(`would install dev deps: ${devDependencies.join(', ')}`)
+    }
     return
   }
 
-  log.info(`Installing ${items.filter((i) => i.type === 'ui').map((i) => i.name).join(', ')}`)
+  log.info(`Installing ${items.filter((i) => i.type === 'ui' || i.type === 'chart').map((i) => i.name).join(', ')}`)
   if (dependencies.length) {
     log.step(`npm deps: ${dependencies.join(', ')}`)
     installDependencies(cwd, dependencies)
+  }
+  if (devDependencies.length) {
+    log.step(`npm dev deps: ${devDependencies.join(', ')}`)
+    installDependencies(cwd, devDependencies, { dev: true })
   }
 
   const manifest = readManifest(cwd)
@@ -291,6 +302,7 @@ export async function update(cwd, names = [], flags = {}) {
         version: item.version,
         files: [...nextFiles.keys()],
         dependencies: item.dependencies ?? [],
+        devDependencies: item.devDependencies ?? [],
         registryDependencies: item.registryDependencies ?? [],
       }
     }

@@ -97,7 +97,8 @@ export function SignIn() {
 | Command | What it does |
 | --- | --- |
 | `vorzela-ui init` | Writes `vorzela.json` and creates the configured folders. |
-| `vorzela-ui add button input card` | Installs components plus registry and npm dependencies. |
+| `vorzela-ui add button input card` | Installs components plus registry, npm and type dependencies. |
+| `vorzela-ui add line-chart form` | Installs a d3 chart and the TanStack Form wrappers with their packages. |
 | `vorzela-ui add button --overwrite` | Replaces files that already exist. |
 | `vorzela-ui update` | Updates every installed item. |
 | `vorzela-ui update button` | Updates selected items only. |
@@ -125,8 +126,8 @@ file without prompting, and `--dry-run` only reports what would change.
 `status`, `diff` and `doctor` never write.
 
 `.vorzela/manifest.json` records installed items, versions, files, npm
-dependencies and snapshot paths. Commit it with the app so every machine and CI
-run starts from the same baseline.
+dependencies, type dependencies and snapshot paths. Commit it with the app so
+every machine and CI run starts from the same baseline.
 
 ## Build and publish the registry
 
@@ -135,7 +136,9 @@ npm run registry:build
 ```
 
 The generator reads `src/` and writes `registry/index.json` plus one JSON file
-per item (currently 115 items, including 105 UI components). Serve that folder
+per item (currently 136 items: 107 UI components, 18 chart entries and the
+shared chart module). Charts install their own `d3`/`d3-sankey` packages and
+`@types/*`; the form wrappers install `@tanstack/react-form`. Serve that folder
 as static files from `https://ui.vorzela.dev`; the CLI only fetches
 `index.json` and `<name>.json`.
 
@@ -153,10 +156,11 @@ as static files from `https://ui.vorzela.dev`; the CLI only fetches
 | Charts | 18 | Line, Area, Bar, Donut, Scatter, Heatmap, Sparkline, Gauge, Radar, Treemap, Sankey, Funnel, Candlestick, Waterfall, Histogram, RadialBar, Bullet, ChartFrame |
 | Media & system | 14 | OptimizedImage, MasonryGrid, GlassPanel, NotificationCenter, Toaster, NetworkLoader, CookieConsent, OfflineBanner, ErrorBoundary, Portal, FocusTrap, DismissableLayer, VisuallyHidden, SkipLink |
 
-Every component owns one `.tsx` file and one `.module.scss` file. There are no
-shared component stylesheets, so installing a component means copying exactly
-two files (plus any primitive it imports). The registry generator follows those
-imports and ships them as dependencies.
+Most components own one `.tsx` file and one `.module.scss` module. A few ship
+small helper modules too — calendar dates, toast state, network progress and
+image caching — and the charts share one `charts.module.scss`. Installing a
+component copies its files plus every registry dependency it imports, so the
+whole import graph is present.
 
 ```tsx
 import { Button } from '~/components/ui/button'

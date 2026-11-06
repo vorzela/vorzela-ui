@@ -5,6 +5,7 @@
   "dependencies": [
     "dompurify"
   ],
+  "devDependencies": [],
   "registryDependencies": [],
   "files": [
     {
