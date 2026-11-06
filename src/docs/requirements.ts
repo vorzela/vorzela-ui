@@ -6,6 +6,7 @@ export const PACKAGE_REQUIREMENTS = `{
     "d3-sankey": "^0.12.3",
     "dompurify": "^3.4.17",
     "lucide-react": "^1.61.0",
+    "qrcode-generator": "^2.0.4",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "sugar-high": "^2.6.4"

@@ -15,6 +15,7 @@ import {
 import { NotificationCenter } from '~/components/ui/notification-center'
 import { OfflineBanner } from '~/components/ui/offline-banner'
 import { OptimizedImage } from '~/components/ui/optimized-image'
+import { QRCode } from '~/components/ui/qr-code'
 import { Toaster, useToast } from '~/components/ui/sonner'
 import { Watermark } from '~/components/ui/watermark'
 import { DismissableLayer } from '~/components/primitives/dismissable-layer'
@@ -153,6 +154,14 @@ function DismissablePreview() {
 }
 
 export const mediaPreviews = {
+  'qr-code': (
+    <QRCode
+      value="https://ui.vorzela.dev"
+      size={180}
+      level="H"
+      caption="Scan to open the component registry"
+    />
+  ),
   'watermark': (
     <Watermark content="Vorzela UI · Confidential" opacity={0.12}>
       <Card flat padded>

@@ -132,6 +132,7 @@ export const inventory: InventoryCategory[] = [
       'Toolbar',
       'Popconfirm',
       'CloseButton',
+      'Tour',
     ],
   },
   {
@@ -214,6 +215,7 @@ export const inventory: InventoryCategory[] = [
       'NotificationCenter',
       'Toaster',
       'Watermark',
+      'QRCode',
       'NetworkLoader',
       'CookieConsent',
       'OfflineBanner',

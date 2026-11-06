@@ -7,7 +7,7 @@ and one accent. Styles are plain **SCSS Modules** — no Tailwind, no `clsx`, no
 
 ```
 React 19 · TypeScript · Vite 8 · SCSS Modules · lucide-react
-TanStack Table v9 · TanStack Form · d3 + d3-sankey · sugar-high
+TanStack Table v9 · TanStack Form · d3 + d3-sankey · qrcode-generator · sugar-high
 ```
 
 ## Quick start
@@ -53,7 +53,7 @@ URL or a directory.
 // vorzela.json
 {
   "registry": "https://ui.vorzela.dev",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "aliases": {
     "base": "~",
     "components": "~/components/ui",
@@ -136,7 +136,7 @@ npm run registry:build
 ```
 
 The generator reads `src/` and writes `registry/index.json` plus one JSON file
-per item (currently 164 items). They expose 151 public component names —
+per item (currently 166 items). They expose 153 public component names —
 including 18 chart entries and thin aliases such as `stack` → `layout` — plus
 the shared style, hook, util and primitive layers. Charts install their own
 `d3`/`d3-sankey` packages and `@types/*`; the form wrappers install
@@ -151,11 +151,11 @@ the shared style, hook, util and primitive layers. Charts install their own
 | Forms | 35 | Checkbox, RadioGroup, Slider, NumberInput, OtpInput, TagInput, SegmentedControl, Toggle, ToggleGroup, Select, Combobox, Autocomplete, PasswordStrengthInput, PhoneInput, FileUpload, FilePicker, ImageCropper, Field, NativeSelect, Mentions, Cascader, Transfer, CurrencyInput, SearchInput, Rating, InputGroup, FloatingLabelInput, Calendar, DatePicker, Form, FormDatePicker, RangeSlider, TimePicker, ColorPicker, Editable |
 | Tables | 4 | SimpleDataTable, DataTable, Table, Pagination |
 | Data display | 23 | Stat, StatGroup, DescriptionList, Timeline, TreeView, JsonViewer, DiffViewer, Empty, ErrorState, Banner, Callout, NumberTicker, Marquee, BentoGrid, AspectRatio, Receipt, Invoice, List, Link, Code, Highlight, Heading, Result |
-| Overlays | 13 | Modal, Drawer, Sheet, AlertDialog, Dropdown, ActionMenu, ContextMenu, Popover, HoverCard, Tooltip, Toolbar, Popconfirm, CloseButton |
+| Overlays | 14 | Modal, Drawer, Sheet, AlertDialog, Dropdown, ActionMenu, ContextMenu, Popover, HoverCard, Tooltip, Toolbar, Popconfirm, CloseButton, Tour |
 | Navigation | 14 | Accordion, Collapsible, Breadcrumb, Anchor, Command, NavigationMenu, Stepper, ScrollArea, Resizable, Carousel, VirtualList, CopyButton, TabBar, Menubar |
 | Layout | 12 | AppShell, Header, Topbar, Sidebar, Stack, Inline, Flex, Grid, Split, Container, PageSection, FloatButton |
 | Charts | 18 | Line, Area, Bar, Donut, Scatter, Heatmap, Sparkline, Gauge, Radar, Treemap, Sankey, Funnel, Candlestick, Waterfall, Histogram, RadialBar, Bullet, ChartFrame |
-| Media & system | 15 | OptimizedImage, MasonryGrid, GlassPanel, NotificationCenter, Toaster, Watermark, NetworkLoader, CookieConsent, OfflineBanner, ErrorBoundary, Portal, FocusTrap, DismissableLayer, VisuallyHidden, SkipLink |
+| Media & system | 16 | OptimizedImage, MasonryGrid, GlassPanel, NotificationCenter, Toaster, Watermark, QRCode, NetworkLoader, CookieConsent, OfflineBanner, ErrorBoundary, Portal, FocusTrap, DismissableLayer, VisuallyHidden, SkipLink |
 
 File handling covers five picker styles — `dropzone`, `button`, `compact`, `avatar`
 and `tile` — with per-file and total size limits, minimum size, MIME/extensions,

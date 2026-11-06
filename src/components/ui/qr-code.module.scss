@@ -1,0 +1,23 @@
+@use 'styles' as vz;
+
+.root {
+  display: inline-flex;
+  flex-direction: column;
+  gap: vz.space(2);
+}
+
+.svg {
+  display: block;
+  border-radius: var(--radius-md);
+  background: var(--qr-background, #fff);
+}
+
+.caption {
+  max-width: 100%;
+  margin: 0;
+  overflow-wrap: anywhere;
+  color: vz.color('muted-foreground');
+  font-size: vz.font-size('xs');
+  line-height: 1.5;
+  text-align: center;
+}

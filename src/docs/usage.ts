@@ -355,6 +355,16 @@ import { Button } from '~/components/ui/button'
   <Card padded>Your content stays readable underneath.</Card>
 </Watermark>`,
   },
+  QRCode: {
+    code: `import { QRCode } from '~/components/ui/qr-code'
+
+<QRCode
+  value="https://ui.vorzela.dev"
+  size={180}
+  level="H"
+  caption="Scan to open the component registry"
+/>`,
+  },
   Transfer: {
     code: `import { Transfer } from '~/components/ui/transfer'
 
@@ -577,6 +587,36 @@ import { Button } from '~/components/ui/button'
 >
   <Button variant="destructive">Delete</Button>
 </Popconfirm>`,
+  },
+  Tour: {
+    code: `import { Tour } from '~/components/ui/tour'
+
+<Tour
+  open={tourOpen}
+  onOpenChange={setTourOpen}
+  onFinish={() => setTourOpen(false)}
+  steps={[
+    {
+      id: 'search',
+      target: '#project-search',
+      title: 'Find anything',
+      description: 'Search projects, builds and members from one field.',
+      placement: 'bottom',
+    },
+    {
+      id: 'actions',
+      target: '#project-actions',
+      title: 'Project actions',
+      description: 'Share, export or archive the current project.',
+      placement: 'left',
+    },
+  ]}
+/>`,
+    notes: [
+      'Targets can be a CSS selector or a function returning an element.',
+      'Escape closes the tour; Left and Right arrows move between steps.',
+      'Set `maskClosable` if clicking outside should close the tour.',
+    ],
   },
   Sidebar: {
     code: `import { Sidebar } from '~/components/ui/sidebar'

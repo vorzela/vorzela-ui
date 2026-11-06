@@ -16,6 +16,7 @@ import { Popover, PopoverContent, PopoverTrigger } from '~/components/ui/popover
 import { Sheet } from '~/components/ui/sheet'
 import { Toolbar, ToolbarGroup } from '~/components/ui/toolbar'
 import { Tooltip } from '~/components/ui/tooltip'
+import { Tour } from '~/components/ui/tour'
 
 import styles from '../docs.module.scss'
 
@@ -104,11 +105,52 @@ function AlertDialogPreview() {
   )
 }
 
+function TourPreview() {
+  const [open, setOpen] = useState(false)
+  return (
+    <div className={styles.demoStack}>
+      <div className="vz-demo-row">
+        <Button onClick={() => setOpen(true)}>Start tour</Button>
+        <div id="preview-tour-search" className={styles.card}>
+          <p className={styles.cardTitle}>Search</p>
+          <p className={styles.cardText}>Find projects, builds and members.</p>
+        </div>
+        <div id="preview-tour-actions" className={styles.card}>
+          <p className={styles.cardTitle}>Actions</p>
+          <p className={styles.cardText}>Share, export or archive the project.</p>
+        </div>
+      </div>
+      <Tour
+        open={open}
+        onOpenChange={setOpen}
+        onFinish={() => setOpen(false)}
+        steps={[
+          {
+            id: 'search',
+            target: '#preview-tour-search',
+            title: 'Find anything',
+            description: 'Search projects, builds and members from one field.',
+            placement: 'bottom',
+          },
+          {
+            id: 'actions',
+            target: '#preview-tour-actions',
+            title: 'Project actions',
+            description: 'Share, export or archive the current project.',
+            placement: 'top',
+          },
+        ]}
+      />
+    </div>
+  )
+}
+
 export const overlayPreviews = {
   'modal': <ModalPreview />,
   'drawer': <DrawerPreview />,
   'sheet': <SheetPreview />,
   'alert-dialog': <AlertDialogPreview />,
+  'tour': <TourPreview />,
   'dropdown': (
     <Dropdown
       trigger={<Button variant="outline">Project actions</Button>}

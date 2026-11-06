@@ -1,0 +1,25 @@
+{
+  "name": "qr-code",
+  "type": "ui",
+  "version": "1.0.0",
+  "dependencies": [
+    "qrcode-generator"
+  ],
+  "devDependencies": [],
+  "registryDependencies": [
+    "styles",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/qr-code.tsx",
+      "content": "import qrcode from 'qrcode-generator'\nimport type { CSSProperties } from 'react'\nimport { useMemo } from 'react'\n\nimport { cx } from '~/lib/cx'\n\nimport styles from './qr-code.module.scss'\n\nexport type QRCodeLevel = 'L' | 'M' | 'Q' | 'H'\n\nexport interface QRCodeProps {\n  value: string\n  size?: number\n  level?: QRCodeLevel\n  /** Quiet-zone width in modules. */\n  margin?: number\n  color?: string\n  background?: string\n  title?: string\n  caption?: string\n  className?: string\n}\n\n/**\n * Renders a QR code as inline SVG. The generator runs locally; the value is\n * never sent to a third party.\n */\nexport function QRCode({\n  value,\n  size = 160,\n  level = 'M',\n  margin = 2,\n  color = '#0b1220',\n  background = '#ffffff',\n  title,\n  caption,\n  className,\n}: QRCodeProps) {\n  const model = useMemo(() => {\n    if (!value) return null\n    const qr = qrcode(0, level)\n    qr.addData(value)\n    qr.make()\n\n    const count = qr.getModuleCount()\n    const dimension = count + margin * 2\n    const path: string[] = []\n    for (let row = 0; row < count; row += 1) {\n      for (let column = 0; column < count; column += 1) {\n        if (qr.isDark(row, column)) {\n          path.push(`M${column + margin} ${row + margin}h1v1h-1z`)\n        }\n      }\n    }\n\n    return { dimension, path: path.join('') }\n  }, [value, level, margin])\n\n  if (!model) return null\n\n  return (\n    <div className={cx(styles.root, className)}>\n      <svg\n        className={styles.svg}\n        width={size}\n        height={size}\n        viewBox={`0 0 ${model.dimension} ${model.dimension}`}\n        role=\"img\"\n        aria-label={title ?? 'QR code'}\n        shapeRendering=\"crispEdges\"\n        style={{ '--qr-background': background } as CSSProperties}\n      >\n        {title ? <title>{title}</title> : null}\n        <rect width={model.dimension} height={model.dimension} fill={background} />\n        <path d={model.path} fill={color} />\n      </svg>\n      {caption ? <p className={styles.caption}>{caption}</p> : null}\n    </div>\n  )\n}\n"
+    },
+    {
+      "path": "components/ui/qr-code.module.scss",
+      "content": "@use 'styles' as vz;\n\n.root {\n  display: inline-flex;\n  flex-direction: column;\n  gap: vz.space(2);\n}\n\n.svg {\n  display: block;\n  border-radius: var(--radius-md);\n  background: var(--qr-background, #fff);\n}\n\n.caption {\n  max-width: 100%;\n  margin: 0;\n  overflow-wrap: anywhere;\n  color: vz.color('muted-foreground');\n  font-size: vz.font-size('xs');\n  line-height: 1.5;\n  text-align: center;\n}\n"
+    }
+  ],
+  "description": "qr-code component",
+  "alias": false
+}

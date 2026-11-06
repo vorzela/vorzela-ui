@@ -1,7 +1,7 @@
 {
   "name": "@vorzela/react-scss",
   "private": true,
-  "version": "0.2.0",
+  "version": "1.0.0",
   "type": "module",
   "description": "Apple-inspired React UI kit with 141 components, SCSS Modules, TanStack tables/forms, d3 charts and no Tailwind.",
   "license": "MIT",
@@ -30,6 +30,7 @@
     "d3-sankey": "^0.12.3",
     "dompurify": "^3.4.17",
     "lucide-react": "^1.69.0",
+    "qrcode-generator": "^2.0.4",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "sugar-high": "^2.6.4"

@@ -75,7 +75,7 @@ export function OverviewPage() {
       <header className={styles.hero}>
         <span className={styles.eyebrow}>
           <StatusDot tone="success" size="sm" />
-          React 19 · SCSS Modules · v0.2
+          React 19 · SCSS Modules · v1.0
         </span>
         <h1 className={styles.heroTitle}>Interfaces with less noise.</h1>
         <p className={styles.heroLead}>
