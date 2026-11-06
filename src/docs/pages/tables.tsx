@@ -61,8 +61,8 @@ const columns: AppColumnDef<Person, unknown>[] = [
   { accessorKey: 'lastActive', header: 'Last active' },
 ]
 
-const simpleCode = `import { SimpleDataTable } from '@vorzela/react-scss'
-import type { AppColumnDef } from '@vorzela/react-scss'
+const simpleCode = `import { SimpleDataTable } from '~/components/ui/simple-data-table'
+import type { AppColumnDef } from '~/lib/table'
 
 const columns: AppColumnDef<Person, unknown>[] = [
   { accessorKey: 'name', header: 'Name' },
@@ -77,7 +77,7 @@ const columns: AppColumnDef<Person, unknown>[] = [
   pageSizeOptions={[5, 10]}
 />`
 
-const fullCode = `import { DataTable } from '@vorzela/react-scss'
+const fullCode = `import { DataTable } from '~/components/ui/data-table'
 
 <DataTable
   data={people}

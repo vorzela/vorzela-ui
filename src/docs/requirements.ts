@@ -13,13 +13,17 @@ export const PACKAGE_REQUIREMENTS = `{
 }`
 
 export function componentScss(name: string) {
-  return `// 1. Emit the tokens once, before your app renders.
-@use '@vorzela/react-scss/styles/global';
+  return `// 1. Emit the tokens once, from app/styles/global.scss.
+@use 'index' as vz;
+
+@include vz.emit-color-tokens(':root', 'light');
+@include vz.emit-space-tokens(':root');
 
 // 2. Each component ships one CSS module next to it.
-//    Import it in the component file:
-//    src/components/ui/${name}.tsx
+//    app/components/ui/${name}.tsx
 //    import styles from './${name}.module.scss';
+//    app/components/ui/${name}.module.scss
+//    @use '../../styles' as vz;
 
 // 3. Retune the kit after the global stylesheet.
 :root {
@@ -29,7 +33,6 @@ export function componentScss(name: string) {
 }
 
 // 4. The module API stays small:
-//    @use 'styles' as vz;
 //    background: vz.color('primary');
 //    border-radius: vz.radius('xl');`
 }

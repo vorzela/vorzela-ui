@@ -18,7 +18,54 @@ export function slugFor(name: string): string {
     .toLowerCase()
 }
 
-const generic = (name: string) => `import { ${name} } from '@vorzela/react-scss'
+/**
+ * Most components live in their own `components/ui/<slug>` module. These are
+ * the ones that share a module or live in another layer.
+ */
+const MODULE_OVERRIDES: Record<string, string> = {
+  Form: '~/components/reusable/form',
+  FormDatePicker: '~/components/reusable/form-date-picker',
+  Code: '~/components/ui/typography',
+  Highlight: '~/components/ui/typography',
+  Heading: '~/components/ui/typography',
+  Stack: '~/components/ui/layout',
+  Inline: '~/components/ui/layout',
+  Flex: '~/components/ui/layout',
+  Grid: '~/components/ui/layout',
+  Split: '~/components/ui/layout',
+  Container: '~/components/ui/layout',
+  PageSection: '~/components/ui/layout',
+  LineChart: '~/charts/line-chart',
+  AreaChart: '~/charts/line-chart',
+  BarChart: '~/charts/bar-chart',
+  DonutChart: '~/charts/donut-chart',
+  ScatterChart: '~/charts/scatter-chart',
+  Heatmap: '~/charts/heatmap',
+  Sparkline: '~/charts/sparkline',
+  Gauge: '~/charts/gauge',
+  RadarChart: '~/charts/radar-chart',
+  TreemapChart: '~/charts/treemap-chart',
+  SankeyChart: '~/charts/sankey-chart',
+  FunnelChart: '~/charts/funnel-chart',
+  CandlestickChart: '~/charts/candlestick-chart',
+  WaterfallChart: '~/charts/waterfall-chart',
+  HistogramChart: '~/charts/histogram-chart',
+  RadialBarChart: '~/charts/radial-bar-chart',
+  BulletChart: '~/charts/bullet-chart',
+  ChartFrame: '~/charts/chart-frame',
+  Toaster: '~/components/ui/sonner',
+  ErrorBoundary: '~/components/primitives/error-boundary',
+  Portal: '~/components/primitives/portal',
+  FocusTrap: '~/components/primitives/focus-trap',
+  DismissableLayer: '~/components/primitives/dismissable-layer',
+  VisuallyHidden: '~/components/primitives/visually-hidden',
+  SkipLink: '~/components/primitives/skip-link',
+}
+
+const moduleFor = (name: string) =>
+  MODULE_OVERRIDES[name] ?? `~/components/ui/${slugFor(name)}`
+
+const generic = (name: string) => `import { ${name} } from '${moduleFor(name)}'
 
 <${name} />`
 
@@ -36,7 +83,7 @@ const OVERRIDES: Record<
   { code: string; description?: string; notes?: string[] }
 > = {
   Button: {
-    code: `import { Button } from '@vorzela/react-scss'
+    code: `import { Button } from '~/components/ui/button'
 
 <Button>Continue</Button>
 <Button variant="secondary">Secondary</Button>
@@ -46,7 +93,7 @@ const OVERRIDES: Record<
     notes: ['One primary action per view.', 'Use icon size with an aria-label.'],
   },
   Input: {
-    code: `import { Input } from '@vorzela/react-scss'
+    code: `import { Input } from '~/components/ui/input'
 
 <Input label="Email" placeholder="you@example.com" />
 
@@ -55,7 +102,7 @@ const OVERRIDES: Record<
 <Input label="Error" error="That name is taken." />`,
   },
   Textarea: {
-    code: `import { Textarea } from '@vorzela/react-scss'
+    code: `import { Textarea } from '~/components/ui/textarea'
 
 <Textarea
   label="Message"
@@ -66,7 +113,7 @@ const OVERRIDES: Record<
 />`,
   },
   Select: {
-    code: `import { Select } from '@vorzela/react-scss'
+    code: `import { Select } from '~/components/ui/select'
 
 const options = [
   { value: 'editor', label: 'Editor' },
@@ -78,7 +125,7 @@ const options = [
 <Select label="Outlined" options={options} appearance="outlined" />`,
   },
   Combobox: {
-    code: `import { Combobox } from '@vorzela/react-scss'
+    code: `import { Combobox } from '~/components/ui/combobox'
 
 <Combobox
   label="Workspace"
@@ -90,7 +137,7 @@ const options = [
 />`,
   },
   Autocomplete: {
-    code: `import { Autocomplete } from '@vorzela/react-scss'
+    code: `import { Autocomplete } from '~/components/ui/autocomplete'
 
 const [query, setQuery] = useState('')
 const items = ['React', 'Vue', 'Svelte'].filter((item) =>
@@ -109,7 +156,7 @@ const items = ['React', 'Vue', 'Svelte'].filter((item) =>
 />`,
   },
   SearchInput: {
-    code: `import { SearchInput } from '@vorzela/react-scss'
+    code: `import { SearchInput } from '~/components/ui/search-input'
 
 <SearchInput
   label="Search projects"
@@ -119,14 +166,14 @@ const items = ['React', 'Vue', 'Svelte'].filter((item) =>
 />`,
   },
   Checkbox: {
-    code: `import { Checkbox } from '@vorzela/react-scss'
+    code: `import { Checkbox } from '~/components/ui/checkbox'
 
 <Checkbox label="Email me updates" defaultChecked />
 <Checkbox label="Include beta features" hint="New components first." />
 <Checkbox label="Disabled" disabled />`,
   },
   RadioGroup: {
-    code: `import { RadioGroup } from '@vorzela/react-scss'
+    code: `import { RadioGroup } from '~/components/ui/radio-group'
 
 <RadioGroup
   label="Plan"
@@ -138,7 +185,7 @@ const items = ['React', 'Vue', 'Svelte'].filter((item) =>
 />`,
   },
   Switch: {
-    code: `import { Switch } from '@vorzela/react-scss'
+    code: `import { Switch } from '~/components/ui/switch'
 
 <Switch
   label="Product updates"
@@ -147,37 +194,37 @@ const items = ['React', 'Vue', 'Svelte'].filter((item) =>
 />`,
   },
   Slider: {
-    code: `import { Slider } from '@vorzela/react-scss'
+    code: `import { Slider } from '~/components/ui/slider'
 
 <Slider label="Radius" value={62} min={0} max={100} onChange={setValue} />`,
   },
   RangeSlider: {
-    code: `import { RangeSlider } from '@vorzela/react-scss'
+    code: `import { RangeSlider } from '~/components/ui/range-slider'
 
 <RangeSlider label="Price" defaultValue={[20, 80]} min={0} max={200} />`,
   },
   NumberInput: {
-    code: `import { NumberInput } from '@vorzela/react-scss'
+    code: `import { NumberInput } from '~/components/ui/number-input'
 
 <NumberInput label="Seats" defaultValue={12} min={1} max={50} />`,
   },
   CurrencyInput: {
-    code: `import { CurrencyInput } from '@vorzela/react-scss'
+    code: `import { CurrencyInput } from '~/components/ui/currency-input'
 
 <CurrencyInput label="Budget" value={2400} onChange={setBudget} currency="USD" />`,
   },
   OtpInput: {
-    code: `import { OtpInput } from '@vorzela/react-scss'
+    code: `import { OtpInput } from '~/components/ui/otp-input'
 
 <OtpInput length={6} label="Verification code" onComplete={setCode} />`,
   },
   TagInput: {
-    code: `import { TagInput } from '@vorzela/react-scss'
+    code: `import { TagInput } from '~/components/ui/tag-input'
 
 <TagInput label="Labels" defaultValue={['design', 'react']} maxTags={8} />`,
   },
   FileUpload: {
-    code: `import { FileUpload } from '@vorzela/react-scss'
+    code: `import { FileUpload } from '~/components/ui/file-upload'
 
 <FileUpload
   label="Attach evidence"
@@ -187,37 +234,37 @@ const items = ['React', 'Vue', 'Svelte'].filter((item) =>
 />`,
   },
   Rating: {
-    code: `import { Rating } from '@vorzela/react-scss'
+    code: `import { Rating } from '~/components/ui/rating'
 
 <Rating value={4.5} step={0.5} onChange={setValue} showValue />`,
   },
   Calendar: {
-    code: `import { Calendar } from '@vorzela/react-scss'
+    code: `import { Calendar } from '~/components/ui/calendar'
 
 <Calendar value="2026-11-20" onChange={setDate} />`,
   },
   DatePicker: {
-    code: `import { DatePicker } from '@vorzela/react-scss'
+    code: `import { DatePicker } from '~/components/ui/date-picker'
 
 <DatePicker label="Renewal date" value={date} onChange={setDate} />`,
   },
   TimePicker: {
-    code: `import { TimePicker } from '@vorzela/react-scss'
+    code: `import { TimePicker } from '~/components/ui/time-picker'
 
 <TimePicker label="Start time" value={time} onChange={setTime} />`,
   },
   ColorPicker: {
-    code: `import { ColorPicker } from '@vorzela/react-scss'
+    code: `import { ColorPicker } from '~/components/ui/color-picker'
 
 <ColorPicker label="Accent" value={color} onChange={setColor} />`,
   },
   Editable: {
-    code: `import { Editable } from '@vorzela/react-scss'
+    code: `import { Editable } from '~/components/ui/editable'
 
 <Editable label="Workspace name" value={name} onSave={setName} />`,
   },
   SegmentedControl: {
-    code: `import { SegmentedControl } from '@vorzela/react-scss'
+    code: `import { SegmentedControl } from '~/components/ui/segmented-control'
 
 <SegmentedControl
   label="Density"
@@ -230,12 +277,12 @@ const items = ['React', 'Vue', 'Svelte'].filter((item) =>
 />`,
   },
   Toggle: {
-    code: `import { Toggle } from '@vorzela/react-scss'
+    code: `import { Toggle } from '~/components/ui/toggle'
 
 <Toggle aria-label="Bold" pressed={bold} onPressedChange={setBold}>B</Toggle>`,
   },
   ToggleGroup: {
-    code: `import { ToggleGroup, ToggleGroupItem } from '@vorzela/react-scss'
+    code: `import { ToggleGroup, ToggleGroupItem } from '~/components/ui/toggle-group'
 
 <ToggleGroup type="single" defaultValue="left">
   <ToggleGroupItem value="left">Left</ToggleGroupItem>
@@ -243,7 +290,7 @@ const items = ['React', 'Vue', 'Svelte'].filter((item) =>
 </ToggleGroup>`,
   },
   Card: {
-    code: `import { Card, CardHeader, CardTitle, CardContent } from '@vorzela/react-scss'
+    code: `import { Card, CardHeader, CardTitle, CardContent } from '~/components/ui/card'
 
 <Card>
   <CardHeader>
@@ -253,7 +300,7 @@ const items = ['React', 'Vue', 'Svelte'].filter((item) =>
 </Card>`,
   },
   Alert: {
-    code: `import { Alert } from '@vorzela/react-scss'
+    code: `import { Alert } from '~/components/ui/alert'
 
 <Alert variant="info" title="Heads up">
   Two-factor authentication becomes mandatory next month.
@@ -264,7 +311,7 @@ const items = ['React', 'Vue', 'Svelte'].filter((item) =>
 </Alert>`,
   },
   Tabs: {
-    code: `import { Tabs, TabsList, TabsTrigger, TabsContent } from '@vorzela/react-scss'
+    code: `import { Tabs, TabsList, TabsTrigger, TabsContent } from '~/components/ui/tabs'
 
 <Tabs defaultValue="overview">
   <TabsList aria-label="Account">
@@ -276,7 +323,7 @@ const items = ['React', 'Vue', 'Svelte'].filter((item) =>
 </Tabs>`,
   },
   MenuBar: {
-    code: `import { Menubar } from '@vorzela/react-scss'
+    code: `import { Menubar } from '~/components/ui/menubar'
 
 <Menubar
   menus={[
@@ -286,7 +333,7 @@ const items = ['React', 'Vue', 'Svelte'].filter((item) =>
 />`,
   },
   Menubar: {
-    code: `import { Menubar } from '@vorzela/react-scss'
+    code: `import { Menubar } from '~/components/ui/menubar'
 
 <Menubar
   menus={[
@@ -296,7 +343,7 @@ const items = ['React', 'Vue', 'Svelte'].filter((item) =>
 />`,
   },
   Modal: {
-    code: `import { Modal } from '@vorzela/react-scss'
+    code: `import { Modal } from '~/components/ui/modal'
 
 <Modal
   open={open}
@@ -308,14 +355,14 @@ const items = ['React', 'Vue', 'Svelte'].filter((item) =>
 </Modal>`,
   },
   Drawer: {
-    code: `import { Drawer } from '@vorzela/react-scss'
+    code: `import { Drawer } from '~/components/ui/drawer'
 
 <Drawer open={open} onClose={close} title="Details" side="right">
   <Input label="Name" />
 </Drawer>`,
   },
   Dropdown: {
-    code: `import { Dropdown } from '@vorzela/react-scss'
+    code: `import { Dropdown } from '~/components/ui/dropdown'
 
 <Dropdown
   trigger={<Button variant="outline">Actions</Button>}
@@ -326,7 +373,7 @@ const items = ['React', 'Vue', 'Svelte'].filter((item) =>
 />`,
   },
   ActionMenu: {
-    code: `import { ActionMenu } from '@vorzela/react-scss'
+    code: `import { ActionMenu } from '~/components/ui/action-menu'
 
 <ActionMenu
   items={[
@@ -336,7 +383,7 @@ const items = ['React', 'Vue', 'Svelte'].filter((item) =>
 />`,
   },
   Popover: {
-    code: `import { Popover, PopoverTrigger, PopoverContent } from '@vorzela/react-scss'
+    code: `import { Popover, PopoverTrigger, PopoverContent } from '~/components/ui/popover'
 
 <Popover>
   <PopoverTrigger asChild>
@@ -346,14 +393,14 @@ const items = ['React', 'Vue', 'Svelte'].filter((item) =>
 </Popover>`,
   },
   Tooltip: {
-    code: `import { Tooltip } from '@vorzela/react-scss'
+    code: `import { Tooltip } from '~/components/ui/tooltip'
 
 <Tooltip content="Copy the current URL">
   <Button variant="outline">Copy</Button>
 </Tooltip>`,
   },
   Popconfirm: {
-    code: `import { Popconfirm } from '@vorzela/react-scss'
+    code: `import { Popconfirm } from '~/components/ui/popconfirm'
 
 <Popconfirm
   title="Delete this project?"
@@ -365,7 +412,7 @@ const items = ['React', 'Vue', 'Svelte'].filter((item) =>
 </Popconfirm>`,
   },
   Sidebar: {
-    code: `import { Sidebar } from '@vorzela/react-scss'
+    code: `import { Sidebar } from '~/components/ui/sidebar'
 
 <Sidebar
   groups={[
@@ -381,7 +428,7 @@ const items = ['React', 'Vue', 'Svelte'].filter((item) =>
 />`,
   },
   Header: {
-    code: `import { Header } from '@vorzela/react-scss'
+    code: `import { Header } from '~/components/ui/header'
 
 <Header
   title="Deployments"
@@ -391,14 +438,14 @@ const items = ['React', 'Vue', 'Svelte'].filter((item) =>
 />`,
   },
   AppShell: {
-    code: `import { AppShell } from '@vorzela/react-scss'
+    code: `import { AppShell } from '~/components/ui/app-shell'
 
 <AppShell title="Dashboard" groups={navGroups}>
   <Dashboard />
 </AppShell>`,
   },
   TabBar: {
-    code: `import { TabBar } from '@vorzela/react-scss'
+    code: `import { TabBar } from '~/components/ui/tab-bar'
 
 <TabBar
   items={[
@@ -410,7 +457,7 @@ const items = ['React', 'Vue', 'Svelte'].filter((item) =>
 />`,
   },
   Carousel: {
-    code: `import { Carousel } from '@vorzela/react-scss'
+    code: `import { Carousel } from '~/components/ui/carousel'
 
 <Carousel
   slides={[
@@ -420,7 +467,7 @@ const items = ['React', 'Vue', 'Svelte'].filter((item) =>
 />`,
   },
   Accordion: {
-    code: `import { Accordion } from '@vorzela/react-scss'
+    code: `import { Accordion } from '~/components/ui/accordion'
 
 <Accordion
   defaultValue="install"
@@ -431,7 +478,7 @@ const items = ['React', 'Vue', 'Svelte'].filter((item) =>
 />`,
   },
   Breadcrumb: {
-    code: `import { Breadcrumb } from '@vorzela/react-scss'
+    code: `import { Breadcrumb } from '~/components/ui/breadcrumb'
 
 <Breadcrumb
   items={[
@@ -442,7 +489,12 @@ const items = ['React', 'Vue', 'Svelte'].filter((item) =>
 />`,
   },
   Pagination: {
-    code: `import { Pagination, PaginationContent, PaginationItem, PaginationLink } from '@vorzela/react-scss'
+    code: `import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+} from '~/components/ui/pagination'
 
 <Pagination>
   <PaginationContent>
@@ -452,7 +504,7 @@ const items = ['React', 'Vue', 'Svelte'].filter((item) =>
 </Pagination>`,
   },
   Command: {
-    code: `import { Command, CommandInput, CommandList, CommandItem } from '@vorzela/react-scss'
+    code: `import { Command, CommandInput, CommandList, CommandItem } from '~/components/ui/command'
 
 <Command>
   <CommandInput placeholder="Search commands…" />
@@ -463,7 +515,7 @@ const items = ['React', 'Vue', 'Svelte'].filter((item) =>
 </Command>`,
   },
   DataTable: {
-    code: `import { DataTable } from '@vorzela/react-scss'
+    code: `import { DataTable } from '~/components/ui/data-table'
 
 <DataTable
   data={rows}
@@ -477,7 +529,7 @@ const items = ['React', 'Vue', 'Svelte'].filter((item) =>
 />`,
   },
   SimpleDataTable: {
-    code: `import { SimpleDataTable } from '@vorzela/react-scss'
+    code: `import { SimpleDataTable } from '~/components/ui/simple-data-table'
 
 <SimpleDataTable
   data={rows}
@@ -487,7 +539,7 @@ const items = ['React', 'Vue', 'Svelte'].filter((item) =>
 />`,
   },
   Receipt: {
-    code: `import { Receipt } from '@vorzela/react-scss'
+    code: `import { Receipt } from '~/components/ui/receipt'
 
 <Receipt
   title="Order #1042"
@@ -498,7 +550,7 @@ const items = ['React', 'Vue', 'Svelte'].filter((item) =>
 />`,
   },
   Invoice: {
-    code: `import { Invoice } from '@vorzela/react-scss'
+    code: `import { Invoice } from '~/components/ui/invoice'
 
 <Invoice
   number="INV-2026-042"
@@ -512,7 +564,7 @@ const items = ['React', 'Vue', 'Svelte'].filter((item) =>
 />`,
   },
   List: {
-    code: `import { List, ListItem } from '@vorzela/react-scss'
+    code: `import { List, ListItem } from '~/components/ui/list'
 
 <List>
   <ListItem title="Design review" description="Thursday · 10:00" />
@@ -520,13 +572,13 @@ const items = ['React', 'Vue', 'Svelte'].filter((item) =>
 </List>`,
   },
   Link: {
-    code: `import { Link } from '@vorzela/react-scss'
+    code: `import { Link } from '~/components/ui/link'
 
 <Link href="/foundations" variant="standalone">Foundations</Link>
 <Link href="https://example.com" external>External reference</Link>`,
   },
   Result: {
-    code: `import { Result } from '@vorzela/react-scss'
+    code: `import { Result } from '~/components/ui/result'
 
 <Result
   tone="success"
@@ -536,7 +588,7 @@ const items = ['React', 'Vue', 'Svelte'].filter((item) =>
 />`,
   },
   GlassPanel: {
-    code: `import { GlassPanel } from '@vorzela/react-scss'
+    code: `import { GlassPanel } from '~/components/ui/glass-panel'
 
 <GlassPanel blur="lg">
   <h3>Glass panel</h3>
@@ -544,7 +596,7 @@ const items = ['React', 'Vue', 'Svelte'].filter((item) =>
 </GlassPanel>`,
   },
   Toast: {
-    code: `import { Toaster, useToast } from '@vorzela/react-scss'
+    code: `import { Toaster, useToast } from '~/components/ui/sonner'
 
 function SaveButton() {
   const { toast } = useToast()
@@ -558,24 +610,24 @@ function SaveButton() {
 <Toaster><SaveButton /></Toaster>`,
   },
   Toaster: {
-    code: `import { Toaster, useToast } from '@vorzela/react-scss'
+    code: `import { Toaster, useToast } from '~/components/ui/sonner'
 
 <Toaster position="bottom-right">
   <App />
 </Toaster>`,
   },
   NetworkLoader: {
-    code: `import { NetworkLoader } from '@vorzela/react-scss'
+    code: `import { NetworkLoader } from '~/components/ui/network-loader'
 
 <NetworkLoader auto position="top" showSpinner />`,
   },
   OfflineBanner: {
-    code: `import { OfflineBanner } from '@vorzela/react-scss'
+    code: `import { OfflineBanner } from '~/components/ui/offline-banner'
 
 <OfflineBanner onRetry={reconnect} />`,
   },
   CookieConsent: {
-    code: `import { CookieConsent } from '@vorzela/react-scss'
+    code: `import { CookieConsent } from '~/components/ui/cookie-consent'
 
 <CookieConsent
   onAccept={enableAnalytics}
@@ -583,12 +635,12 @@ function SaveButton() {
 />`,
   },
   NotificationCenter: {
-    code: `import { NotificationCenter } from '@vorzela/react-scss'
+    code: `import { NotificationCenter } from '~/components/ui/notification-center'
 
 <NotificationCenter notifications={notifications} onMarkAllRead={markAllRead} />`,
   },
   MasonryGrid: {
-    code: `import { MasonryGrid, MasonryTile } from '@vorzela/react-scss'
+    code: `import { MasonryGrid, MasonryTile } from '~/components/ui/masonry-grid'
 
 <MasonryGrid columns={3}>
   <MasonryTile title="Study 1"><img src="/one.jpg" alt="" /></MasonryTile>
@@ -596,14 +648,14 @@ function SaveButton() {
 </MasonryGrid>`,
   },
   AspectRatio: {
-    code: `import { AspectRatio } from '@vorzela/react-scss'
+    code: `import { AspectRatio } from '~/components/ui/aspect-ratio'
 
 <AspectRatio ratio={16 / 9}>
   <img src="/cover.jpg" alt="" />
 </AspectRatio>`,
   },
   BentoGrid: {
-    code: `import { BentoGrid, BentoItem } from '@vorzela/react-scss'
+    code: `import { BentoGrid, BentoItem } from '~/components/ui/bento-grid'
 
 <BentoGrid>
   <BentoItem colSpan={2} rowSpan={2}>Featured</BentoItem>
@@ -611,14 +663,14 @@ function SaveButton() {
 </BentoGrid>`,
   },
   Callout: {
-    code: `import { Callout } from '@vorzela/react-scss'
+    code: `import { Callout } from '~/components/ui/callout'
 
 <Callout tone="tip" title="Copy, don't depend">
   Components are source-owned. Keep the module next to the component.
 </Callout>`,
   },
   Empty: {
-    code: `import { Empty } from '@vorzela/react-scss'
+    code: `import { Empty } from '~/components/ui/empty'
 
 <Empty
   title="No projects yet"
@@ -627,7 +679,7 @@ function SaveButton() {
 />`,
   },
   Stat: {
-    code: `import { Stat, StatGroup } from '@vorzela/react-scss'
+    code: `import { Stat, StatGroup } from '~/components/ui/stat'
 
 <StatGroup>
   <Stat label="Revenue" value="$76.2k" delta="12%" trend="up" />
@@ -635,7 +687,7 @@ function SaveButton() {
 </StatGroup>`,
   },
   Timeline: {
-    code: `import { Timeline, TimelineItem, TimelineTitle } from '@vorzela/react-scss'
+    code: `import { Timeline, TimelineItem, TimelineTitle } from '~/components/ui/timeline'
 
 <Timeline pulse>
   <TimelineItem status="done" date="09:41">
@@ -647,7 +699,7 @@ function SaveButton() {
 </Timeline>`,
   },
   TreeView: {
-    code: `import { TreeView } from '@vorzela/react-scss'
+    code: `import { TreeView } from '~/components/ui/tree-view'
 
 <TreeView
   nodes={[
@@ -657,29 +709,29 @@ function SaveButton() {
 />`,
   },
   JsonViewer: {
-    code: `import { JsonViewer } from '@vorzela/react-scss'
+    code: `import { JsonViewer } from '~/components/ui/json-viewer'
 
 <JsonViewer data={{ ready: true, version: '0.2.0' }} />`,
   },
   DiffViewer: {
-    code: `import { DiffViewer } from '@vorzela/react-scss'
+    code: `import { DiffViewer } from '~/components/ui/diff-viewer'
 
 <DiffViewer oldValue={oldCode} newValue={newCode} />`,
   },
   NumberTicker: {
-    code: `import { NumberTicker } from '@vorzela/react-scss'
+    code: `import { NumberTicker } from '~/components/ui/number-ticker'
 
 <NumberTicker value={2481} />`,
   },
   Marquee: {
-    code: `import { Marquee } from '@vorzela/react-scss'
+    code: `import { Marquee } from '~/components/ui/marquee'
 
 <Marquee speed={24}>
   <span>Northwind · Acme · Globex · Initech</span>
 </Marquee>`,
   },
   VirtualList: {
-    code: `import { VirtualList } from '@vorzela/react-scss'
+    code: `import { VirtualList } from '~/components/ui/virtual-list'
 
 <VirtualList
   items={records}
@@ -690,17 +742,17 @@ function SaveButton() {
 />`,
   },
   CopyButton: {
-    code: `import { CopyButton } from '@vorzela/react-scss'
+    code: `import { CopyButton } from '~/components/ui/copy-button'
 
-<CopyButton value="npm install @vorzela/react-scss" />`,
+<CopyButton value="npx vorzela-ui add copy-button" />`,
   },
   OptimizedImage: {
-    code: `import { OptimizedImage } from '@vorzela/react-scss'
+    code: `import { OptimizedImage } from '~/components/ui/optimized-image'
 
 <OptimizedImage src="/cover.jpg" alt="Cover" width={960} height={540} priority />`,
   },
   InputGroup: {
-    code: `import { InputGroup, InputGroupAddon, InputGroupInput } from '@vorzela/react-scss'
+    code: `import { InputGroup, InputGroupAddon, InputGroupInput } from '~/components/ui/input-group'
 
 <InputGroup>
   <InputGroupAddon>https://</InputGroupAddon>
@@ -709,12 +761,12 @@ function SaveButton() {
 </InputGroup>`,
   },
   FloatingLabelInput: {
-    code: `import { FloatingLabelInput } from '@vorzela/react-scss'
+    code: `import { FloatingLabelInput } from '~/components/ui/floating-label-input'
 
 <FloatingLabelInput label="Project name" defaultValue="Vorzela UI" />`,
   },
   PasswordStrengthInput: {
-    code: `import { PasswordStrengthInput } from '@vorzela/react-scss'
+    code: `import { PasswordStrengthInput } from '~/components/ui/password-input'
 
 <PasswordStrengthInput
   label="Password"
@@ -724,14 +776,18 @@ function SaveButton() {
 />`,
   },
   Form: {
-    code: `import { Form, FormInput } from '@vorzela/react-scss'
+    code: `import { Form, FormInput } from '~/components/reusable/form'
 
 <Form form={form} onSubmit={save}>
   <FormInput form={form} name="email" label="Email" type="email" />
 </Form>`,
   },
   Collapsible: {
-    code: `import { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@vorzela/react-scss'
+    code: `import {
+  Collapsible,
+  CollapsibleTrigger,
+  CollapsibleContent,
+} from '~/components/ui/collapsible'
 
 <Collapsible>
   <CollapsibleTrigger>Details</CollapsibleTrigger>
@@ -740,9 +796,13 @@ function SaveButton() {
   },
   NavigationMenu: {
     code: `import {
-  NavigationMenu, NavigationMenuList, NavigationMenuItem,
-  NavigationMenuTrigger, NavigationMenuContent, NavigationMenuLink,
-} from '@vorzela/react-scss'
+  NavigationMenu,
+  NavigationMenuList,
+  NavigationMenuItem,
+  NavigationMenuTrigger,
+  NavigationMenuContent,
+  NavigationMenuLink,
+} from '~/components/ui/navigation-menu'
 
 <NavigationMenu>
   <NavigationMenuList>
@@ -756,7 +816,7 @@ function SaveButton() {
 </NavigationMenu>`,
   },
   Stepper: {
-    code: `import { Stepper } from '@vorzela/react-scss'
+    code: `import { Stepper } from '~/components/ui/stepper'
 
 <Stepper
   steps={[{ id: 'account', label: 'Account' }, { id: 'review', label: 'Review' }]}
@@ -765,7 +825,11 @@ function SaveButton() {
 />`,
   },
   Resizable: {
-    code: `import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from '@vorzela/react-scss'
+    code: `import {
+  ResizablePanelGroup,
+  ResizablePanel,
+  ResizableHandle,
+} from '~/components/ui/resizable'
 
 <ResizablePanelGroup>
   <ResizablePanel defaultSize={40}>Sidebar</ResizablePanel>
@@ -774,14 +838,14 @@ function SaveButton() {
 </ResizablePanelGroup>`,
   },
   PageSection: {
-    code: `import { PageSection } from '@vorzela/react-scss'
+    code: `import { PageSection } from '~/components/ui/layout'
 
 <PageSection title="Members" description="Invite and manage access.">
   <MemberList />
 </PageSection>`,
   },
   LineChart: {
-    code: `import { LineChart } from '@vorzela/react-scss'
+    code: `import { LineChart } from '~/charts/line-chart'
 
 <LineChart
   data={monthly}
@@ -791,7 +855,7 @@ function SaveButton() {
 />`,
   },
   BarChart: {
-    code: `import { BarChart } from '@vorzela/react-scss'
+    code: `import { BarChart } from '~/charts/bar-chart'
 
 <BarChart
   data={channels}
@@ -800,22 +864,22 @@ function SaveButton() {
 />`,
   },
   DonutChart: {
-    code: `import { DonutChart } from '@vorzela/react-scss'
+    code: `import { DonutChart } from '~/charts/donut-chart'
 
 <DonutChart data={traffic} nameKey="source" valueKey="value" />`,
   },
   Sparkline: {
-    code: `import { Sparkline } from '@vorzela/react-scss'
+    code: `import { Sparkline } from '~/charts/sparkline'
 
 <Sparkline data={values} valueKey="value" label="Revenue trend" />`,
   },
   Gauge: {
-    code: `import { Gauge } from '@vorzela/react-scss'
+    code: `import { Gauge } from '~/charts/gauge'
 
 <Gauge value={94} label="Uptime" />`,
   },
   ChartFrame: {
-    code: `import { ChartFrame } from '@vorzela/react-scss'
+    code: `import { ChartFrame } from '~/charts/chart-frame'
 
 <ChartFrame title="Revenue" height={260}>
   {({ width, height }) => <YourCanvas width={width} height={height} />}
@@ -841,7 +905,7 @@ for (const category of inventory) {
       notes:
         override?.notes ?? [
           'The component is source-owned; copy the TSX and its module.',
-          `Import the public API from '@vorzela/react-scss'.`,
+          'Import it from the same alias the CLI writes into `vorzela.json`.',
           'Check the category page for a live example and the module name.',
         ],
     })

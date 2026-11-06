@@ -15,18 +15,14 @@ import { inventoryCount } from '../inventory'
 import { CodeBlock, Demo, Section } from '../showcase'
 import styles from '../docs.module.scss'
 
-const installCode = `# inside the workspace
-cd react_scss
+const installCode = `# install only the components you use
+npx vorzela-ui init
+npx vorzela-ui add button card input`
 
-npm install
-npm run dev`
-
-const usageCode = `import {
-  Button,
-  Card,
-  Input,
-} from '@vorzela/react-scss'
-import '@vorzela/react-scss/styles/global.scss'
+const usageCode = `import { Button } from '~/components/ui/button'
+import { Card } from '~/components/ui/card'
+import { Input } from '~/components/ui/input'
+import '~/styles/global.scss'
 
 export function SignIn() {
   return (

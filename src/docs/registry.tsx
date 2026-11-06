@@ -56,7 +56,7 @@ export const components: ComponentDoc[] = [
     description:
       'One flat, solid control with six tones and four sizes. The primary tone carries the single accent; everything else stays neutral.',
     demo: <ButtonDemo />,
-    code: `import { Button } from '@vorzela/react-scss'
+    code: `import { Button } from '~/components/ui/button'
 
 <Button>Continue</Button>
 <Button variant="secondary">Secondary</Button>
@@ -85,7 +85,7 @@ export const components: ComponentDoc[] = [
     description:
       'Compact status or metadata. Soft and outline tones stay quiet; success and destructive tones are reserved for meaningful state.',
     demo: <BadgeDemo />,
-    code: `import { Badge } from '@vorzela/react-scss'
+    code: `import { Badge } from '~/components/ui/badge'
 
 <Badge>New</Badge>
 <Badge variant="secondary">Draft</Badge>
@@ -108,7 +108,8 @@ export const components: ComponentDoc[] = [
     description:
       'A form label with a required marker and an optional hint. The hint is wired for `aria-describedby` by the field that owns it.',
     demo: <LabelDemo />,
-    code: `import { Input, Label } from '@vorzela/react-scss'
+    code: `import { Input } from '~/components/ui/input'
+import { Label } from '~/components/ui/label'
 
 <Label htmlFor="email" required hint="We only use this for receipts.">
   Email address
@@ -133,7 +134,7 @@ export const components: ComponentDoc[] = [
     description:
       'A single-line field with optional leading and trailing slots, inline validation and three sizes. Focus is drawn on the shell, not the native input.',
     demo: <InputDemo />,
-    code: `import { Input } from '@vorzela/react-scss'
+    code: `import { Input } from '~/components/ui/input'
 
 <Input label="Email" placeholder="you@example.com" />
 
@@ -171,7 +172,7 @@ export const components: ComponentDoc[] = [
     description:
       'Multi-line input with resize, inline validation and an optional live character counter. The counter turns red at the limit.',
     demo: <TextareaDemo />,
-    code: `import { Textarea } from '@vorzela/react-scss'
+    code: `import { Textarea } from '~/components/ui/textarea'
 
 <Textarea
   label="Message"
@@ -202,8 +203,13 @@ export const components: ComponentDoc[] = [
       'A layered surface with header, content and footer slots. Elevation is soft by default; `flat` and `interactive` cover quieter and clickable cards.',
     demo: <CardDemo />,
     code: `import {
-  Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter,
-} from '@vorzela/react-scss'
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter,
+} from '~/components/ui/card'
 
 <Card>
   <CardHeader>
@@ -233,7 +239,7 @@ export const components: ComponentDoc[] = [
     description:
       'Inline, page-level feedback in four tones. The error tone is announced as an alert; the others are polite status messages.',
     demo: <AlertDemo />,
-    code: `import { Alert } from '@vorzela/react-scss'
+    code: `import { Alert } from '~/components/ui/alert'
 
 <Alert variant="info" title="Heads up">
   Two-factor authentication becomes mandatory next month.
@@ -262,7 +268,7 @@ export const components: ComponentDoc[] = [
     description:
       'A small rotating ring for work that takes longer than a moment. Pairs with a visible label or an `aria-label`.',
     demo: <SpinnerDemo />,
-    code: `import { Spinner } from '@vorzela/react-scss'
+    code: `import { Spinner } from '~/components/ui/spinner'
 
 <Spinner />
 <Spinner size="lg" label="Loading projects" />
@@ -286,7 +292,7 @@ export const components: ComponentDoc[] = [
     description:
       'A layout-stable placeholder in four shapes. Skeletons match the final composition, so content does not shift on load.',
     demo: <SkeletonDemo />,
-    code: `import { Skeleton } from '@vorzela/react-scss'
+    code: `import { Skeleton } from '~/components/ui/skeleton'
 
 <Skeleton variant="circle" width="3rem" height="3rem" />
 <Skeleton variant="text" width="60%" />
@@ -309,7 +315,7 @@ export const components: ComponentDoc[] = [
     description:
       'Circular or rounded-square identity badge with initials fallback and presence. Five sizes, four presence tones.',
     demo: <AvatarDemo />,
-    code: `import { Avatar, AvatarFallback, initials } from '@vorzela/react-scss'
+    code: `import { Avatar, AvatarFallback, initials } from '~/components/ui/avatar'
 
 <Avatar size="lg" presence="online">
   <AvatarFallback>{initials('Ada Lovelace')}</AvatarFallback>
@@ -336,7 +342,7 @@ export const components: ComponentDoc[] = [
     description:
       'A key cap for documenting shortcuts. Two sizes; wrap a sequence in a `role="group"` with an accessible label.',
     demo: <KbdDemo />,
-    code: `import { Kbd } from '@vorzela/react-scss'
+    code: `import { Kbd } from '~/components/ui/kbd'
 
 <span role="group" aria-label="Search shortcut">
   <Kbd>⌘</Kbd>
@@ -358,7 +364,7 @@ export const components: ComponentDoc[] = [
     description:
       'A one-pixel rule for horizontal or vertical grouping, with an optional centred caption.',
     demo: <SeparatorDemo />,
-    code: `import { Separator } from '@vorzela/react-scss'
+    code: `import { Separator } from '~/components/ui/separator'
 
 <Separator />
 <Separator label="or continue with" />
@@ -380,7 +386,7 @@ export const components: ComponentDoc[] = [
     description:
       'Determinate and indeterminate progress with three heights and four tones. Values are clamped to 0–100.',
     demo: <ProgressDemo />,
-    code: `import { Progress } from '@vorzela/react-scss'
+    code: `import { Progress } from '~/components/ui/progress'
 
 <Progress label="Uploading assets" value={48} />
 <Progress label="Warnings" value={82} tone="warning" />
@@ -405,7 +411,7 @@ export const components: ComponentDoc[] = [
     description:
       'A tiny state indicator in five tones, with an optional pulse for live states. Decorative unless you pass `label`.',
     demo: <StatusDotDemo />,
-    code: `import { StatusDot } from '@vorzela/react-scss'
+    code: `import { StatusDot } from '~/components/ui/status-dot'
 
 <span>
   <StatusDot tone="success" pulse label="Operational" />
@@ -433,9 +439,7 @@ export const components: ComponentDoc[] = [
     description:
       'Accessible tab set with roving focus, arrow-key navigation and horizontal or vertical orientation. Content panels are focusable.',
     demo: <TabsDemo />,
-    code: `import {
-  Tabs, TabsList, TabsTrigger, TabsContent,
-} from '@vorzela/react-scss'
+    code: `import { Tabs, TabsList, TabsTrigger, TabsContent } from '~/components/ui/tabs'
 
 <Tabs defaultValue="overview">
   <TabsList aria-label="Account settings">
@@ -464,7 +468,7 @@ export const components: ComponentDoc[] = [
     description:
       'A binary setting that applies immediately. Controlled or uncontrolled, with label, description, three sizes and reversed layout.',
     demo: <SwitchDemo />,
-    code: `import { Switch } from '@vorzela/react-scss'
+    code: `import { Switch } from '~/components/ui/switch'
 
 <Switch
   label="Product updates"
