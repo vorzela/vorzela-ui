@@ -365,7 +365,7 @@ export function FoundationsPage() {
       <Section
         id="breakpoints"
         title="Breakpoints"
-        lead="Five viewport stops on the same scale. Prefer container queries for reusable components; use viewport breakpoints for page-level layout."
+        lead="Five viewport stops on the same scale. There is intentionally no xs stop — the base styles are the mobile layout. Prefer container queries for reusable components; use viewport breakpoints for page-level layout."
       >
         <div className={styles.tokenList}>
           {breakpoints.map((breakpoint) => (

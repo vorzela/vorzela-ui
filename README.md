@@ -302,8 +302,9 @@ The CLI rewrites kit imports to a relative path. For your own module, point
 ```
 
 Breakpoints are `sm` 40rem, `md` 48rem, `lg` 64rem, `xl` 80rem and `2xl`
-96rem. Use `container-up($size)` for component-level container queries. See the
-**SCSS API** page in the docs app for the full function and mixin reference.
+96rem. There is no `xs` stop: the base styles are the mobile layout. Use
+`container-up($size)` for component-level container queries. See the **SCSS
+API** page in the docs app for the full function and mixin reference.
 
 `vorzela-ui init` also installs a small editor helper: new empty `*.scss` files
 get the correct `@use '…' as vz;` line automatically.
