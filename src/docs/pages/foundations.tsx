@@ -1,7 +1,7 @@
 import type { CSSProperties } from 'react'
 
 import { Badge, Card, GlassPanel, Kbd } from '~/components/ui'
-import { Demo, Section } from '../showcase'
+import { CodeBlock, Demo, Section } from '../showcase'
 import styles from '../docs.module.scss'
 
 const colors = [
@@ -40,6 +40,121 @@ const durations = [
   { token: 'slower', value: '500ms', use: 'Progress, large moves' },
 ]
 
+const easings = [
+  { token: 'out', value: 'cubic-bezier(0.22, 1, 0.36, 1)', use: 'Default exit' },
+  { token: 'in-out', value: 'cubic-bezier(0.4, 0, 0.2, 1)', use: 'Symmetric moves' },
+  { token: 'spring', value: 'cubic-bezier(0.34, 1.56, 0.64, 1)', use: 'Playful overshoot' },
+]
+
+const breakpoints = [
+  { name: 'sm', value: '40rem', px: '640px' },
+  { name: 'md', value: '48rem', px: '768px' },
+  { name: 'lg', value: '64rem', px: '1024px' },
+  { name: 'xl', value: '80rem', px: '1280px' },
+  { name: '2xl', value: '96rem', px: '1536px' },
+]
+
+const layers = [
+  { name: 'base', value: '0' },
+  { name: 'dropdown', value: '1000' },
+  { name: 'sticky', value: '1100' },
+  { name: 'overlay', value: '1200' },
+  { name: 'modal', value: '1300' },
+  { name: 'popover', value: '1400' },
+  { name: 'toast', value: '1500' },
+  { name: 'tooltip', value: '1600' },
+]
+
+const colorCode = `// SCSS function
+color: vz.color('primary', 0.85);
+
+// equivalent CSS custom property
+color: hsl(var(--primary) / 0.85);`
+
+const typeCode = `.title {
+  @include vz.text('title-3');
+}
+
+.meta {
+  color: vz.color('muted-foreground');
+  font-size: vz.font-size('sm');
+}`
+
+const spaceCode = `.stack {
+  display: flex;
+  flex-direction: column;
+  gap: vz.space(3);
+  padding: vz.space(5);
+}`
+
+const radiusCode = `.card {
+  border-radius: vz.radius('xl');
+}`
+
+const elevationCode = `.card {
+  box-shadow: vz.elevation(1);
+}
+
+.popover {
+  box-shadow: vz.elevation(2);
+}`
+
+const motionCode = `.panel {
+  transition:
+    background-color vz.duration('base') vz.ease('out'),
+    transform vz.duration('fast') vz.ease('spring');
+
+  @include vz.motion-reduce {
+    transition: none;
+  }
+}`
+
+const breakpointsCode = `.grid {
+  grid-template-columns: 1fr;
+
+  @include vz.up('sm') {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @include vz.down('lg') {
+    padding: vz.space(4);
+  }
+}`
+
+const layersCode = `.modal {
+  z-index: vz.z('modal');
+}
+
+.tooltip {
+  z-index: vz.z('tooltip');
+}`
+
+const exampleCode = `@use '../../styles' as vz;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: vz.space(3);
+  padding: vz.space(5);
+  border: 1px solid vz.color('border');
+  border-radius: vz.radius('xl');
+  background: vz.color('card');
+  box-shadow: vz.elevation(1);
+  transition: box-shadow vz.duration('base') vz.ease('out');
+
+  @include vz.hover {
+    box-shadow: vz.elevation(2);
+  }
+
+  @include vz.motion-reduce {
+    transition: none;
+  }
+
+  @include vz.down('md') {
+    padding: vz.space(4);
+  }
+}`
+
 export function FoundationsPage() {
   return (
     <>
@@ -48,8 +163,9 @@ export function FoundationsPage() {
         <h1 className={styles.heroTitle}>The rules behind the surfaces.</h1>
         <p className={styles.heroLead}>
           A compact token layer: semantic colour, a 4px spacing grid, SF-first
-          type, continuous radii, three elevations and four durations. Everything
-          below is a CSS custom property you can override.
+          type, continuous radii, three elevations, four durations, five
+          breakpoints and one z-index ladder. Everything below is a CSS custom
+          property you can override — and a Sass helper you can call.
         </p>
       </header>
 
@@ -72,6 +188,7 @@ export function FoundationsPage() {
             </div>
           ))}
         </div>
+        <CodeBlock code={colorCode} language="scss" />
         <Demo title="Status tones" note="Soft fills, solid dots">
           <div className="vz-demo-row">
             <Badge variant="soft">Neutral</Badge>
@@ -111,6 +228,7 @@ export function FoundationsPage() {
           <span className={styles.chip}>600 semibold</span>
           <span className={styles.chip}>700 bold</span>
         </div>
+        <CodeBlock code={typeCode} language="scss" />
       </Section>
 
       <Section
@@ -131,6 +249,7 @@ export function FoundationsPage() {
             </div>
           ))}
         </div>
+        <CodeBlock code={spaceCode} language="scss" />
       </Section>
 
       <Section
@@ -149,6 +268,7 @@ export function FoundationsPage() {
             </div>
           ))}
         </div>
+        <CodeBlock code={radiusCode} language="scss" />
       </Section>
 
       <Section
@@ -181,6 +301,7 @@ export function FoundationsPage() {
             </div>
           ))}
         </div>
+        <CodeBlock code={elevationCode} language="scss" />
       </Section>
 
       <Section
@@ -221,7 +342,16 @@ export function FoundationsPage() {
               </span>
             </div>
           ))}
+          {easings.map((easing) => (
+            <div key={easing.token} className={styles.tokenRow}>
+              <span className={styles.tokenName}>vz.ease(&apos;{easing.token}&apos;)</span>
+              <span className={styles.tokenValue}>
+                {easing.value} · {easing.use}
+              </span>
+            </div>
+          ))}
         </div>
+        <CodeBlock code={motionCode} language="scss" />
         <Card flat padded>
           <h3 className={styles.cardTitle}>Keyboard focus</h3>
           <p className={styles.cardText}>
@@ -230,6 +360,58 @@ export function FoundationsPage() {
             Press <Kbd size="sm">Tab</Kbd> through this page to see it.
           </p>
         </Card>
+      </Section>
+
+      <Section
+        id="breakpoints"
+        title="Breakpoints"
+        lead="Five viewport stops on the same scale. Prefer container queries for reusable components; use viewport breakpoints for page-level layout."
+      >
+        <div className={styles.tokenList}>
+          {breakpoints.map((breakpoint) => (
+            <div key={breakpoint.name} className={styles.tokenRow}>
+              <span className={styles.tokenName}>
+                @include vz.up(&apos;{breakpoint.name}&apos;)
+              </span>
+              <span className={styles.tokenValue}>
+                {breakpoint.value} · {breakpoint.px}
+              </span>
+            </div>
+          ))}
+        </div>
+        <CodeBlock code={breakpointsCode} language="scss" />
+      </Section>
+
+      <Section
+        id="layers"
+        title="Layers"
+        lead="One stacking ladder for every overlay. Do not invent local z-index values; pick the layer that matches the surface."
+      >
+        <div className={styles.tokenList}>
+          {layers.map((layer) => (
+            <div key={layer.name} className={styles.tokenRow}>
+              <span className={styles.tokenName}>vz.z(&apos;{layer.name}&apos;)</span>
+              <span className={styles.tokenValue}>{layer.value}</span>
+            </div>
+          ))}
+        </div>
+        <CodeBlock code={layersCode} language="scss" />
+      </Section>
+
+      <Section
+        id="scss"
+        title="Use it in your SCSS"
+        lead="All of the above is available through one Sass entry point. The same API works in your own modules, not just the kit."
+      >
+        <CodeBlock code={exampleCode} language="scss" />
+        <Demo title="Full reference" note="docs">
+          <p className={styles.cardText}>
+            The <a className={styles.apiLink} href="#/scss">SCSS API</a> page
+            lists every token function and mixin, including responsive and
+            container-query helpers. New SCSS files get the import automatically
+            when you run <code className={styles.codeInline}>vorzela-ui init</code>.
+          </p>
+        </Demo>
       </Section>
     </>
   )

@@ -1556,6 +1556,15 @@
   font-size: 0.8125em;
 }
 
+.api-link {
+  color: vz.color('primary');
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+
+  @include vz.focus-ring(2px, 2px, 0.6);
+}
+
 .token-list {
   display: flex;
   flex-direction: column;
