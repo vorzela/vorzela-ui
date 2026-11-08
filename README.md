@@ -256,6 +256,58 @@ Mixins: `focus-ring`, `hover`, `active`, `disabled`, `selected`, `placeholder`,
 `surface`, `raised`, `inset`, `truncate`, `line-clamp`, `scrollbar`, `icon`,
 `supports`, `motion-safe`, `motion-reduce`, `group-*`, `peer-*`.
 
+### Custom styles
+
+The CLI rewrites kit imports to a relative path. For your own module, point
+`@use` at the styles layer and use the same API:
+
+```scss
+// src/components/price-card/price-card.module.scss
+@use '../../styles' as vz;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: vz.space(3);
+  padding: vz.space(5);
+  border: 1px solid vz.color('border');
+  border-radius: vz.radius('xl');
+  background: vz.color('card');
+  box-shadow: vz.elevation(1);
+  transition: box-shadow vz.duration('base') vz.ease('out');
+
+  @include vz.hover {
+    box-shadow: vz.elevation(2);
+  }
+
+  @include vz.motion-reduce {
+    transition: none;
+  }
+
+  @include vz.down('md') {
+    padding: vz.space(4);
+  }
+
+  @include vz.up('lg') {
+    flex-direction: row;
+  }
+}
+
+.title {
+  @include vz.text('title-3');
+  @include vz.truncate;
+
+  margin: 0;
+}
+```
+
+Breakpoints are `sm` 40rem, `md` 48rem, `lg` 64rem, `xl` 80rem and `2xl`
+96rem. Use `container-up($size)` for component-level container queries. See the
+**SCSS API** page in the docs app for the full function and mixin reference.
+
+`vorzela-ui init` also installs a small editor helper: new empty `*.scss` files
+get the correct `@use '…' as vz;` line automatically.
+
 ## Tables
 
 Two layers on **TanStack Table v9**:

@@ -2,6 +2,7 @@ import {
   Accessibility,
   BarChart3,
   Boxes,
+  Code2,
   Compass,
   Image as ImageIcon,
   Layers,
@@ -43,6 +44,9 @@ const AccessibilityPage = lazy(() =>
 )
 const ThemingPage = lazy(() =>
   import('./docs/pages/theming').then((module) => ({ default: module.ThemingPage })),
+)
+const ScssPage = lazy(() =>
+  import('./docs/pages/scss').then((module) => ({ default: module.ScssPage })),
 )
 const TablesPage = lazy(() =>
   import('./docs/pages/tables').then((module) => ({ default: module.TablesPage })),
@@ -88,6 +92,7 @@ const PAGES = [
 const GUIDES = [
   { path: 'accessibility', label: 'Accessibility', icon: <Accessibility aria-hidden size={18} /> },
   { path: 'theming', label: 'Theming', icon: <Moon aria-hidden size={18} /> },
+  { path: 'scss', label: 'SCSS API', icon: <Code2 aria-hidden size={18} /> },
 ]
 
 const SIDEBAR_GROUPS: SidebarNavGroup[] = [
@@ -244,6 +249,8 @@ function Page({ page, slug }: { page: string; slug?: string }) {
       return <AccessibilityPage />
     case 'theming':
       return <ThemingPage />
+    case 'scss':
+      return <ScssPage />
     case 'overview':
       return <OverviewPage />
     default:
@@ -277,6 +284,8 @@ function titleFor(page: string): string {
       return 'Accessibility'
     case 'theming':
       return 'Theming'
+    case 'scss':
+      return 'SCSS API'
     default:
       return 'Overview'
   }
