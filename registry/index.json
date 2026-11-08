@@ -1,11 +1,11 @@
 {
-  "version": "1.0.1",
-  "generatedAt": "2026-11-06T11:46:01.454Z",
+  "version": "1.0.2",
+  "generatedAt": "2026-11-08T05:08:46.286Z",
   "items": [
     {
       "name": "accordion",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "lucide-react"
       ],
@@ -24,7 +24,7 @@
     {
       "name": "action-menu",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -42,7 +42,7 @@
     {
       "name": "alert",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "lucide-react"
       ],
@@ -61,7 +61,7 @@
     {
       "name": "alert-dialog",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -82,7 +82,7 @@
     {
       "name": "anchor",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -99,7 +99,7 @@
     {
       "name": "app-shell",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -118,7 +118,7 @@
     {
       "name": "area-chart",
       "type": "chart",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "d3"
       ],
@@ -135,7 +135,7 @@
     {
       "name": "aspect-ratio",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -152,7 +152,7 @@
     {
       "name": "autocomplete",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "lucide-react"
       ],
@@ -173,7 +173,7 @@
     {
       "name": "avatar",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -190,7 +190,7 @@
     {
       "name": "badge",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -207,7 +207,7 @@
     {
       "name": "banner",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "lucide-react"
       ],
@@ -226,7 +226,7 @@
     {
       "name": "bar-chart",
       "type": "chart",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "d3"
       ],
@@ -247,7 +247,7 @@
     {
       "name": "bento-grid",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -264,7 +264,7 @@
     {
       "name": "breadcrumb",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "lucide-react"
       ],
@@ -283,7 +283,7 @@
     {
       "name": "bullet-chart",
       "type": "chart",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "d3"
       ],
@@ -304,7 +304,7 @@
     {
       "name": "button",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -321,7 +321,7 @@
     {
       "name": "button-group",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -338,12 +338,13 @@
     {
       "name": "calendar",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "lucide-react"
       ],
       "devDependencies": [],
       "registryDependencies": [
+        "hooks",
         "styles",
         "utils"
       ],
@@ -358,7 +359,7 @@
     {
       "name": "callout",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "lucide-react"
       ],
@@ -377,7 +378,7 @@
     {
       "name": "candlestick-chart",
       "type": "chart",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "d3"
       ],
@@ -398,7 +399,7 @@
     {
       "name": "card",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -415,7 +416,7 @@
     {
       "name": "carousel",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "lucide-react"
       ],
@@ -436,7 +437,7 @@
     {
       "name": "cascader",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "lucide-react"
       ],
@@ -456,7 +457,7 @@
     {
       "name": "chart-frame",
       "type": "chart",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -475,7 +476,7 @@
     {
       "name": "charts-shared",
       "type": "shared",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -497,7 +498,7 @@
     {
       "name": "checkbox",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "lucide-react"
       ],
@@ -516,7 +517,7 @@
     {
       "name": "close-button",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "lucide-react"
       ],
@@ -535,7 +536,7 @@
     {
       "name": "code",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -548,7 +549,7 @@
     {
       "name": "collapsible",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "lucide-react"
       ],
@@ -568,7 +569,7 @@
     {
       "name": "color-picker",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -585,7 +586,7 @@
     {
       "name": "combobox",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "lucide-react"
       ],
@@ -606,7 +607,7 @@
     {
       "name": "command",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "lucide-react"
       ],
@@ -627,7 +628,7 @@
     {
       "name": "container",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -640,7 +641,7 @@
     {
       "name": "context-menu",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -658,13 +659,14 @@
     {
       "name": "cookie-consent",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "lucide-react"
       ],
       "devDependencies": [],
       "registryDependencies": [
         "button",
+        "hooks",
         "lib-security",
         "primitives",
         "styles",
@@ -680,7 +682,7 @@
     {
       "name": "copy-button",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "lucide-react"
       ],
@@ -702,7 +704,7 @@
     {
       "name": "currency-input",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -719,7 +721,7 @@
     {
       "name": "data-table",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "@tanstack/react-table",
         "lucide-react"
@@ -743,7 +745,7 @@
     {
       "name": "date-picker",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "lucide-react"
       ],
@@ -766,7 +768,7 @@
     {
       "name": "description-list",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -783,7 +785,7 @@
     {
       "name": "diff-viewer",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -800,7 +802,7 @@
     {
       "name": "dismissable-layer",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -813,7 +815,7 @@
     {
       "name": "donut-chart",
       "type": "chart",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "d3"
       ],
@@ -835,7 +837,7 @@
     {
       "name": "drawer",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "lucide-react"
       ],
@@ -857,7 +859,7 @@
     {
       "name": "dropdown",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -875,7 +877,7 @@
     {
       "name": "editable",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "lucide-react"
       ],
@@ -894,7 +896,7 @@
     {
       "name": "empty",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -912,7 +914,7 @@
     {
       "name": "error-boundary",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -925,7 +927,7 @@
     {
       "name": "error-state",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "lucide-react"
       ],
@@ -945,7 +947,7 @@
     {
       "name": "field",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -963,7 +965,7 @@
     {
       "name": "file-picker",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "lucide-react"
       ],
@@ -984,7 +986,7 @@
     {
       "name": "file-upload",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -1000,7 +1002,7 @@
     {
       "name": "flex",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -1013,7 +1015,7 @@
     {
       "name": "float-button",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "lucide-react"
       ],
@@ -1032,7 +1034,7 @@
     {
       "name": "floating-label-input",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "lucide-react"
       ],
@@ -1051,7 +1053,7 @@
     {
       "name": "focus-trap",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -1064,7 +1066,7 @@
     {
       "name": "form",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "@tanstack/react-form"
       ],
@@ -1086,7 +1088,7 @@
     {
       "name": "form-date-picker",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "@tanstack/react-form"
       ],
@@ -1104,7 +1106,7 @@
     {
       "name": "funnel-chart",
       "type": "chart",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "d3"
       ],
@@ -1125,7 +1127,7 @@
     {
       "name": "gauge",
       "type": "chart",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "d3"
       ],
@@ -1147,7 +1149,7 @@
     {
       "name": "glass-panel",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -1164,7 +1166,7 @@
     {
       "name": "grid",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -1177,7 +1179,7 @@
     {
       "name": "header",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "lucide-react"
       ],
@@ -1196,7 +1198,7 @@
     {
       "name": "heading",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -1209,7 +1211,7 @@
     {
       "name": "heatmap",
       "type": "chart",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "d3"
       ],
@@ -1230,7 +1232,7 @@
     {
       "name": "helpers",
       "type": "util",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [],
@@ -1245,7 +1247,7 @@
     {
       "name": "highlight",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -1258,7 +1260,7 @@
     {
       "name": "histogram-chart",
       "type": "chart",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "d3"
       ],
@@ -1280,7 +1282,7 @@
     {
       "name": "hooks",
       "type": "hook",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [],
@@ -1302,7 +1304,7 @@
     {
       "name": "hover-card",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -1321,7 +1323,7 @@
     {
       "name": "image-cropper",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "lucide-react"
       ],
@@ -1341,7 +1343,7 @@
     {
       "name": "inline",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -1354,7 +1356,7 @@
     {
       "name": "input",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "lucide-react"
       ],
@@ -1374,7 +1376,7 @@
     {
       "name": "input-group",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -1392,7 +1394,7 @@
     {
       "name": "invoice",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -1409,7 +1411,7 @@
     {
       "name": "json-viewer",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "lucide-react"
       ],
@@ -1428,7 +1430,7 @@
     {
       "name": "kbd",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -1445,7 +1447,7 @@
     {
       "name": "label",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -1462,7 +1464,7 @@
     {
       "name": "layout",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -1479,7 +1481,7 @@
     {
       "name": "lib-overlay",
       "type": "lib",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [],
@@ -1492,7 +1494,7 @@
     {
       "name": "lib-phone-countries",
       "type": "lib",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [],
@@ -1505,7 +1507,7 @@
     {
       "name": "lib-refs",
       "type": "lib",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [],
@@ -1518,7 +1520,7 @@
     {
       "name": "lib-security",
       "type": "lib",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "dompurify"
       ],
@@ -1533,7 +1535,7 @@
     {
       "name": "lib-table",
       "type": "lib",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [],
@@ -1546,7 +1548,7 @@
     {
       "name": "line-chart",
       "type": "chart",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "d3"
       ],
@@ -1567,7 +1569,7 @@
     {
       "name": "link",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "lucide-react"
       ],
@@ -1587,7 +1589,7 @@
     {
       "name": "list",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -1604,7 +1606,7 @@
     {
       "name": "marquee",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -1621,7 +1623,7 @@
     {
       "name": "masonry-grid",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -1638,7 +1640,7 @@
     {
       "name": "mentions",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -1655,7 +1657,7 @@
     {
       "name": "menubar",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -1673,7 +1675,7 @@
     {
       "name": "modal",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "lucide-react"
       ],
@@ -1695,7 +1697,7 @@
     {
       "name": "native-select",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "lucide-react"
       ],
@@ -1715,7 +1717,7 @@
     {
       "name": "navigation-menu",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "lucide-react"
       ],
@@ -1734,7 +1736,7 @@
     {
       "name": "network-loader",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -1755,7 +1757,7 @@
     {
       "name": "notification-center",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "lucide-react"
       ],
@@ -1776,7 +1778,7 @@
     {
       "name": "number-input",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "lucide-react"
       ],
@@ -1796,7 +1798,7 @@
     {
       "name": "number-ticker",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -1814,7 +1816,7 @@
     {
       "name": "offline-banner",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "lucide-react"
       ],
@@ -1834,7 +1836,7 @@
     {
       "name": "optimized-image",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "lucide-react"
       ],
@@ -1855,7 +1857,7 @@
     {
       "name": "otp-input",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -1873,7 +1875,7 @@
     {
       "name": "page-section",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -1886,7 +1888,7 @@
     {
       "name": "pagination",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "lucide-react"
       ],
@@ -1907,7 +1909,7 @@
     {
       "name": "password-input",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "lucide-react"
       ],
@@ -1927,7 +1929,7 @@
     {
       "name": "phone-input",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "lucide-react"
       ],
@@ -1948,7 +1950,7 @@
     {
       "name": "popconfirm",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -1966,7 +1968,7 @@
     {
       "name": "popover",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -1986,7 +1988,7 @@
     {
       "name": "portal",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -1999,7 +2001,7 @@
     {
       "name": "primitives",
       "type": "primitive",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [],
@@ -2019,7 +2021,7 @@
     {
       "name": "progress",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -2036,7 +2038,7 @@
     {
       "name": "qr-code",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "qrcode-generator"
       ],
@@ -2055,7 +2057,7 @@
     {
       "name": "radar-chart",
       "type": "chart",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "d3"
       ],
@@ -2076,7 +2078,7 @@
     {
       "name": "radial-bar-chart",
       "type": "chart",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "d3"
       ],
@@ -2098,7 +2100,7 @@
     {
       "name": "radio-group",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -2115,7 +2117,7 @@
     {
       "name": "range-slider",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -2132,7 +2134,7 @@
     {
       "name": "rating",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "lucide-react"
       ],
@@ -2151,7 +2153,7 @@
     {
       "name": "receipt",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -2168,7 +2170,7 @@
     {
       "name": "resizable",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "lucide-react"
       ],
@@ -2187,7 +2189,7 @@
     {
       "name": "result",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "lucide-react"
       ],
@@ -2206,7 +2208,7 @@
     {
       "name": "sankey-chart",
       "type": "chart",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "d3-sankey"
       ],
@@ -2227,7 +2229,7 @@
     {
       "name": "scatter-chart",
       "type": "chart",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "d3"
       ],
@@ -2249,7 +2251,7 @@
     {
       "name": "scroll-area",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -2266,7 +2268,7 @@
     {
       "name": "search-input",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "lucide-react"
       ],
@@ -2286,7 +2288,7 @@
     {
       "name": "segmented-control",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -2304,7 +2306,7 @@
     {
       "name": "select",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "lucide-react"
       ],
@@ -2325,7 +2327,7 @@
     {
       "name": "separator",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -2342,7 +2344,7 @@
     {
       "name": "sheet",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "lucide-react"
       ],
@@ -2364,7 +2366,7 @@
     {
       "name": "sidebar",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "lucide-react"
       ],
@@ -2385,7 +2387,7 @@
     {
       "name": "simple-data-table",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "@tanstack/react-table",
         "lucide-react"
@@ -2407,7 +2409,7 @@
     {
       "name": "skeleton",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -2424,7 +2426,7 @@
     {
       "name": "skip-link",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -2437,7 +2439,7 @@
     {
       "name": "slider",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -2454,7 +2456,7 @@
     {
       "name": "sonner",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "lucide-react"
       ],
@@ -2475,7 +2477,7 @@
     {
       "name": "sparkline",
       "type": "chart",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "d3"
       ],
@@ -2497,7 +2499,7 @@
     {
       "name": "spinner",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -2514,7 +2516,7 @@
     {
       "name": "split",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -2527,7 +2529,7 @@
     {
       "name": "stack",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -2540,7 +2542,7 @@
     {
       "name": "stat",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "lucide-react"
       ],
@@ -2559,7 +2561,7 @@
     {
       "name": "status-dot",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -2576,7 +2578,7 @@
     {
       "name": "stepper",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "lucide-react"
       ],
@@ -2595,7 +2597,7 @@
     {
       "name": "styles",
       "type": "style",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [],
@@ -2628,7 +2630,7 @@
     {
       "name": "switch",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -2645,7 +2647,7 @@
     {
       "name": "tab-bar",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -2663,7 +2665,7 @@
     {
       "name": "table",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -2680,7 +2682,7 @@
     {
       "name": "tabs",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -2697,7 +2699,7 @@
     {
       "name": "tag-input",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "lucide-react"
       ],
@@ -2717,7 +2719,7 @@
     {
       "name": "textarea",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "lucide-react"
       ],
@@ -2737,7 +2739,7 @@
     {
       "name": "time-picker",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "lucide-react"
       ],
@@ -2755,7 +2757,7 @@
     {
       "name": "timeline",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -2772,7 +2774,7 @@
     {
       "name": "toaster",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -2785,7 +2787,7 @@
     {
       "name": "toggle",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -2802,7 +2804,7 @@
     {
       "name": "toggle-group",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -2820,7 +2822,7 @@
     {
       "name": "toolbar",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -2838,7 +2840,7 @@
     {
       "name": "tooltip",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -2856,7 +2858,7 @@
     {
       "name": "topbar",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -2872,7 +2874,7 @@
     {
       "name": "tour",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "lucide-react"
       ],
@@ -2893,7 +2895,7 @@
     {
       "name": "transfer",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "lucide-react"
       ],
@@ -2913,7 +2915,7 @@
     {
       "name": "tree-view",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "lucide-react"
       ],
@@ -2932,7 +2934,7 @@
     {
       "name": "treemap-chart",
       "type": "chart",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "d3"
       ],
@@ -2953,7 +2955,7 @@
     {
       "name": "typography",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -2970,7 +2972,7 @@
     {
       "name": "utils",
       "type": "lib",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [],
@@ -2983,7 +2985,7 @@
     {
       "name": "virtual-list",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -3000,7 +3002,7 @@
     {
       "name": "visually-hidden",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [
@@ -3013,7 +3015,7 @@
     {
       "name": "waterfall-chart",
       "type": "chart",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [
         "d3"
       ],
@@ -3034,7 +3036,7 @@
     {
       "name": "watermark",
       "type": "ui",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [

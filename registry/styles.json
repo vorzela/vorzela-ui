@@ -1,7 +1,7 @@
 {
   "name": "styles",
   "type": "style",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "dependencies": [],
   "devDependencies": [],
   "registryDependencies": [],
@@ -20,7 +20,7 @@
     },
     {
       "path": "styles/base/_reset.scss",
-      "content": "// Minimal, predictable reset. Kept in `@layer base` so component styles\n// (unlayered) always win without specificity tricks.\n@use '../tokens/color' as color;\n\n@layer base {\n  *,\n  *::before,\n  *::after {\n    box-sizing: border-box;\n    border-width: 0;\n    border-style: solid;\n    border-color: color.color('border');\n  }\n\n  html {\n    text-size-adjust: 100%;\n    scroll-behavior: smooth;\n  }\n\n  h1,\n  h2,\n  h3,\n  h4,\n  h5,\n  h6,\n  p,\n  blockquote,\n  dl,\n  dd,\n  figure,\n  pre {\n    margin: 0;\n  }\n\n  h1,\n  h2,\n  h3,\n  h4,\n  h5,\n  h6 {\n    font-size: inherit;\n    font-weight: inherit;\n  }\n\n  ul,\n  ol {\n    margin: 0;\n    padding: 0;\n    list-style: none;\n  }\n\n  img,\n  svg,\n  video,\n  canvas {\n    display: block;\n    vertical-align: middle;\n  }\n\n  img,\n  video {\n    max-width: 100%;\n    height: auto;\n  }\n\n  button {\n    background: none;\n    cursor: pointer;\n  }\n\n  a {\n    color: inherit;\n    text-decoration: inherit;\n  }\n\n  table {\n    border-collapse: collapse;\n    border-color: inherit;\n  }\n}\n"
+      "content": "// Minimal, predictable reset. Kept in `@layer base` so component styles\n// (unlayered) always win without specificity tricks.\n@use '../tokens/color' as color;\n\n@layer base {\n  *,\n  *::before,\n  *::after {\n    box-sizing: border-box;\n    border-width: 0;\n    border-style: solid;\n    border-color: color.color('border');\n  }\n\n  html {\n    text-size-adjust: 100%;\n    scroll-behavior: smooth;\n  }\n\n  h1,\n  h2,\n  h3,\n  h4,\n  h5,\n  h6,\n  p,\n  blockquote,\n  dl,\n  dd,\n  figure,\n  pre {\n    margin: 0;\n  }\n\n  h1,\n  h2,\n  h3,\n  h4,\n  h5,\n  h6 {\n    font-size: inherit;\n    font-weight: inherit;\n  }\n\n  ul,\n  ol {\n    margin: 0;\n    padding: 0;\n    list-style: none;\n  }\n\n  img,\n  svg,\n  video,\n  canvas {\n    display: block;\n  }\n\n  img,\n  video {\n    max-width: 100%;\n    height: auto;\n  }\n\n  button {\n    background: none;\n    cursor: pointer;\n  }\n\n  a {\n    color: inherit;\n    text-decoration: inherit;\n  }\n\n  table {\n    border-collapse: collapse;\n    border-color: inherit;\n  }\n}\n"
     },
     {
       "path": "styles/global.scss",

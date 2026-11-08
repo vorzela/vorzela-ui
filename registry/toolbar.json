@@ -1,7 +1,7 @@
 {
   "name": "toolbar",
   "type": "ui",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "dependencies": [],
   "devDependencies": [],
   "registryDependencies": [

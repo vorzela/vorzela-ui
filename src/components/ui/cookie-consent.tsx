@@ -2,6 +2,7 @@ import * as React from 'react'
 import { Cookie } from 'lucide-react'
 
 import { Portal } from '~/components/primitives/portal'
+import { useMounted } from '~/hooks/use-mounted'
 import { cx } from '~/lib/cx'
 import { safeHref } from '~/lib/security'
 import { Button } from './button'
@@ -26,6 +27,7 @@ export function CookieConsent({
   onReject?: () => void
   className?: string
 }) {
+  const mounted = useMounted()
   const [visible, setVisible] = React.useState(() => {
     if (typeof window === 'undefined') return false
     try {
@@ -46,7 +48,9 @@ export function CookieConsent({
     else onReject?.()
   }
 
-  if (!visible) return null
+  // Never render during SSR/hydration: `visible` is derived from storage and
+  // would otherwise disagree with the server markup.
+  if (!mounted || !visible) return null
   const href = safeHref(policyHref)
 
   return (

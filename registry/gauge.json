@@ -1,7 +1,7 @@
 {
   "name": "gauge",
   "type": "chart",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "dependencies": [
     "d3"
   ],

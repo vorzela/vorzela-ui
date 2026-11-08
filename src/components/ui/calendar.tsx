@@ -7,6 +7,7 @@
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { useMemo, useState } from 'react'
 
+import { useMounted } from '~/hooks/use-mounted'
 import { cx } from '~/lib/cx'
 
 import styles from './calendar.module.scss'
@@ -39,6 +40,11 @@ export interface CalendarProps {
    */
   initialYear?: number
   initialMonth?: number
+  /**
+   * ISO date used to mark "today" (YYYY-MM-DD). Pass a server-computed value
+   * to keep server and client output identical.
+   */
+  today?: string
 }
 
 function seedDate(
@@ -64,8 +70,11 @@ export function Calendar({
   className,
   initialYear,
   initialMonth,
+  today: todayProp,
 }: CalendarProps) {
-  const today = todayIso()
+  const mounted = useMounted()
+  const providedToday = parseIso(todayProp ?? '') ? todayProp! : ''
+  const today = providedToday || todayIso()
   const todayDt = parseIso(today)!
 
   const seeded = seedDate(value, initialYear, initialMonth, todayDt)
@@ -74,6 +83,15 @@ export function Calendar({
   const [view, setView] = useState<'day' | 'month' | 'year'>('day')
 
   const selectedIso = value ?? ''
+  // Hide "today" markers until hydration so a server in another timezone
+  // cannot render a different day than the client. An explicit `today` prop
+  // is deterministic and is kept for both renders.
+  const displayToday = mounted ? today : providedToday
+  const displayTodayDt = parseIso(displayToday)
+  const hasExplicitSeed =
+    Boolean(value) ||
+    (initialYear !== undefined && initialMonth !== undefined) ||
+    Boolean(providedToday)
 
   const prevMonth = () => {
     if (cursorMonth === 0) {
@@ -106,6 +124,11 @@ export function Calendar({
     const s = decadeStart(cursorYear)
     return Array.from({ length: 12 }, (_, i) => s + i)
   }, [cursorYear])
+
+  // Without a value, initial month or explicit `today`, the starting month is
+  // only knowable on the client — render nothing on the server so the markup
+  // cannot disagree with the hydrated output.
+  if (!mounted && !hasExplicitSeed) return null
 
   function isDisabled(iso: string) {
     if (min && iso < min) return true
@@ -160,7 +183,7 @@ export function Calendar({
             {dayGrid.map((cell) => {
               const iso = cellToIso(cell)
               const isSel = iso === selectedIso
-              const isToday = iso === today
+              const isToday = iso === displayToday
               const isDis = isDisabled(iso)
 
               return (
@@ -190,7 +213,7 @@ export function Calendar({
             <div className={styles.footer}>
               <button
                 type="button"
-                disabled={isDisabled(today)}
+                disabled={isDisabled(displayToday)}
                 onClick={() => {
                   setCursorYear(todayDt.getFullYear())
                   setCursorMonth(todayDt.getMonth())
@@ -238,7 +261,8 @@ export function Calendar({
               const d = parseIso(selectedIso)
               const isSel = d?.getFullYear() === cursorYear && d?.getMonth() === i
               const isNow =
-                todayDt.getFullYear() === cursorYear && todayDt.getMonth() === i
+                displayTodayDt?.getFullYear() === cursorYear &&
+                displayTodayDt?.getMonth() === i
 
               return (
                 <button
@@ -290,7 +314,7 @@ export function Calendar({
           <div className={styles.choiceGrid}>
             {yearGrid.map((yr) => {
               const isSel = parseIso(selectedIso)?.getFullYear() === yr
-              const isNow = todayDt.getFullYear() === yr
+              const isNow = displayTodayDt?.getFullYear() === yr
 
               return (
                 <button

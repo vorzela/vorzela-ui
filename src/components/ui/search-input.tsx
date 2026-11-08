@@ -57,11 +57,17 @@ export function SearchInput({
   const listId = `${id}-history`
   const [uncontrolled, setUncontrolled] = useState(defaultValue)
   const query = valueProp ?? uncontrolled
-  const [history, setHistory] = useState<string[]>(() => {
-    const stored = readHistory(historyKey)
-    return (stored.length > 0 ? stored : initialHistory).slice(0, maxHistory)
-  })
+  const [history, setHistory] = useState<string[]>(() =>
+    initialHistory.slice(0, maxHistory),
+  )
   const [open, setOpen] = useState(false)
+
+  // Read persisted history after mount so the server and the first client
+  // render both use the deterministic `initialHistory` seed.
+  useEffect(() => {
+    const stored = readHistory(historyKey)
+    if (stored.length > 0) setHistory(stored.slice(0, maxHistory))
+  }, [historyKey, maxHistory])
   const rootRef = useRef<HTMLDivElement>(null)
 
   const setQuery = (next: string) => {

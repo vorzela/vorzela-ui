@@ -2,6 +2,7 @@ import { ChevronDown, ChevronLeft, ChevronRight, X } from 'lucide-react'
 import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 
 import { useMediaQuery } from '~/hooks/use-media-query'
+import { useMounted } from '~/hooks/use-mounted'
 import { lockBodyScroll, trapFocus } from '~/lib/overlay'
 import { cx } from '~/lib/cx'
 import styles from './sidebar.module.scss'
@@ -87,12 +88,15 @@ export function Sidebar({
   const collapsed = isDesktop ? collapsedDesktop : collapsedMobile
   const isRight = drawerSide === 'right'
   const asideRef = useRef<HTMLElement>(null)
+  const mounted = useMounted()
 
+  // Resolve the route only after hydration. Reading `window.location` during
+  // the first render would mark a different item active than the server did.
   const resolvedPath = useMemo(() => {
     if (currentPath !== undefined) return currentPath
-    if (typeof window === 'undefined') return ''
+    if (!mounted) return ''
     return `${window.location.pathname}${window.location.hash}`
-  }, [currentPath])
+  }, [currentPath, mounted])
 
   const closeMobile = useCallback(() => {
     setCollapsedMobile(false)

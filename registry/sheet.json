@@ -1,7 +1,7 @@
 {
   "name": "sheet",
   "type": "ui",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "dependencies": [
     "lucide-react"
   ],
