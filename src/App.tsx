@@ -25,6 +25,7 @@ import { components, componentGroups, findComponent } from './docs/registry'
 import { usageBySlug } from './docs/usage'
 import { inventoryCount } from './docs/inventory'
 import { useRoute, useTheme } from './docs/hooks'
+import { useLatestTag } from './docs/use-latest-tag'
 import styles from './docs/docs.module.scss'
 
 const OverviewPage = lazy(() =>
@@ -130,6 +131,7 @@ const SIDEBAR_GROUPS: SidebarNavGroup[] = [
 export default function App() {
   const route = useRoute()
   const { theme, toggle } = useTheme()
+  const version = useLatestTag()
   const [navOpen, setNavOpen] = useState(false)
   const mainRef = useRef<HTMLDivElement>(null)
 
@@ -158,9 +160,9 @@ export default function App() {
         groups={SIDEBAR_GROUPS}
         brand="Vorzela UI"
         brandMark="V"
-        subtitle="React + SCSS · v1.0.2"
+        subtitle={`React + SCSS · v${version}`}
         footer={<span>MIT · source-owned</span>}
-        version="1.0.2"
+        version={version}
         mobileOpen={navOpen}
         onMobileClose={() => setNavOpen(false)}
         currentPath={`#/${route.path || 'overview'}`}

@@ -1,7 +1,7 @@
 {
   "name": "lib-security",
   "type": "lib",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "dependencies": [
     "dompurify"
   ],

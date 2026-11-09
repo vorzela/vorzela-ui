@@ -13,6 +13,7 @@ import { Badge, Button, Card, StatusDot } from '~/components/ui'
 import { navigate } from '../hooks'
 import { inventoryCount } from '../inventory'
 import { CodeBlock, Demo, Section } from '../showcase'
+import { useLatestTag } from '../use-latest-tag'
 import styles from '../docs.module.scss'
 
 const installCode = `# install only the components you use
@@ -70,12 +71,14 @@ const highlights = [
 ]
 
 export function OverviewPage() {
+  const version = useLatestTag()
+
   return (
     <>
       <header className={styles.hero}>
         <span className={styles.eyebrow}>
           <StatusDot tone="success" size="sm" />
-          React 19 · SCSS Modules · v1.0.2
+          React 19 · SCSS Modules · v{version}
         </span>
         <h1 className={styles.heroTitle}>Interfaces with less noise.</h1>
         <p className={styles.heroLead}>
