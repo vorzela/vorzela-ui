@@ -1,0 +1,26 @@
+{
+  "name": "lightbox",
+  "type": "ui",
+  "version": "1.0.3",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "devDependencies": [],
+  "registryDependencies": [
+    "primitives",
+    "styles",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/lightbox.tsx",
+      "content": "import { X } from 'lucide-react'\nimport { useEffect } from 'react'\n\nimport { cx } from '~/lib/cx'\nimport { Portal } from '~/components/primitives/portal'\nimport styles from './lightbox.module.scss'\n\nexport interface LightboxProps {\n  open: boolean\n  src: string\n  alt?: string\n  onClose: () => void\n  caption?: string\n  className?: string\n}\n\n/** Full-screen image viewer. */\nexport function Lightbox({ open, src, alt = '', onClose, caption, className }: LightboxProps) {\n  useEffect(() => {\n    if (!open) return\n    const onKeyDown = (event: KeyboardEvent) => {\n      if (event.key === 'Escape') onClose()\n    }\n    document.addEventListener('keydown', onKeyDown)\n    return () => document.removeEventListener('keydown', onKeyDown)\n  }, [open, onClose])\n\n  if (!open) return null\n\n  return (\n    <Portal>\n      <div\n        className={cx(styles.root, className)}\n        role=\"dialog\"\n        aria-modal=\"true\"\n        aria-label={alt || 'Image preview'}\n        onClick={onClose}\n      >\n        <button type=\"button\" className={styles.close} onClick={onClose} aria-label=\"Close\">\n          <X aria-hidden />\n        </button>\n        <figure className={styles.figure} onClick={(event) => event.stopPropagation()}>\n          <img className={styles.image} src={src} alt={alt} />\n          {caption ? <figcaption className={styles.caption}>{caption}</figcaption> : null}\n        </figure>\n      </div>\n    </Portal>\n  )\n}\n"
+    },
+    {
+      "path": "components/ui/lightbox.module.scss",
+      "content": "@use '../../styles' as vz;\n\n.root {\n  position: fixed;\n  inset: 0;\n  z-index: vz.z('modal');\n  display: grid;\n  place-items: center;\n  padding: vz.space(6);\n  background: rgb(0 0 0 / 0.82);\n}\n\n.close {\n  position: absolute;\n  top: vz.space(4);\n  right: vz.space(4);\n  display: grid;\n  place-items: center;\n  width: vz.space(10);\n  height: vz.space(10);\n  border-radius: 50%;\n  color: white;\n  background: rgb(255 255 255 / 0.12);\n\n  svg {\n    width: 20px;\n    height: 20px;\n  }\n}\n\n.figure {\n  max-width: min(92vw, 80rem);\n  max-height: 88vh;\n  margin: 0;\n}\n\n.image {\n  max-width: 100%;\n  max-height: 82vh;\n  border-radius: vz.radius('lg');\n  object-fit: contain;\n}\n\n.caption {\n  margin-top: vz.space(3);\n  color: rgb(255 255 255 / 0.78);\n  font-size: vz.font-size('sm');\n  text-align: center;\n}\n"
+    }
+  ],
+  "description": "lightbox component",
+  "alias": false
+}

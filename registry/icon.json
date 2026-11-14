@@ -1,0 +1,23 @@
+{
+  "name": "icon",
+  "type": "ui",
+  "version": "1.0.3",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [
+    "styles",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/icon.tsx",
+      "content": "import type { ReactNode } from 'react'\n\nimport { cx } from '~/lib/cx'\nimport styles from './icon.module.scss'\n\nexport interface IconProps {\n  children: ReactNode\n  label?: string\n  size?: 'sm' | 'md' | 'lg'\n  className?: string\n}\n\n/** Decorative or labelled icon wrapper. */\nexport function Icon({ children, label, size = 'md', className }: IconProps) {\n  return (\n    <span\n      className={cx(styles.root, styles[size], className)}\n      role={label ? 'img' : undefined}\n      aria-label={label}\n      aria-hidden={label ? undefined : true}\n    >\n      {children}\n    </span>\n  )\n}\n"
+    },
+    {
+      "path": "components/ui/icon.module.scss",
+      "content": "@use '../../styles' as vz;\n\n.root {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  flex: none;\n\n  svg {\n    width: 1em;\n    height: 1em;\n  }\n}\n\n.sm { font-size: 16px; }\n.md { font-size: 20px; }\n.lg { font-size: 24px; }\n"
+    }
+  ],
+  "description": "icon component",
+  "alias": false
+}

@@ -1,0 +1,23 @@
+{
+  "name": "markdown",
+  "type": "ui",
+  "version": "1.0.3",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [
+    "styles",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/markdown.tsx",
+      "content": "import type { ReactNode } from 'react'\n\nimport { cx } from '~/lib/cx'\nimport styles from './markdown.module.scss'\n\nexport interface MarkdownProps {\n  source: string\n  className?: string\n}\n\nfunction inline(text: string): ReactNode[] {\n  const parts = text.split(/(\\*\\*[^*]+\\*\\*|`[^`]+`|\\*[^*]+\\*)/g)\n  return parts.filter(Boolean).map((part, index) => {\n    if (part.startsWith('**') && part.endsWith('**')) {\n      return <strong key={index}>{part.slice(2, -2)}</strong>\n    }\n    if (part.startsWith('`') && part.endsWith('`')) {\n      return <code key={index} className={styles.code}>{part.slice(1, -1)}</code>\n    }\n    if (part.startsWith('*') && part.endsWith('*')) {\n      return <em key={index}>{part.slice(1, -1)}</em>\n    }\n    return part\n  })\n}\n\n/** Small, safe Markdown subset: headings, lists, quotes, code fences and inline marks. */\nexport function Markdown({ source, className }: MarkdownProps) {\n  const blocks: ReactNode[] = []\n  const lines = source.split(/\\r?\\n/)\n  let index = 0\n\n  while (index < lines.length) {\n    const line = lines[index] ?? ''\n    if (!line.trim()) {\n      index += 1\n      continue\n    }\n\n    if (line.startsWith('```')) {\n      const language = line.slice(3).trim()\n      const body: string[] = []\n      index += 1\n      while (index < lines.length && !(lines[index] ?? '').startsWith('```')) {\n        body.push(lines[index] ?? '')\n        index += 1\n      }\n      index += 1\n      blocks.push(\n        <pre key={blocks.length} className={styles.pre}>\n          <code data-language={language || undefined}>{body.join('\\n')}</code>\n        </pre>,\n      )\n      continue\n    }\n\n    const heading = line.match(/^(#{1,6})\\s+(.*)$/)\n    if (heading) {\n      const level = heading[1]!.length\n      const Tag = `h${level}` as 'h1'\n      blocks.push(<Tag key={blocks.length}>{inline(heading[2] ?? '')}</Tag>)\n      index += 1\n      continue\n    }\n\n    if (/^[-*]\\s+/.test(line)) {\n      const items: string[] = []\n      while (index < lines.length && /^[-*]\\s+/.test(lines[index] ?? '')) {\n        items.push((lines[index] ?? '').replace(/^[-*]\\s+/, ''))\n        index += 1\n      }\n      blocks.push(\n        <ul key={blocks.length}>\n          {items.map((item, itemIndex) => <li key={itemIndex}>{inline(item)}</li>)}\n        </ul>,\n      )\n      continue\n    }\n\n    if (line.startsWith('> ')) {\n      blocks.push(<blockquote key={blocks.length}>{inline(line.slice(2))}</blockquote>)\n      index += 1\n      continue\n    }\n\n    const paragraph: string[] = [line]\n    index += 1\n    while (index < lines.length && (lines[index] ?? '').trim() && !/^(#{1,6}\\s|[-*]\\s|>\\s|```)/.test(lines[index] ?? '')) {\n      paragraph.push(lines[index] ?? '')\n      index += 1\n    }\n    blocks.push(<p key={blocks.length}>{inline(paragraph.join(' '))}</p>)\n  }\n\n  return <div className={cx(styles.root, className)}>{blocks}</div>\n}\n"
+    },
+    {
+      "path": "components/ui/markdown.module.scss",
+      "content": "@use '../../styles' as vz;\n\n.root {\n  color: vz.color('foreground');\n  font-size: vz.font-size('md');\n  line-height: 1.7;\n\n  h1, h2, h3, h4, h5, h6 {\n    margin: 1.4em 0 0.5em;\n    line-height: 1.25;\n  }\n\n  p, ul, ol, blockquote, pre {\n    margin: 0 0 vz.space(4);\n  }\n\n  ul, ol {\n    padding-left: vz.space(5);\n  }\n\n  ul { list-style: disc; }\n  ol { list-style: decimal; }\n\n  blockquote {\n    padding-left: vz.space(4);\n    border-left: 3px solid vz.color('border');\n    color: vz.color('muted-foreground');\n  }\n}\n\n.code {\n  padding: 0.1em 0.35em;\n  border-radius: vz.radius('sm');\n  background: vz.color('muted');\n  font-family: SFMono-Regular, Menlo, Monaco, Consolas, monospace;\n  font-size: 0.92em;\n}\n\n.pre {\n  padding: vz.space(4);\n  overflow: auto;\n  border-radius: vz.radius('lg');\n  background: vz.color('code-bg');\n  color: vz.color('code-fg');\n\n  code {\n    font-family: SFMono-Regular, Menlo, Monaco, Consolas, monospace;\n    font-size: vz.font-size('sm');\n  }\n}\n"
+    }
+  ],
+  "description": "markdown component",
+  "alias": false
+}

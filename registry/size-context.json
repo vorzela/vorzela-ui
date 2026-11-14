@@ -1,0 +1,18 @@
+{
+  "name": "size-context",
+  "type": "ui",
+  "version": "1.0.3",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [
+    "styles"
+  ],
+  "files": [
+    {
+      "path": "components/ui/size-context.tsx",
+      "content": "import { createContext, useContext, type ReactNode } from 'react'\n\nexport type Size = 'sm' | 'md' | 'lg'\n\nconst SizeContext = createContext<Size>('md')\n\nexport function SizeProvider({ size, children }: { size: Size; children: ReactNode }) {\n  return <SizeContext.Provider value={size}>{children}</SizeContext.Provider>\n}\n\nexport function useSize(): Size {\n  return useContext(SizeContext)\n}\n"
+    }
+  ],
+  "description": "size-context component",
+  "alias": false
+}

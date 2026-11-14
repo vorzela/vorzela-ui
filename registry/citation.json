@@ -1,0 +1,23 @@
+{
+  "name": "citation",
+  "type": "ui",
+  "version": "1.0.3",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [
+    "styles",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/citation.tsx",
+      "content": "import type { ReactNode } from 'react'\n\nimport { cx } from '~/lib/cx'\nimport styles from './citation.module.scss'\n\nexport interface CitationProps {\n  source: ReactNode\n  href?: string\n  index?: number\n  className?: string\n}\n\n/** Inline source reference with an optional numeric marker. */\nexport function Citation({ source, href, index, className }: CitationProps) {\n  const content = (\n    <>\n      {index !== undefined ? <span className={styles.index}>[{index}]</span> : null}\n      <span>{source}</span>\n    </>\n  )\n\n  return href ? (\n    <a className={cx(styles.root, className)} href={href}>\n      {content}\n    </a>\n  ) : (\n    <cite className={cx(styles.root, className)}>{content}</cite>\n  )\n}\n"
+    },
+    {
+      "path": "components/ui/citation.module.scss",
+      "content": "@use '../../styles' as vz;\n\n.root {\n  color: vz.color('muted-foreground');\n  font-size: vz.font-size('sm');\n  font-style: normal;\n}\n\n.index {\n  margin-right: vz.space(1);\n  color: vz.color('primary');\n  font-variant-numeric: tabular-nums;\n}\n"
+    }
+  ],
+  "description": "citation component",
+  "alias": false
+}

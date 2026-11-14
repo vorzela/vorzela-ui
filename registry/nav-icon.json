@@ -1,0 +1,23 @@
+{
+  "name": "nav-icon",
+  "type": "ui",
+  "version": "1.0.3",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [
+    "styles",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/nav-icon.tsx",
+      "content": "import type { ReactNode } from 'react'\n\nimport { cx } from '~/lib/cx'\nimport styles from './nav-icon.module.scss'\n\nexport interface NavIconProps {\n  icon: ReactNode\n  label: string\n  active?: boolean\n  href?: string\n  onClick?: () => void\n  className?: string\n}\n\n/** Compact icon + label navigation target. */\nexport function NavIcon({ icon, label, active, href, onClick, className }: NavIconProps) {\n  const content = (\n    <>\n      <span className={styles.icon}>{icon}</span>\n      <span className={styles.label}>{label}</span>\n    </>\n  )\n  const classes = cx(styles.root, active && styles.active, className)\n\n  return href ? (\n    <a className={classes} href={href} aria-current={active ? 'page' : undefined}>\n      {content}\n    </a>\n  ) : (\n    <button type=\"button\" className={classes} onClick={onClick} aria-current={active ? 'page' : undefined}>\n      {content}\n    </button>\n  )\n}\n"
+    },
+    {
+      "path": "components/ui/nav-icon.module.scss",
+      "content": "@use '../../styles' as vz;\n\n.root {\n  display: flex;\n  align-items: center;\n  gap: vz.space(2);\n  padding: vz.space(2) vz.space(3);\n  border-radius: vz.radius('md');\n  color: vz.color('muted-foreground');\n  font-size: vz.font-size('sm');\n\n  &:hover {\n    background: vz.color('accent');\n    color: vz.color('accent-foreground');\n  }\n}\n\n.active {\n  background: vz.color('primary', 0.1);\n  color: vz.color('primary');\n  font-weight: 600;\n}\n\n.icon svg {\n  width: 18px;\n  height: 18px;\n}\n"
+    }
+  ],
+  "description": "nav-icon component",
+  "alias": false
+}

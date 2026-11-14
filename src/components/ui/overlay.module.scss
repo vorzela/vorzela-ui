@@ -1,0 +1,15 @@
+@use '../../styles' as vz;
+
+.root {
+  position: fixed;
+  inset: 0;
+  z-index: vz.z('overlay');
+}
+
+.dark {
+  background: rgb(0 0 0 / 0.5);
+}
+
+.light {
+  background: rgb(255 255 255 / 0.6);
+}

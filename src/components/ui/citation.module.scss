@@ -1,0 +1,13 @@
+@use '../../styles' as vz;
+
+.root {
+  color: vz.color('muted-foreground');
+  font-size: vz.font-size('sm');
+  font-style: normal;
+}
+
+.index {
+  margin-right: vz.space(1);
+  color: vz.color('primary');
+  font-variant-numeric: tabular-nums;
+}

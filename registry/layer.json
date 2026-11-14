@@ -1,0 +1,24 @@
+{
+  "name": "layer",
+  "type": "ui",
+  "version": "1.0.3",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [
+    "primitives",
+    "styles",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/layer.tsx",
+      "content": "import type { ReactNode } from 'react'\n\nimport { Portal } from '~/components/primitives/portal'\nimport { cx } from '~/lib/cx'\nimport styles from './layer.module.scss'\n\nexport interface LayerProps {\n  children?: ReactNode\n  className?: string\n  mount?: HTMLElement | null\n  portal?: boolean\n}\n\n/** Positioning layer; portals to the body by default. */\nexport function Layer({ children, className, mount, portal = true }: LayerProps) {\n  const content = <div className={cx(styles.root, className)}>{children}</div>\n  return portal ? <Portal container={mount}>{content}</Portal> : content\n}\n"
+    },
+    {
+      "path": "components/ui/layer.module.scss",
+      "content": "@use '../../styles' as vz;\n\n.root {\n  position: relative;\n  z-index: vz.z('popover');\n}\n"
+    }
+  ],
+  "description": "layer component",
+  "alias": false
+}

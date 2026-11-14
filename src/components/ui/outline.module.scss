@@ -1,0 +1,38 @@
+@use '../../styles' as vz;
+
+.root {
+  font-size: vz.font-size('sm');
+}
+
+.label {
+  margin-bottom: vz.space(2);
+  color: vz.color('muted-foreground');
+  font-size: vz.font-size('xs');
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.link {
+  display: block;
+  padding: vz.space(1) vz.space(2);
+  border-left: 2px solid transparent;
+  color: vz.color('muted-foreground');
+  line-height: 1.4;
+}
+
+.link:hover {
+  color: vz.color('foreground');
+}
+
+.active {
+  border-left-color: vz.color('primary');
+  color: vz.color('primary');
+  font-weight: 600;
+}

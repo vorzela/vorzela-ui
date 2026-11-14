@@ -1,0 +1,26 @@
+@use '../../styles' as vz;
+
+.root {
+  margin: 0;
+  padding: vz.space(5) vz.space(6);
+  border-left: 3px solid vz.color('primary');
+  border-radius: 0 vz.radius('lg') vz.radius('lg') 0;
+  background: vz.color('muted');
+  color: vz.color('foreground');
+}
+
+.accent {
+  background: vz.color('primary', 0.08);
+  border-left-color: vz.color('primary');
+}
+
+.body {
+  font-size: vz.font-size('lg');
+  line-height: 1.6;
+}
+
+.cite {
+  margin-top: vz.space(3);
+  color: vz.color('muted-foreground');
+  font-size: vz.font-size('sm');
+}

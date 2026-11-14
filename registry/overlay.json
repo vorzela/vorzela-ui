@@ -1,0 +1,23 @@
+{
+  "name": "overlay",
+  "type": "ui",
+  "version": "1.0.3",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [
+    "styles",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/overlay.tsx",
+      "content": "import type { HTMLAttributes } from 'react'\n\nimport { cx } from '~/lib/cx'\nimport styles from './overlay.module.scss'\n\nexport interface OverlayProps extends HTMLAttributes<HTMLDivElement> {\n  tone?: 'dark' | 'light'\n}\n\n/** Dimmed backdrop for dialogs and sheets. */\nexport function Overlay({ tone = 'dark', className, ...props }: OverlayProps) {\n  return <div aria-hidden=\"true\" className={cx(styles.root, styles[tone], className)} {...props} />\n}\n"
+    },
+    {
+      "path": "components/ui/overlay.module.scss",
+      "content": "@use '../../styles' as vz;\n\n.root {\n  position: fixed;\n  inset: 0;\n  z-index: vz.z('overlay');\n}\n\n.dark {\n  background: rgb(0 0 0 / 0.5);\n}\n\n.light {\n  background: rgb(255 255 255 / 0.6);\n}\n"
+    }
+  ],
+  "description": "overlay component",
+  "alias": false
+}

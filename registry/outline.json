@@ -1,0 +1,23 @@
+{
+  "name": "outline",
+  "type": "ui",
+  "version": "1.0.3",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [
+    "styles",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/outline.tsx",
+      "content": "import { cx } from '~/lib/cx'\nimport styles from './outline.module.scss'\n\nexport interface OutlineItem {\n  id: string\n  label: string\n  level?: number\n}\n\nexport interface OutlineProps {\n  items: OutlineItem[]\n  activeId?: string\n  className?: string\n  label?: string\n}\n\n/** Table-of-contents navigation for long documents. */\nexport function Outline({ items, activeId, className, label = 'On this page' }: OutlineProps) {\n  return (\n    <nav className={cx(styles.root, className)} aria-label={label}>\n      <p className={styles.label}>{label}</p>\n      <ul className={styles.list}>\n        {items.map((item) => (\n          <li key={item.id} style={{ paddingLeft: `${Math.max(0, (item.level ?? 2) - 2) * 12}px` }}>\n            <a\n              className={cx(styles.link, item.id === activeId && styles.active)}\n              href={`#${item.id}`}\n              aria-current={item.id === activeId ? 'location' : undefined}\n            >\n              {item.label}\n            </a>\n          </li>\n        ))}\n      </ul>\n    </nav>\n  )\n}\n"
+    },
+    {
+      "path": "components/ui/outline.module.scss",
+      "content": "@use '../../styles' as vz;\n\n.root {\n  font-size: vz.font-size('sm');\n}\n\n.label {\n  margin-bottom: vz.space(2);\n  color: vz.color('muted-foreground');\n  font-size: vz.font-size('xs');\n  font-weight: 600;\n  text-transform: uppercase;\n  letter-spacing: 0.06em;\n}\n\n.list {\n  display: flex;\n  flex-direction: column;\n  gap: 2px;\n}\n\n.link {\n  display: block;\n  padding: vz.space(1) vz.space(2);\n  border-left: 2px solid transparent;\n  color: vz.color('muted-foreground');\n  line-height: 1.4;\n}\n\n.link:hover {\n  color: vz.color('foreground');\n}\n\n.active {\n  border-left-color: vz.color('primary');\n  color: vz.color('primary');\n  font-weight: 600;\n}\n"
+    }
+  ],
+  "description": "outline component",
+  "alias": false
+}

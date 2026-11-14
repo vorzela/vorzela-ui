@@ -1,0 +1,6 @@
+@use '../../styles' as vz;
+
+.root {
+  position: relative;
+  z-index: vz.z('popover');
+}

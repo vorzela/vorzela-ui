@@ -1,0 +1,23 @@
+{
+  "name": "blockquote",
+  "type": "ui",
+  "version": "1.0.3",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [
+    "styles",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/blockquote.tsx",
+      "content": "import type { HTMLAttributes, ReactNode } from 'react'\n\nimport { cx } from '~/lib/cx'\nimport styles from './blockquote.module.scss'\n\nexport interface BlockquoteProps extends HTMLAttributes<HTMLQuoteElement> {\n  cite?: ReactNode\n  tone?: 'default' | 'accent'\n}\n\n/** Editorial pull quote with an optional attribution. */\nexport function Blockquote({\n  cite,\n  tone = 'default',\n  className,\n  children,\n  ...props\n}: BlockquoteProps) {\n  return (\n    <blockquote\n      className={cx(styles.root, tone === 'accent' && styles.accent, className)}\n      {...props}\n    >\n      <div className={styles.body}>{children}</div>\n      {cite ? <footer className={styles.cite}>{cite}</footer> : null}\n    </blockquote>\n  )\n}\n"
+    },
+    {
+      "path": "components/ui/blockquote.module.scss",
+      "content": "@use '../../styles' as vz;\n\n.root {\n  margin: 0;\n  padding: vz.space(5) vz.space(6);\n  border-left: 3px solid vz.color('primary');\n  border-radius: 0 vz.radius('lg') vz.radius('lg') 0;\n  background: vz.color('muted');\n  color: vz.color('foreground');\n}\n\n.accent {\n  background: vz.color('primary', 0.08);\n  border-left-color: vz.color('primary');\n}\n\n.body {\n  font-size: vz.font-size('lg');\n  line-height: 1.6;\n}\n\n.cite {\n  margin-top: vz.space(3);\n  color: vz.color('muted-foreground');\n  font-size: vz.font-size('sm');\n}\n"
+    }
+  ],
+  "description": "blockquote component",
+  "alias": false
+}

@@ -1,0 +1,27 @@
+@use '../../styles' as vz;
+
+.root {
+  display: flex;
+  align-items: center;
+  gap: vz.space(2);
+  padding: vz.space(2) vz.space(3);
+  border-radius: vz.radius('md');
+  color: vz.color('muted-foreground');
+  font-size: vz.font-size('sm');
+
+  &:hover {
+    background: vz.color('accent');
+    color: vz.color('accent-foreground');
+  }
+}
+
+.active {
+  background: vz.color('primary', 0.1);
+  color: vz.color('primary');
+  font-weight: 600;
+}
+
+.icon svg {
+  width: 18px;
+  height: 18px;
+}

@@ -1,0 +1,71 @@
+@use '../../styles' as vz;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: vz.space(4);
+}
+
+.message {
+  display: flex;
+  gap: vz.space(3);
+  max-width: 52rem;
+}
+
+.user {
+  margin-left: auto;
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+.avatar {
+  flex: none;
+  width: vz.space(8);
+  height: vz.space(8);
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.body {
+  padding: vz.space(3) vz.space(4);
+  border: 1px solid vz.color('border');
+  border-radius: vz.radius('lg');
+  background: vz.color('card');
+}
+
+.user .body {
+  background: vz.color('primary');
+  color: vz.color('primary-foreground');
+  border-color: transparent;
+}
+
+.meta {
+  display: flex;
+  gap: vz.space(2);
+  align-items: baseline;
+  margin-bottom: vz.space(1);
+}
+
+.name {
+  font-size: vz.font-size('sm');
+  font-weight: 600;
+}
+
+.time {
+  color: vz.color('muted-foreground');
+  font-size: vz.font-size('xs');
+}
+
+.user .time {
+  color: vz.color('primary-foreground', 0.7);
+}
+
+.content {
+  font-size: vz.font-size('sm');
+  line-height: 1.6;
+}
+
+.empty {
+  color: vz.color('muted-foreground');
+  font-size: vz.font-size('sm');
+}

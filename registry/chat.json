@@ -1,0 +1,23 @@
+{
+  "name": "chat",
+  "type": "ui",
+  "version": "1.0.3",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [
+    "styles",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/chat.tsx",
+      "content": "import type { ReactNode } from 'react'\n\nimport { cx } from '~/lib/cx'\nimport styles from './chat.module.scss'\n\nexport type ChatRole = 'user' | 'assistant' | 'system'\n\nexport interface ChatMessage {\n  id: string\n  role: ChatRole\n  content: ReactNode\n  name?: string\n  time?: string\n  avatar?: ReactNode\n}\n\nexport interface ChatProps {\n  messages: ChatMessage[]\n  className?: string\n  empty?: ReactNode\n}\n\n/** Conversation transcript. */\nexport function Chat({ messages, className, empty = 'No messages yet.' }: ChatProps) {\n  return (\n    <div className={cx(styles.root, className)} role=\"log\" aria-live=\"polite\">\n      {messages.length === 0 ? <p className={styles.empty}>{empty}</p> : null}\n      {messages.map((message) => (\n        <article key={message.id} className={cx(styles.message, styles[message.role])}>\n          {message.avatar ? <div className={styles.avatar}>{message.avatar}</div> : null}\n          <div className={styles.body}>\n            <header className={styles.meta}>\n              <span className={styles.name}>{message.name ?? message.role}</span>\n              {message.time ? <time className={styles.time}>{message.time}</time> : null}\n            </header>\n            <div className={styles.content}>{message.content}</div>\n          </div>\n        </article>\n      ))}\n    </div>\n  )\n}\n"
+    },
+    {
+      "path": "components/ui/chat.module.scss",
+      "content": "@use '../../styles' as vz;\n\n.root {\n  display: flex;\n  flex-direction: column;\n  gap: vz.space(4);\n}\n\n.message {\n  display: flex;\n  gap: vz.space(3);\n  max-width: 52rem;\n}\n\n.user {\n  margin-left: auto;\n  flex-direction: row-reverse;\n  text-align: right;\n}\n\n.avatar {\n  flex: none;\n  width: vz.space(8);\n  height: vz.space(8);\n  overflow: hidden;\n  border-radius: 50%;\n}\n\n.body {\n  padding: vz.space(3) vz.space(4);\n  border: 1px solid vz.color('border');\n  border-radius: vz.radius('lg');\n  background: vz.color('card');\n}\n\n.user .body {\n  background: vz.color('primary');\n  color: vz.color('primary-foreground');\n  border-color: transparent;\n}\n\n.meta {\n  display: flex;\n  gap: vz.space(2);\n  align-items: baseline;\n  margin-bottom: vz.space(1);\n}\n\n.name {\n  font-size: vz.font-size('sm');\n  font-weight: 600;\n}\n\n.time {\n  color: vz.color('muted-foreground');\n  font-size: vz.font-size('xs');\n}\n\n.user .time {\n  color: vz.color('primary-foreground', 0.7);\n}\n\n.content {\n  font-size: vz.font-size('sm');\n  line-height: 1.6;\n}\n\n.empty {\n  color: vz.color('muted-foreground');\n  font-size: vz.font-size('sm');\n}\n"
+    }
+  ],
+  "description": "chat component",
+  "alias": false
+}

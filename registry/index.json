@@ -1,6 +1,6 @@
 {
   "version": "1.0.3",
-  "generatedAt": "2026-11-09T21:59:47.676Z",
+  "generatedAt": "2026-11-14T03:08:38.319Z",
   "items": [
     {
       "name": "accordion",
@@ -262,6 +262,23 @@
       ]
     },
     {
+      "name": "blockquote",
+      "type": "ui",
+      "version": "1.0.3",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [
+        "styles",
+        "utils"
+      ],
+      "description": "blockquote component",
+      "alias": false,
+      "files": [
+        "components/ui/blockquote.tsx",
+        "components/ui/blockquote.module.scss"
+      ]
+    },
+    {
       "name": "breadcrumb",
       "type": "ui",
       "version": "1.0.3",
@@ -496,6 +513,23 @@
       ]
     },
     {
+      "name": "chat",
+      "type": "ui",
+      "version": "1.0.3",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [
+        "styles",
+        "utils"
+      ],
+      "description": "chat component",
+      "alias": false,
+      "files": [
+        "components/ui/chat.tsx",
+        "components/ui/chat.module.scss"
+      ]
+    },
+    {
       "name": "checkbox",
       "type": "ui",
       "version": "1.0.3",
@@ -512,6 +546,23 @@
       "files": [
         "components/ui/checkbox.tsx",
         "components/ui/checkbox.module.scss"
+      ]
+    },
+    {
+      "name": "citation",
+      "type": "ui",
+      "version": "1.0.3",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [
+        "styles",
+        "utils"
+      ],
+      "description": "citation component",
+      "alias": false,
+      "files": [
+        "components/ui/citation.tsx",
+        "components/ui/citation.module.scss"
       ]
     },
     {
@@ -545,6 +596,25 @@
       "description": "code component",
       "alias": true,
       "files": []
+    },
+    {
+      "name": "code-block",
+      "type": "ui",
+      "version": "1.0.3",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "devDependencies": [],
+      "registryDependencies": [
+        "styles",
+        "utils"
+      ],
+      "description": "code-block component",
+      "alias": false,
+      "files": [
+        "components/ui/code-block.tsx",
+        "components/ui/code-block.module.scss"
+      ]
     },
     {
       "name": "collapsible",
@@ -1321,6 +1391,23 @@
       ]
     },
     {
+      "name": "icon",
+      "type": "ui",
+      "version": "1.0.3",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [
+        "styles",
+        "utils"
+      ],
+      "description": "icon component",
+      "alias": false,
+      "files": [
+        "components/ui/icon.tsx",
+        "components/ui/icon.module.scss"
+      ]
+    },
+    {
       "name": "image-cropper",
       "type": "ui",
       "version": "1.0.3",
@@ -1462,6 +1549,24 @@
       ]
     },
     {
+      "name": "layer",
+      "type": "ui",
+      "version": "1.0.3",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [
+        "primitives",
+        "styles",
+        "utils"
+      ],
+      "description": "layer component",
+      "alias": false,
+      "files": [
+        "components/ui/layer.tsx",
+        "components/ui/layer.module.scss"
+      ]
+    },
+    {
       "name": "layout",
       "type": "ui",
       "version": "1.0.3",
@@ -1546,6 +1651,26 @@
       ]
     },
     {
+      "name": "lightbox",
+      "type": "ui",
+      "version": "1.0.3",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "devDependencies": [],
+      "registryDependencies": [
+        "primitives",
+        "styles",
+        "utils"
+      ],
+      "description": "lightbox component",
+      "alias": false,
+      "files": [
+        "components/ui/lightbox.tsx",
+        "components/ui/lightbox.module.scss"
+      ]
+    },
+    {
       "name": "line-chart",
       "type": "chart",
       "version": "1.0.3",
@@ -1601,6 +1726,23 @@
       "files": [
         "components/ui/list.tsx",
         "components/ui/list.module.scss"
+      ]
+    },
+    {
+      "name": "markdown",
+      "type": "ui",
+      "version": "1.0.3",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [
+        "styles",
+        "utils"
+      ],
+      "description": "markdown component",
+      "alias": false,
+      "files": [
+        "components/ui/markdown.tsx",
+        "components/ui/markdown.module.scss"
       ]
     },
     {
@@ -1712,6 +1854,23 @@
       "files": [
         "components/ui/native-select.tsx",
         "components/ui/native-select.module.scss"
+      ]
+    },
+    {
+      "name": "nav-icon",
+      "type": "ui",
+      "version": "1.0.3",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [
+        "styles",
+        "utils"
+      ],
+      "description": "nav-icon component",
+      "alias": false,
+      "files": [
+        "components/ui/nav-icon.tsx",
+        "components/ui/nav-icon.module.scss"
       ]
     },
     {
@@ -1870,6 +2029,40 @@
       "files": [
         "components/ui/otp-input.tsx",
         "components/ui/otp-input.module.scss"
+      ]
+    },
+    {
+      "name": "outline",
+      "type": "ui",
+      "version": "1.0.3",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [
+        "styles",
+        "utils"
+      ],
+      "description": "outline component",
+      "alias": false,
+      "files": [
+        "components/ui/outline.tsx",
+        "components/ui/outline.module.scss"
+      ]
+    },
+    {
+      "name": "overlay",
+      "type": "ui",
+      "version": "1.0.3",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [
+        "styles",
+        "utils"
+      ],
+      "description": "overlay component",
+      "alias": false,
+      "files": [
+        "components/ui/overlay.tsx",
+        "components/ui/overlay.module.scss"
       ]
     },
     {
@@ -2404,6 +2597,21 @@
       "files": [
         "components/ui/simple-data-table.tsx",
         "components/ui/simple-data-table.module.scss"
+      ]
+    },
+    {
+      "name": "size-context",
+      "type": "ui",
+      "version": "1.0.3",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [
+        "styles"
+      ],
+      "description": "size-context component",
+      "alias": false,
+      "files": [
+        "components/ui/size-context.tsx"
       ]
     },
     {
