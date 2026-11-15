@@ -142,8 +142,9 @@
 .backdrop {
   position: absolute;
   inset: 0;
-  background: vz.color('foreground', 0.5);
-  backdrop-filter: blur(6px);
+
+  @include vz.scrim(12px);
+
   animation: vz-command-fade vz.duration('base') vz.ease('out') both;
 
   @include vz.motion-reduce {

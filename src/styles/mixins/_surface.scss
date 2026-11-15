@@ -21,6 +21,18 @@
   color: color.color('popover-foreground');
 }
 
+/// Dimmed, blurred scrim behind modals, sheets and drawers.
+///
+/// Uses a dedicated `overlay` token so dark mode dims toward black instead of
+/// washing the page out with the near-white `foreground` token.
+///
+/// @param {Number} $blur [12px] - Backdrop blur radius
+/// @param {Number} $alpha [0.5] - Scrim opacity from 0 to 1
+@mixin scrim($blur: 12px, $alpha: 0.5) {
+  background: color.color('overlay', $alpha);
+  backdrop-filter: blur($blur);
+}
+
 /// A recessed area for code blocks, wells, and inline groups.
 @mixin inset {
   background: color.color('muted');

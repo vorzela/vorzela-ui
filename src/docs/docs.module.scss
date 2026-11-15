@@ -70,8 +70,9 @@
   inset: 0;
   z-index: calc(#{vz.z('sticky')} - 1);
   border: 0;
-  background: vz.color('foreground', 0.28);
-  backdrop-filter: blur(2px);
+
+  @include vz.scrim(8px, 0.35);
+
   cursor: pointer;
   animation: vz-fade-in 180ms vz.ease('out') both;
 

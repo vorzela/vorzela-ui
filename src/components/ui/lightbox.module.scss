@@ -7,7 +7,7 @@
   display: grid;
   place-items: center;
   padding: vz.space(6);
-  background: rgb(0 0 0 / 0.82);
+  background: rgb(0 0 0 / 82%);
 }
 
 .close {
@@ -20,7 +20,7 @@
   height: vz.space(10);
   border-radius: 50%;
   color: white;
-  background: rgb(255 255 255 / 0.12);
+  background: rgb(255 255 255 / 12%);
 
   svg {
     width: 20px;
@@ -43,7 +43,7 @@
 
 .caption {
   margin-top: vz.space(3);
-  color: rgb(255 255 255 / 0.78);
+  color: rgb(255 255 255 / 78%);
   font-size: vz.font-size('sm');
   text-align: center;
 }

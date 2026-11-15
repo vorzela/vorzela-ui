@@ -1,7 +1,7 @@
 {
   "name": "lightbox",
   "type": "ui",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "dependencies": [
     "lucide-react"
   ],
@@ -18,7 +18,7 @@
     },
     {
       "path": "components/ui/lightbox.module.scss",
-      "content": "@use '../../styles' as vz;\n\n.root {\n  position: fixed;\n  inset: 0;\n  z-index: vz.z('modal');\n  display: grid;\n  place-items: center;\n  padding: vz.space(6);\n  background: rgb(0 0 0 / 0.82);\n}\n\n.close {\n  position: absolute;\n  top: vz.space(4);\n  right: vz.space(4);\n  display: grid;\n  place-items: center;\n  width: vz.space(10);\n  height: vz.space(10);\n  border-radius: 50%;\n  color: white;\n  background: rgb(255 255 255 / 0.12);\n\n  svg {\n    width: 20px;\n    height: 20px;\n  }\n}\n\n.figure {\n  max-width: min(92vw, 80rem);\n  max-height: 88vh;\n  margin: 0;\n}\n\n.image {\n  max-width: 100%;\n  max-height: 82vh;\n  border-radius: vz.radius('lg');\n  object-fit: contain;\n}\n\n.caption {\n  margin-top: vz.space(3);\n  color: rgb(255 255 255 / 0.78);\n  font-size: vz.font-size('sm');\n  text-align: center;\n}\n"
+      "content": "@use '../../styles' as vz;\n\n.root {\n  position: fixed;\n  inset: 0;\n  z-index: vz.z('modal');\n  display: grid;\n  place-items: center;\n  padding: vz.space(6);\n  background: rgb(0 0 0 / 82%);\n}\n\n.close {\n  position: absolute;\n  top: vz.space(4);\n  right: vz.space(4);\n  display: grid;\n  place-items: center;\n  width: vz.space(10);\n  height: vz.space(10);\n  border-radius: 50%;\n  color: white;\n  background: rgb(255 255 255 / 12%);\n\n  svg {\n    width: 20px;\n    height: 20px;\n  }\n}\n\n.figure {\n  max-width: min(92vw, 80rem);\n  max-height: 88vh;\n  margin: 0;\n}\n\n.image {\n  max-width: 100%;\n  max-height: 82vh;\n  border-radius: vz.radius('lg');\n  object-fit: contain;\n}\n\n.caption {\n  margin-top: vz.space(3);\n  color: rgb(255 255 255 / 78%);\n  font-size: vz.font-size('sm');\n  text-align: center;\n}\n"
     }
   ],
   "description": "lightbox component",

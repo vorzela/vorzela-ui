@@ -1,7 +1,7 @@
 {
   "name": "markdown",
   "type": "ui",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "dependencies": [],
   "devDependencies": [],
   "registryDependencies": [
@@ -15,7 +15,7 @@
     },
     {
       "path": "components/ui/markdown.module.scss",
-      "content": "@use '../../styles' as vz;\n\n.root {\n  color: vz.color('foreground');\n  font-size: vz.font-size('md');\n  line-height: 1.7;\n\n  h1, h2, h3, h4, h5, h6 {\n    margin: 1.4em 0 0.5em;\n    line-height: 1.25;\n  }\n\n  p, ul, ol, blockquote, pre {\n    margin: 0 0 vz.space(4);\n  }\n\n  ul, ol {\n    padding-left: vz.space(5);\n  }\n\n  ul { list-style: disc; }\n  ol { list-style: decimal; }\n\n  blockquote {\n    padding-left: vz.space(4);\n    border-left: 3px solid vz.color('border');\n    color: vz.color('muted-foreground');\n  }\n}\n\n.code {\n  padding: 0.1em 0.35em;\n  border-radius: vz.radius('sm');\n  background: vz.color('muted');\n  font-family: SFMono-Regular, Menlo, Monaco, Consolas, monospace;\n  font-size: 0.92em;\n}\n\n.pre {\n  padding: vz.space(4);\n  overflow: auto;\n  border-radius: vz.radius('lg');\n  background: vz.color('code-bg');\n  color: vz.color('code-fg');\n\n  code {\n    font-family: SFMono-Regular, Menlo, Monaco, Consolas, monospace;\n    font-size: vz.font-size('sm');\n  }\n}\n"
+      "content": "@use '../../styles' as vz;\n\n.root {\n  color: vz.color('foreground');\n  font-size: vz.font-size('base');\n  line-height: 1.7;\n\n  h1, h2, h3, h4, h5, h6 {\n    margin: 1.4em 0 0.5em;\n    line-height: 1.25;\n  }\n\n  p, ul, ol, blockquote, pre {\n    margin: 0 0 vz.space(4);\n  }\n\n  ul, ol {\n    padding-left: vz.space(5);\n  }\n\n  ul { list-style: disc; }\n  ol { list-style: decimal; }\n\n  blockquote {\n    padding-left: vz.space(4);\n    border-left: 3px solid vz.color('border');\n    color: vz.color('muted-foreground');\n  }\n}\n\n.code {\n  padding: 0.1em 0.35em;\n  border-radius: vz.radius('sm');\n  background: vz.color('muted');\n  font-family: SFMono-Regular, Menlo, Monaco, Consolas, monospace;\n  font-size: 0.92em;\n}\n\n.pre {\n  padding: vz.space(4);\n  overflow: auto;\n  border-radius: vz.radius('lg');\n  background: vz.color('code-bg');\n  color: vz.color('code-fg');\n\n  code {\n    font-family: SFMono-Regular, Menlo, Monaco, Consolas, monospace;\n    font-size: vz.font-size('sm');\n  }\n}\n"
     }
   ],
   "description": "markdown component",

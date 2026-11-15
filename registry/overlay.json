@@ -1,7 +1,7 @@
 {
   "name": "overlay",
   "type": "ui",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "dependencies": [],
   "devDependencies": [],
   "registryDependencies": [
@@ -15,7 +15,7 @@
     },
     {
       "path": "components/ui/overlay.module.scss",
-      "content": "@use '../../styles' as vz;\n\n.root {\n  position: fixed;\n  inset: 0;\n  z-index: vz.z('overlay');\n}\n\n.dark {\n  background: rgb(0 0 0 / 0.5);\n}\n\n.light {\n  background: rgb(255 255 255 / 0.6);\n}\n"
+      "content": "@use '../../styles' as vz;\n\n.root {\n  position: fixed;\n  inset: 0;\n  z-index: vz.z('overlay');\n}\n\n.dark {\n  background: rgb(0 0 0 / 50%);\n}\n\n.light {\n  background: rgb(255 255 255 / 60%);\n}\n"
     }
   ],
   "description": "overlay component",

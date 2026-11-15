@@ -2,7 +2,7 @@
 
 .content {
   display: flex;
-  width: min(20rem, calc(100vw - 2rem));
+  width: 100%;
   flex-direction: column;
   gap: vz.space(2);
   padding: vz.space(4);
@@ -23,6 +23,7 @@
 
 .actions {
   display: flex;
+  flex-wrap: wrap;
   justify-content: flex-end;
   gap: vz.space(2);
   padding-top: vz.space(1);

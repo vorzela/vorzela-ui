@@ -5,8 +5,9 @@
   inset: 0;
   z-index: calc(#{vz.z('modal')} - 1);
   border: 0;
-  background: vz.color('foreground', 0.3);
-  backdrop-filter: blur(2px);
+
+  @include vz.scrim(8px, 0.4);
+
   cursor: pointer;
   animation: vz-sidebar-fade 180ms vz.ease('out') both;
 

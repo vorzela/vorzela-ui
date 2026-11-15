@@ -1,7 +1,7 @@
 {
   "name": "layer",
   "type": "ui",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "dependencies": [],
   "devDependencies": [],
   "registryDependencies": [
