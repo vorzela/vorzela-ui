@@ -167,11 +167,8 @@ export function Sidebar({
   }, [visibleGroups])
 
   const toggleCollapsed = () => {
-    if (isDesktop) {
-      setCollapsedDesktop((value) => !value)
-      return
-    }
-    setCollapsedMobile((value) => !value)
+    if (!isDesktop) return
+    setCollapsedDesktop((value) => !value)
   }
 
   const handleParent = (item: SidebarNavItem) => {
@@ -213,18 +210,16 @@ export function Sidebar({
         aria-label="Main navigation"
       >
         <div className={styles.header}>
+          {brandMark ? (
+            <span className={styles.brandMark}>{brandMark}</span>
+          ) : null}
           {collapsed ? null : (
-            <>
-              {brandMark ? (
-                <span className={styles.brandMark}>{brandMark}</span>
+            <div className={styles.brand}>
+              <span className={styles.brandName}>{brand}</span>
+              {subtitle ? (
+                <p className={styles.brandSubtitle}>{subtitle}</p>
               ) : null}
-              <div className={styles.brand}>
-                <span className={styles.brandName}>{brand}</span>
-                {subtitle ? (
-                  <p className={styles.brandSubtitle}>{subtitle}</p>
-                ) : null}
-              </div>
-            </>
+            </div>
           )}
 
           <button
@@ -300,6 +295,7 @@ export function Sidebar({
                             )}
                             aria-current={active ? 'page' : undefined}
                             aria-label={collapsed ? item.label : undefined}
+                            title={collapsed ? item.label : undefined}
                             data-label={collapsed ? item.label : undefined}
                             onClick={mobileOpen ? closeMobile : undefined}
                           >
@@ -328,6 +324,7 @@ export function Sidebar({
                             )}
                             aria-expanded={collapsed ? undefined : itemOpen}
                             aria-label={collapsed ? item.label : undefined}
+                            title={collapsed ? item.label : undefined}
                             data-label={collapsed ? item.label : undefined}
                             onClick={() => handleParent(item)}
                           >
@@ -408,6 +405,8 @@ export function Sidebar({
             className={styles.collapse}
             onClick={toggleCollapsed}
             aria-label={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
+            aria-expanded={collapsed ? 'false' : 'true'}
+            title={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
             data-label={collapsed ? 'Expand sidebar' : undefined}
           >
             {collapsed ? <ChevronRight aria-hidden /> : <ChevronLeft aria-hidden />}

@@ -53,7 +53,7 @@ URL or a directory.
 // vorzela.json
 {
   "registry": "https://ui.vorzela.dev",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "aliases": {
     "base": "~",
     "components": "~/components/ui",

@@ -10,7 +10,10 @@ import { Drawer } from '~/components/ui/drawer'
 import { Dropdown } from '~/components/ui/dropdown'
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '~/components/ui/hover-card'
 import { Input } from '~/components/ui/input'
+import { Layer } from '~/components/ui/layer'
+import { Lightbox } from '~/components/ui/lightbox'
 import { Modal } from '~/components/ui/modal'
+import { Overlay } from '~/components/ui/overlay'
 import { Popconfirm } from '~/components/ui/popconfirm'
 import { Popover, PopoverContent, PopoverTrigger } from '~/components/ui/popover'
 import { Sheet } from '~/components/ui/sheet'
@@ -145,6 +148,27 @@ function TourPreview() {
   )
 }
 
+const lightboxImage =
+  "data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='960' height='600'%3E%3Crect width='960' height='600' fill='%230f1729'/%3E%3Ccircle cx='480' cy='300' r='170' fill='%233b82f6'/%3E%3C/svg%3E"
+
+function LightboxPreview() {
+  const [open, setOpen] = useState(false)
+  return (
+    <>
+      <Button variant="outline" onClick={() => setOpen(true)}>
+        Open lightbox
+      </Button>
+      <Lightbox
+        open={open}
+        src={lightboxImage}
+        alt="Abstract blue circle on a dark background"
+        caption="A full-screen image viewer"
+        onClose={() => setOpen(false)}
+      />
+    </>
+  )
+}
+
 export const overlayPreviews = {
   'modal': <ModalPreview />,
   'drawer': <DrawerPreview />,
@@ -220,4 +244,34 @@ export const overlayPreviews = {
       <CloseButton label="Close dialog" size="lg" />
     </div>
   ),
+  'layer': (
+    <div className={styles.layerStage}>
+      <p className={styles.cardTitle}>Base content</p>
+      <p className={styles.cardText}>Layers position content above the page without leaving the DOM.</p>
+      <div className={styles.layerFloat}>
+        <Layer portal={false}>
+          <div className={styles.layerCard}>
+            <p className={styles.cardTitle}>Layer</p>
+            <p className={styles.cardText}>Floating above the base content.</p>
+          </div>
+        </Layer>
+      </div>
+    </div>
+  ),
+  'overlay': (
+    <div className={styles.overlayStage}>
+      <div className={styles.overlayPage} aria-hidden="true">
+        <span className={styles.overlayLine} />
+        <span className={styles.overlayLine} />
+        <span className={styles.overlayLine} />
+        <span className={styles.overlayLine} />
+      </div>
+      <Overlay tone="dark" />
+      <div className={styles.overlayPanel}>
+        <p className={styles.cardTitle}>Dialog backdrop</p>
+        <p className={styles.cardText}>The page dims while the panel keeps focus.</p>
+      </div>
+    </div>
+  ),
+  'lightbox': <LightboxPreview />,
 }

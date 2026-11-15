@@ -9,6 +9,7 @@ import { FloatButton } from '~/components/ui/float-button'
 import { Header } from '~/components/ui/header'
 import { Container, Flex, Grid, Inline, PageSection, Split, Stack } from '~/components/ui/layout'
 import { Sidebar, type SidebarNavGroup } from '~/components/ui/sidebar'
+import { SizeProvider, useSize } from '~/components/ui/size-context'
 import { Topbar } from '~/components/ui/topbar'
 
 import styles from '../docs.module.scss'
@@ -72,7 +73,28 @@ function AppShellPreview() {
   )
 }
 
+function SizedSample() {
+  const size = useSize()
+  return (
+    <Badge size={size} variant="outline">
+      {size}
+    </Badge>
+  )
+}
+
 export const layoutPreviews = {
+  'size-provider': (
+    <Stack gap={2}>
+      {(['sm', 'md', 'lg'] as const).map((size) => (
+        <Inline key={size} gap={2} align="center">
+          <SizeProvider size={size}>
+            <SizedSample />
+          </SizeProvider>
+          <span className={styles.cardText}>{size.toUpperCase()} descendants</span>
+        </Inline>
+      ))}
+    </Stack>
+  ),
   'app-shell': <AppShellPreview />,
   'header': (
     <Header

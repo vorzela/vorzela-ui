@@ -5,7 +5,10 @@ import {
   Folder,
   FolderOpen,
   Gauge,
+  Heart,
   ShieldCheck,
+  Sparkles,
+  Star,
   Users,
 } from 'lucide-react'
 
@@ -13,17 +16,23 @@ import { AspectRatio } from '~/components/ui/aspect-ratio'
 import { Badge } from '~/components/ui/badge'
 import { Banner } from '~/components/ui/banner'
 import { BentoGrid, BentoItem } from '~/components/ui/bento-grid'
+import { Blockquote } from '~/components/ui/blockquote'
 import { Button } from '~/components/ui/button'
 import { Callout } from '~/components/ui/callout'
 import { Card } from '~/components/ui/card'
+import { Chat } from '~/components/ui/chat'
+import { Citation } from '~/components/ui/citation'
+import { CodeBlock } from '~/components/ui/code-block'
 import { DescriptionItem, DescriptionList } from '~/components/ui/description-list'
 import { DiffViewer } from '~/components/ui/diff-viewer'
 import { Empty } from '~/components/ui/empty'
 import { ErrorState } from '~/components/ui/error-state'
+import { Icon } from '~/components/ui/icon'
 import { Invoice } from '~/components/ui/invoice'
 import { JsonViewer } from '~/components/ui/json-viewer'
 import { Link } from '~/components/ui/link'
 import { List, ListItem } from '~/components/ui/list'
+import { Markdown } from '~/components/ui/markdown'
 import { Marquee } from '~/components/ui/marquee'
 import { NumberTicker } from '~/components/ui/number-ticker'
 import { Receipt } from '~/components/ui/receipt'
@@ -268,6 +277,81 @@ export const dataPreviews = {
     <Heading as="h3" size="lg">
       A heading with semantic level and visual size
     </Heading>
+  ),
+  'blockquote': (
+    <Blockquote tone="accent" cite="Ada Lovelace">
+      The Analytical Engine has no pretensions whatever to originate anything.
+      It can do whatever we know how to order it to perform.
+    </Blockquote>
+  ),
+  'citation': (
+    <p className={styles.cardText}>
+      Source-owned components keep the runtime small{' '}
+      <Citation index={1} source="Vorzela UI docs" href="#/foundations" /> and let
+      you change the source directly{' '}
+      <Citation index={2} source="SCSS API" />.
+    </p>
+  ),
+  'code-block': (
+    <CodeBlock
+      title="counter.tsx"
+      language="tsx"
+      code={`const [count, setCount] = useState(0)
+
+<Button onClick={() => setCount(count + 1)}>
+  Clicked {count} times
+</Button>`}
+    />
+  ),
+  'markdown': (
+    <Markdown
+      source={`## Release notes
+
+- Source-owned components
+- \`signal()\` state without dependency arrays
+
+> Small DOM writes, predictable renders.`}
+    />
+  ),
+  'chat': (
+    <Chat
+      messages={[
+        {
+          id: '1',
+          role: 'assistant',
+          name: 'Vorzela',
+          time: '09:41',
+          content: 'The registry is rebuilt at 1.0.5.',
+        },
+        {
+          id: '2',
+          role: 'user',
+          name: 'Ada',
+          time: '09:42',
+          content: 'Open the preview for the new components.',
+        },
+        {
+          id: '3',
+          role: 'system',
+          name: 'System',
+          time: '09:43',
+          content: 'Preview thread loaded in the real DOM.',
+        },
+      ]}
+    />
+  ),
+  'icon': (
+    <div className="vz-demo-row">
+      <Icon size="sm" label="Star">
+        <Star aria-hidden />
+      </Icon>
+      <Icon size="md" label="Sparkles">
+        <Sparkles aria-hidden />
+      </Icon>
+      <Icon size="lg" label="Heart">
+        <Heart aria-hidden />
+      </Icon>
+    </div>
   ),
   'result': (
     <Result

@@ -1212,6 +1212,89 @@
   align-items: stretch;
 }
 
+.layer-stage {
+  position: relative;
+  width: 100%;
+  min-height: 11rem;
+  overflow: hidden;
+  padding: vz.space(4);
+  border: 1px solid vz.color('border');
+  border-radius: vz.radius('xl');
+  background: vz.color('background');
+}
+
+.layer-float {
+  position: absolute;
+  right: vz.space(4);
+  bottom: vz.space(4);
+  width: min(15rem, 70%);
+}
+
+.layer-card {
+  padding: vz.space(3) vz.space(4);
+  border: 1px solid vz.color('border');
+  border-radius: vz.radius('lg');
+  background: vz.color('popover');
+  color: vz.color('popover-foreground');
+  box-shadow: vz.elevation(2);
+}
+
+.overlay-stage {
+  position: relative;
+  display: grid;
+  width: 100%;
+  min-height: 12rem;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid vz.color('border');
+  border-radius: vz.radius('xl');
+  background: vz.color('background');
+  transform: translateZ(0);
+}
+
+.overlay-page {
+  position: absolute;
+  inset: vz.space(4);
+  display: flex;
+  flex-direction: column;
+  gap: vz.space(3);
+}
+
+.overlay-line {
+  display: block;
+  height: 0.5rem;
+  border-radius: vz.radius('full');
+  background: vz.color('foreground', 0.08);
+
+  &:nth-child(1) {
+    width: 45%;
+  }
+
+  &:nth-child(2) {
+    width: 80%;
+  }
+
+  &:nth-child(3) {
+    width: 65%;
+  }
+
+  &:nth-child(4) {
+    width: 72%;
+  }
+}
+
+.overlay-panel {
+  position: relative;
+  z-index: calc(#{vz.z('overlay')} + 1);
+  width: min(18rem, 80%);
+  padding: vz.space(4);
+  border: 1px solid vz.color('border');
+  border-radius: vz.radius('lg');
+  background: vz.color('card');
+  color: vz.color('card-foreground');
+  box-shadow: vz.elevation(2);
+}
+
 .layout-preview {
   display: flex;
   min-width: 0;

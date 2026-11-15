@@ -25,6 +25,7 @@
   display: flex;
   width: var(--sidebar-width);
   height: 100svh;
+  flex: none;
   flex-direction: column;
   border-right: 1px solid vz.color('border');
   background: vz.color('card', 0.94);
@@ -58,6 +59,10 @@
   border: 1px solid vz.color('border');
   border-radius: vz.radius('xl');
   box-shadow: vz.elevation(1);
+}
+
+.contained.collapsed {
+  width: var(--sidebar-width);
 }
 
 .contained .close {
@@ -175,6 +180,12 @@
   display: flex;
   flex-direction: column;
   gap: 2px;
+}
+
+.collapsed .group + .group {
+  margin-top: vz.space(1);
+  padding-top: vz.space(2);
+  border-top: 1px solid vz.color('border');
 }
 
 .group-head,
@@ -407,40 +418,8 @@
   }
 }
 
-// Tooltip shown on the collapsed rail.
-.collapsed .item[data-label]::after,
-.collapsed .collapse[data-label]::after {
-  content: attr(data-label);
-  position: absolute;
-  top: 50%;
-  left: calc(100% + 0.5rem);
-  z-index: vz.z('tooltip');
-  padding: 0.25rem 0.5rem;
-  border: 1px solid vz.color('border');
-  border-radius: vz.radius('sm');
-  background: vz.color('popover');
-  color: vz.color('popover-foreground');
-  font-size: vz.font-size('xs');
-  font-weight: 500;
-  white-space: nowrap;
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(-50%);
-  transition: opacity vz.duration('fast') vz.ease('out');
-}
-
-.right .item[data-label]::after,
-.right .collapse[data-label]::after {
-  right: calc(100% + 0.5rem);
-  left: auto;
-}
-
-@include vz.hover {
-  .collapsed .item[data-label]:hover::after,
-  .collapsed .collapse[data-label]:hover::after {
-    opacity: 1;
-  }
-}
+// Collapsed labels use the native `title` attribute; the nav clips overflow,
+// so a pseudo-element tooltip cannot escape the scroll container.
 
 @include vz.motion-reduce {
   .root,
@@ -478,6 +457,13 @@
 @include vz.down('sm') {
   .root {
     --sidebar-width: min(18rem, 86vw);
+  }
+}
+
+// Collapse is a desktop rail affordance; the mobile drawer closes instead.
+@include vz.down('lg') {
+  .collapse {
+    display: none;
   }
 }
 

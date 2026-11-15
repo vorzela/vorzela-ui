@@ -31,6 +31,8 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from '~/components/ui/navigation-menu'
+import { NavIcon } from '~/components/ui/nav-icon'
+import { Outline } from '~/components/ui/outline'
 import {
   ResizableHandle,
   ResizablePanel,
@@ -97,6 +99,23 @@ const slides = [
 ]
 
 export const navigationPreviews = {
+  'nav-icon': (
+    <div className="vz-demo-row">
+      <NavIcon icon={<Home aria-hidden />} label="Home" active />
+      <NavIcon icon={<Search aria-hidden />} label="Search" />
+      <NavIcon icon={<Settings aria-hidden />} label="Settings" />
+    </div>
+  ),
+  'outline': (
+    <Outline
+      items={[
+        { id: 'preview-outline-install', label: 'Installation' },
+        { id: 'preview-outline-tokens', label: 'Tokens', level: 3 },
+        { id: 'preview-outline-motion', label: 'Motion', level: 3 },
+      ]}
+      activeId="preview-outline-tokens"
+    />
+  ),
   'anchor': (
     <div className={styles.demoGrid}>
       <Anchor
