@@ -53,7 +53,7 @@ URL or a directory.
 // vorzela.json
 {
   "registry": "https://ui.vorzela.dev",
-  "version": "1.0.6",
+  "version": "1.1.0",
   "aliases": {
     "base": "~",
     "components": "~/components/ui",
@@ -107,7 +107,7 @@ export function SignIn() {
 | `vorzela-ui doctor` | Checks missing paths, files and snapshots. |
 
 Flags: `--registry <url|path>`, `--cwd <dir>`, `--dry-run`, `--overwrite`,
-`--yes` (keep locally modified files) and `--force` (replace them without
+`--no-vscode`, `--yes` (keep locally modified files) and `--force` (replace them without
 prompting). Until the CLI is published, run it from this repo with
 `npm run cli -- add button`.
 
@@ -164,11 +164,33 @@ and controlled file lists. `ImageCropper` renders at the source resolution by
 default; pass `targetSizeBytes` to compress only when the encoded image exceeds
 a budget.
 
-Most components own one `.tsx` file and one `.module.scss` module. A few ship
-small helper modules too — calendar dates, toast state, network progress and
-image caching — and the charts share one `charts.module.scss`. Installing a
-component copies its files plus every registry dependency it imports, so the
-whole import graph is present.
+Most components own one `.tsx` file and one `.module.scss` module. In this
+source repository the styles sit beside the components. In an app installed by
+the CLI, **stylesheets go into the configured styles folder**, never beside the
+component source:
+
+```text
+app/
+├── components/ui/button.tsx
+├── lib/cx.ts
+└── styles/
+    ├── components/ui/button.module.scss
+    ├── components/primitives/primitives.module.scss
+    ├── charts/charts.module.scss
+    ├── custom/_index.scss       # your overrides and new styles
+    ├── custom/README.md
+    ├── tokens/                 # colour, space, type, radius, shadow, motion, z
+    ├── mixins/                 # the vz.* Sass API
+    ├── _index.scss
+    └── global.scss
+```
+
+The generated component SCSS starts with a `@generated` header. Do not edit it:
+`vorzela-ui update` replaces generated modules. Add overrides and new styles in
+`styles/custom`, which `global.scss` imports automatically. The CLI ships a
+`vz-scss` VS Code snippet and merges `.vscode/settings.json` entries so new
+SCSS files can start with the full token, responsive, mixin and `sass:math`
+reference.
 
 ```tsx
 import { Button } from '~/components/ui/button'
@@ -198,6 +220,7 @@ react_scss/
 │   └── styles/
 │       ├── _index.scss        # public Sass API (emits no CSS)
 │       ├── global.scss        # the single CSS entry point
+│       ├── custom/            # consumer overrides and new styles
 │       ├── tokens/            # colour, space, type, radius, shadow, motion, z, breakpoints
 │       ├── mixins/            # focus-ring, interaction, surface, truncate, scrollbar, icon, supports, group
 │       └── base/              # reset, base, globals
@@ -258,12 +281,13 @@ Mixins: `focus-ring`, `hover`, `active`, `disabled`, `selected`, `placeholder`,
 
 ### Custom styles
 
-The CLI rewrites kit imports to a relative path. For your own module, point
-`@use` at the styles layer and use the same API:
+Generated component modules under `styles/components` and `styles/charts` import
+the Sass API with `@use '../..' as vz;`. Do not edit them. Add your own modules
+under `styles/custom` and import them from `custom/_index.scss`:
 
 ```scss
-// src/components/price-card/price-card.module.scss
-@use '../../styles' as vz;
+// app/styles/custom/price-card.scss
+@use '..' as vz;
 
 .card {
   display: flex;
@@ -300,6 +324,10 @@ The CLI rewrites kit imports to a relative path. For your own module, point
   margin: 0;
 }
 ```
+
+Add `@use 'price-card';` to `app/styles/custom/_index.scss`. The generated
+`_index.scss` includes the same API notes, responsive breakpoints and
+`sass:math` examples for reference.
 
 Breakpoints are `sm` 40rem, `md` 48rem, `lg` 64rem, `xl` 80rem and `2xl`
 96rem. There is no `xs` stop: the base styles are the mobile layout. Use

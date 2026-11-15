@@ -3,6 +3,7 @@
 @use 'base/reset';
 @use 'base/base';
 @use 'base/globals';
+@use 'custom';
 
 // ── Themes ────────────────────────────────────────────────
 @include vz.emit-color-tokens(':root', 'light');

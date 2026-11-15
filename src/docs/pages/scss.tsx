@@ -1,8 +1,8 @@
 import { CodeBlock, Demo, Section } from '../showcase'
 import styles from '../docs.module.scss'
 
-const importCode = `// src/components/price-tag/price-tag.module.scss
-@use '../../styles' as vz;
+const importCode = `// app/styles/custom/price-tag.scss
+@use '..' as vz;
 
 .price {
   color: vz.color('foreground');
@@ -41,7 +41,7 @@ const mixinRows = [
   ['vz.peer-focus / vz.peer-checked', 'Style a sibling from a peer state'],
 ]
 
-const responsiveCode = `@use '../../styles' as vz;
+const responsiveCode = `@use '..' as vz;
 
 .grid {
   display: grid;
@@ -70,7 +70,7 @@ const responsiveCode = `@use '../../styles' as vz;
   }
 }`
 
-const moduleCode = `@use '../../styles' as vz;
+const moduleCode = `@use '..' as vz;
 
 .card {
   display: flex;
@@ -118,14 +118,12 @@ const moduleCode = `@use '../../styles' as vz;
 const vscodeCode = `# Run once in the project root
 vorzela-ui init
 
-# Then create an empty .scss file in the editor. It opens with:
-@use '../../styles' as vz;
+# Then type vz-scss in a new file under app/styles/custom.
+# The snippet inserts @use lines plus the token, responsive,
+# mixin and sass:math reference.
 
-# Skip the editor setup
-vorzela-ui init --no-vscode
-
-# Choose a specific editor CLI
-vorzela-ui init --editor windsurf`
+# Skip .vscode settings and snippets
+vorzela-ui init --no-vscode`
 
 export function ScssPage() {
   return (
@@ -149,15 +147,15 @@ export function ScssPage() {
       <Section
         id="import"
         title="Import the API once per module"
-        lead="Add the @use rule at the top of your module. The path is relative to your file; the CLI already does this for components it installs."
+        lead="Start custom files with @use '..' as vz. Generated component modules live under components/ and import the same API with ../../; do not edit them."
       >
         <CodeBlock code={importCode} language="scss" />
-        <Demo title="Path rule" note="relative to the module">
+        <Demo title="Path rule" note="relative to the custom folder">
           <p className={styles.cardText}>
-            From <code>src/components/card/card.module.scss</code>, the styles
-            layer at <code>src/styles</code> is <code>../../styles</code>. From
-            the project root it is <code>./src/styles</code>. Only one{' '}
-            <code>@use</code> per module is needed.
+            From <code>app/styles/custom</code>, the styles API at{' '}
+            <code>app/styles</code> is <code>..</code>. Generated modules under{' '}
+            <code>app/styles/components/ui</code> use <code>../..</code>. Only
+            one <code>@use</code> per module is needed.
           </p>
         </Demo>
       </Section>
@@ -242,7 +240,8 @@ export function ScssPage() {
             <li>Use the 4px spacing scale instead of arbitrary pixels.</li>
             <li>Put interaction states behind <code>vz.hover</code>, not bare <code>:hover</code>.</li>
             <li>Wrap non-essential motion in <code>vz.motion-safe</code> or disable it with <code>vz.motion-reduce</code>.</li>
-            <li>Name files <code>*.module.scss</code> and access classes as camelCase (<code>styles.cardTitle</code>).</li>
+            <li>Name custom files <code>*.scss</code>; generated component files stay <code>*.module.scss</code>.</li>
+            <li>Do not edit generated modules under <code>components/</code>; add overrides in <code>custom/</code>.</li>
           </ul>
         </Demo>
       </Section>
@@ -250,15 +249,15 @@ export function ScssPage() {
       <Section
         id="editor"
         title="VS Code helper"
-        lead="vorzela-ui init prepares .vscode settings and installs a small extension. New empty SCSS files open with the correct @use line already in place."
+        lead="vorzela-ui init merges .vscode settings and writes a snippet file. Type vz-scss in a new SCSS file to insert the @use lines and a compact API reference."
       >
         <CodeBlock code={vscodeCode} language="bash" />
-        <Demo title="Also included" note="fallback">
+        <Demo title="Also included" note="custom folder">
           <p className={styles.cardText}>
-            The workspace gets a <code>vzuse</code> snippet for files created
-            outside the editor, plus an extension recommendation for VS Code,
-            Cursor and Windsurf. The import path is read from{' '}
-            <code>vorzela.json</code> → <code>paths.styles</code>.
+            <code>styles/custom/_index.scss</code> is imported by{' '}
+            <code>global.scss</code> and documents the token, responsive, mixin
+            and <code>sass:math</code> helpers. Add new files beside it and
+            import them from that index.
           </p>
         </Demo>
       </Section>

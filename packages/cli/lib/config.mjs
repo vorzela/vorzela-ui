@@ -2,8 +2,8 @@ import fs from 'node:fs'
 import path from 'node:path'
 
 export const DEFAULT_CONFIG = {
-  registry: 'https://raw.githubusercontent.com/vorzela/vorzela-ui/v1.0.6/registry',
-  version: '1.0.6',
+  registry: 'https://raw.githubusercontent.com/vorzela/vorzela-ui/v1.1.0/registry',
+  version: '1.1.0',
   aliases: {
     base: '~',
     components: '~/components/ui',
@@ -40,6 +40,18 @@ export function targetFor(config, registryPath) {
   const normalized = registryPath.replaceAll('\\', '/')
   const file = path.posix.basename(normalized)
 
+  // Every stylesheet lives under the configured styles folder. Components keep
+  // their source path so `styles/components/ui/button.module.scss` mirrors the
+  // registry tree and imports stay predictable.
+  if (normalized.endsWith('.scss')) {
+    return path.join(
+      config.paths.styles,
+      normalized.startsWith('styles/')
+        ? normalized.slice('styles/'.length)
+        : normalized,
+    )
+  }
+
   if (normalized.startsWith('components/ui/')) {
     return path.join(config.paths.components, file)
   }
@@ -67,8 +79,46 @@ export function targetFor(config, registryPath) {
   return path.join(config.paths.base, normalized)
 }
 
-export function rewriteImports(content, config) {
+/**
+ * Rewrite a relative stylesheet import to the installed styles folder.
+ *
+ * Registry modules import `./button.module.scss`; consumers receive
+ * `~/styles/components/ui/button.module.scss`, keeping every stylesheet out of
+ * the component directory.
+ */
+function rewriteScssImports(content, config, sourcePath) {
   let next = content
+
+  // Registry-normalized imports: `~/components/primitives/primitives.module.scss`.
+  next = next
+    .replace(
+      /(['"])~\/components\/([^'"]+\.scss)\1/g,
+      (match, quote, relative) =>
+        `${quote}${config.aliases.styles}/components/${relative}${quote}`,
+    )
+    .replace(
+      /(['"])~\/charts\/([^'"]+\.scss)\1/g,
+      (match, quote, relative) =>
+        `${quote}${config.aliases.styles}/charts/${relative}${quote}`,
+    )
+
+  if (!sourcePath) return next
+  const sourceDir = path.posix.dirname(sourcePath)
+  if (sourceDir === '.') return next
+
+  return next.replace(
+    /(['"])(\.\.?\/[^'"]+\.scss)\1/g,
+    (match, quote, relative) => {
+      const resolved = path.posix.normalize(
+        path.posix.join(sourceDir, relative),
+      )
+      return `${quote}${config.aliases.styles}/${resolved}${quote}`
+    },
+  )
+}
+
+export function rewriteImports(content, config, sourcePath = '') {
+  let next = rewriteScssImports(content, config, sourcePath)
   const replacements = [
     ['~/components/ui/', `${config.aliases.components}/`],
     ['~/components/primitives/', `${config.aliases.base}/components/primitives/`],

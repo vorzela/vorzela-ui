@@ -21,6 +21,7 @@ function parseArgs(argv) {
     else if (arg === '--force' || arg === '-f') flags.force = true
     else if (arg === '--dry-run') flags.dryRun = true
     else if (arg === '--overwrite') flags.overwrite = true
+    else if (arg === '--no-vscode') flags.noVscode = true
     else if (arg === '--registry') {
       flags.registry = argv[index + 1]
       index += 1
@@ -76,6 +77,7 @@ Flags:
   --cwd <dir>             Run in another directory
   --dry-run               Show changes without writing
   --overwrite             Replace existing files on add
+  --no-vscode             Skip .vscode settings and snippets
   --yes                   Accept safe updates only
   --force                 Replace modified files without asking
 `)

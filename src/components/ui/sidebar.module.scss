@@ -458,12 +458,9 @@
   .root {
     --sidebar-width: min(18rem, 86vw);
   }
-}
 
-// Collapse is a desktop rail affordance; the mobile drawer closes instead.
-@include vz.down('lg') {
-  .collapse {
-    display: none;
+  .collapsed {
+    --sidebar-width: 4.5rem;
   }
 }
 

@@ -167,8 +167,11 @@ export function Sidebar({
   }, [visibleGroups])
 
   const toggleCollapsed = () => {
-    if (!isDesktop) return
-    setCollapsedDesktop((value) => !value)
+    if (isDesktop) {
+      setCollapsedDesktop((value) => !value)
+      return
+    }
+    setCollapsedMobile((value) => !value)
   }
 
   const handleParent = (item: SidebarNavItem) => {
