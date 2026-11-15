@@ -60,6 +60,7 @@ const MODULE_OVERRIDES: Record<string, string> = {
   DismissableLayer: '~/components/primitives/dismissable-layer',
   VisuallyHidden: '~/components/primitives/visually-hidden',
   SkipLink: '~/components/primitives/skip-link',
+  SizeProvider: '~/components/ui/size-context',
 }
 
 const moduleFor = (name: string) =>

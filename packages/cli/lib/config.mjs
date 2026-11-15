@@ -2,8 +2,8 @@ import fs from 'node:fs'
 import path from 'node:path'
 
 export const DEFAULT_CONFIG = {
-  registry: 'https://raw.githubusercontent.com/vorzela/vorzela-ui/v1.0.4/registry',
-  version: '1.0.4',
+  registry: 'https://raw.githubusercontent.com/vorzela/vorzela-ui/v1.0.5/registry',
+  version: '1.0.5',
   aliases: {
     base: '~',
     components: '~/components/ui',

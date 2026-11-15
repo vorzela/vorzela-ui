@@ -3,6 +3,7 @@ import { ArrowLeft, ArrowRight, Check } from 'lucide-react'
 import { Badge, Button, Separator } from '~/components/ui'
 import { navigate } from '../hooks'
 import { inventory, inventoryCount } from '../inventory'
+import { newComponentSlugs } from '../new-components'
 import { previewBySlug } from '../previews'
 import { slugFor, usageBySlug, type UsageDoc } from '../usage'
 import { componentGroups, components, findComponent, type ComponentDoc } from '../registry'
@@ -96,6 +97,9 @@ export function ComponentsIndexPage() {
                 {category.items.map((item) => (
                   <a key={item} href={`#/components/${slugFor(item)}`} className={styles.chip}>
                     {item}
+                    {newComponentSlugs.has(slugFor(item)) ? (
+                      <span className={styles.newBadge}>New</span>
+                    ) : null}
                   </a>
                 ))}
               </div>
@@ -140,6 +144,9 @@ function GenericComponentArticle({ usage }: { usage: UsageDoc }) {
         <h1 className={styles.detailTitle}>{usage.name}</h1>
         <p className={styles.detailLead}>{usage.description}</p>
         <div className={styles.detailMeta}>
+          {newComponentSlugs.has(usage.slug) ? (
+            <span className={styles.newBadge}>New</span>
+          ) : null}
           <Badge variant="outline">{usage.group}</Badge>
           <Badge variant="soft">SCSS Modules</Badge>
           <Badge variant="soft">Usage included</Badge>
@@ -211,6 +218,9 @@ function ComponentArticle({ component }: { component: ComponentDoc }) {
         <h1 className={styles.detailTitle}>{component.name}</h1>
         <p className={styles.detailLead}>{component.description}</p>
         <div className={styles.detailMeta}>
+          {newComponentSlugs.has(component.slug) ? (
+            <span className={styles.newBadge}>New</span>
+          ) : null}
           <Badge variant="outline">{component.group}</Badge>
           <Badge variant="soft">SCSS Modules</Badge>
           <Badge variant="soft">Ref-forwarding</Badge>
