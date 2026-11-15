@@ -1,0 +1,23 @@
+{
+  "name": "footer",
+  "type": "ui",
+  "version": "1.2.0",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [
+    "styles",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/footer.tsx",
+      "content": "import type { HTMLAttributes, ReactNode } from 'react'\n\nimport { cx } from '~/lib/cx'\nimport styles from './footer.module.scss'\n\nexport interface FooterLink {\n  label: string\n  href: string\n}\n\nexport interface FooterProps extends HTMLAttributes<HTMLElement> {\n  brand?: ReactNode\n  description?: ReactNode\n  links?: FooterLink[]\n  note?: ReactNode\n  /** Centre the content in the shared page width. */\n  contained?: boolean\n}\n\n/** Page or application footer with brand, links and a meta note. */\nexport function Footer({\n  brand = 'Vorzela UI',\n  description,\n  links,\n  note,\n  contained = true,\n  className,\n  children,\n  ...props\n}: FooterProps) {\n  return (\n    <footer className={cx(styles.root, className)} {...props}>\n      <div className={cx(styles.inner, contained && styles.contained)}>\n        <div className={styles.brand}>\n          <span className={styles.brandName}>{brand}</span>\n          {description ? <p className={styles.description}>{description}</p> : null}\n        </div>\n\n        {links?.length ? (\n          <nav className={styles.links} aria-label=\"Footer\">\n            <ul>\n              {links.map((link) => (\n                <li key={`${link.href}-${link.label}`}>\n                  <a href={link.href}>{link.label}</a>\n                </li>\n              ))}\n            </ul>\n          </nav>\n        ) : null}\n\n        {children ? <div className={styles.extra}>{children}</div> : null}\n        {note ? <p className={styles.note}>{note}</p> : null}\n      </div>\n    </footer>\n  )\n}\n"
+    },
+    {
+      "path": "components/ui/footer.module.scss",
+      "content": "@use 'styles' as vz;\n\n.root {\n  border-top: 1px solid vz.color('border');\n  background: vz.color('background');\n  color: vz.color('muted-foreground');\n}\n\n.inner {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  gap: vz.space(4);\n  padding: vz.space(6) vz.space(5);\n}\n\n.contained {\n  width: 100%;\n  max-width: 68rem;\n  margin-inline: auto;\n}\n\n.brand {\n  display: flex;\n  min-width: 0;\n  flex: 1 1 14rem;\n  flex-direction: column;\n  gap: 2px;\n}\n\n.brand-name {\n  color: vz.color('foreground');\n  font-size: vz.font-size('sm');\n  font-weight: 600;\n  letter-spacing: -0.01em;\n}\n\n.description {\n  margin: 0;\n  font-size: vz.font-size('xs');\n  line-height: 1.5;\n}\n\n.links ul {\n  display: flex;\n  flex-wrap: wrap;\n  gap: vz.space(4);\n  padding: 0;\n  margin: 0;\n  list-style: none;\n}\n\n.links a {\n  color: vz.color('muted-foreground');\n  font-size: vz.font-size('sm');\n  text-decoration: none;\n  transition: color vz.duration('fast') vz.ease('out');\n\n  @include vz.hover {\n    color: vz.color('foreground');\n  }\n\n  @include vz.focus-ring(2px, 2px, 0.6);\n}\n\n.extra {\n  min-width: 0;\n}\n\n.note {\n  flex-basis: 100%;\n  padding-top: vz.space(3);\n  border-top: 1px solid vz.color('border');\n  margin: 0;\n  font-size: vz.font-size('xs');\n  line-height: 1.5;\n}\n\n@include vz.down('md') {\n  .inner {\n    align-items: flex-start;\n    padding-block: vz.space(5);\n  }\n\n  .brand {\n    flex-basis: 100%;\n  }\n\n  .links ul {\n    gap: vz.space(3);\n  }\n}\n"
+    }
+  ],
+  "description": "footer component",
+  "alias": false
+}

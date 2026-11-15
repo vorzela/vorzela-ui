@@ -178,6 +178,7 @@ export const inventory: InventoryCategory[] = [
       'Header',
       'Topbar',
       'Sidebar',
+      'Footer',
       'Stack',
       'Inline',
       'Flex',

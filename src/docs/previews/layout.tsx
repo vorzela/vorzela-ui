@@ -6,6 +6,7 @@ import { Button } from '~/components/ui/button'
 import { ButtonGroup } from '~/components/ui/button-group'
 import { Card } from '~/components/ui/card'
 import { FloatButton } from '~/components/ui/float-button'
+import { Footer } from '~/components/ui/footer'
 import { Header } from '~/components/ui/header'
 import { Container, Flex, Grid, Inline, PageSection, Split, Stack } from '~/components/ui/layout'
 import { Sidebar, type SidebarNavGroup } from '~/components/ui/sidebar'
@@ -83,6 +84,18 @@ function SizedSample() {
 }
 
 export const layoutPreviews = {
+  'footer': (
+    <Footer
+      brand="Vorzela"
+      description="Source-owned components for React and SCSS Modules."
+      links={[
+        { label: 'Documentation', href: '#/overview' },
+        { label: 'Components', href: '#/components' },
+        { label: 'Theming', href: '#/theming' },
+      ]}
+      note="© 2026 Vorzela · MIT licensed"
+    />
+  ),
   'size-provider': (
     <Stack gap={2}>
       {(['sm', 'md', 'lg'] as const).map((size) => (

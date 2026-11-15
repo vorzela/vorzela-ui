@@ -53,7 +53,7 @@ URL or a directory.
 // vorzela.json
 {
   "registry": "https://ui.vorzela.dev",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "aliases": {
     "base": "~",
     "components": "~/components/ui",
@@ -153,7 +153,7 @@ the shared style, hook, util and primitive layers. Charts install their own
 | Data display | 23 | Stat, StatGroup, DescriptionList, Timeline, TreeView, JsonViewer, DiffViewer, Empty, ErrorState, Banner, Callout, NumberTicker, Marquee, BentoGrid, AspectRatio, Receipt, Invoice, List, Link, Code, Highlight, Heading, Result |
 | Overlays | 14 | Modal, Drawer, Sheet, AlertDialog, Dropdown, ActionMenu, ContextMenu, Popover, HoverCard, Tooltip, Toolbar, Popconfirm, CloseButton, Tour |
 | Navigation | 14 | Accordion, Collapsible, Breadcrumb, Anchor, Command, NavigationMenu, Stepper, ScrollArea, Resizable, Carousel, VirtualList, CopyButton, TabBar, Menubar |
-| Layout | 12 | AppShell, Header, Topbar, Sidebar, Stack, Inline, Flex, Grid, Split, Container, PageSection, FloatButton |
+| Layout | 13 | AppShell, Header, Topbar, Sidebar, Footer, Stack, Inline, Flex, Grid, Split, Container, PageSection, FloatButton |
 | Charts | 18 | Line, Area, Bar, Donut, Scatter, Heatmap, Sparkline, Gauge, Radar, Treemap, Sankey, Funnel, Candlestick, Waterfall, Histogram, RadialBar, Bullet, ChartFrame |
 | Media & system | 16 | OptimizedImage, MasonryGrid, GlassPanel, NotificationCenter, Toaster, Watermark, QRCode, NetworkLoader, CookieConsent, OfflineBanner, ErrorBoundary, Portal, FocusTrap, DismissableLayer, VisuallyHidden, SkipLink |
 

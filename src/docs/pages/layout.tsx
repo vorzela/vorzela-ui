@@ -18,6 +18,7 @@ import { Button } from '~/components/ui/button'
 import { Card } from '~/components/ui/card'
 import { Carousel } from '~/components/ui/carousel'
 import { Dropdown } from '~/components/ui/dropdown'
+import { Footer } from '~/components/ui/footer'
 import { Header } from '~/components/ui/header'
 import { Flex, Grid, Inline, Split, Stack } from '~/components/ui/layout'
 import { NotificationCenter } from '~/components/ui/notification-center'
@@ -25,7 +26,7 @@ import { Popover, PopoverContent, PopoverTrigger } from '~/components/ui/popover
 import { Sidebar, type SidebarNavGroup } from '~/components/ui/sidebar'
 import { Stat } from '~/components/ui/stat'
 import { TabBar } from '~/components/ui/tab-bar'
-import { Section } from '../showcase'
+import { CodeBlock, Section } from '../showcase'
 import styles from '../docs.module.scss'
 
 const groups: SidebarNavGroup[] = [
@@ -89,6 +90,39 @@ const notifications = [
     icon: <Users aria-hidden size={15} />,
   },
 ]
+
+const headerCode = `import { Header } from '~/components/ui/header'
+import { Button } from '~/components/ui/button'
+
+<Header
+  title="Deployments"
+  description="Production · eu-west-1"
+  actions={<Button size="sm">New deploy</Button>}
+/>`
+
+const sidebarCode = `import { Sidebar } from '~/components/ui/sidebar'
+
+<Sidebar
+  contained
+  brand="Vorzela"
+  brandMark="V"
+  subtitle="Workspace"
+  currentPath="#/layout"
+  groups={groups}
+/>`
+
+const footerCode = `import { Footer } from '~/components/ui/footer'
+
+<Footer
+  brand="Vorzela"
+  description="Source-owned components for React and SCSS Modules."
+  links={[
+    { label: 'Documentation', href: '/docs' },
+    { label: 'Components', href: '/components' },
+    { label: 'Theming', href: '/theming' },
+  ]}
+  note="© 2026 Vorzela · MIT licensed"
+/>`
 
 const slides = [
   {
@@ -247,6 +281,7 @@ export function LayoutPage() {
             sticky={false}
           />
         </div>
+        <CodeBlock code={headerCode} language="tsx" />
       </Section>
 
       <Section
@@ -263,30 +298,25 @@ export function LayoutPage() {
             version="0.2.0"
             currentPath="#/layout"
           />
-          <div className={styles.layoutPreview}>
-            <Inline justify="between" align="center">
-              <div>
-                <h3 className={styles.cardTitle}>Projects</h3>
-                <p className={styles.cardText}>12 active · 3 archived</p>
-              </div>
-              <Button size="sm">New project</Button>
-            </Inline>
-            <Grid min="10rem" gap={3}>
-              <Card flat padded>
-                <p className={styles.cardText}>Builds</p>
-                <p className={styles.statValue}>1,280</p>
-              </Card>
-              <Card flat padded>
-                <p className={styles.cardText}>Seats</p>
-                <p className={styles.statValue}>48</p>
-              </Card>
-              <Card flat padded>
-                <p className={styles.cardText}>Uptime</p>
-                <p className={styles.statValue}>99.98%</p>
-              </Card>
-            </Grid>
-          </div>
         </div>
+        <CodeBlock code={sidebarCode} language="tsx" />
+      </Section>
+
+      <Section
+        title="Footer"
+        lead="A page or application footer with brand copy, links and a meta note. It follows the same border and spacing system as the header."
+      >
+        <Footer
+          brand="Vorzela"
+          description="Source-owned components for React and SCSS Modules."
+          links={[
+            { label: 'Documentation', href: '#/overview' },
+            { label: 'Components', href: '#/components' },
+            { label: 'Theming', href: '#/theming' },
+          ]}
+          note="© 2026 Vorzela · MIT licensed"
+        />
+        <CodeBlock code={footerCode} language="tsx" />
       </Section>
 
       <Section
