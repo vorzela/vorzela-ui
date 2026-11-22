@@ -124,7 +124,7 @@ export const layoutPreviews = {
     />
   ),
   'sidebar': (
-    <div className={styles.layoutFrame}>
+    <div className={styles.sidebarStage}>
       <Sidebar
         contained
         groups={groups}

@@ -288,7 +288,7 @@ export function LayoutPage() {
         title="Sidebar"
         lead="Collapsible groups, nested items, icon rail and hover labels. This preview is rendered in-flow with `contained`."
       >
-        <div className={styles.layoutFrame}>
+        <div className={styles.sidebarStage}>
           <Sidebar
             contained
             groups={groups}

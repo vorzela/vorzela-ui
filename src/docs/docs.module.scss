@@ -1212,6 +1212,21 @@
   align-items: stretch;
 }
 
+.sidebar-stage {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  padding: vz.space(6);
+  border-radius: vz.radius('xl');
+  background: vz.color('muted', 0.35);
+}
+
+@include vz.down('sm') {
+  .sidebar-stage {
+    padding: vz.space(3);
+  }
+}
+
 .layer-stage {
   position: relative;
   width: 100%;
